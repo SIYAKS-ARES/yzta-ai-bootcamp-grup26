@@ -177,7 +177,6 @@
   - Kullanıcı personas ve user story'lerin tanımlanması
   - Proje yönetimi için `Trello` kullanılmasına karar verilmesi
   - Hedef kitle analizi ve ihtiyaç tespiti çalışmaları
-
 - **Expected point completion within Sprint**: 200 points
 - **Point Completion Logic**: `(205 points completed)` İlk sprint araştırma ve planlama odaklı geçtiği için yoğun analiz ve dokümantasyon çalışmaları yapılmıştır. Hedeflenen 200 puanın üzerinde 205 puan tamamlanmıştır.
 - **Daily Scrum**: See file
@@ -192,7 +191,6 @@
   - UI/UX tasarım mockup'ları erişilebilirlik odaklı olarak hazırlandı
   - AI entegrasyonu için gerekli API'ler (OpenAI, Google Cloud Speech-to-Text, Microsoft Cognitive Services) araştırıldı
   - Proje yönetimi süreçleri kuruldu ve sprint planlaması yapıldı
-
 - **Sprint Review Participants:** `Mehmet Said Hüseyinoğlu`, `Zeynep`, `Esra İrem`, `Taha`
 - **Sprint Retrospective:**
 
@@ -204,7 +202,6 @@
   - Kullanıcı authentication sistemi geliştirilecek
   - İlk prototip version hazırlanacak
   - Takım içi kod review süreçleri belirlenecek
-
 - **Other Notes**: Proje sosyal etki odaklı bir yaklaşım benimser ve eğitimde fırsat eşitliğini teknoloji aracılığıyla desteklemeyi amaçlar.
 
 <details>
@@ -283,7 +280,6 @@
   - WCAG 2.1 AA standartlarına uygun UI/UX geliştirme
   - Kullanıcı authentication sisteminin kurulması
   - RESTful API tasarımı ve endpoint'lerin oluşturulması
-
 - **Expected point completion within Sprint**: 150 points
 - **Point Completion Logic**: `(155 points completed)` İkinci sprint geliştirme odaklı geçti ve temel platform özellikleri hayata geçirildi. Hedeflenen 150 puanın üzerinde 155 puan tamamlandı.
 - **Daily Scrum**: See file
@@ -298,7 +294,6 @@
   - Veritabanı şeması MongoDB'de kuruldu ve ilk koleksiyonlar oluşturuldu
   - Erişilebilirlik testleri için otomatik test suite'leri kuruldu
   - Responsive tasarım ve mobile-first yaklaşım benimsenidi
-
 - **Sprint Review Participants:** `Mehmet Said Hüseyinoğlu`, `Zeynep`, `Esra İrem`, `Taha`
 - **Sprint Retrospective:**
 
@@ -310,7 +305,6 @@
   - Kullanıcı deneyimi testleri gerçekleştirilecek
   - Güvenlik testleri ve penetrasyon testleri yapılacak
   - Deployment süreçleri planlanacak
-
 - **Other Notes**: Sprint boyunca sürekli erişilebilirlik testleri yapılarak WCAG standartlarına uygunluk sağlandı.
 
 <details>
@@ -362,18 +356,19 @@
   </details>
 
 - **Sprint Notes**:
+
   - Çoklu dil desteği entegrasyonu (Türkçe, İngilizce, Almanca, Fransızca)
   - Video transkripsiyon özelliğinin tamamlanması
   - AI Chatbot entegrasyonu ve doğal dil işleme
   - Görsel içerik analizi (OCR) özelliğinin implementasyonu
   - Performans optimizasyonları ve son testler
   - Deployment ve production ortamına geçiş
-
 - **Expected point completion within Sprint**: 150 points
 - **Point Completion Logic**: `(175 points completed)` Son sprintte tüm temel özellikler tamamlandı ve platform kullanıma hazır hale getirildi. Hedeflenen 150 puanın üzerinde 175 puan tamamlandı.
 - **Daily Scrum**: See file
 - **Product Backlog URL:** Click for Backlog (Trello)
 - **Sprint Review**:
+
   - Çoklu dil desteği başarıyla entegre edildi ve 4 farklı dil desteklenir
   - Video transkripsiyon özelliği Azure Video Indexer ile gerçekleştirildi
   - OpenAI GPT-4 entegrasyonu ile AI Chatbot sistemi kuruldu
@@ -382,14 +377,13 @@
   - Production ortamında deployment tamamlandı
   - Kullanıcı kabul testleri başarıyla gerçekleştirildi
   - Dokümantasyon ve kullanıcı rehberleri hazırlandı
-
 - **Sprint Review Participants:** `Mehmet Said Hüseyinoğlu`, `Zeynep`, `Esra İrem`, `Taha`
 - **Sprint Retrospective:**
+
   - Tüm planlanan özellikler başarıyla tamamlandı ve platform kullanıma hazır
   - Takım olarak erişilebilirlik konusunda çok değerli deneyim kazandık
   - Sosyal etki yaratan bir proje geliştirmekten dolayı memnunuz
   - `Takım olarak bootcamp sürecini başarıyla tamamladık ve demo sunumuna hazırız`
-
 - **Other Notes**: Platform, gerçek kullanıcılar tarafından test edildi ve olumlu geri bildirimler alındı.
 
 <details>
@@ -420,13 +414,13 @@
 
 # Color Reference
 
-| Color          | Hex                                                            |
-| -------------- | -------------------------------------------------------------- |
-| Primary Color  | ![#2563EB](https://via.placeholder.com/10/2563EB?text=+) #2563EB |
-| Secondary Color| ![#7C3AED](https://via.placeholder.com/10/7C3AED?text=+) #7C3AED |
-| Success Color  | ![#059669](https://via.placeholder.com/10/059669?text=+) #059669 |
-| Warning Color  | ![#D97706](https://via.placeholder.com/10/D97706?text=+) #D97706 |
-| Error Color    | ![#DC2626](https://via.placeholder.com/10/DC2626?text=+) #DC2626 |
+| Color           | Hex                                                            |
+| --------------- | -------------------------------------------------------------- |
+| Primary Color   | ![#2563EB](https://via.placeholder.com/10/2563EB?text=+) #2563EB |
+| Secondary Color | ![#7C3AED](https://via.placeholder.com/10/7C3AED?text=+) #7C3AED |
+| Success Color   | ![#059669](https://via.placeholder.com/10/059669?text=+) #059669 |
+| Warning Color   | ![#D97706](https://via.placeholder.com/10/D97706?text=+) #D97706 |
+| Error Color     | ![#DC2626](https://via.placeholder.com/10/DC2626?text=+) #DC2626 |
 
 # **Used Technologies**
 
