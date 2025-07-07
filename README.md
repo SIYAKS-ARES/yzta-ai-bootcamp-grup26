@@ -1,7 +1,7 @@
 <html>
   <body>
 
-  ![lumina](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png)
+  ![lumina](GK%20%26%20SS/Icon/Lumina.jpg)
 
   ![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)
 
@@ -25,8 +25,8 @@
       <td>Mehmet Said Hüseyinoğlu</td>
       <td>Scrum Master</td>
       <td>
-        <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20%26%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -34,8 +34,8 @@
       <td>Zeynep İrem Tekin</td>
       <td>Product Owner</td>
       <td>
-        <a href="https://github.com/Zeynepiremtekin" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/Zeynepiremtekin" target="_blank"><img src="GK%20%26%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -43,8 +43,8 @@
       <td>İpek Eylül Atmaca</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/ipekeatmaca" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/ipekeatmaca/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/ipekeatmaca" target="_blank"><img src="GK%20%26%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/ipekeatmaca/" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -52,8 +52,8 @@
       <td>Esra EFEL</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/esraefel" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/esraefel" target="_blank"><img src="GK%20%26%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -61,8 +61,8 @@
       <td>Taha Dursun</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/tahadursunx" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/taha-dursun/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/tahadursunx" target="_blank"><img src="GK%20%26%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/taha-dursun/" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -70,7 +70,7 @@
     <td>Lumina</td>
     <td>AI Platform</td>
     <td>
-      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20%26%20SS/Icon/linkedin.png" width="20" height="20" /></a>
     </td>
   </tr>
   </table>
@@ -146,100 +146,47 @@
 </details>
 
 <details>
-    <summary><h3>Sprint 1 - Sprint Board Update Screenshots</h3></summary>
-    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.36.30%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" style="max-width: 100%; height: auto;">
+    <summary><h3>Sprint 1 - Product Backlog Screenshots</h3></summary>
+    
+    <details>
+        <summary><h4>📋 Backlog Management</h4></summary>
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-1.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>İlk Sprint Product Backlog - User Stories ve Task Planning</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-by-team.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>Team Assignment View - Görev Dağılımı ve Sorumluluklar</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-last.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>Final Backlog State - Sprint Completion Overview</em></p>
+    </details>
+
+    <details>
+        <summary><h4>💬 Team Communication</h4></summary>
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/grup-sohneti-ilk.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>İlk Grup Sohbeti - Project Selection & Initial Planning</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/grup-sohbeti-iki.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>İkinci Grup Sohbeti - Technical Decisions & Role Assignment</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/meet-goruntusu-2.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>Live Meeting Screenshot - Team Coordination Session</em></p>
+    </details>
+
+    <details>
+        <summary><h4>📊 Notion Workspace Evidence</h4></summary>
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-birinci-toplant%C4%B1-1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>Birinci Toplantı Notion Workspace - Initial Sprint Planning</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-ikinci-toplant%C4%B1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>İkinci Toplantı Notion Workspace - Technical Stack & Architecture</em></p>
+        
+        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-ucuncu-toplant%C4%B1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <p><em>Üçüncü ve Son Toplantı Notion Workspace - Final Planning & Task Distribution</em></p>
+    </details>
+
   </details>
 
-<details>
-    <summary><h3>Sprint 1 - Burndown Chart</h3></summary>
-    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png" style="max-width: 100%; height: auto;">
-  </details>
 
-<details>
-    <summary><h3>Sprint 1 - Group Conversations & Meeting Notes</h3></summary>
-    <h4>Meeting Evidence:</h4>
-    <img src="GK & SS/Screenshot 2025-06-20 at 9.09.53 AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.27.44 PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK & SS/İlk Sprint/1.png" style="max-width: 100%; height: auto;">
-
-    <h4>Sprint Planning with Notion:</h4>
-    <p><strong>İlk Sprint Toplantısı - Perşembe:</strong></p>
-    <ul>
-      <li>Bootcamp yayını baştan izlendi</li>
-      <li>Proje fikirleri araştırıldı</li>
-      <li>Sunum örnekleri incelendi</li>
-      <li>Örnek projelere bakıldı</li>
-      <li>Bootcamp süreci araştırıldı</li>
-      <li>Scrum Master formu dolduruldu (29 Haziran 2025 deadline)</li>
-    </ul>
-
-    <p><strong>İkinci Sprint Toplantısı:</strong></p>
-    <ul>
-      <li>Seçilen proje: Görme ve işitme engelliler için eğitim platformu</li>
-      <li>Proje ismi belirleme</li>
-      <li>Product Owner (Zeynep) ve Scrum Master (Said) sorumlulukları</li>
-      <li>Scrum process metodolojisi</li>
-      <li>Projede kullanılacak teknolojiler araştırması</li>
-      <li>Sistem kurulum ve entegrasyon planı</li>
-      <li>Mobil platform kararı (iOS ve Android)</li>
-    </ul>
-
-    <p><strong>Üçüncü ve Son Toplantı:</strong></p>
-    <ul>
-      <li>Product Backlog oluşturuldu</li>
-      <li>Görev dağılımları: Zeynep-İrem (Frontend), Taha (Backend), Said (Features)</li>
-      <li>Planned features: Frontend, Backend, TTS, STT, Multi-language, Video transcript, Chatbot, OCR</li>
-      <li>Backlog features: Gamification, Audio description, Teacher admin profile</li>
-    </ul>
-
-    <h4>Notion Project Management Evidence:</h4>
-
-    <h5>🔗 Direct Notion Workspace Links:</h5>
-    <ul>
-      <li><strong>İlk Sprint Workspace:</strong> <a href="https://spotty-tang-58d.notion.site/lk-Sprint-229bc3b0417680db9a64d23b41b64841" target="_blank">İlk Sprint - Task Management & Planning</a></li>
-      <li><strong>İkinci Sprint Workspace:</strong> <a href="https://spotty-tang-58d.notion.site/kinci-Sprint-229bc3b041768002ab72e5cd48cd1a1a?pvs=73" target="_blank">İkinci Sprint - Development Phase</a></li>
-      <li><strong>Product Roadmap:</strong> <a href="https://spotty-tang-58d.notion.site/219bc3b04176801d9c83f3d4db602222?v=219bc3b04176805385d1000ccf478be7&source=copy_link" target="_blank">Complete Product Roadmap & Features</a></li>
-      <li><strong>Document Hub:</strong> <a href="https://spotty-tang-58d.notion.site/219bc3b0417680649552d7f4ec943afc?v=219bc3b04176800a8bcd000cb41e3ce4&source=copy_link" target="_blank">Project Documentation Center</a></li>
-    </ul>
-    
-    <p><em>ℹ️ Note: If the Notion links are not accessible, please refer to the comprehensive screenshots below which show the same content.</em></p>
-    <h5>İlk Sprint Notion Workspace Screenshots (July 7, 2025):</h5>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <div>
-        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.31.45 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Sprint 1 Task Board ve User Stories</em></p>
-      </div>
-      <div>
-        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.32.49 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Product Backlog ve Sprint Planning</em></p>
-      </div>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <div>
-        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.32.57 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Team Member Assignments ve Daily Tasks</em></p>
-      </div>
-      <div>
-        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.33.02 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Sprint Timeline ve Milestones</em></p>
-      </div>
-    </div>
-
-    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.33.06 AM.png" style="max-width: 100%; height: auto;">
-    <p><em>Complete Sprint 1 Overview - Task Management Dashboard</em></p>
-
-    <h4>WhatsApp Communication Evidence:</h4>
-    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-    <p><em>İlk Sprint koordinasyon - Team communication ve task assignment discussions</em></p>
-
-</details>
 
 - **Sprint Notes**:
 
