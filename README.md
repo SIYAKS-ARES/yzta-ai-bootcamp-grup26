@@ -3,7 +3,7 @@
 
   ![lumina](GK%20%26%20SS/Icon/Lumina%20Small.png)
 
-  <!--![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)-->
+<!--![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)-->
 
 # **Team & Product Name**
 
@@ -26,7 +26,7 @@
       <td>Scrum Master</td>
       <td>
         <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@
       <td>Product Owner</td>
       <td>
         <a href="https://github.com/Zeynepiremtekin" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
       <td>Developer</td>
       <td>
         <a href="https://github.com/ipekeatmaca" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/ipekeatmaca/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/ipekeatmaca/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -53,7 +53,7 @@
       <td>Developer</td>
       <td>
         <a href="https://github.com/esraefel" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -62,15 +62,15 @@
       <td>Developer</td>
       <td>
         <a href="https://github.com/tahadursunx" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/taha-dursun/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/taha-dursun/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-    <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" width="50" height="50" /></td>
+    <td><img src="GK%20%26%20SS/Icon/Lumina%20Small.png" width="50" height="50" /></td>
     <td>Lumina</td>
     <td>AI Platform</td>
     <td>
-      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
+      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/Icon/linkedin-1.png" width="20" height="20" /></a>
     </td>
   </tr>
   </table>
@@ -143,28 +143,28 @@
     `<p><strong>`User Experience:`</strong>` Designed for visually and hearing impaired users `</p>`
     `<p><strong>`Evidence:`</strong>` See Group Conversations folder for detailed planning discussions `</p>`
 
-    `<summary><h3>`Sprint 1 - Product Backlog Management`</h3></summary>`
+    `<summary><h3>`Sprint 1 - Product Backlog Management `</h3></summary>`
     `<h4>`Backlog Organization & Task Distribution:`</h4>`
     `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
       `<div>`
         `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-1.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Initial Product Backlog Setup`</em></p>`
+        `<p><em>`Initial Product Backlog Setup `</em></p>`
       `</div>`
       `<div>`
         `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-by-team.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Team-based Task Distribution`</em></p>`
+        `<p><em>`Team-based Task Distribution `</em></p>`
       `</div>`
     `</div>`
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-last.png" style="max-width: 100%; height: auto; margin: 10px 0;">`
-    `<p><em>`Final Backlog Configuration with Priorities`</em></p>`
+    `<p><em>`Final Backlog Configuration with Priorities `</em></p>`
 
     `<h4>`Key Backlog Decisions:`</h4>`
     `<ul>`
-      `<li><strong>`Frontend Tasks:`</strong>` Zeynep İrem & İpek Eylül assigned to UI/UX development`</li>`
-      `<li><strong>`Backend Tasks:`</strong>` Taha assigned to Firebase integration and API development`</li>`
+      `<li><strong>`Frontend Tasks:`</strong>` Zeynep İrem & İpek Eylül assigned to UI/UX development `</li>`
+      `<li><strong>`Backend Tasks:`</strong>` Taha assigned to Firebase integration and API development `</li>`
       `<li><strong>`AI Features:`</strong>` Said assigned to Gemini API integration (TTS, STT, OCR)`</li>`
-      `<li><strong>`Priority Features:`</strong>` Text-to-Speech, Speech-to-Text, Accessible UI`</li>`
-      `<li><strong>`Backlog Features:`</strong>` Gamification, Audio Description, Teacher Admin Profile`</li>`
+      `<li><strong>`Priority Features:`</strong>` Text-to-Speech, Speech-to-Text, Accessible UI `</li>`
+      `<li><strong>`Backlog Features:`</strong>` Gamification, Audio Description, Teacher Admin Profile `</li>`
     `</ul>`
 
 </details>
@@ -188,71 +188,71 @@
     </div>
 
     `<details>`
-        `<summary><h4>`📋 Backlog Management`</h4></summary>`
+        `<summary><h4>`📋 Backlog Management `</h4></summary>`
         `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-1.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`İlk Sprint Product Backlog - User Stories ve Task Planning`</em></p>`
+        `<p><em>`İlk Sprint Product Backlog - User Stories ve Task Planning `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-by-team.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`Team Assignment View - Görev Dağılımı ve Sorumluluklar`</em></p>`
+        `<p><em>`Team Assignment View - Görev Dağılımı ve Sorumluluklar `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-last.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`Final Backlog State - Sprint Completion Overview`</em></p>`
+        `<p><em>`Final Backlog State - Sprint Completion Overview `</em></p>`
     `</details>`
 
     `<details>`
-        `<summary><h4>`💬 Team Communication`</h4></summary>`
+        `<summary><h4>`💬 Team Communication `</h4></summary>`
         `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/grup-sohbeti-ilk.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`İlk Grup Sohbeti - Project Selection & Initial Planning`</em></p>`
+        `<p><em>`İlk Grup Sohbeti - Project Selection & Initial Planning `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/grup-sohbeti-iki.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`İkinci Grup Sohbeti - Technical Decisions & Role Assignment`</em></p>`
+        `<p><em>`İkinci Grup Sohbeti - Technical Decisions & Role Assignment `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/meet-goruntusu-2.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`Live Meeting Screenshot - Team Coordination Session`</em></p>`
+        `<p><em>`Live Meeting Screenshot - Team Coordination Session `</em></p>`
     `</details>`
 
     `<details>`
-        `<summary><h4>`📊 Notion Workspace Evidence`</h4></summary>`
+        `<summary><h4>`📊 Notion Workspace Evidence `</h4></summary>`
         `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-birinci-toplanti-1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`Birinci Toplantı Notion Workspace - Initial Sprint Planning`</em></p>`
+        `<p><em>`Birinci Toplantı Notion Workspace - Initial Sprint Planning `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-ikinci-toplanti-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`İkinci Toplantı Notion Workspace - Technical Stack & Architecture`</em></p>`
+        `<p><em>`İkinci Toplantı Notion Workspace - Technical Stack & Architecture `</em></p>`
 
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-ucuncu-toplanti-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-        `<p><em>`Üçüncü ve Son Toplantı Notion Workspace - Final Planning & Task Distribution`</em></p>`
+        `<p><em>`Üçüncü ve Son Toplantı Notion Workspace - Final Planning & Task Distribution `</em></p>`
     `</details>`
 
     `<h4>`Meeting Outcomes:`</h4>`
     `<p><strong>`İlk Toplantı (Birinci):`</strong></p>`
     `<ul>`
-      `<li>`Bootcamp yayını baştan izlendi ve süreç analiz edildi`</li>`
-      `<li>`Proje fikirleri araştırıldı ve alternatif yaklaşımlar değerlendirildi`</li>`
-      `<li>`Başarılı bootcamp sunumları incelendi`</li>`
+      `<li>`Bootcamp yayını baştan izlendi ve süreç analiz edildi `</li>`
+      `<li>`Proje fikirleri araştırıldı ve alternatif yaklaşımlar değerlendirildi `</li>`
+      `<li>`Başarılı bootcamp sunumları incelendi `</li>`
       `<li>`Scrum Master formu doldurulması planlandı (29 Haziran deadline)`</li>`
     `</ul>`
 
     `<p><strong>`İkinci Toplantı:`</strong></p>`
     `<ul>`
-      `<li>`Proje seçimi tamamlandı: `<strong>`Görme ve işitme engelliler için eğitim platformu`</strong></li>`
+      `<li>`Proje seçimi tamamlandı: `<strong>`Görme ve işitme engelliler için eğitim platformu `</strong></li>`
       `<li>`Takım rolleri belirlendi: Said (Scrum Master), Zeynep İrem (Product Owner)`</li>`
-      `<li>`Teknoloji stack'i araştırıldı: Flutter, Firebase, Gemini API`</li>`
+      `<li>`Teknoloji stack'i araştırıldı: Flutter, Firebase, Gemini API `</li>`
       `<li>`Platform kararı: Mobil öncelikli (iOS ve Android)`</li>`
     `</ul>`
 
     `<p><strong>`Üçüncü Toplantı:`</strong></p>`
     `<ul>`
-      `<li>`Product Backlog oluşturuldu ve öncelikler belirlendi`</li>`
-      `<li>`Görev dağılımları netleştirildi`</li>`
-      `<li>`Sprint 2 için development planı oluşturuldu`</li>`
-      `<li>`Gamification ve advanced features backlog'a eklendi`</li>`
+      `<li>`Product Backlog oluşturuldu ve öncelikler belirlendi `</li>`
+      `<li>`Görev dağılımları netleştirildi `</li>`
+      `<li>`Sprint 2 için development planı oluşturuldu `</li>`
+      `<li>`Gamification ve advanced features backlog'a eklendi `</li>`
     `</ul>`
 
     `<h4>`🔗 Live Notion Workspaces:`</h4>`
     `<ul>`
-      `<li><strong>`İlk Sprint:`</strong>` `<a href="https://spotty-tang-58d.notion.site/lk-Sprint-229bc3b0417680db9a64d23b41b64841" target="_blank">`Sprint Planning & Research`</a></li>`
-      `<li><strong>`Product Roadmap:`</strong>` `<a href="https://spotty-tang-58d.notion.site/219bc3b04176801d9c83f3d4db602222?v=219bc3b04176805385d1000ccf478be7" target="_blank">`Feature Planning`</a></li>`
-      `<li><strong>`Document Hub:`</strong>` `<a href="https://spotty-tang-58d.notion.site/219bc3b0417680649552d7f4ec943afc?v=219bc3b04176800a8bcd000cb41e3ce4" target="_blank">`Team Documentation`</a></li>`
+      `<li><strong>`İlk Sprint:`</strong>` `<a href="https://spotty-tang-58d.notion.site/lk-Sprint-229bc3b0417680db9a64d23b41b64841" target="_blank">`Sprint Planning & Research `</a></li>`
+      `<li><strong>`Product Roadmap:`</strong>` `<a href="https://spotty-tang-58d.notion.site/219bc3b04176801d9c83f3d4db602222?v=219bc3b04176805385d1000ccf478be7" target="_blank">`Feature Planning `</a></li>`
+      `<li><strong>`Document Hub:`</strong>` `<a href="https://spotty-tang-58d.notion.site/219bc3b0417680649552d7f4ec943afc?v=219bc3b04176800a8bcd000cb41e3ce4" target="_blank">`Team Documentation `</a></li>`
     `</ul>`
 
 </details>
@@ -273,14 +273,14 @@
 
     `<h4>`Video Meeting Evidence:`</h4>`
     `<img src="GK%20%26%20SS/%C4%B0lk%20Sprint/meet-goruntusu-2.png" style="max-width: 100%; height: auto; margin: 10px 0;">`
-    `<p><em>`Sprint Planning Video Conference - Team Alignment Session`</em></p>`
+    `<p><em>`Sprint Planning Video Conference - Team Alignment Session `</em></p>`
 
     `<h4>`Communication Highlights:`</h4>`
     `<ul>`
-      `<li><strong>`WhatsApp Coordination:`</strong>` Sürekli takım koordinasyonu ve hızlı karar alma`</li>`
-      `<li><strong>`Video Meetings:`</strong>` Önemli kararlar için video konferans toplantıları`</li>`
-      `<li><strong>`Asynchronous Updates:`</strong>` Notion workspace'de real-time progress tracking`</li>`
-      `<li><strong>`Quick Sync Points:`</strong>` İhtiyaç bazlı kısa toplantılar günlük scrum alternatifi`</li>`
+      `<li><strong>`WhatsApp Coordination:`</strong>` Sürekli takım koordinasyonu ve hızlı karar alma `</li>`
+      `<li><strong>`Video Meetings:`</strong>` Önemli kararlar için video konferans toplantıları `</li>`
+      `<li><strong>`Asynchronous Updates:`</strong>` Notion workspace'de real-time progress tracking `</li>`
+      `<li><strong>`Quick Sync Points:`</strong>` İhtiyaç bazlı kısa toplantılar günlük scrum alternatifi `</li>`
     `</ul>`
 
 </details>
@@ -294,10 +294,10 @@
 
     `<h4>`Architecture Decisions:`</h4>`
     `<ul>`
-      `<li><strong>`Mobile-First:`</strong>` iOS ve Android öncelikli accessibility-focused design`</li>`
-      `<li><strong>`WCAG 2.1 AA Compliance:`</strong>` Screen reader support, keyboard navigation, high contrast`</li>`
-      `<li><strong>`Cloud Processing:`</strong>` File uploads processed server-side for optimal performance`</li>`
-      `<li><strong>`Offline Support:`</strong>` Local caching for essential features`</li>`
+      `<li><strong>`Mobile-First:`</strong>` iOS ve Android öncelikli accessibility-focused design `</li>`
+      `<li><strong>`WCAG 2.1 AA Compliance:`</strong>` Screen reader support, keyboard navigation, high contrast `</li>`
+      `<li><strong>`Cloud Processing:`</strong>` File uploads processed server-side for optimal performance `</li>`
+      `<li><strong>`Offline Support:`</strong>` Local caching for essential features `</li>`
     `</ul>`
 
     `<h4>`Feature Prioritization:`</h4>`
@@ -305,17 +305,17 @@
     `<ul>`
       `<li>`✅ Text-to-Speech (PDF to audio conversion)`</li>`
       `<li>`✅ Speech-to-Text (Audio transcription)`</li>`
-      `<li>`✅ Accessible UI with screen reader support`</li>`
-      `<li>`✅ Basic file upload and processing`</li>`
+      `<li>`✅ Accessible UI with screen reader support `</li>`
+      `<li>`✅ Basic file upload and processing `</li>`
     `</ul>`
 
     `<p><strong>`Advanced Features (Backlog):`</strong></p>`
     `<ul>`
-      `<li>`🔄 Gamification system with achievement badges`</li>`
-      `<li>`🔄 Audio description from images`</li>`
-      `<li>`🔄 Teacher admin profile with bulk upload`</li>`
-      `<li>`🔄 Multi-language support`</li>`
-      `<li>`🔄 AI chatbot for user assistance`</li>`
+      `<li>`🔄 Gamification system with achievement badges `</li>`
+      `<li>`🔄 Audio description from images `</li>`
+      `<li>`🔄 Teacher admin profile with bulk upload `</li>`
+      `<li>`🔄 Multi-language support `</li>`
+      `<li>`🔄 AI chatbot for user assistance `</li>`
     `</ul>`
 
 </details>
@@ -595,11 +595,11 @@
     `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
       `<div>`
         `<img src="GK & SS/İlk Sprint/Screenshot 2025-07-06 at 1.58.46 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Development progress updates`</em></p>`
+        `<p><em>`Development progress updates `</em></p>`
       `</div>`
       `<div>`
         `<img src="GK & SS/İlk Sprint/Screenshot 2025-07-06 at 2.15.16 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Feature implementation coordination`</em></p>`
+        `<p><em>`Feature implementation coordination `</em></p>`
       `</div>`
     `</div>`
 
@@ -607,27 +607,27 @@
     `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
       `<div>`
         `<img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.04.11 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Sprint 2 Development Tasks ve Progress Tracking`</em></p>`
+        `<p><em>`Sprint 2 Development Tasks ve Progress Tracking `</em></p>`
       `</div>`
       `<div>`
         `<img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.04.18 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Feature Development Status ve Team Assignments`</em></p>`
+        `<p><em>`Feature Development Status ve Team Assignments `</em></p>`
       `</div>`
     `</div>`
 
     `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
       `<div>`
         `<img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.07.13 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Sprint 2 Burndown ve Task Completion`</em></p>`
+        `<p><em>`Sprint 2 Burndown ve Task Completion `</em></p>`
       `</div>`
       `<div>`
         `<img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.07.36 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Team Collaboration ve Daily Standup Notes`</em></p>`
+        `<p><em>`Team Collaboration ve Daily Standup Notes `</em></p>`
       `</div>`
     `</div>`
 
     `<img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 9.50.57 PM.png" style="max-width: 100%; height: auto;">`
-    `<p><em>`Complete Sprint 2 Overview - Development Milestones ve Feature Implementation`</em></p>`
+    `<p><em>`Complete Sprint 2 Overview - Development Milestones ve Feature Implementation `</em></p>`
 
 </details>
 
@@ -728,17 +728,17 @@
     `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
       `<div>`
         `<img src="GK & SS/İlk Sprint/1.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Project review ve demo preparation`</em></p>`
+        `<p><em>`Project review ve demo preparation `</em></p>`
       `</div>`
       `<div>`
         `<img src="GK & SS/İlk Sprint/2.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Final documentation ve submission`</em></p>`
+        `<p><em>`Final documentation ve submission `</em></p>`
       `</div>`
     `</div>`
 
     `<h4>`Bootcamp Milestone Achievement:`</h4>`
     `<img src="GK & SS/İlk Sprint/Screenshot 2025-06-21 at 9.03.13 PM.png" style="max-width: 100%; height: auto;">`
-    `<p><em>`Bootcamp process milestone ve team achievement celebration`</em></p>`
+    `<p><em>`Bootcamp process milestone ve team achievement celebration `</em></p>`
 
 </details>
 
