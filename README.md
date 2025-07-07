@@ -34,8 +34,8 @@
       <td>Zeynep İrem Tekin</td>
       <td>Product Owner</td>
       <td>
-        <a href="https://github.com/zeynepiremtekin" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/zeynepiremtekin](https://github.com/Zeynepiremtekin)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/zeynepiremtekin/](https://www.linkedin.com/in/zeynepiremtekin/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -43,8 +43,8 @@
       <td>İpek Eylül Atmaca</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/ipekeylul" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/ipekeylul/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/ipekeylul](https://github.com/ipekeatmaca)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/ipekeylul/](https://www.linkedin.com/in/ipekeatmaca/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -53,7 +53,7 @@
       <td>Developer</td>
       <td>
         <a href="https://github.com/esraefel" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/esraefel/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -61,8 +61,8 @@
       <td>Taha Dursun</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/tahadursun" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/tahadursun/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/tahadursun](https://github.com/tahadursunx)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/tahadursun/](https://www.linkedin.com/in/taha-dursun/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
