@@ -121,7 +121,7 @@
 
 ---
 
-  ![sprints](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.36.30%20PM.png)
+<!--[sprints](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.36.30%20PM.png)-->
 
 <details>
     <summary><h1>Sprint 1</h1></summary>
