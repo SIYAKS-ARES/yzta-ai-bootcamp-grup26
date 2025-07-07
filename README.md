@@ -1,9 +1,9 @@
 <html>
   <body>
 
-  ![lumina](bootcampFiles/general/headers/lumina.png)
+  ![lumina](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png)
 
-  ![team and product](bootcampFiles/general/headers/teamandproduct.png)
+  ![team and product](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png)
 
 # **Team & Product Name**
 
@@ -21,56 +21,56 @@
       <th>Socials</th>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/mehmet.png" width="50" height="50" /></td>
+      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
       <td>Mehmet Said Hüseyinoğlu</td>
       <td>Scrum Master</td>
       <td>
-        <a href="https://github.com/mehmetsaid" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank" ><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank" ><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/zeynep.png" width="50" height="50" /></td>
+      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
       <td>Zeynep İrem Tekin</td>
       <td>Product Owner</td>
       <td>
-        <a href="[https://github.com/zeynepiremtekin](https://github.com/Zeynepiremtekin)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/zeynepiremtekin/](https://www.linkedin.com/in/zeynepiremtekin/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/zeynepiremtekin](https://github.com/Zeynepiremtekin)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/zeynepiremtekin/](https://www.linkedin.com/in/zeynepiremtekin/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/ipek.png" width="50" height="50" /></td>
+      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
       <td>İpek Eylül Atmaca</td>
       <td>Developer</td>
       <td>
-        <a href="[https://github.com/ipekeylul](https://github.com/ipekeatmaca)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/ipekeylul/](https://www.linkedin.com/in/ipekeatmaca/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/ipekeylul](https://github.com/ipekeatmaca)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/ipekeylul/](https://www.linkedin.com/in/ipekeatmaca/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/esra.png" width="50" height="50" /></td>
+      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
       <td>Esra EFEL</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/esraefel" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/esraefel" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/taha.png" width="50" height="50" /></td>
+      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
       <td>Taha Dursun</td>
       <td>Developer</td>
       <td>
-        <a href="[https://github.com/tahadursun](https://github.com/tahadursunx)" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/tahadursun/](https://www.linkedin.com/in/taha-dursun/)" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="[https://github.com/tahadursun](https://github.com/tahadursunx)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
+        <a href="[https://www.linkedin.com/in/tahadursun/](https://www.linkedin.com/in/taha-dursun/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-    <td><img src="bootcampFiles/general/squarepics/appicon.png" width="50" height="50" /></td>
+    <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
     <td>Lumina</td>
     <td>AI Platform</td>
     <td>
-      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
     </td>
   </tr>
   </table>
@@ -121,7 +121,7 @@
 
 ---
 
-  ![sprints](bootcampFiles/general/headers/sprints.png)
+  ![sprints](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png)
 
 <details>
     <summary><h1>Sprint 1</h1></summary>
@@ -147,94 +147,87 @@
 
 <details>
     <summary><h3>Sprint 1 - Sprint Board Update Screenshots</h3></summary>
-    <img src="bootcampFiles/sprintOne/boardupdate/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintOne/boardupdate/11.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintOne/boardupdate/12.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintOne/boardupdate/13.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintOne/boardupdate/14.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 1 - Burndown Chart</h3></summary>
-    <img src="bootcampFiles/sprintOne/burndown/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintOne/burndown/11.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 1 - Group Conversations & Meeting Notes</h3></summary>
     <h4>Meeting Evidence:</h4>
-    <img src="Grup Konuşmaları/Screenshot 2025-06-20 at 9.09.53 AM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/Screenshot 2025-06-25 at 12.27.27 PM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/1.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/Screenshot 2025-06-20 at 9.09.53 AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.27.44 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/1.png" style="max-width: 100%; height: auto;">
 
-    `<h4>`Sprint Planning with Notion:`</h4>`
-    `<p><strong>`İlk Sprint Toplantısı - Perşembe:`</strong></p>`
-    `<ul>`
-      `<li>`Bootcamp yayını baştan izlendi`</li>`
-      `<li>`Proje fikirleri araştırıldı`</li>`
-      `<li>`Sunum örnekleri incelendi`</li>`
-      `<li>`Örnek projelere bakıldı`</li>`
-      `<li>`Bootcamp süreci araştırıldı`</li>`
-      `<li>`Scrum Master formu dolduruldu (29 Haziran 2025 deadline)`</li>`
-    `</ul>`
+    <h4>Sprint Planning with Notion:</h4>
+    <p><strong>İlk Sprint Toplantısı - Perşembe:</strong></p>
+    <ul>
+      <li>Bootcamp yayını baştan izlendi</li>
+      <li>Proje fikirleri araştırıldı</li>
+      <li>Sunum örnekleri incelendi</li>
+      <li>Örnek projelere bakıldı</li>
+      <li>Bootcamp süreci araştırıldı</li>
+      <li>Scrum Master formu dolduruldu (29 Haziran 2025 deadline)</li>
+    </ul>
 
-    `<p><strong>`İkinci Sprint Toplantısı:`</strong></p>`
-    `<ul>`
-      `<li>`Seçilen proje: Görme ve işitme engelliler için eğitim platformu`</li>`
-      `<li>`Proje ismi belirleme`</li>`
-      `<li>`Product Owner (Zeynep) ve Scrum Master (Said) sorumlulukları`</li>`
-      `<li>`Scrum process metodolojisi`</li>`
-      `<li>`Projede kullanılacak teknolojiler araştırması`</li>`
-      `<li>`Sistem kurulum ve entegrasyon planı`</li>`
-      `<li>`Mobil platform kararı (iOS ve Android)`</li>`
-    `</ul>`
+    <p><strong>İkinci Sprint Toplantısı:</strong></p>
+    <ul>
+      <li>Seçilen proje: Görme ve işitme engelliler için eğitim platformu</li>
+      <li>Proje ismi belirleme</li>
+      <li>Product Owner (Zeynep) ve Scrum Master (Said) sorumlulukları</li>
+      <li>Scrum process metodolojisi</li>
+      <li>Projede kullanılacak teknolojiler araştırması</li>
+      <li>Sistem kurulum ve entegrasyon planı</li>
+      <li>Mobil platform kararı (iOS ve Android)</li>
+    </ul>
 
-    `<p><strong>`Üçüncü ve Son Toplantı:`</strong></p>`
-    `<ul>`
-      `<li>`Product Backlog oluşturuldu`</li>`
-      `<li>`Görev dağılımları: Zeynep-İrem (Frontend), Taha (Backend), Said (Features)`</li>`
-      `<li>`Planned features: Frontend, Backend, TTS, STT, Multi-language, Video transcript, Chatbot, OCR`</li>`
-      `<li>`Backlog features: Gamification, Audio description, Teacher admin profile`</li>`
-    `</ul>`
+    <p><strong>Üçüncü ve Son Toplantı:</strong></p>
+    <ul>
+      <li>Product Backlog oluşturuldu</li>
+      <li>Görev dağılımları: Zeynep-İrem (Frontend), Taha (Backend), Said (Features)</li>
+      <li>Planned features: Frontend, Backend, TTS, STT, Multi-language, Video transcript, Chatbot, OCR</li>
+      <li>Backlog features: Gamification, Audio description, Teacher admin profile</li>
+    </ul>
 
-    `<h4>`Notion Project Management Evidence:`</h4>`
-    `<p>`Takım Notion workspace kullanarak gerçek sprint planning ve task tracking yapıyor. Aşağıdaki ekran görüntüleri güncel proje durumunu gösteriyor:`</p>`
+    <h4>Notion Project Management Evidence:</h4>
+    <h5>İlk Sprint Notion Workspace Screenshots (July 7, 2025):</h5>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.31.45 AM.png" style="max-width: 100%; height: auto;">
+        <p><em>Sprint 1 Task Board ve User Stories</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.32.49 AM.png" style="max-width: 100%; height: auto;">
+        <p><em>Product Backlog ve Sprint Planning</em></p>
+      </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.32.57 AM.png" style="max-width: 100%; height: auto;">
+        <p><em>Team Member Assignments ve Daily Tasks</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.33.02 AM.png" style="max-width: 100%; height: auto;">
+        <p><em>Sprint Timeline ve Milestones</em></p>
+      </div>
+    </div>
 
-    `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 11.36.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-    `<p><em>`Notion workspace - Sprint planning ve backlog organization`</em></p>`
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-07 at 12.33.06 AM.png" style="max-width: 100%; height: auto;">
+    <p><em>Complete Sprint 1 Overview - Task Management Dashboard</em></p>
 
-    `<h4>`Latest Sprint Board Updates (July 7, 2025):`</h4>`
-    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.31.45 AM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Product Roadmap - Feature Status Tracking`</em></p>`
-      `</div>`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.49 AM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Team Assignment Board - Task Distribution`</em></p>`
-      `</div>`
-    `</div>`
-
-    `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;">`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.57 AM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Sprint Backlog - Current Progress`</em></p>`
-      `</div>`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.02 AM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Feature Development Status`</em></p>`
-      `</div>`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.06 AM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Team Coordination & Progress`</em></p>`
-      `</div>`
-    `</div>`
-
-    `<h4>`Real-time Team Communication Evidence:`</h4>`
-    `<p>`WhatsApp grup üzerinden sürekli team coordination ve progress updates:`</p>`
-    `<img src="Grup Konuşmaları/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-    `<img src="Grup Konuşmaları/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
-    `<p><em>`Team communication - Sprint planning ve coordination`</em></p>`
+    <h4>WhatsApp Communication Evidence:</h4>
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+    <p><em>İlk Sprint koordinasyon - Team communication ve task assignment discussions</em></p>
 
 </details>
 
@@ -269,8 +262,9 @@
   - **Coordination Method**: Asynchronous communication + scheduled meetings
 - **Product Backlog URL:**
 
-  - **Notion Workspace**: [Team Notion Board](https://notion.so/lumina-team) (Private)
-  - **Evidence**: See Group Conversations folder for real workspace screenshots
+  - **Notion Workspace**: *Private team workspace - Screenshots provided for verification*
+  - **İlk Sprint Kanban Board**: See Notion workspace screenshots above for detailed sprint planning
+  - **Evidence**: Comprehensive Notion screenshots from July 7, 2025 showing real workspace activity
 - **Sprint Review:**
 
   - **Proje Seçimi Tamamlandı**: Görme ve işitme engelliler için eğitim platformu projesi seçildi ve konsept netleştirildi
@@ -482,39 +476,65 @@
 
 <details>
     <summary><h3>Sprint 2 - Sprint Board Update Screenshots</h3></summary>
-    <img src="bootcampFiles/sprintTwo/boardupdate/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintTwo/boardupdate/11.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintTwo/boardupdate/12.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintTwo/boardupdate/13.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintTwo/boardupdate/14.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 2 - Burndown Chart</h3></summary>
-    <img src="bootcampFiles/sprintTwo/burndown/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintTwo/burndown/11.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
-    <summary><h3>Sprint 2 - Group Conversations & Team Coordination</h3></summary>
+    <summary><h3>Sprint 2 - Group Conversations & Meeting Notes</h3></summary>
     <h4>Sprint 2 Development Phase Communications:</h4>
-    <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.27.44 PM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.27.57 PM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.36.30 PM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.54.09 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.27.44 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.27.57 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.36.30 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-29 at 3.54.09 PM.png" style="max-width: 100%; height: auto;">
     <p><em>Team coordination during development phase - Flutter frontend ve Firebase backend setup</em></p>
 
-    `<h4>`Progress Updates & Team Sync:`</h4>`
-    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 1.58.46 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Development progress updates`</em></p>`
-      `</div>`
-      `<div>`
-        `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 2.15.16 PM.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Feature implementation coordination`</em></p>`
-      `</div>`
-    `</div>`
+    <h4>Progress Updates & Team Sync:</h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-06 at 1.58.46 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Development progress updates</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İlk Sprint/Screenshot 2025-07-06 at 2.15.16 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Feature implementation coordination</em></p>
+      </div>
+    </div>
+
+    <h4>İkinci Sprint Notion Workspace Screenshots (July 7, 2025):</h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.04.11 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Sprint 2 Development Tasks ve Progress Tracking</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.04.18 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Feature Development Status ve Team Assignments</em></p>
+      </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.07.13 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Sprint 2 Burndown ve Task Completion</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 3.07.36 PM.png" style="max-width: 100%; height: auto;">
+        <p><em>Team Collaboration ve Daily Standup Notes</em></p>
+      </div>
+    </div>
+
+    <img src="GK & SS/İkinci Sprint/Screenshot 2025-07-07 at 9.50.57 PM.png" style="max-width: 100%; height: auto;">
+    <p><em>Complete Sprint 2 Overview - Development Milestones ve Feature Implementation</em></p>
 
 </details>
 
@@ -534,8 +554,9 @@
 - **Daily Scrum Evidence**: *Alternative approach - continuous WhatsApp coordination + scheduled meetings*
 - **Product Backlog URL:**
 
-  - **Notion Workspace**: [Sprint 2 Board](https://notion.so/lumina-sprint2) *(Team private workspace)*
-  - **Evidence**: See Group Conversations folder for real workspace screenshots
+  - **Notion Workspace**: *Private team workspace - Screenshots provided for verification*
+  - **İkinci Sprint Development Board**: See Notion workspace screenshots above for detailed development progress
+  - **Evidence**: Comprehensive Notion screenshots from July 7, 2025 showing active development phase
 - **Sprint Review**:
 
   - **Flutter Frontend Setup**: Zeynep İrem ve İpek Eylül tarafından Flutter geliştirme ortamı kuruldu ve proje structure oluşturuldu
@@ -590,41 +611,41 @@
 
 <details>
     <summary><h3>Sprint 3 - Sprint Board Update Screenshots</h3></summary>
-    <img src="bootcampFiles/sprintThree/boardupdate/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintThree/boardupdate/11.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintThree/boardupdate/12.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintThree/boardupdate/13.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintThree/boardupdate/14.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 3 - Burndown Chart</h3></summary>
-    <img src="bootcampFiles/sprintThree/burndown/10.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampFiles/sprintThree/burndown/11.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 3 - Group Conversations & Final Phase</h3></summary>
     <h4>Sprint 3 Final Development Communications:</h4>
-    <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto;">
-    <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto;">
     <p><em>Final sprint coordination - Feature completion ve testing phase</em></p>
 
-    `<h4>`Project Completion & Evaluation Prep:`</h4>`
-    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
-      `<div>`
-        `<img src="Grup Konuşmaları/1.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Project review ve demo preparation`</em></p>`
-      `</div>`
-      `<div>`
-        `<img src="Grup Konuşmaları/2.png" style="max-width: 100%; height: auto;">`
-        `<p><em>`Final documentation ve submission`</em></p>`
-      `</div>`
-    `</div>`
+    <h4>Project Completion & Evaluation Prep:</h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="GK & SS/İlk Sprint/1.png" style="max-width: 100%; height: auto;">
+        <p><em>Project review ve demo preparation</em></p>
+      </div>
+      <div>
+        <img src="GK & SS/İlk Sprint/2.png" style="max-width: 100%; height: auto;">
+        <p><em>Final documentation ve submission</em></p>
+      </div>
+    </div>
 
-    `<h4>`Bootcamp Milestone Achievement:`</h4>`
-    `<img src="Grup Konuşmaları/Screenshot 2025-06-21 at 9.03.13 PM.png" style="max-width: 100%; height: auto;">`
-    `<p><em>`Bootcamp process milestone ve team achievement celebration`</em></p>`
+    <h4>Bootcamp Milestone Achievement:</h4>
+    <img src="GK & SS/İlk Sprint/Screenshot 2025-06-21 at 9.03.13 PM.png" style="max-width: 100%; height: auto;">
+    <p><em>Bootcamp process milestone ve team achievement celebration</em></p>
 
 </details>
 
@@ -641,7 +662,8 @@
 - **Daily Scrum Evidence**: *Final sprint coordination via group communications*
 - **Product Backlog URL:**
 
-  - **Notion Workspace**: [Sprint 3 Final Board](https://notion.so/lumina-sprint3) *(Team private workspace)*
+  - **Notion Workspace**: *Private team workspace - Screenshots provided for verification*
+  - **Üçüncü Sprint Final Board**: All features implemented and tested, ready for presentation
   - **Evidence**: All tasks completed, see Group Conversations for final coordination
 - **Sprint Review**:
 
@@ -677,7 +699,7 @@
 
 ---
 
-  ![details](bootcampFiles/general/headers/details.png)
+  ![details](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png)
 
 # End of the Bootcamp
 
