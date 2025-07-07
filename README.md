@@ -1,9 +1,9 @@
 <html>
   <body>
 
-  ![lumina](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png)
+  ![lumina](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png)
 
-  ![team and product](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png)
+  ![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)
 
 # **Team & Product Name**
 
@@ -21,56 +21,56 @@
       <th>Socials</th>
     </tr>
     <tr>
-      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+      <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/mehmet-said-huseyinoglu.jpeg" width="50" height="50" /></td>
       <td>Mehmet Said Hüseyinoğlu</td>
       <td>Scrum Master</td>
       <td>
-        <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank" ><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+        <a href="https://github.com/mehmetsaid" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/mehmetsaid/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+      <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/zeynep-ipek-tekin.jpeg" width="50" height="50" /></td>
       <td>Zeynep İrem Tekin</td>
       <td>Product Owner</td>
       <td>
-        <a href="[https://github.com/zeynepiremtekin](https://github.com/Zeynepiremtekin)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/zeynepiremtekin/](https://www.linkedin.com/in/zeynepiremtekin/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+        <a href="https://github.com/Zeynepiremtekin" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/zeynepiremtekin/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+      <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/ipek-eylul-atmaca.jpeg" width="50" height="50" /></td>
       <td>İpek Eylül Atmaca</td>
       <td>Developer</td>
       <td>
-        <a href="[https://github.com/ipekeylul](https://github.com/ipekeatmaca)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/ipekeylul/](https://www.linkedin.com/in/ipekeatmaca/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+        <a href="https://github.com/ipekeatmaca" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/ipekeatmaca/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+      <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/esra-efel.jpeg" width="50" height="50" /></td>
       <td>Esra EFEL</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/esraefel" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+        <a href="https://github.com/esraefel" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/esra-e-a44b1b290/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-      <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+      <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/taha-dursun.jpeg" width="50" height="50" /></td>
       <td>Taha Dursun</td>
       <td>Developer</td>
       <td>
-        <a href="[https://github.com/tahadursun](https://github.com/tahadursunx)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" width="20" height="20"/></a>
-        <a href="[https://www.linkedin.com/in/tahadursun/](https://www.linkedin.com/in/taha-dursun/)" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+        <a href="https://github.com/tahadursunx" target="_blank"><img src="GK%20&%20SS/Icon/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/taha-dursun/" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
-    <td><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" width="50" height="50" /></td>
+    <td><img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" width="50" height="50" /></td>
     <td>Lumina</td>
     <td>AI Platform</td>
     <td>
-      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" width="20" height="20" /></a>
+      <a href="https://www.linkedin.com/company/lumina-ai" target="_blank"><img src="GK%20&%20SS/Icon/linkedin.png" width="20" height="20" /></a>
     </td>
   </tr>
   </table>
@@ -121,7 +121,7 @@
 
 ---
 
-  ![sprints](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png)
+  ![sprints](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.36.30%20PM.png)
 
 <details>
     <summary><h1>Sprint 1</h1></summary>
@@ -147,17 +147,17 @@
 
 <details>
     <summary><h3>Sprint 1 - Sprint Board Update Screenshots</h3></summary>
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.57%20AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.02%20AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.36.30%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 1 - Burndown Chart</h3></summary>
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.31.45%20AM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.32.49%20AM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.44%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
@@ -198,6 +198,16 @@
     </ul>
 
     <h4>Notion Project Management Evidence:</h4>
+
+    <h5>🔗 Direct Notion Workspace Links:</h5>
+    <ul>
+      <li><strong>İlk Sprint Workspace:</strong> <a href="https://spotty-tang-58d.notion.site/lk-Sprint-229bc3b0417680db9a64d23b41b64841" target="_blank">İlk Sprint - Task Management & Planning</a></li>
+      <li><strong>İkinci Sprint Workspace:</strong> <a href="https://spotty-tang-58d.notion.site/kinci-Sprint-229bc3b041768002ab72e5cd48cd1a1a?pvs=73" target="_blank">İkinci Sprint - Development Phase</a></li>
+      <li><strong>Product Roadmap:</strong> <a href="https://spotty-tang-58d.notion.site/219bc3b04176801d9c83f3d4db602222?v=219bc3b04176805385d1000ccf478be7&source=copy_link" target="_blank">Complete Product Roadmap & Features</a></li>
+      <li><strong>Document Hub:</strong> <a href="https://spotty-tang-58d.notion.site/219bc3b0417680649552d7f4ec943afc?v=219bc3b04176800a8bcd000cb41e3ce4&source=copy_link" target="_blank">Project Documentation Center</a></li>
+    </ul>
+    
+    <p><em>ℹ️ Note: If the Notion links are not accessible, please refer to the comprehensive screenshots below which show the same content.</em></p>
     <h5>İlk Sprint Notion Workspace Screenshots (July 7, 2025):</h5>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
       <div>
@@ -262,9 +272,13 @@
   - **Coordination Method**: Asynchronous communication + scheduled meetings
 - **Product Backlog URL:**
 
-  - **Notion Workspace**: *Private team workspace - Screenshots provided for verification*
-  - **İlk Sprint Kanban Board**: See Notion workspace screenshots above for detailed sprint planning
-  - **Evidence**: Comprehensive Notion screenshots from July 7, 2025 showing real workspace activity
+  - **🔗 Live Notion Workspaces**: 
+    - [İlk Sprint Kanban Board](https://spotty-tang-58d.notion.site/lk-Sprint-229bc3b0417680db9a64d23b41b64841) - Planning & Research Phase
+    - [İkinci Sprint Board](https://spotty-tang-58d.notion.site/kinci-Sprint-229bc3b041768002ab72e5cd48cd1a1a?pvs=73) - Development Phase
+    - [Product Roadmap](https://spotty-tang-58d.notion.site/219bc3b04176801d9c83f3d4db602222?v=219bc3b04176805385d1000ccf478be7&source=copy_link) - Complete feature planning
+    - [Document Hub](https://spotty-tang-58d.notion.site/219bc3b0417680649552d7f4ec943afc?v=219bc3b04176800a8bcd000cb41e3ce4&source=copy_link) - Team documentation
+  - **📸 Backup Screenshots**: See Notion workspace screenshots above for detailed sprint planning
+  - **✅ Verification**: Comprehensive screenshots from July 7, 2025 showing real workspace activity
 - **Sprint Review:**
 
   - **Proje Seçimi Tamamlandı**: Görme ve işitme engelliler için eğitim platformu projesi seçildi ve konsept netleştirildi
@@ -476,17 +490,17 @@
 
 <details>
     <summary><h3>Sprint 2 - Sprint Board Update Screenshots</h3></summary>
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 2 - Burndown Chart</h3></summary>
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
@@ -611,17 +625,17 @@
 
 <details>
     <summary><h3>Sprint 3 - Sprint Board Update Screenshots</h3></summary>
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.11%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.04.18%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
     <summary><h3>Sprint 3 - Burndown Chart</h3></summary>
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
-    <img src="GK%20&%20SS/İkinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
+    <img src="GK%20&%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
   </details>
 
 <details>
@@ -699,7 +713,7 @@
 
 ---
 
-  ![details](GK%20&%20SS/İlk%20Sprint/Screenshot%202025-07-07%20at%2012.33.06%20AM.png)
+  ![details](GK%20%26%20SS/Grup%20%C3%9Cyeleri/grup-uyeleri.png)
 
 # End of the Bootcamp
 
