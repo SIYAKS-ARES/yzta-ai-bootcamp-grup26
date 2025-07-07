@@ -150,37 +150,37 @@
     
     <details>
         <summary><h4>📋 Backlog Management</h4></summary>
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-1.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-1.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>İlk Sprint Product Backlog - User Stories ve Task Planning</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-by-team.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-by-team.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>Team Assignment View - Görev Dağılımı ve Sorumluluklar</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/backlog-last.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/backlog-last.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>Final Backlog State - Sprint Completion Overview</em></p>
     </details>
 
     <details>
         <summary><h4>💬 Team Communication</h4></summary>
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/grup-sohneti-ilk.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/grup-sohbeti-ilk.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>İlk Grup Sohbeti - Project Selection & Initial Planning</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/grup-sohbeti-iki.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/grup-sohbeti-iki.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>İkinci Grup Sohbeti - Technical Decisions & Role Assignment</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/meet-goruntusu-2.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/meet-goruntusu-2.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>Live Meeting Screenshot - Team Coordination Session</em></p>
     </details>
 
     <details>
         <summary><h4>📊 Notion Workspace Evidence</h4></summary>
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-birinci-toplant%C4%B1-1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-birinci-toplanti-1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>Birinci Toplantı Notion Workspace - Initial Sprint Planning</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-ikinci-toplant%C4%B1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-ikinci-toplanti-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>İkinci Toplantı Notion Workspace - Technical Stack & Architecture</em></p>
         
-        <img src="GK%20&%20SS/%C4%B0lk%20Sprint/ilk-sprint-ucuncu-toplant%C4%B1-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <img src="GK%20%26%20SS/%C4%B0lk%20Sprint/ilk-sprint-ucuncu-toplanti-notion.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
         <p><em>Üçüncü ve Son Toplantı Notion Workspace - Final Planning & Task Distribution</em></p>
     </details>
 
