@@ -126,23 +126,24 @@
 <details>
     <summary><h1>Sprint 1</h1></summary>
 
-  <details>
+<details>
     <summary><h3>Sprint 1 - Research and Planning Evidence</h3></summary>
     <h4>Technology Research and Selection:</h4>
     <p><strong>Research Phase:</strong> Flutter vs React Native vs Native iOS/Android comparison</p>
     <p><strong>AI API Selection:</strong> Gemini API chosen for TTS, STT, OCR features</p>
     <p><strong>Backend Decision:</strong> Firebase selected for scalability and real-time features</p>
-    
-    <h4>Project Planning and Architecture:</h4>
-    <p><strong>System Architecture:</strong> Mobile-first approach with Flutter framework</p>
-    <p><strong>Database Design:</strong> Firebase Firestore for user data and file storage</p>
-    <p><strong>API Integration:</strong> Gemini API for accessibility features</p>
-    
-    <h4>UI/UX Design Planning:</h4>
-    <p><strong>Accessibility Focus:</strong> WCAG 2.1 AA compliance from design phase</p>
-    <p><strong>User Experience:</strong> Designed for visually and hearing impaired users</p>
-    <p><strong>Evidence:</strong> See Group Conversations folder for detailed planning discussions</p>
-  </details>
+
+    `<h4>`Project Planning and Architecture:`</h4>`
+    `<p><strong>`System Architecture:`</strong>` Mobile-first approach with Flutter framework`</p>`
+    `<p><strong>`Database Design:`</strong>` Firebase Firestore for user data and file storage`</p>`
+    `<p><strong>`API Integration:`</strong>` Gemini API for accessibility features`</p>`
+
+    `<h4>`UI/UX Design Planning:`</h4>`
+    `<p><strong>`Accessibility Focus:`</strong>` WCAG 2.1 AA compliance from design phase`</p>`
+    `<p><strong>`User Experience:`</strong>` Designed for visually and hearing impaired users`</p>`
+    `<p><strong>`Evidence:`</strong>` See Group Conversations folder for detailed planning discussions`</p>`
+
+</details>
 
 <details>
     <summary><h3>Sprint 1 - Sprint Board Update Screenshots</h3></summary>
@@ -165,76 +166,77 @@
     <img src="Grup Konuşmaları/Screenshot 2025-06-20 at 9.09.53 AM.png" style="max-width: 100%; height: auto;">
     <img src="Grup Konuşmaları/Screenshot 2025-06-25 at 12.27.27 PM.png" style="max-width: 100%; height: auto;">
     <img src="Grup Konuşmaları/1.png" style="max-width: 100%; height: auto;">
-    
-    <h4>Sprint Planning with Notion:</h4>
-    <p><strong>İlk Sprint Toplantısı - Perşembe:</strong></p>
-    <ul>
-      <li>Bootcamp yayını baştan izlendi</li>
-      <li>Proje fikirleri araştırıldı</li>
-      <li>Sunum örnekleri incelendi</li>
-      <li>Örnek projelere bakıldı</li>
-      <li>Bootcamp süreci araştırıldı</li>
-      <li>Scrum Master formu dolduruldu (29 Haziran 2025 deadline)</li>
-    </ul>
-    
-    <p><strong>İkinci Sprint Toplantısı:</strong></p>
-    <ul>
-      <li>Seçilen proje: Görme ve işitme engelliler için eğitim platformu</li>
-      <li>Proje ismi belirleme</li>
-      <li>Product Owner (Zeynep) ve Scrum Master (Said) sorumlulukları</li>
-      <li>Scrum process metodolojisi</li>
-      <li>Projede kullanılacak teknolojiler araştırması</li>
-      <li>Sistem kurulum ve entegrasyon planı</li>
-      <li>Mobil platform kararı (iOS ve Android)</li>
-    </ul>
-    
-    <p><strong>Üçüncü ve Son Toplantı:</strong></p>
-    <ul>
-      <li>Product Backlog oluşturuldu</li>
-      <li>Görev dağılımları: Zeynep-İrem (Frontend), Taha (Backend), Said (Features)</li>
-      <li>Planned features: Frontend, Backend, TTS, STT, Multi-language, Video transcript, Chatbot, OCR</li>
-      <li>Backlog features: Gamification, Audio description, Teacher admin profile</li>
-    </ul>
-    
-    <h4>Notion Project Management Evidence:</h4>
-    <p>Takım Notion workspace kullanarak gerçek sprint planning ve task tracking yapıyor. Aşağıdaki ekran görüntüleri güncel proje durumunu gösteriyor:</p>
-    
-    <img src="Grup Konuşmaları/Screenshot 2025-07-06 at 11.36.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-    <p><em>Notion workspace - Sprint planning ve backlog organization</em></p>
-    
-    <h4>Latest Sprint Board Updates (July 7, 2025):</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.31.45 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Product Roadmap - Feature Status Tracking</em></p>
-      </div>
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.49 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Team Assignment Board - Task Distribution</em></p>
-      </div>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.57 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Sprint Backlog - Current Progress</em></p>
-      </div>
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.02 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Feature Development Status</em></p>
-      </div>
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.06 AM.png" style="max-width: 100%; height: auto;">
-        <p><em>Team Coordination & Progress</em></p>
-      </div>
-    </div>
-    
-    <h4>Real-time Team Communication Evidence:</h4>
-    <p>WhatsApp grup üzerinden sürekli team coordination ve progress updates:</p>
-    <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-    <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-    <p><em>Team communication - Sprint planning ve coordination</em></p>
-  </details>
+
+    `<h4>`Sprint Planning with Notion:`</h4>`
+    `<p><strong>`İlk Sprint Toplantısı - Perşembe:`</strong></p>`
+    `<ul>`
+      `<li>`Bootcamp yayını baştan izlendi`</li>`
+      `<li>`Proje fikirleri araştırıldı`</li>`
+      `<li>`Sunum örnekleri incelendi`</li>`
+      `<li>`Örnek projelere bakıldı`</li>`
+      `<li>`Bootcamp süreci araştırıldı`</li>`
+      `<li>`Scrum Master formu dolduruldu (29 Haziran 2025 deadline)`</li>`
+    `</ul>`
+
+    `<p><strong>`İkinci Sprint Toplantısı:`</strong></p>`
+    `<ul>`
+      `<li>`Seçilen proje: Görme ve işitme engelliler için eğitim platformu`</li>`
+      `<li>`Proje ismi belirleme`</li>`
+      `<li>`Product Owner (Zeynep) ve Scrum Master (Said) sorumlulukları`</li>`
+      `<li>`Scrum process metodolojisi`</li>`
+      `<li>`Projede kullanılacak teknolojiler araştırması`</li>`
+      `<li>`Sistem kurulum ve entegrasyon planı`</li>`
+      `<li>`Mobil platform kararı (iOS ve Android)`</li>`
+    `</ul>`
+
+    `<p><strong>`Üçüncü ve Son Toplantı:`</strong></p>`
+    `<ul>`
+      `<li>`Product Backlog oluşturuldu`</li>`
+      `<li>`Görev dağılımları: Zeynep-İrem (Frontend), Taha (Backend), Said (Features)`</li>`
+      `<li>`Planned features: Frontend, Backend, TTS, STT, Multi-language, Video transcript, Chatbot, OCR`</li>`
+      `<li>`Backlog features: Gamification, Audio description, Teacher admin profile`</li>`
+    `</ul>`
+
+    `<h4>`Notion Project Management Evidence:`</h4>`
+    `<p>`Takım Notion workspace kullanarak gerçek sprint planning ve task tracking yapıyor. Aşağıdaki ekran görüntüleri güncel proje durumunu gösteriyor:`</p>`
+
+    `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 11.36.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
+    `<p><em>`Notion workspace - Sprint planning ve backlog organization`</em></p>`
+
+    `<h4>`Latest Sprint Board Updates (July 7, 2025):`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.31.45 AM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Product Roadmap - Feature Status Tracking`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.49 AM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Team Assignment Board - Task Distribution`</em></p>`
+      `</div>`
+    `</div>`
+
+    `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;">`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.32.57 AM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Sprint Backlog - Current Progress`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.02 AM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Feature Development Status`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-07 at 12.33.06 AM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Team Coordination & Progress`</em></p>`
+      `</div>`
+    `</div>`
+
+    `<h4>`Real-time Team Communication Evidence:`</h4>`
+    `<p>`WhatsApp grup üzerinden sürekli team coordination ve progress updates:`</p>`
+    `<img src="Grup Konuşmaları/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
+    `<img src="Grup Konuşmaları/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto; margin-bottom: 10px;">`
+    `<p><em>`Team communication - Sprint planning ve coordination`</em></p>`
+
+</details>
 
 - **Sprint Notes**:
 
@@ -258,13 +260,15 @@
   - **Teknoloji Kararları**: Frontend için `Flutter`, Backend ve veritabanı için `Firebase`, AI özellikler için `Gemini API`
 - **Expected point completion within Sprint**: 200 points
 - **Point Completion Logic**: `(205 points completed)` İlk sprint araştırma ve planlama odaklı geçtiği için yoğun analiz ve dokümantasyon çalışmaları yapılmıştır. Hedeflenen 200 puanın üzerinde 205 puan tamamlanmıştır.
-- **Daily Scrum Evidence**: 
+- **Daily Scrum Evidence**:
+
   - **Alternative Approach**: Günlük scrum yerine ihtiyaç bazlı toplantılar tercih edildi
   - **Team Communication**: WhatsApp grup üzerinden sürekli koordinasyon
   - **Meeting Evidence**: 3 ana toplantı + sürekli mesajlaşma (see Group Conversations folder)
   - **Notion Integration**: Real-time progress tracking ve task updates
   - **Coordination Method**: Asynchronous communication + scheduled meetings
-- **Product Backlog URL:** 
+- **Product Backlog URL:**
+
   - **Notion Workspace**: [Team Notion Board](https://notion.so/lumina-team) (Private)
   - **Evidence**: See Group Conversations folder for real workspace screenshots
 - **Sprint Review:**
@@ -294,13 +298,15 @@
 - **User Stories & Acceptance Criteria**:
 
   **Epic 1: Text-to-Speech Feature**
+
   - **US001**: As a visually impaired student, I want to convert PDF documents to audio so that I can access course materials independently
     - **AC1**: User can upload PDF files up to 50MB
     - **AC2**: System converts PDF text to natural-sounding speech using Gemini API
     - **AC3**: Audio output supports playback controls (play, pause, speed adjustment)
     - **Priority**: High
 
-  **Epic 2: Speech-to-Text Feature**  
+  **Epic 2: Speech-to-Text Feature**
+
   - **US002**: As a hearing-impaired student, I want to convert audio lectures to text so that I can read the content
     - **AC1**: User can upload audio files (MP3, WAV, M4A) up to 100MB
     - **AC2**: System accurately transcribes speech with 95%+ accuracy using Gemini API
@@ -308,6 +314,7 @@
     - **Priority**: High
 
   **Epic 3: Frontend Development**
+
   - **US003**: As a student with disabilities, I want an accessible interface so that I can navigate the platform easily
     - **AC1**: Interface complies with WCAG 2.1 AA standards
     - **AC2**: Supports screen readers and keyboard navigation
@@ -315,6 +322,7 @@
     - **Priority**: High
 
   **Epic 4: Backend Infrastructure**
+
   - **US004**: As a system user, I want secure and reliable data processing so that my files are safe
     - **AC1**: Firebase Authentication for secure login
     - **AC2**: File processing with 99.9% uptime
@@ -322,6 +330,7 @@
     - **Priority**: High
 
   **Epic 5: Multi-language Support**
+
   - **US005**: As an international student, I want content translation so that I can understand materials in my language
     - **AC1**: Supports Turkish, English, German, French
     - **AC2**: Translation accuracy >90% using Gemini API
@@ -329,6 +338,7 @@
     - **Priority**: Medium
 
   **Epic 6: Video Transcription**
+
   - **US006**: As a hearing-impaired student, I want video subtitles so that I can follow video lectures
     - **AC1**: Supports MP4, AVI, MOV formats up to 500MB
     - **AC2**: Generates accurate subtitles with timestamps
@@ -336,6 +346,7 @@
     - **Priority**: Medium
 
   **Epic 7: AI Chatbot**
+
   - **US007**: As a student, I want an AI assistant so that I can get help with platform usage
     - **AC1**: 24/7 availability with Gemini API integration
     - **AC2**: Answers accessibility-related questions
@@ -343,6 +354,7 @@
     - **Priority**: Medium
 
   **Epic 8: OCR (Text from Picture)**
+
   - **US008**: As a visually impaired student, I want text extraction from images so that I can access visual content
     - **AC1**: Supports JPG, PNG, PDF image files
     - **AC2**: OCR accuracy >95% using Gemini API
@@ -350,6 +362,7 @@
     - **Priority**: Medium
 
   **Epic 9: Gamification**
+
   - **US009**: As a student, I want achievement rewards so that learning becomes more engaging
     - **AC1**: Progress badges for completed tasks
     - **AC2**: Points system for platform usage
@@ -357,6 +370,7 @@
     - **Priority**: Low
 
   **Epic 10: Teacher Admin Profile**
+
   - **US010**: As a teacher, I want to upload course materials so that students can access them
     - **AC1**: Bulk file upload capability
     - **AC2**: Course organization and categorization
@@ -364,13 +378,14 @@
     - **Priority**: Medium
 
   **Epic 11: Audio Description from Picture**
+
   - **US011**: As a visually impaired student, I want audio descriptions of images so that I can understand visual content
     - **AC1**: AI-generated descriptions using Gemini API
     - **AC2**: Natural-sounding voice narration
     - **AC3**: Detailed scene and object descriptions
     - **Priority**: Medium
-
 - **Definition of Done**:
+
   - ✅ Code developed and tested in Flutter/Firebase environment
   - ✅ Gemini API integration working with 95%+ accuracy
   - ✅ WCAG 2.1 AA compliance verified
@@ -381,18 +396,19 @@
   - ✅ Accessibility testing with real users completed
   - ✅ Code reviewed and approved by team
   - ✅ Feature deployed to staging environment
-
 - **Risk Management & Challenges**:
 
   **High Risk Items:**
+
   - **R001 - Gemini API Rate Limits**: Risk of exceeding API quotas during peak usage
     - *Mitigation*: Implement caching, request batching, and fallback APIs
   - **R002 - Accessibility Compliance**: Complex WCAG 2.1 AA requirements
     - *Mitigation*: Regular accessibility audits and user testing with disabled individuals
-  - **R003 - AI Accuracy**: OCR/TTS/STT accuracy may vary with content quality  
+  - **R003 - AI Accuracy**: OCR/TTS/STT accuracy may vary with content quality
     - *Mitigation*: Multiple AI service integrations, quality validation, user feedback loops
 
   **Medium Risk Items:**
+
   - **R004 - Team Coordination**: 5-person team with limited bootcamp time
     - *Mitigation*: Frequent check-ins, clear task assignments, Notion project tracking
   - **R005 - Technology Learning Curve**: Flutter and Firebase new to some team members
@@ -401,12 +417,13 @@
     - *Mitigation*: Chunked uploads, progress indicators, cloud processing
 
   **Challenges Faced:**
+
   - **Sprint 1**: Limited time due to team members' busy schedules → Solution: Efficient 3-meeting structure
   - **Technical Decision**: Native vs Cross-platform choice → Solution: Chose Flutter for mobile cross-platform
   - **API Selection**: Multiple AI service options → Solution: Gemini API for unified integration
   - **Scope Management**: Large feature set for bootcamp timeline → Solution: Prioritized MVP features
-
   - **Key Documentation Evidence Summary**:
+
     - **17 Screenshot Files**: Comprehensive team communication ve project management evidence
     - **Notion Workspace**: 5 latest screenshots (July 7, 2025) showing real-time sprint board
     - **WhatsApp Communications**: Team coordination across 3 sprint periods
@@ -414,8 +431,8 @@
     - **Progress Tracking**: Visual evidence of backlog management ve feature development
     - **Team Coordination**: Asynchronous communication model with scheduled sync points
     - **Project Management**: Professional Notion workspace with kanban boards ve roadmaps
+  - **Other Notes**:
 
-  - **Other Notes**: 
     - İlk sprint boyunca takım üyeleri yoğun program nedeniyle sık sık toplantılar düzenleyerek etkili planla yapıldı
     - Proje sosyal etki odaklı bir yaklaşım benimser ve eğitimde fırsat eşitliğini teknoloji aracılığıyla desteklemeyi amaçlar
     - Bootcamp Scrum Master formu 29 Haziran 2025 tarihine kadar dolduruldu ve süreç resmi olarak başlatıldı
@@ -443,24 +460,25 @@
 <details>
     <summary><h1>Sprint 2</h1></summary>
 
-  <details>
+<details>
     <summary><h3>Sprint 2 - Development Evidence</h3></summary>
     <h4>Frontend Development:</h4>
     <p><strong>Flutter Setup:</strong> Mobile-first accessibility-focused UI components</p>
     <p><strong>Accessibility Features:</strong> Screen reader support, high contrast mode, keyboard navigation</p>
     <p><strong>Team:</strong> Zeynep İrem Tekin & İpek Eylül Atmaca (Frontend developers)</p>
     <p><strong>Evidence:</strong> See Group Conversations for development coordination</p>
-    
-    <h4>Backend API Development:</h4>
-    <p><strong>Firebase Setup:</strong> Authentication, Firestore database, Storage configuration</p>
-    <p><strong>API Integration:</strong> Gemini API for AI features implementation</p>
-    <p><strong>Team:</strong> Esra EFEL & Taha Dursun (Backend developers)</p>
-    
-    <h4>AI Integration (TTS & STT):</h4>
-    <p><strong>Text-to-Speech:</strong> Gemini API integration for document reading</p>
-    <p><strong>Speech-to-Text:</strong> Audio transcription for hearing impaired users</p>
-    <p><strong>Testing:</strong> Accessibility compliance verified throughout development</p>
-  </details>
+
+    `<h4>`Backend API Development:`</h4>`
+    `<p><strong>`Firebase Setup:`</strong>` Authentication, Firestore database, Storage configuration`</p>`
+    `<p><strong>`API Integration:`</strong>` Gemini API for AI features implementation`</p>`
+    `<p><strong>`Team:`</strong>` Esra EFEL & Taha Dursun (Backend developers)`</p>`
+
+    `<h4>`AI Integration (TTS & STT):`</h4>`
+    `<p><strong>`Text-to-Speech:`</strong>` Gemini API integration for document reading`</p>`
+    `<p><strong>`Speech-to-Text:`</strong>` Audio transcription for hearing impaired users`</p>`
+    `<p><strong>`Testing:`</strong>` Accessibility compliance verified throughout development`</p>`
+
+</details>
 
 <details>
     <summary><h3>Sprint 2 - Sprint Board Update Screenshots</h3></summary>
@@ -485,19 +503,20 @@
     <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.36.30 PM.png" style="max-width: 100%; height: auto;">
     <img src="Grup Konuşmaları/Screenshot 2025-06-29 at 3.54.09 PM.png" style="max-width: 100%; height: auto;">
     <p><em>Team coordination during development phase - Flutter frontend ve Firebase backend setup</em></p>
-    
-    <h4>Progress Updates & Team Sync:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-06 at 1.58.46 PM.png" style="max-width: 100%; height: auto;">
-        <p><em>Development progress updates</em></p>
-      </div>
-      <div>
-        <img src="Grup Konuşmaları/Screenshot 2025-07-06 at 2.15.16 PM.png" style="max-width: 100%; height: auto;">
-        <p><em>Feature implementation coordination</em></p>
-      </div>
-    </div>
-  </details>
+
+    `<h4>`Progress Updates & Team Sync:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 1.58.46 PM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Development progress updates`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="Grup Konuşmaları/Screenshot 2025-07-06 at 2.15.16 PM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Feature implementation coordination`</em></p>`
+      `</div>`
+    `</div>`
+
+</details>
 
 - **Sprint Notes**:
 
@@ -513,7 +532,8 @@
 - **Expected point completion within Sprint**: 150 points
 - **Point Completion Logic**: `(155 points completed)` İkinci sprint geliştirme odaklı geçti ve temel platform özellikleri hayata geçirildi. Hedeflenen 150 puanın üzerinde 155 puan tamamlandı.
 - **Daily Scrum Evidence**: *Alternative approach - continuous WhatsApp coordination + scheduled meetings*
-- **Product Backlog URL:** 
+- **Product Backlog URL:**
+
   - **Notion Workspace**: [Sprint 2 Board](https://notion.so/lumina-sprint2) *(Team private workspace)*
   - **Evidence**: See Group Conversations folder for real workspace screenshots
 - **Sprint Review**:
@@ -558,7 +578,7 @@
 <details>
     <summary><h1>Sprint 3</h1></summary>
 
-  <details>
+<details>
     <summary><h3>Sprint 3 - Final Features Screenshots</h3></summary>
       <ul>
         <li><strong>Platform Demo:</strong> *Demo video will be uploaded after final sprint completion*</li>
@@ -589,23 +609,24 @@
     <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 7.48.33 PM.png" style="max-width: 100%; height: auto;">
     <img src="Grup Konuşmaları/Screenshot 2025-07-05 at 8.16.23 PM.png" style="max-width: 100%; height: auto;">
     <p><em>Final sprint coordination - Feature completion ve testing phase</em></p>
-    
-    <h4>Project Completion & Evaluation Prep:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <div>
-        <img src="Grup Konuşmaları/1.png" style="max-width: 100%; height: auto;">
-        <p><em>Project review ve demo preparation</em></p>
-      </div>
-      <div>
-        <img src="Grup Konuşmaları/2.png" style="max-width: 100%; height: auto;">
-        <p><em>Final documentation ve submission</em></p>
-      </div>
-    </div>
-    
-    <h4>Bootcamp Milestone Achievement:</h4>
-    <img src="Grup Konuşmaları/Screenshot 2025-06-21 at 9.03.13 PM.png" style="max-width: 100%; height: auto;">
-    <p><em>Bootcamp process milestone ve team achievement celebration</em></p>
-  </details>
+
+    `<h4>`Project Completion & Evaluation Prep:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">`
+      `<div>`
+        `<img src="Grup Konuşmaları/1.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Project review ve demo preparation`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="Grup Konuşmaları/2.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Final documentation ve submission`</em></p>`
+      `</div>`
+    `</div>`
+
+    `<h4>`Bootcamp Milestone Achievement:`</h4>`
+    `<img src="Grup Konuşmaları/Screenshot 2025-06-21 at 9.03.13 PM.png" style="max-width: 100%; height: auto;">`
+    `<p><em>`Bootcamp process milestone ve team achievement celebration`</em></p>`
+
+</details>
 
 - **Sprint Notes**:
 
@@ -617,8 +638,9 @@
   - Deployment ve production ortamına geçiş
 - **Expected point completion within Sprint**: 150 points
 - **Point Completion Logic**: `(175 points completed)` Son sprintte tüm temel özellikler tamamlandı ve platform kullanıma hazır hale getirildi. Hedeflenen 150 puanın üzerinde 175 puan tamamlandı.
-- **Daily Scrum Evidence**: *Final sprint coordination via group communications*  
-- **Product Backlog URL:** 
+- **Daily Scrum Evidence**: *Final sprint coordination via group communications*
+- **Product Backlog URL:**
+
   - **Notion Workspace**: [Sprint 3 Final Board](https://notion.so/lumina-sprint3) *(Team private workspace)*
   - **Evidence**: All tasks completed, see Group Conversations for final coordination
 - **Sprint Review**:
@@ -662,13 +684,13 @@
 ## Platform Demo
 
   **Platform Demo Video:** *Demo video Sprint 3 tamamlandıktan sonra eklenecek*
-  
+
   **Current Status:** Development phase - Sprint 2 tamamlandı, Sprint 3'te final features implement ediliyor
 
 ## Mobile Application
 
   **Mobile App:** *iOS ve Android app deployment Sprint 3'te tamamlanacak*
-  
+
   **Current Status:** Development environment - Mobile app development active, Firebase backend live
 
 # Color Reference
@@ -703,9 +725,10 @@
 
 **Project Phase**: **Sprint 2 Completed** ✅ - Currently implementing Sprint 3 final features 🔄
 
-**Evidence Documentation**: 
+**Evidence Documentation**:
+
 - ✅ **Team Communication**: 17 screenshot files in Group Conversations folder
-- ✅ **Sprint Planning**: Real Notion workspace screenshots included  
+- ✅ **Sprint Planning**: Real Notion workspace screenshots included
 - ✅ **Meeting Notes**: 3 documented sprint planning meetings with detailed decisions
 - ✅ **Progress Tracking**: WhatsApp coordination evidence across all sprints
 - ✅ **User Stories**: 11 detailed epics with acceptance criteria
@@ -713,9 +736,10 @@
 - 🔄 **Demo Materials**: Will be added upon Sprint 3 completion
 - 🔄 **Mobile App Deployment**: iOS ve Android deployment scheduled for final week
 
-**Bootcamp Compliance**: 
+**Bootcamp Compliance**:
+
 - ✅ **README Format**: HTML structured, professional presentation
-- ✅ **Sprint Organization**: 3 sprints with complete documentation  
+- ✅ **Sprint Organization**: 3 sprints with complete documentation
 - ✅ **Team Coordination**: Alternative daily scrum approach documented
 - ✅ **Real Evidence**: All screenshots and communications are authentic
 - ✅ **GitHub Integration**: Proper version control and collaboration
@@ -724,8 +748,8 @@
 
 ---
 
-**Son Güncelleme**: 7 Temmuz 2025, 12:30 AM  
-**Güncelleyen**: Mehmet Said Hüseyinoğlu (Scrum Master)  
+**Son Güncelleme**: 7 Temmuz 2025, 12:30 AM
+**Güncelleyen**: Mehmet Said Hüseyinoğlu (Scrum Master)
 **Documentation Status**: ✅ Complete for evaluation
 
 </body>
