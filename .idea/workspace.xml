@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b497dcd-b1e5-4259-a154-084c32c0d3fc" name="Changes" comment="" />
+    <list default="true" id="8b497dcd-b1e5-4259-a154-084c32c0d3fc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/main.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +47,7 @@
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ipeke/OneDrive/Belgeler/GitHub/yzta-ai-bootcamp-grup26",
+    "last_opened_file_path": "C:/Users/ipeke/OneDrive/Belgeler/GitHub/yzta-ai-bootcamp-grup26/Lumina/lib/pages",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -52,6 +55,11 @@
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ipeke\OneDrive\Belgeler\GitHub\yzta-ai-bootcamp-grup26\Lumina\lib\pages" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/Lumina/lib/main.dart" />
