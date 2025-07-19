@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lumina/pages/auth_page.dart';
 import 'pages/home_page.dart';
+import 'package:lumina/pages/profile_page.dart';
 
 void main() {
   runApp(LuminaApp());
@@ -22,6 +23,7 @@ class LuminaApp extends StatelessWidget {
       routes: {
         '/': (context) => AuthPage(),
         '/home': (context) => HomePage(userName: 'Ahmet'), // userName parametresiyle örnek
+        '/profile': (context) => const ProfilePage(),
       },
     );
   }
