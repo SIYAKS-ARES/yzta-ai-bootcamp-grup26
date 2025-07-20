@@ -5,14 +5,13 @@ void main() {
 }
 
 class LuminaApp extends StatelessWidget {
+  const LuminaApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Lumina',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Inter',
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Inter'),
       home: AuthPage(),
       debugShowCheckedModeBanner: false,
     );
@@ -20,11 +19,14 @@ class LuminaApp extends StatelessWidget {
 }
 
 class AuthPage extends StatefulWidget {
+  const AuthPage({super.key});
+
   @override
   _AuthPageState createState() => _AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin {
+class _AuthPageState extends State<AuthPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final _loginFormKey = GlobalKey<FormState>();
   final _registerFormKey = GlobalKey<FormState>();
@@ -91,7 +93,8 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
 
   void _handleRegister() {
     if (_registerFormKey.currentState!.validate()) {
-      if (_registerPasswordController.text != _registerConfirmPasswordController.text) {
+      if (_registerPasswordController.text !=
+          _registerConfirmPasswordController.text) {
         _showMessage('Şifreler eşleşmiyor', false);
         return;
       }
@@ -121,61 +124,62 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      body: Container(
         decoration: BoxDecoration(
-        gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-        Color(0xFF1e3a8a),
-    Color(0xFF3b82f6),
-    Color(0xFF60a5fa),
-    Color(0xFF93c5fd),
-    Color(0xFFdbeafe),
-    ],
-    ),
-    ),
-    child: SafeArea(
-    child: Padding(
-    padding: EdgeInsets.all(20),
-    child: Container(
-    constraints: BoxConstraints(
-    maxWidth: 400,
-    maxHeight: MediaQuery.of(context).size.height - 40,
-    ),
-    decoration: BoxDecoration(
-    color: Colors.white.withOpacity(0.95),
-    borderRadius: BorderRadius.circular(20),
-    boxShadow: [
-    BoxShadow(
-    color: Color(0xFF1e3a8a).withOpacity(0.3),
-    blurRadius: 40,
-    offset: Offset(0, 20),
-    ),
-    BoxShadow(
-    color: Color(0xFF3b82f6).withOpacity(0.2),
-    blurRadius: 16,
-    offset: Offset(0, 8),
-    ),
-    ],
-    ),
-    child: Padding(
-    padding: EdgeInsets.all(40),
-    child: Column(
-    children: [
-    _buildLogo(),
-    SizedBox(height: 32),
-    _buildTabs(),
-    SizedBox(height: 24),
-    if (_message.isNotEmpty) _buildMessage(),
-    _buildTabView(),
-    ],
-    ),
-    ),
-    ),
-    ),
-    ),
-    ));
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF1e3a8a),
+              Color(0xFF3b82f6),
+              Color(0xFF60a5fa),
+              Color(0xFF93c5fd),
+              Color(0xFFdbeafe),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 400,
+                maxHeight: MediaQuery.of(context).size.height - 40,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.95),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFF1e3a8a).withOpacity(0.3),
+                    blurRadius: 40,
+                    offset: Offset(0, 20),
+                  ),
+                  BoxShadow(
+                    color: Color(0xFF3b82f6).withOpacity(0.2),
+                    blurRadius: 16,
+                    offset: Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(40),
+                child: Column(
+                  children: [
+                    _buildLogo(),
+                    SizedBox(height: 32),
+                    _buildTabs(),
+                    SizedBox(height: 24),
+                    if (_message.isNotEmpty) _buildMessage(),
+                    _buildTabView(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildLogo() {
@@ -199,11 +203,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
               ),
             ],
           ),
-          child: Icon(
-            Icons.auto_awesome,
-            size: 24,
-            color: Colors.white,
-          ),
+          child: Icon(Icons.auto_awesome, size: 24, color: Colors.white),
         ),
         SizedBox(height: 16),
         Text(
@@ -217,10 +217,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
         SizedBox(height: 8),
         Text(
           'Herkes için erişilebilir',
-          style: TextStyle(
-            fontSize: 14,
-            color: Color(0xFF475569),
-          ),
+          style: TextStyle(fontSize: 14, color: Color(0xFF475569)),
         ),
       ],
     );
@@ -301,12 +298,8 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
       child: TabBarView(
         controller: _tabController,
         children: [
-          SingleChildScrollView(
-            child: _buildLoginForm(),
-          ),
-          SingleChildScrollView(
-            child: _buildRegisterForm(),
-          ),
+          SingleChildScrollView(child: _buildLoginForm()),
+          SingleChildScrollView(child: _buildRegisterForm()),
         ],
       ),
     );
@@ -323,7 +316,8 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value?.isEmpty ?? true) return 'E-posta adresi gerekli';
-              if (!value!.contains('@')) return 'Geçerli bir e-posta adresi girin';
+              if (!value!.contains('@'))
+                return 'Geçerli bir e-posta adresi girin';
               return null;
             },
           ),
@@ -386,7 +380,8 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value?.isEmpty ?? true) return 'E-posta adresi gerekli';
-              if (!value!.contains('@')) return 'Geçerli bir e-posta adresi girin';
+              if (!value!.contains('@'))
+                return 'Geçerli bir e-posta adresi girin';
               return null;
             },
           ),
@@ -415,7 +410,8 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             isPasswordVisible: _registerConfirmPasswordVisible,
             onPasswordToggle: () {
               setState(() {
-                _registerConfirmPasswordVisible = !_registerConfirmPasswordVisible;
+                _registerConfirmPasswordVisible =
+                    !_registerConfirmPasswordVisible;
               });
             },
             validator: (value) {
@@ -480,12 +476,14 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             suffixIcon: isPassword
                 ? IconButton(
-              icon: Icon(
-                isPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                color: Color(0xFF6b7280),
-              ),
-              onPressed: onPasswordToggle,
-            )
+                    icon: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: Color(0xFF6b7280),
+                    ),
+                    onPressed: onPasswordToggle,
+                  )
                 : null,
           ),
         ),
@@ -508,10 +506,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
         Expanded(
           child: Text(
             text,
-            style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF6b7280),
-            ),
+            style: TextStyle(fontSize: 14, color: Color(0xFF6b7280)),
           ),
         ),
       ],
@@ -540,10 +535,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             },
             child: RichText(
               text: TextSpan(
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF6b7280),
-                ),
+                style: TextStyle(fontSize: 14, color: Color(0xFF6b7280)),
                 children: [
                   TextSpan(
                     text: 'Kullanım Koşulları',
@@ -586,10 +578,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
         ),
         child: Text(
           text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -603,7 +592,11 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             height: 1,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.transparent, Color(0xFFcbd5e1), Colors.transparent],
+                colors: [
+                  Colors.transparent,
+                  Color(0xFFcbd5e1),
+                  Colors.transparent,
+                ],
               ),
             ),
           ),
@@ -612,10 +605,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             'veya',
-            style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF9ca3af),
-            ),
+            style: TextStyle(fontSize: 14, color: Color(0xFF9ca3af)),
           ),
         ),
         Expanded(
@@ -623,7 +613,11 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             height: 1,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.transparent, Color(0xFFcbd5e1), Colors.transparent],
+                colors: [
+                  Colors.transparent,
+                  Color(0xFFcbd5e1),
+                  Colors.transparent,
+                ],
               ),
             ),
           ),
@@ -640,7 +634,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             'Google',
             Icons.g_mobiledata,
             Color(0xFF4285f4),
-                () => _socialLogin('Google'),
+            () => _socialLogin('Google'),
           ),
         ),
         SizedBox(width: 12),
@@ -649,21 +643,24 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             'Facebook',
             Icons.facebook,
             Color(0xFF1877f2),
-                () => _socialLogin('Facebook'),
+            () => _socialLogin('Facebook'),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildSocialButton(String text, IconData icon, Color iconColor, VoidCallback onPressed) {
+  Widget _buildSocialButton(
+    String text,
+    IconData icon,
+    Color iconColor,
+    VoidCallback onPressed,
+  ) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: Color(0xFFe2e8f0), width: 2),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         padding: EdgeInsets.symmetric(vertical: 12),
       ),
       child: Row(

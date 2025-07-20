@@ -8,6 +8,8 @@ void main() {
 }
 
 class LuminaApp extends StatelessWidget {
+  const LuminaApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +24,8 @@ class LuminaApp extends StatelessWidget {
       initialRoute: '/', // ilk açılan sayfa AuthPage
       routes: {
         '/': (context) => AuthPage(),
-        '/home': (context) => HomePage(userName: 'Ahmet'), // userName parametresiyle örnek
+        '/home': (context) =>
+            HomePage(userName: 'Ahmet'), // userName parametresiyle örnek
         '/profile': (context) => const ProfilePage(),
       },
     );
