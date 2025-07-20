@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
 
 void main() {
   runApp(LuminaApp());
@@ -87,6 +88,11 @@ class _AuthPageState extends State<AuthPage>
       // Simulate login process
       Future.delayed(Duration(seconds: 1), () {
         _showMessage('Başarıyla giriş yaptınız!', true);
+
+        // HomePage'e yönlendirme - 1.5 saniye sonra
+        Future.delayed(Duration(milliseconds: 1500), () {
+          Navigator.pushReplacementNamed(context, '/home');
+        });
       });
     }
   }
@@ -109,12 +115,27 @@ class _AuthPageState extends State<AuthPage>
       // Simulate register process
       Future.delayed(Duration(seconds: 1), () {
         _showMessage('Başarıyla kayıt oldunuz!', true);
+
+        // HomePage'e yönlendirme - 1.5 saniye sonra
+        Future.delayed(Duration(milliseconds: 1500), () {
+          Navigator.pushReplacementNamed(context, '/home');
+        });
       });
     }
   }
 
   void _socialLogin(String provider) {
     _showMessage('$provider ile giriş yapılıyor...', true);
+
+    // Sosyal medya girişi simülasyonu
+    Future.delayed(Duration(seconds: 1), () {
+      _showMessage('$provider ile başarıyla giriş yaptınız!', true);
+
+      // HomePage'e yönlendirme
+      Future.delayed(Duration(milliseconds: 1500), () {
+        Navigator.pushReplacementNamed(context, '/home');
+      });
+    });
   }
 
   void _showForgotPassword() {
@@ -411,7 +432,7 @@ class _AuthPageState extends State<AuthPage>
             onPasswordToggle: () {
               setState(() {
                 _registerConfirmPasswordVisible =
-                    !_registerConfirmPasswordVisible;
+                !_registerConfirmPasswordVisible;
               });
             },
             validator: (value) {
@@ -476,14 +497,14 @@ class _AuthPageState extends State<AuthPage>
             contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             suffixIcon: isPassword
                 ? IconButton(
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Color(0xFF6b7280),
-                    ),
-                    onPressed: onPasswordToggle,
-                  )
+              icon: Icon(
+                isPasswordVisible
+                    ? Icons.visibility_off
+                    : Icons.visibility,
+                color: Color(0xFF6b7280),
+              ),
+              onPressed: onPasswordToggle,
+            )
                 : null,
           ),
         ),
@@ -634,7 +655,7 @@ class _AuthPageState extends State<AuthPage>
             'Google',
             Icons.g_mobiledata,
             Color(0xFF4285f4),
-            () => _socialLogin('Google'),
+                () => _socialLogin('Google'),
           ),
         ),
         SizedBox(width: 12),
@@ -643,7 +664,7 @@ class _AuthPageState extends State<AuthPage>
             'Facebook',
             Icons.facebook,
             Color(0xFF1877f2),
-            () => _socialLogin('Facebook'),
+                () => _socialLogin('Facebook'),
           ),
         ),
       ],
@@ -651,11 +672,11 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildSocialButton(
-    String text,
-    IconData icon,
-    Color iconColor,
-    VoidCallback onPressed,
-  ) {
+      String text,
+      IconData icon,
+      Color iconColor,
+      VoidCallback onPressed,
+      ) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
