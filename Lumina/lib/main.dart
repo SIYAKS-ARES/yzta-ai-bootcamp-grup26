@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lumina/pages/auth_page.dart';
 import 'pages/home_page.dart';
 import 'package:lumina/pages/profile_page.dart';
+import 'pages/settings_page.dart';
 
 void main() {
   runApp(LuminaApp());
@@ -27,6 +28,7 @@ class LuminaApp extends StatelessWidget {
         '/home': (context) =>
             HomePage(userName: 'Ahmet'), // userName parametresiyle örnek
         '/profile': (context) => const ProfilePage(),
+        '/settings': (context) => const SettingsPage(),
       },
     );
   }

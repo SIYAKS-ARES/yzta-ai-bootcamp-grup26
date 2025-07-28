@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b497dcd-b1e5-4259-a154-084c32c0d3fc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lumina/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

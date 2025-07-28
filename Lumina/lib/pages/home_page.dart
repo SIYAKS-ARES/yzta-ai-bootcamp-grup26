@@ -49,16 +49,26 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('✨', style: TextStyle(fontSize: 28)),
                   const SizedBox(width: 12),
-                  Text(
-                    "Hoş geldiniz, ${widget.userName}!",
-                    style: TextStyle(
-                      color: primaryBlue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                  Expanded(
+                    child: Text(
+                      "Hoş geldiniz, ${widget.userName}!",
+                      style: TextStyle(
+                        color: primaryBlue,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.settings, color: primaryBlue),
+                    tooltip: 'Ayarlar',
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
                   ),
                 ],
               ),
@@ -147,8 +157,7 @@ class _HomePageState extends State<HomePage> {
                       child: FeatureCard(
                         icon: "🎧",
                         title: "Sesten Metne Dönüştür",
-                        description:
-                        "Video veya ses dosyalarınızı metne çevirin.",
+                        description: "Video veya ses dosyalarınızı metne çevirin.",
                         buttonText: "+ Dosya Yükle",
                         onPressed: () {},
                       ),
@@ -178,7 +187,7 @@ class _HomePageState extends State<HomePage> {
             }),
 
             const SizedBox(height: 22),
-            // Son Yüklenenler başlığı (Opsiyonel)
+            // Son Yüklenenler başlığı
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
