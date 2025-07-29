@@ -65,9 +65,16 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Text('Hesabı Sil', style: TextStyle(fontWeight: FontWeight.bold)),
-          content: const Text('Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: const Text(
+            'Hesabı Sil',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: const Text(
+            'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -84,7 +91,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 );
               },
-              child: const Text('Sil', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+              child: const Text(
+                'Sil',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         );
@@ -99,6 +112,12 @@ class _ProfilePageState extends State<ProfilePage> {
     final Color cardBG = Colors.white;
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profil'),
+        backgroundColor: primaryBlue,
+        foregroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -109,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+          padding: const EdgeInsets.all(20),
           children: [
             // Sayfa başlığı
             Container(
@@ -120,7 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryBlue.withOpacity(0.08),
+                    color: primaryBlue.withValues(alpha: 0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
@@ -146,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: primaryBlue,
                     ),
                     style: IconButton.styleFrom(
-                      backgroundColor: primaryBlue.withOpacity(0.1),
+                      backgroundColor: primaryBlue.withValues(alpha: 0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -165,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryBlue.withOpacity(0.06),
+                    color: primaryBlue.withValues(alpha: 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -178,15 +197,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: primaryBlue.withOpacity(0.1),
+                      color: primaryBlue.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
-                      border: Border.all(color: primaryBlue.withOpacity(0.2), width: 3),
+                      border: Border.all(
+                        color: primaryBlue.withValues(alpha: 0.2),
+                        width: 3,
+                      ),
                     ),
-                    child: Icon(
-                      Icons.person,
-                      size: 50,
-                      color: primaryBlue,
-                    ),
+                    child: Icon(Icons.person, size: 50, color: primaryBlue),
                   ),
                   const SizedBox(height: 20),
 
@@ -257,7 +275,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryBlue.withOpacity(0.06),
+                    color: primaryBlue.withValues(alpha: 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -366,19 +384,24 @@ class _ProfilePageState extends State<ProfilePage> {
             color: _isEditing ? Colors.black : Colors.blueGrey[600],
           ),
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF2563EB)),
+            prefixIcon: const Icon(
+              Icons.lock_outline,
+              color: Color(0xFF2563EB),
+            ),
             suffixIcon: _isEditing
                 ? IconButton(
-              icon: Icon(
-                _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                color: const Color(0xFF2563EB),
-              ),
-              onPressed: () {
-                setState(() {
-                  _isPasswordVisible = !_isPasswordVisible;
-                });
-              },
-            )
+                    icon: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: const Color(0xFF2563EB),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  )
                 : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
@@ -422,8 +445,8 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: isDestructive
-                    ? Colors.red.withOpacity(0.1)
-                    : const Color(0xFF2563EB).withOpacity(0.1),
+                    ? Colors.red.withValues(alpha: 0.1)
+                    : const Color(0xFF2563EB).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
@@ -447,10 +470,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   Text(
                     subtitle,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.blueGrey[600],
-                    ),
+                    style: TextStyle(fontSize: 13, color: Colors.blueGrey[600]),
                   ),
                 ],
               ),

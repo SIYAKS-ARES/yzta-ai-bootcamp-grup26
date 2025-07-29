@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_page.dart';
+import '../services/text_to_speech_service.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -8,10 +10,17 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  final TextToSpeechService _ttsService = TextToSpeechService();
+
   bool notificationsEnabled = true;
   bool darkTheme = false;
   String selectedLanguage = "Türkçe";
   final List<String> languages = ["Türkçe", "English", "Deutsch"];
+
+  // TTS ayarları
+  double speechRate = 0.5;
+  double volume = 1.0;
+  String ttsLanguage = "tr-TR";
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,9 @@ class _SettingsPageState extends State<SettingsPage> {
           Card(
             elevation: 0,
             color: const Color(0xFFF1F5FB),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+            ),
             child: ListTile(
               leading: const CircleAvatar(
                 radius: 26,
@@ -45,18 +56,10 @@ class _SettingsPageState extends State<SettingsPage> {
               trailing: IconButton(
                 icon: const Icon(Icons.edit, color: Colors.grey),
                 onPressed: () {
-                  // Profil düzenleme fonksiyonu
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text("Profil Düzenle"),
-                      content: const Text("Bu özellik yakında eklenecek."),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text("Tamam"),
-                        )
-                      ],
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
                     ),
                   );
                 },
@@ -72,10 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
             trailing: DropdownButton<String>(
               value: selectedLanguage,
               items: languages.map((lang) {
-                return DropdownMenuItem<String>(
-                  value: lang,
-                  child: Text(lang),
-                );
+                return DropdownMenuItem<String>(value: lang, child: Text(lang));
               }).toList(),
               onChanged: (val) {
                 setState(() {
@@ -113,13 +113,122 @@ class _SettingsPageState extends State<SettingsPage> {
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text("Tamam"),
-                    )
+                    ),
                   ],
                 ),
               );
             },
           ),
           const Divider(),
+
+          // TTS Ayarları Bölümü
+          Card(
+            elevation: 0,
+            color: const Color(0xFFF1F5FB),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.volume_up, color: primaryBlue),
+                      const SizedBox(width: 12),
+                      Text(
+                        "Ses Ayarları",
+                        style: TextStyle(
+                          color: primaryBlue,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Konuşma hızı
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Konuşma Hızı: ${(speechRate * 100).round()}%",
+                        style: const TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 8),
+                      Slider(
+                        value: speechRate,
+                        min: 0.1,
+                        max: 1.0,
+                        divisions: 9,
+                        activeColor: primaryBlue,
+                        onChanged: (value) {
+                          setState(() {
+                            speechRate = value;
+                          });
+                          _ttsService.setSpeechRate(value);
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Ses seviyesi
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ses Seviyesi: ${(volume * 100).round()}%",
+                        style: const TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 8),
+                      Slider(
+                        value: volume,
+                        min: 0.0,
+                        max: 1.0,
+                        divisions: 10,
+                        activeColor: primaryBlue,
+                        onChanged: (value) {
+                          setState(() {
+                            volume = value;
+                          });
+                          _ttsService.setVolume(value);
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Test butonu
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        await _ttsService.speakText(
+                          "Bu bir test sesidir. Ayarlarınız çalışıyor.",
+                        );
+                      },
+                      icon: const Icon(Icons.play_arrow),
+                      label: const Text("Ses Testi"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: primaryBlue,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
 
           // Tema Değiştir
           SwitchListTile(
@@ -132,12 +241,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text("Tema"),
-                  content: Text(val ? "Koyu tema seçildi." : "Açık tema seçildi."),
+                  content: Text(
+                    val ? "Koyu tema seçildi." : "Açık tema seçildi.",
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text("Tamam"),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -161,7 +272,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text("Tamam"),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -178,12 +289,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text("Gizlilik Politikası"),
-                  content: const Text("Gizlilik politikamız yakında yayınlanacaktır."),
+                  content: const Text(
+                    "Gizlilik politikamız yakında yayınlanacaktır.",
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text("Tamam"),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -205,7 +318,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text("Tamam"),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -221,11 +334,19 @@ class _SettingsPageState extends State<SettingsPage> {
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
             onTap: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil('/', (route) => false);
             },
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _ttsService.dispose();
+    super.dispose();
   }
 }

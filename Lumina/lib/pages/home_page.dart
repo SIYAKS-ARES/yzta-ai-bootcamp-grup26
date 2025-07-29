@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
-
-enum StudentType { none, blind, deaf }
+import 'file_explorer_page.dart';
+import 'profile_page.dart';
+import 'settings_page.dart';
+import '../services/feature_service.dart';
+import '../widgets/feature_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   final String userName;
@@ -13,41 +15,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   StudentType selectedType = StudentType.none;
-
-  // Video seçimi ve dialog gösterme
-  Future<void> _pickAndTranscribeVideo() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.video,
-    );
-
-    if (result != null && result.files.single.path != null) {
-      String? filePath = result.files.single.path;
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Video Seçildi!"),
-          content: Text("Dosya adı: ${result.files.single.name}\n\n"
-              "Dosya yolu:\n$filePath"),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text("Tamam"),
-            ),
-          ],
-        ),
-      );
-      // Burada seçilen video backend'e gönderilip transkript alınabilir.
-    } else {
-      // Kullanıcı iptal etti, bir şey yapmaya gerek yok.
-    }
-  }
+  List<String> uploadedFiles = [];
+  bool isProcessing = false;
 
   @override
   Widget build(BuildContext context) {
     final Color primaryBlue = const Color(0xFF2563EB);
     final Color softBlue = const Color(0xFF60A5FA);
     final Color cardBG = Colors.white;
-    final Color borderBlue = const Color(0xFFE0E7FF);
 
     return Scaffold(
       body: Container(
@@ -62,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            // Hoş geldiniz ve ayarlar kutusu
+            // Hoş geldiniz kutusu ve navigasyon butonları
             Container(
               padding: const EdgeInsets.all(18),
               margin: const EdgeInsets.symmetric(vertical: 8),
@@ -71,40 +46,89 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryBlue.withOpacity(0.08),
+                    color: primaryBlue.withValues(alpha: 0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
                 children: [
-                  const Text('✨', style: TextStyle(fontSize: 28)),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      "Hoş geldiniz, ${widget.userName}!",
-                      style: TextStyle(
-                        color: primaryBlue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
+                  Row(
+                    children: [
+                      const Text('✨', style: TextStyle(fontSize: 28)),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          "Hoş geldiniz, ${widget.userName}!",
+                          style: TextStyle(
+                            color: primaryBlue,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  IconButton(
-                    icon: Icon(Icons.settings, color: primaryBlue),
-                    tooltip: 'Ayarlar',
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/settings');
-                    },
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProfilePage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.person, size: 20),
+                          label: const Text('Profil'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[100],
+                            foregroundColor: primaryBlue,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SettingsPage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.settings, size: 20),
+                          label: const Text('Ayarlar'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[100],
+                            foregroundColor: primaryBlue,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 12),
 
-            // Seçim kutusu
+            // Nasıl yardımcı olabilirim?
             Container(
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
@@ -112,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryBlue.withOpacity(0.06),
+                    color: primaryBlue.withValues(alpha: 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -131,6 +155,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 18),
                   Row(
                     children: [
+                      // Görme engelli butonu
                       Expanded(
                         child: SelectButton(
                           selected: selectedType == StudentType.blind,
@@ -144,6 +169,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(width: 12),
+                      // İşitme engelli butonu
                       Expanded(
                         child: SelectButton(
                           selected: selectedType == StudentType.deaf,
@@ -157,59 +183,223 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 22),
 
-            // Sadece seçim yapılınca kartları göster
-            if (selectedType == StudentType.blind)
-              FeatureCard(
-                icon: "📄",
-                title: "PDF'ten Sese Dönüştür",
-                description: "PDF dosyalarınızı sesli hale getirin.\nDinlemeye hemen başlayın.",
-                buttonText: "+ PDF Yükle",
-                onPressed: () {},
+            // Özellik Kartları Bölümü
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: primaryBlue.withValues(alpha: 0.06),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "🚀 Özellikler",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 17,
+                      color: Colors.blueGrey[800],
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Builder(
+                    builder: (context) {
+                      final features = FeatureService.getFeaturesByStudentType(
+                        context,
+                        selectedType,
+                      );
 
-            if (selectedType == StudentType.deaf) ...[
-              FeatureCard(
-                icon: "🎧",
-                title: "Sesten Metne Dönüştür",
-                description: "Video veya ses dosyalarınızı metne çevirin.",
-                buttonText: "+ Dosya Yükle",
-                onPressed: () {},
+                      if (selectedType == StudentType.none) {
+                        // Grid layout for all features
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 0.85,
+                              ),
+                          itemCount: features.length,
+                          itemBuilder: (context, index) {
+                            return FeatureCardWidget(feature: features[index]);
+                          },
+                        );
+                      } else {
+                        // List layout for specific student types
+                        return Column(
+                          children: features
+                              .map(
+                                (feature) =>
+                                    FeatureCardWidget(feature: feature),
+                              )
+                              .toList(),
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
-              SizedBox(height: 12),
-              FeatureCard(
-                icon: "🎬",
-                title: "Video Transkripti Oluştur",
-                description: "Videolarınızı yükleyin, otomatik transkript oluşturulsun.",
-                buttonText: "Video Ekle",
-                onPressed: _pickAndTranscribeVideo,
-              ),
-            ],
+            ),
 
             const SizedBox(height: 22),
-            // Son Yüklenenler başlığı
+
+            // Hızlı Erişim Menüsü
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: primaryBlue.withValues(alpha: 0.06),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "⚡ Hızlı Erişim",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 17,
+                      color: Colors.blueGrey[800],
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FileExplorerPage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.folder_open, size: 20),
+                          label: const Text('Dosyalar'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[100],
+                            foregroundColor: primaryBlue,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProfilePage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.person, size: 20),
+                          label: const Text('Profil'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[100],
+                            foregroundColor: primaryBlue,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SettingsPage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.settings, size: 20),
+                          label: const Text('Ayarlar'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[100],
+                            foregroundColor: primaryBlue,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 22),
+
+            // Son Yüklenenler
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: cardBG,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: borderBlue),
+                border: Border.all(color: const Color(0xFFE0E7FF)),
               ),
-              child: Text(
-                "📂 Son Yüklenen Dosyalarım",
-                style: TextStyle(
-                  color: primaryBlue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "📂 Son Yüklenen Dosyalarım",
+                    style: TextStyle(
+                      color: const Color(0xFF2563EB),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ...uploadedFiles.map(
+                    (fileName) => ListTile(
+                      leading: Icon(
+                        fileName.toLowerCase().contains('.pdf')
+                            ? Icons.picture_as_pdf
+                            : Icons.audiotrack,
+                        color: const Color(0xFF2563EB),
+                      ),
+                      title: Text(fileName),
+                      subtitle: Text('Dosya yüklendi'),
+                    ),
+                  ),
+                ],
               ),
             ),
-            // Son yüklenen dosya listesi burada olabilir
           ],
         ),
       ),
@@ -217,7 +407,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Seçim butonu
+// Seçim butonu widget'ı
 class SelectButton extends StatelessWidget {
   final bool selected;
   final String icon;
@@ -266,88 +456,6 @@ class SelectButton extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// Özellik kartı
-class FeatureCard extends StatelessWidget {
-  final String icon;
-  final String title;
-  final String description;
-  final String buttonText;
-  final VoidCallback? onPressed;
-
-  const FeatureCard({
-    required this.icon,
-    required this.title,
-    required this.description,
-    required this.buttonText,
-    required this.onPressed,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final Color active = const Color(0xFF2563EB);
-
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: active.withOpacity(0.10),
-            blurRadius: 16,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Text(icon, style: const TextStyle(fontSize: 34)),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(
-              color: active,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            description,
-            style: TextStyle(
-              color: Colors.blueGrey[700],
-              fontSize: 13,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 15),
-          ElevatedButton(
-            onPressed: onPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: active,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              minimumSize: const Size(double.infinity, 42),
-            ),
-            child: Text(
-              buttonText,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-            ),
-          )
-        ],
       ),
     );
   }

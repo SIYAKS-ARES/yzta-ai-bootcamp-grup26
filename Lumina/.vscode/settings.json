@@ -1,0 +1,8 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "vs-kubernetes.kubectl-path": "kubectl",
+    "vs-kubernetes.kubeconfig": "./.kubeconfig",
+    "vs-kubernetes.known-kubeconfigs": [
+        "./.kubeconfig"
+    ]
+} 

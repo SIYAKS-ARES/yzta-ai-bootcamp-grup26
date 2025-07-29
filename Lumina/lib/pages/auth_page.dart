@@ -1,29 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-
-void main() {
-  runApp(LuminaApp());
-}
-
-class LuminaApp extends StatelessWidget {
-  const LuminaApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lumina',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Inter'),
-      home: AuthPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
 
   @override
-  _AuthPageState createState() => _AuthPageState();
+  State<AuthPage> createState() => _AuthPageState();
 }
 
 class _AuthPageState extends State<AuthPage>
@@ -75,29 +58,66 @@ class _AuthPageState extends State<AuthPage>
     });
 
     Future.delayed(Duration(seconds: 3), () {
-      setState(() {
-        _message = '';
-      });
+      if (mounted) {
+        setState(() {
+          _message = '';
+        });
+      }
     });
   }
 
-  void _handleLogin() {
+  void _handleLogin() async {
     if (_loginFormKey.currentState!.validate()) {
-      _showMessage('Giriş yapılıyor...', true);
+      try {
+        _showMessage('Giriş yapılıyor...', true);
 
-      // Simulate login process
-      Future.delayed(Duration(seconds: 1), () {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+              email: _loginEmailController.text.trim(),
+              password: _loginPasswordController.text.trim(),
+            );
+
         _showMessage('Başarıyla giriş yaptınız!', true);
 
-        // HomePage'e yönlendirme - 1.5 saniye sonra
-        Future.delayed(Duration(milliseconds: 1500), () {
-          Navigator.pushReplacementNamed(context, '/home');
-        });
-      });
+        if (mounted) {
+          Navigator.pushReplacementNamed(
+            context,
+            '/home',
+            arguments: userCredential.user?.email ?? 'Kullanıcı',
+          );
+        }
+      } on FirebaseAuthException catch (e) {
+        String errorMessage = 'Giriş başarısız';
+
+        switch (e.code) {
+          case 'user-not-found':
+            errorMessage = 'Bu e-posta adresi ile kayıtlı kullanıcı bulunamadı';
+            break;
+          case 'wrong-password':
+            errorMessage = 'Hatalı şifre';
+            break;
+          case 'invalid-email':
+            errorMessage = 'Geçersiz e-posta adresi';
+            break;
+          case 'user-disabled':
+            errorMessage = 'Bu kullanıcı hesabı devre dışı bırakılmış';
+            break;
+          case 'too-many-requests':
+            errorMessage =
+                'Çok fazla başarısız giriş denemesi. Lütfen daha sonra tekrar deneyin';
+            break;
+          default:
+            errorMessage = 'Giriş yapılırken bir hata oluştu: ${e.message}';
+        }
+
+        _showMessage(errorMessage, false);
+      } catch (e) {
+        _showMessage('Beklenmeyen bir hata oluştu: $e', false);
+      }
     }
   }
 
-  void _handleRegister() {
+  void _handleRegister() async {
     if (_registerFormKey.currentState!.validate()) {
       if (_registerPasswordController.text !=
           _registerConfirmPasswordController.text) {
@@ -110,17 +130,60 @@ class _AuthPageState extends State<AuthPage>
         return;
       }
 
-      _showMessage('Kayıt olunuyor...', true);
+      try {
+        _showMessage('Kayıt olunuyor...', true);
 
-      // Simulate register process
-      Future.delayed(Duration(seconds: 1), () {
+        // Firebase Auth ile kullanıcı oluştur
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+              email: _registerEmailController.text.trim(),
+              password: _registerPasswordController.text.trim(),
+            );
+
+        // Firestore'a kullanıcı bilgilerini kaydet
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .set({
+              'name': _registerNameController.text.trim(),
+              'email': _registerEmailController.text.trim(),
+              'createdAt': FieldValue.serverTimestamp(),
+              'lastLogin': FieldValue.serverTimestamp(),
+            });
+
         _showMessage('Başarıyla kayıt oldunuz!', true);
 
-        // HomePage'e yönlendirme - 1.5 saniye sonra
-        Future.delayed(Duration(milliseconds: 1500), () {
-          Navigator.pushReplacementNamed(context, '/home');
-        });
-      });
+        if (mounted) {
+          Navigator.pushReplacementNamed(
+            context,
+            '/home',
+            arguments: userCredential.user?.email ?? 'Kullanıcı',
+          );
+        }
+      } on FirebaseAuthException catch (e) {
+        String errorMessage = 'Kayıt başarısız';
+
+        switch (e.code) {
+          case 'weak-password':
+            errorMessage = 'Şifre çok zayıf';
+            break;
+          case 'email-already-in-use':
+            errorMessage = 'Bu e-posta adresi zaten kullanımda';
+            break;
+          case 'invalid-email':
+            errorMessage = 'Geçersiz e-posta adresi';
+            break;
+          case 'operation-not-allowed':
+            errorMessage = 'E-posta/şifre girişi etkin değil';
+            break;
+          default:
+            errorMessage = 'Kayıt olurken bir hata oluştu: ${e.message}';
+        }
+
+        _showMessage(errorMessage, false);
+      } catch (e) {
+        _showMessage('Beklenmeyen bir hata oluştu: $e', false);
+      }
     }
   }
 
@@ -133,7 +196,9 @@ class _AuthPageState extends State<AuthPage>
 
       // HomePage'e yönlendirme
       Future.delayed(Duration(milliseconds: 1500), () {
-        Navigator.pushReplacementNamed(context, '/home');
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, '/home');
+        }
       });
     });
   }
@@ -168,16 +233,16 @@ class _AuthPageState extends State<AuthPage>
                 maxHeight: MediaQuery.of(context).size.height - 40,
               ),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.95),
+                color: Colors.white.withValues(alpha: 0.95),
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xFF1e3a8a).withOpacity(0.3),
+                    color: Color(0xFF1e3a8a).withValues(alpha: 0.3),
                     blurRadius: 40,
                     offset: Offset(0, 20),
                   ),
                   BoxShadow(
-                    color: Color(0xFF3b82f6).withOpacity(0.2),
+                    color: Color(0xFF3b82f6).withValues(alpha: 0.2),
                     blurRadius: 16,
                     offset: Offset(0, 8),
                   ),
@@ -218,7 +283,7 @@ class _AuthPageState extends State<AuthPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Color(0xFF3b82f6).withOpacity(0.4),
+                color: Color(0xFF3b82f6).withValues(alpha: 0.4),
                 blurRadius: 20,
                 offset: Offset(0, 8),
               ),
@@ -253,7 +318,7 @@ class _AuthPageState extends State<AuthPage>
           colors: [Color(0xFFeff6ff), Color(0xFFdbeafe)],
         ),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFF3b82f6).withOpacity(0.2)),
+        border: Border.all(color: Color(0xFF3b82f6).withValues(alpha: 0.2)),
       ),
       child: TabBar(
         controller: _tabController,
@@ -266,7 +331,7 @@ class _AuthPageState extends State<AuthPage>
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFF3b82f6).withOpacity(0.2),
+              color: Color(0xFF3b82f6).withValues(alpha: 0.2),
               blurRadius: 8,
               offset: Offset(0, 2),
             ),
@@ -336,9 +401,12 @@ class _AuthPageState extends State<AuthPage>
             label: 'E-posta Adresi',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'E-posta adresi gerekli';
-              if (!value!.contains('@'))
+              if (value?.isEmpty ?? true) {
+                return 'E-posta adresi gerekli';
+              }
+              if (!value!.contains('@')) {
                 return 'Geçerli bir e-posta adresi girin';
+              }
               return null;
             },
           ),
@@ -354,7 +422,9 @@ class _AuthPageState extends State<AuthPage>
               });
             },
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'Şifre gerekli';
+              if (value?.isEmpty ?? true) {
+                return 'Şifre gerekli';
+              }
               return null;
             },
           ),
@@ -390,7 +460,9 @@ class _AuthPageState extends State<AuthPage>
             controller: _registerNameController,
             label: 'Ad Soyad',
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'Ad soyad gerekli';
+              if (value?.isEmpty ?? true) {
+                return 'Ad soyad gerekli';
+              }
               return null;
             },
           ),
@@ -400,9 +472,12 @@ class _AuthPageState extends State<AuthPage>
             label: 'E-posta Adresi',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'E-posta adresi gerekli';
-              if (!value!.contains('@'))
+              if (value?.isEmpty ?? true) {
+                return 'E-posta adresi gerekli';
+              }
+              if (!value!.contains('@')) {
                 return 'Geçerli bir e-posta adresi girin';
+              }
               return null;
             },
           ),
@@ -418,8 +493,12 @@ class _AuthPageState extends State<AuthPage>
               });
             },
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'Şifre gerekli';
-              if (value!.length < 8) return 'Şifre en az 8 karakter olmalı';
+              if (value?.isEmpty ?? true) {
+                return 'Şifre gerekli';
+              }
+              if (value!.length < 8) {
+                return 'Şifre en az 8 karakter olmalı';
+              }
               return null;
             },
           ),
@@ -432,11 +511,13 @@ class _AuthPageState extends State<AuthPage>
             onPasswordToggle: () {
               setState(() {
                 _registerConfirmPasswordVisible =
-                !_registerConfirmPasswordVisible;
+                    !_registerConfirmPasswordVisible;
               });
             },
             validator: (value) {
-              if (value?.isEmpty ?? true) return 'Şifre tekrarı gerekli';
+              if (value?.isEmpty ?? true) {
+                return 'Şifre tekrarı gerekli';
+              }
               return null;
             },
           ),
@@ -497,14 +578,14 @@ class _AuthPageState extends State<AuthPage>
             contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             suffixIcon: isPassword
                 ? IconButton(
-              icon: Icon(
-                isPasswordVisible
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-                color: Color(0xFF6b7280),
-              ),
-              onPressed: onPasswordToggle,
-            )
+                    icon: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: Color(0xFF6b7280),
+                    ),
+                    onPressed: onPasswordToggle,
+                  )
                 : null,
           ),
         ),
@@ -655,7 +736,7 @@ class _AuthPageState extends State<AuthPage>
             'Google',
             Icons.g_mobiledata,
             Color(0xFF4285f4),
-                () => _socialLogin('Google'),
+            () => _socialLogin('Google'),
           ),
         ),
         SizedBox(width: 12),
@@ -664,7 +745,7 @@ class _AuthPageState extends State<AuthPage>
             'Facebook',
             Icons.facebook,
             Color(0xFF1877f2),
-                () => _socialLogin('Facebook'),
+            () => _socialLogin('Facebook'),
           ),
         ),
       ],
@@ -672,11 +753,11 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildSocialButton(
-      String text,
-      IconData icon,
-      Color iconColor,
-      VoidCallback onPressed,
-      ) {
+    String text,
+    IconData icon,
+    Color iconColor,
+    VoidCallback onPressed,
+  ) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(

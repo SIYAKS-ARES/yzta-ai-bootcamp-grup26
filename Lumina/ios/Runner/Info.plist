@@ -19,6 +19,10 @@
 	<key>CFBundleShortVersionString</key>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Video seçmek için erişime ihtiyacımız var.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>PDF ve metin dosyalarını okumak için erişime ihtiyacımız var.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Ses kaydı yapmak için mikrofon erişimine ihtiyacımız var.</string>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
