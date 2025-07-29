@@ -17,6 +17,8 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Video seçmek için erişime ihtiyacımız var.</string>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>

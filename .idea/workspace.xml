@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b497dcd-b1e5-4259-a154-084c32c0d3fc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lumina/lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lumina/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +49,12 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ipeke/OneDrive/Belgeler/GitHub/yzta-ai-bootcamp-grup26/Lumina/lib/pages",
+    "last_opened_file_path": "C:/Users/ipeke/Downloads/Yapay zeka neden içme suyumuzu tüketiyor_.mp4",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",

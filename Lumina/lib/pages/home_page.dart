@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 enum StudentType { none, blind, deaf }
 
@@ -12,6 +13,34 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   StudentType selectedType = StudentType.none;
+
+  // Video seçimi ve dialog gösterme
+  Future<void> _pickAndTranscribeVideo() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+    );
+
+    if (result != null && result.files.single.path != null) {
+      String? filePath = result.files.single.path;
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Video Seçildi!"),
+          content: Text("Dosya adı: ${result.files.single.name}\n\n"
+              "Dosya yolu:\n$filePath"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("Tamam"),
+            ),
+          ],
+        ),
+      );
+      // Burada seçilen video backend'e gönderilip transkript alınabilir.
+    } else {
+      // Kullanıcı iptal etti, bir şey yapmaya gerek yok.
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            // Hoş geldiniz kutusu
+            // Hoş geldiniz ve ayarlar kutusu
             Container(
               padding: const EdgeInsets.all(18),
               margin: const EdgeInsets.symmetric(vertical: 8),
@@ -75,7 +104,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 12),
 
-            // Nasıl yardımcı olabilirim?
+            // Seçim kutusu
             Container(
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
@@ -102,7 +131,6 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 18),
                   Row(
                     children: [
-                      // Görme engelli butonu
                       Expanded(
                         child: SelectButton(
                           selected: selectedType == StudentType.blind,
@@ -116,7 +144,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      // İşitme engelli butonu
                       Expanded(
                         child: SelectButton(
                           selected: selectedType == StudentType.deaf,
@@ -136,55 +163,33 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 22),
 
-            // Kartlar bölümü - Seçime göre gösteriliyor
-            Builder(builder: (context) {
-              if (selectedType == StudentType.none) {
-                // Henüz seçim yoksa ikisini de göster
-                return Row(
-                  children: [
-                    Expanded(
-                      child: FeatureCard(
-                        icon: "📄",
-                        title: "PDF'ten Sese Dönüştür",
-                        description:
-                        "PDF dosyalarınızı sesli hale getirin.\nDinlemeye hemen başlayın.",
-                        buttonText: "+ PDF Yükle",
-                        onPressed: () {},
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: FeatureCard(
-                        icon: "🎧",
-                        title: "Sesten Metne Dönüştür",
-                        description: "Video veya ses dosyalarınızı metne çevirin.",
-                        buttonText: "+ Dosya Yükle",
-                        onPressed: () {},
-                      ),
-                    ),
-                  ],
-                );
-              } else if (selectedType == StudentType.blind) {
-                // Görme engelli ise sadece PDF'ten Sese
-                return FeatureCard(
-                  icon: "📄",
-                  title: "PDF'ten Sese Dönüştür",
-                  description:
-                  "PDF dosyalarınızı sesli hale getirin.\nDinlemeye hemen başlayın.",
-                  buttonText: "+ PDF Yükle",
-                  onPressed: () {},
-                );
-              } else {
-                // İşitme engelli ise sadece Sesten Metne
-                return FeatureCard(
-                  icon: "🎧",
-                  title: "Sesten Metne Dönüştür",
-                  description: "Video veya ses dosyalarınızı metne çevirin.",
-                  buttonText: "+ Dosya Yükle",
-                  onPressed: () {},
-                );
-              }
-            }),
+            // Sadece seçim yapılınca kartları göster
+            if (selectedType == StudentType.blind)
+              FeatureCard(
+                icon: "📄",
+                title: "PDF'ten Sese Dönüştür",
+                description: "PDF dosyalarınızı sesli hale getirin.\nDinlemeye hemen başlayın.",
+                buttonText: "+ PDF Yükle",
+                onPressed: () {},
+              ),
+
+            if (selectedType == StudentType.deaf) ...[
+              FeatureCard(
+                icon: "🎧",
+                title: "Sesten Metne Dönüştür",
+                description: "Video veya ses dosyalarınızı metne çevirin.",
+                buttonText: "+ Dosya Yükle",
+                onPressed: () {},
+              ),
+              SizedBox(height: 12),
+              FeatureCard(
+                icon: "🎬",
+                title: "Video Transkripti Oluştur",
+                description: "Videolarınızı yükleyin, otomatik transkript oluşturulsun.",
+                buttonText: "Video Ekle",
+                onPressed: _pickAndTranscribeVideo,
+              ),
+            ],
 
             const SizedBox(height: 22),
             // Son Yüklenenler başlığı
@@ -212,7 +217,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Buton widget'ı
+// Seçim butonu
 class SelectButton extends StatelessWidget {
   final bool selected;
   final String icon;
@@ -266,13 +271,13 @@ class SelectButton extends StatelessWidget {
   }
 }
 
-// Özellik kartı widget'ı
+// Özellik kartı
 class FeatureCard extends StatelessWidget {
   final String icon;
   final String title;
   final String description;
   final String buttonText;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const FeatureCard({
     required this.icon,
