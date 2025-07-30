@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart' as path;
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 import '../../services/text_to_speech_service.dart';
 import '../../services/file_manager_service.dart';
 import '../../services/web_file_service.dart';
@@ -62,321 +60,332 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              // Dosya seçme butonu
-              Container(
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryBlue.withValues(alpha: 0.08),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '📁 Dosya Seç',
-                      style: TextStyle(
-                        color: primaryBlue,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ElevatedButton.icon(
-                            onPressed: isLoading ? null : _pickFile,
-                            icon: isLoading
-                                ? SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        primaryBlue,
-                                      ),
-                                    ),
-                                  )
-                                : const Icon(Icons.upload_file),
-                            label: Text(
-                              isLoading
-                                  ? 'İşleniyor...'
-                                  : 'PDF/TXT Dosyası Seç',
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryBlue,
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Dosya seçme butonu
+                  Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: primaryBlue.withValues(alpha: 0.08),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
                         ),
                       ],
                     ),
-                    if (selectedFileName != null) ...[
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: Colors.green[50],
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.green[200]!),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '📁 Dosya Seç',
+                          style: TextStyle(
+                            color: primaryBlue,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        child: Row(
+                        const SizedBox(height: 12),
+                        Row(
                           children: [
-                            Icon(
-                              Icons.check_circle,
-                              color: Colors.green[600],
-                              size: 20,
-                            ),
-                            const SizedBox(width: 8),
                             Expanded(
-                              child: Text(
-                                'Seçilen dosya: $selectedFileName',
-                                style: TextStyle(
-                                  color: Colors.green[700],
-                                  fontWeight: FontWeight.w500,
+                              child: ElevatedButton.icon(
+                                onPressed: isLoading ? null : _pickFile,
+                                icon: isLoading
+                                    ? SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                primaryBlue,
+                                              ),
+                                        ),
+                                      )
+                                    : const Icon(Icons.upload_file),
+                                label: Text(
+                                  isLoading
+                                      ? 'İşleniyor...'
+                                      : 'PDF/TXT Dosyası Seç',
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: primaryBlue,
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
+                        if (selectedFileName != null) ...[
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.green[50],
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.green[200]!),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green[600],
+                                  size: 20,
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    'Seçilen dosya: $selectedFileName',
+                                    style: TextStyle(
+                                      color: Colors.green[700],
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Metin girişi alanı
+                  Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: primaryBlue.withValues(alpha: 0.08),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '🔊 Metin',
+                          style: TextStyle(
+                            color: primaryBlue,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        TextField(
+                          controller: _textController,
+                          maxLines: 8,
+                          decoration: InputDecoration(
+                            hintText:
+                                'Sese dönüştürmek istediğiniz metni buraya yazın veya dosya seçin...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.grey[300]!),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(
+                                color: primaryBlue,
+                                width: 2,
+                              ),
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey[50],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Kontrol butonları
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: _textController.text.isEmpty || isLoading
+                              ? null
+                              : _togglePlayback,
+                          icon: isLoading
+                              ? SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : Icon(isPlaying ? Icons.stop : Icons.play_arrow),
+                          label: Text(
+                            isLoading
+                                ? 'İşleniyor...'
+                                : (isPlaying ? 'Durdur' : 'Oynat'),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryBlue,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: _textController.text.isEmpty || isLoading
+                              ? null
+                              : _saveAsAudio,
+                          icon: isLoading
+                              ? SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : const Icon(Icons.save),
+                          label: Text(
+                            isLoading ? 'Kaydediliyor...' : 'Ses Olarak Kaydet',
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
+                  ),
+                  const SizedBox(height: 12),
 
-              // Metin girişi alanı
-              Container(
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryBlue.withValues(alpha: 0.08),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '🔊 Metin',
-                      style: TextStyle(
-                        color: primaryBlue,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    TextField(
-                      controller: _textController,
-                      maxLines: 8,
-                      decoration: InputDecoration(
-                        hintText:
-                            'Sese dönüştürmek istediğiniz metni buraya yazın veya dosya seçin...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.grey[300]!),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: primaryBlue, width: 2),
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey[50],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // Kontrol butonları
-              Row(
-                children: [
-                  Expanded(
+                  // Debug butonu
+                  SizedBox(
+                    width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: _textController.text.isEmpty || isLoading
-                          ? null
-                          : _togglePlayback,
-                      icon: isLoading
-                          ? SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.white,
-                                ),
-                              ),
-                            )
-                          : Icon(isPlaying ? Icons.stop : Icons.play_arrow),
-                      label: Text(
-                        isLoading
-                            ? 'İşleniyor...'
-                            : (isPlaying ? 'Durdur' : 'Oynat'),
-                      ),
+                      onPressed: _debugTTS,
+                      icon: const Icon(Icons.bug_report),
+                      label: const Text('TTS Debug'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryBlue,
+                        backgroundColor: Colors.orange,
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: _textController.text.isEmpty || isLoading
-                          ? null
-                          : _saveAsAudio,
-                      icon: isLoading
-                          ? SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.white,
-                                ),
-                              ),
-                            )
-                          : const Icon(Icons.save),
-                      label: Text(
-                        isLoading ? 'Kaydediliyor...' : 'Ses Olarak Kaydet',
+                  const SizedBox(height: 20),
+
+                  // Yüklenen Dosyalar
+                  if (uploadedFiles.isNotEmpty) ...[
+                    Container(
+                      padding: const EdgeInsets.all(18),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: primaryBlue.withValues(alpha: 0.08),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '📁 Yüklenen Dosyalar',
+                            style: TextStyle(
+                              color: primaryBlue,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          ...uploadedFiles.map((file) => _buildFileItem(file)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+
+                  // Hızlı örnekler
+                  Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: primaryBlue.withValues(alpha: 0.08),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
                         ),
-                      ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '📝 Hızlı Örnekler',
+                          style: TextStyle(
+                            color: primaryBlue,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            _buildExampleChip('Merhaba, nasılsınız?'),
+                            _buildExampleChip('Bugün hava çok güzel.'),
+                            _buildExampleChip(
+                              'Yapay zeka geleceğimizi şekillendiriyor.',
+                            ),
+                            _buildExampleChip(
+                              'Erişilebilirlik herkes için önemli.',
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
-
-              // Debug butonu
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: _debugTTS,
-                  icon: const Icon(Icons.bug_report),
-                  label: const Text('TTS Debug'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // Yüklenen Dosyalar
-              if (uploadedFiles.isNotEmpty) ...[
-                Container(
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: primaryBlue.withValues(alpha: 0.08),
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '📁 Yüklenen Dosyalar',
-                        style: TextStyle(
-                          color: primaryBlue,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      ...uploadedFiles.map((file) => _buildFileItem(file)),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-              ],
-
-              // Hızlı örnekler
-              Container(
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryBlue.withValues(alpha: 0.08),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '📝 Hızlı Örnekler',
-                      style: TextStyle(
-                        color: primaryBlue,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        _buildExampleChip('Merhaba, nasılsınız?'),
-                        _buildExampleChip('Bugün hava çok güzel.'),
-                        _buildExampleChip(
-                          'Yapay zeka geleceğimizi şekillendiriyor.',
-                        ),
-                        _buildExampleChip(
-                          'Erişilebilirlik herkes için önemli.',
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -401,7 +410,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         final file = result.files.single;
         String fileName = file.name;
 
-        print("Seçilen dosya: $fileName, Boyut: ${file.size} bytes");
+        debugPrint("Seçilen dosya: $fileName, Boyut: ${file.size} bytes");
 
         setState(() {
           selectedFileName = fileName;
@@ -415,7 +424,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
           text = await _ttsService.processUploadedFile(file.path!, fileName);
         } else if (file.bytes != null) {
           // Web platformu - dosya verilerini doğrudan işle
-          print("Web platformu tespit edildi, dosya verilerini işleme");
+          debugPrint("Web platformu tespit edildi, dosya verilerini işleme");
           text = await _webFileService.processFile(file.bytes!, fileName);
         }
 
@@ -425,28 +434,34 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
             _textController.text = text;
           });
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                '$fileName dosyası yüklendi ve metin çıkarıldı (${text.length} karakter)',
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  '$fileName dosyası yüklendi ve metin çıkarıldı (${text.length} karakter)',
+                ),
+                backgroundColor: Colors.green,
               ),
-              backgroundColor: Colors.green,
-            ),
-          );
+            );
+          }
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Dosyadan metin çıkarılamadı'),
-              backgroundColor: Colors.orange,
-            ),
-          );
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Dosyadan metin çıkarılamadı'),
+                backgroundColor: Colors.orange,
+              ),
+            );
+          }
         }
       }
     } catch (e) {
-      print("Dosya seçme hatası: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
-      );
+      debugPrint("Dosya seçme hatası: $e");
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
+        );
+      }
     } finally {
       setState(() {
         isLoading = false;
@@ -464,12 +479,14 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         setState(() {
           isPlaying = false;
         });
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Ses durduruldu'),
-            backgroundColor: Colors.orange,
-          ),
-        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Ses durduruldu'),
+              backgroundColor: Colors.orange,
+            ),
+          );
+        }
       } else {
         setState(() {
           isPlaying = true;
@@ -489,9 +506,11 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
       setState(() {
         isPlaying = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
+        );
+      }
     }
   }
 
@@ -512,16 +531,20 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         fileName,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Ses dosyası kaydedildi: $audioPath'),
-          backgroundColor: Colors.green,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Ses dosyası kaydedildi: $audioPath'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
+        );
+      }
     } finally {
       setState(() {
         isLoading = false;
@@ -536,9 +559,9 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
       setState(() {
         uploadedFiles = files;
       });
-      print("Yüklenen dosyalar: ${files.length}");
+      debugPrint("Yüklenen dosyalar: ${files.length}");
     } catch (e) {
-      print("Dosya listesi yükleme hatası: $e");
+      debugPrint("Dosya listesi yükleme hatası: $e");
     }
   }
 
@@ -546,19 +569,23 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
   Future<void> _debugTTS() async {
     try {
       await _ttsService.debugTTS();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Debug bilgileri konsola yazdırıldı'),
-          backgroundColor: Colors.blue,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Debug bilgileri konsola yazdırıldı'),
+            backgroundColor: Colors.blue,
+          ),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Debug hatası: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Debug hatası: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -614,17 +641,21 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
           selectedFileName = path.basename(filePath);
         });
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('${path.basename(filePath)} yüklendi'),
-            backgroundColor: Colors.green,
-          ),
-        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('${path.basename(filePath)} yüklendi'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
+        );
+      }
     } finally {
       setState(() {
         isLoading = false;
@@ -638,19 +669,23 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
       await _fileManager.deleteFile(filePath);
       await _loadUploadedFiles();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${path.basename(filePath)} silindi'),
-          backgroundColor: Colors.orange,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${path.basename(filePath)} silindi'),
+            backgroundColor: Colors.orange,
+          ),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Silme hatası: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Silme hatası: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 

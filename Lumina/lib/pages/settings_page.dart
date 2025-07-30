@@ -22,6 +22,47 @@ class _SettingsPageState extends State<SettingsPage> {
   double volume = 1.0;
   String ttsLanguage = "tr-TR";
 
+  // Gemini API Key ile ilgili tüm kodları kaldır
+
+  @override
+  void initState() {
+    super.initState();
+    // _loadGeminiApiKey(); // Removed as per edit hint
+  }
+
+  // Future<void> _loadGeminiApiKey() async { // Removed as per edit hint
+  //   final key = await GeminiApiService.getApiKey(); // Removed as per edit hint
+  //   setState(() { // Removed as per edit hint
+  //     _savedGeminiApiKey = key; // Removed as per edit hint
+  //   }); // Removed as per edit hint
+  // } // Removed as per edit hint
+
+  // Future<void> _saveGeminiApiKey() async { // Removed as per edit hint
+  //   if (_geminiApiKey.isEmpty) return; // Removed as per edit hint
+  //   await GeminiApiService.saveApiKey(_geminiApiKey); // Removed as per edit hint
+  //   setState(() { // Removed as per edit hint
+  //     _savedGeminiApiKey = _geminiApiKey; // Removed as per edit hint
+  //     _geminiApiKey = ''; // Removed as per edit hint
+  //   }); // Removed as per edit hint
+  //   if (mounted) { // Removed as per edit hint
+  //     ScaffoldMessenger.of(context).showSnackBar( // Removed as per edit hint
+  //       const SnackBar(content: Text('Gemini API Key kaydedildi!')), // Removed as per edit hint
+  //     ); // Removed as per edit hint
+  //   } // Removed as per edit hint
+  // } // Removed as per edit hint
+
+  // Future<void> _deleteGeminiApiKey() async { // Removed as per edit hint
+  //   await GeminiApiService.deleteApiKey(); // Removed as per edit hint
+  //   setState(() { // Removed as per edit hint
+  //     _savedGeminiApiKey = null; // Removed as per edit hint
+  //   }); // Removed as per edit hint
+  //   if (mounted) { // Removed as per edit hint
+  //     ScaffoldMessenger.of( // Removed as per edit hint
+  //       context, // Removed as per edit hint
+  //     ).showSnackBar(const SnackBar(content: Text('Gemini API Key silindi!'))); // Removed as per edit hint
+  //   } // Removed as per edit hint
+  // } // Removed as per edit hint
+
   @override
   Widget build(BuildContext context) {
     final Color primaryBlue = const Color(0xFF2563EB);

@@ -3,6 +3,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
+import 'dart:developer' as developer;
 
 class SpeechToTextService {
   final SpeechToText _speechToText = SpeechToText();
@@ -28,7 +29,10 @@ class SpeechToTextService {
 
       return false;
     } catch (e) {
-      print("Mikrofon izni kontrolü hatası: $e");
+      developer.log(
+        "Mikrofon izni kontrolü hatası: $e",
+        name: 'SpeechToTextService',
+      );
       return false;
     }
   }
@@ -41,16 +45,22 @@ class SpeechToTextService {
       // Mikrofon iznini kontrol et
       bool hasPermission = await _checkMicrophonePermission();
       if (!hasPermission) {
-        print("Mikrofon izni verilmedi");
+        developer.log("Mikrofon izni verilmedi", name: 'SpeechToTextService');
         throw Exception('Mikrofon izni gerekli');
       }
 
       bool available = await _speechToText.initialize(
         onError: (error) {
-          print("Speech to Text Error: ${error.errorMsg}");
+          developer.log(
+            "Speech to Text Error: [${error.errorMsg}",
+            name: 'SpeechToTextService',
+          );
         },
         onStatus: (status) {
-          print("Speech to Text Status: $status");
+          developer.log(
+            "Speech to Text Status: $status",
+            name: 'SpeechToTextService',
+          );
           if (status == 'done' || status == 'notListening') {
             _isListening = false;
           }
@@ -59,15 +69,24 @@ class SpeechToTextService {
 
       if (available) {
         _isInitialized = true;
-        print("Speech to Text başarıyla başlatıldı");
+        developer.log(
+          "Speech to Text başarıyla başlatıldı",
+          name: 'SpeechToTextService',
+        );
 
         // Desteklenen dilleri kontrol et
         await _checkAvailableLocales();
       } else {
-        print("Speech to Text kullanılamıyor");
+        developer.log(
+          "Speech to Text kullanılamıyor",
+          name: 'SpeechToTextService',
+        );
       }
     } catch (e) {
-      print("Speech to Text initialization error: $e");
+      developer.log(
+        "Speech to Text initialization error: $e",
+        name: 'SpeechToTextService',
+      );
     }
   }
 
@@ -88,16 +107,22 @@ class SpeechToTextService {
 
       if (turkishLocale != null) {
         _currentLocaleId = turkishLocale.localeId;
-        print("Türkçe dil desteği bulundu: $_currentLocaleId");
+        developer.log(
+          "Türkçe dil desteği bulundu: $_currentLocaleId",
+          name: 'SpeechToTextService',
+        );
       } else {
         // Türkçe yoksa varsayılan dili kullan
         if (locales.isNotEmpty) {
           _currentLocaleId = locales.first.localeId;
-          print("Varsayılan dil kullanılıyor: $_currentLocaleId");
+          developer.log(
+            "Varsayılan dil kullanılıyor: $_currentLocaleId",
+            name: 'SpeechToTextService',
+          );
         }
       }
     } catch (e) {
-      print("Dil kontrolü hatası: $e");
+      developer.log("Dil kontrolü hatası: $e", name: 'SpeechToTextService');
     }
   }
 
@@ -126,16 +151,13 @@ class SpeechToTextService {
           }
         },
         localeId: _currentLocaleId,
-        listenMode: ListenMode.confirmation,
-        partialResults: true,
-        onDevice: false,
         listenFor: const Duration(seconds: 30),
         pauseFor: const Duration(seconds: 3),
       );
 
-      print("Dinleme başladı");
+      developer.log("Dinleme başladı", name: 'SpeechToTextService');
     } catch (e) {
-      print("Dinleme başlatma hatası: $e");
+      developer.log("Dinleme başlatma hatası: $e", name: 'SpeechToTextService');
       _isListening = false;
       throw Exception('Dinleme başlatılamadı: $e');
     }
@@ -146,9 +168,9 @@ class SpeechToTextService {
     try {
       await _speechToText.stop();
       _isListening = false;
-      print("Dinleme durduruldu");
+      developer.log("Dinleme durduruldu", name: 'SpeechToTextService');
     } catch (e) {
-      print("Dinleme durdurma hatası: $e");
+      developer.log("Dinleme durdurma hatası: $e", name: 'SpeechToTextService');
     }
   }
 
@@ -166,7 +188,10 @@ class SpeechToTextService {
     try {
       return await _speechToText.locales();
     } catch (e) {
-      print("Desteklenen diller alma hatası: $e");
+      developer.log(
+        "Desteklenen diller alma hatası: $e",
+        name: 'SpeechToTextService',
+      );
       return [];
     }
   }
@@ -175,9 +200,9 @@ class SpeechToTextService {
   Future<void> setLocale(String localeId) async {
     try {
       _currentLocaleId = localeId;
-      print("Dil değiştirildi: $localeId");
+      developer.log("Dil değiştirildi: $localeId", name: 'SpeechToTextService');
     } catch (e) {
-      print("Dil değiştirme hatası: $e");
+      developer.log("Dil değiştirme hatası: $e", name: 'SpeechToTextService');
     }
   }
 
@@ -195,31 +220,43 @@ class SpeechToTextService {
 
       await file.writeAsString(text);
 
-      print("Tanınan metin kaydedildi: $filePath");
+      developer.log(
+        "Tanınan metin kaydedildi: $filePath",
+        name: 'SpeechToTextService',
+      );
       return filePath;
     } catch (e) {
-      print("Metin kaydetme hatası: $e");
+      developer.log("Metin kaydetme hatası: $e", name: 'SpeechToTextService');
       throw Exception('Metin kaydedilemedi: $e');
     }
   }
 
   // Debug fonksiyonu
   Future<void> debugSTT() async {
-    print("=== Speech to Text Debug Bilgileri ===");
-    print("Başlatıldı: $_isInitialized");
-    print("Dinleniyor: $_isListening");
-    print("Son kelimeler: $_lastWords");
-    print("Mevcut dil: $_currentLocaleId");
+    developer.log(
+      "=== Speech to Text Debug Bilgileri ===",
+      name: 'SpeechToTextService',
+    );
+    developer.log("Başlatıldı: $_isInitialized", name: 'SpeechToTextService');
+    developer.log("Dinleniyor: $_isListening", name: 'SpeechToTextService');
+    developer.log("Son kelimeler: $_lastWords", name: 'SpeechToTextService');
+    developer.log("Mevcut dil: $_currentLocaleId", name: 'SpeechToTextService');
 
     try {
       final locales = await _speechToText.locales();
-      print("Desteklenen diller: ${locales.length}");
+      developer.log(
+        "Desteklenen diller: ${locales.length}",
+        name: 'SpeechToTextService',
+      );
 
       for (var locale in locales.take(5)) {
-        print("  - ${locale.localeId}: ${locale.name}");
+        developer.log(
+          "  - ${locale.localeId}: ${locale.name}",
+          name: 'SpeechToTextService',
+        );
       }
     } catch (e) {
-      print("Debug hatası: $e");
+      developer.log("Debug hatası: $e", name: 'SpeechToTextService');
     }
   }
 

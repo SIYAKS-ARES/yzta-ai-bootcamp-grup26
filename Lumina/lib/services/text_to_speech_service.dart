@@ -6,6 +6,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'file_manager_service.dart';
+import 'dart:developer' as developer;
 
 class TextToSpeechService {
   final FlutterTts _flutterTts = FlutterTts();
@@ -23,17 +24,17 @@ class TextToSpeechService {
     try {
       // Event listener'ları ayarla
       _flutterTts.setStartHandler(() {
-        print("TTS başladı");
+        developer.log("TTS başladı", name: 'TextToSpeechService');
         _isPlaying = true;
       });
 
       _flutterTts.setCompletionHandler(() {
-        print("TTS tamamlandı");
+        developer.log("TTS tamamlandı", name: 'TextToSpeechService');
         _isPlaying = false;
       });
 
       _flutterTts.setErrorHandler((msg) {
-        print("TTS Error: $msg");
+        developer.log("TTS Error: $msg", name: 'TextToSpeechService');
         _isPlaying = false;
       });
 
@@ -51,13 +52,19 @@ class TextToSpeechService {
           await _flutterTts.setEngine("com.apple.ttsbundle.siri_female_tr-TR");
         }
       } catch (e) {
-        print("Engine ayarlama hatası (göz ardı edildi): $e");
+        developer.log(
+          "Engine ayarlama hatası (göz ardı edildi): $e",
+          name: 'TextToSpeechService',
+        );
       }
 
       _isInitialized = true;
-      print("TTS başarıyla başlatıldı");
+      developer.log("TTS başarıyla başlatıldı", name: 'TextToSpeechService');
     } catch (e) {
-      print("TTS initialization error: $e");
+      developer.log(
+        "TTS initialization error: $e",
+        name: 'TextToSpeechService',
+      );
     }
   }
 
@@ -77,7 +84,10 @@ class TextToSpeechService {
 
       return text.trim();
     } catch (e) {
-      print("PDF metin çıkarma hatası: $e");
+      developer.log(
+        "PDF metin çıkarma hatası: $e",
+        name: 'TextToSpeechService',
+      );
       throw Exception('PDF dosyasından metin çıkarılamadı: $e');
     }
   }
@@ -93,7 +103,7 @@ class TextToSpeechService {
       final String content = await file.readAsString();
       return content.trim();
     } catch (e) {
-      print("TXT dosya okuma hatası: $e");
+      developer.log("TXT dosya okuma hatası: $e", name: 'TextToSpeechService');
       throw Exception('TXT dosyası okunamadı: $e');
     }
   }
@@ -104,9 +114,15 @@ class TextToSpeechService {
       // Web platformu kontrolü
       if (sourcePath.startsWith('blob:') || sourcePath.contains('_Namespace')) {
         // Web platformunda doğrudan dosyadan metin çıkar
-        print("Web platformu tespit edildi, doğrudan dosya işleme");
+        developer.log(
+          "Web platformu tespit edildi, doğrudan dosya işleme",
+          name: 'TextToSpeechService',
+        );
         final String text = await extractTextFromFile(sourcePath);
-        print("Dosya işlendi (web): $fileName, Metin uzunluğu: ${text.length}");
+        developer.log(
+          "Dosya işlendi (web): $fileName, Metin uzunluğu: [${text.length}",
+          name: 'TextToSpeechService',
+        );
         return text;
       } else {
         // Mobil platformlarda dosyayı kopyala
@@ -115,13 +131,14 @@ class TextToSpeechService {
           fileName,
         );
         final String text = await extractTextFromFile(localPath);
-        print(
-          "Dosya işlendi (mobil): $localPath, Metin uzunluğu: ${text.length}",
+        developer.log(
+          "Dosya işlendi (mobil): $localPath, Metin uzunluğu: [${text.length}",
+          name: 'TextToSpeechService',
         );
         return text;
       }
     } catch (e) {
-      print("Dosya işleme hatası: $e");
+      developer.log("Dosya işleme hatası: $e", name: 'TextToSpeechService');
       throw Exception('Dosya işlenemedi: $e');
     }
   }
@@ -149,12 +166,13 @@ class TextToSpeechService {
         await stopSpeaking();
       }
 
-      print(
-        "Metin okunuyor: ${text.substring(0, text.length > 50 ? 50 : text.length)}...",
+      developer.log(
+        "Metin okunuyor: [${text.substring(0, text.length > 50 ? 50 : text.length)}...",
+        name: 'TextToSpeechService',
       );
       await _flutterTts.speak(text);
     } catch (e) {
-      print("Metin okuma hatası: $e");
+      developer.log("Metin okuma hatası: $e", name: 'TextToSpeechService');
       throw Exception('Metin okunamadı: $e');
     }
   }
@@ -177,7 +195,10 @@ class TextToSpeechService {
 
       return audioPath;
     } catch (e) {
-      print("Ses dosyası kaydetme hatası: $e");
+      developer.log(
+        "Ses dosyası kaydetme hatası: $e",
+        name: 'TextToSpeechService',
+      );
       throw Exception('Ses dosyası kaydedilemedi: $e');
     }
   }
@@ -193,7 +214,10 @@ class TextToSpeechService {
       await _audioPlayer.play(DeviceFileSource(audioPath));
       _isPlaying = true;
     } catch (e) {
-      print("Ses dosyası oynatma hatası: $e");
+      developer.log(
+        "Ses dosyası oynatma hatası: $e",
+        name: 'TextToSpeechService',
+      );
       throw Exception('Ses dosyası oynatılamadı: $e');
     }
   }
@@ -206,7 +230,7 @@ class TextToSpeechService {
       _isPlaying = false;
       _currentAudioPath = null;
     } catch (e) {
-      print("Durdurma hatası: $e");
+      developer.log("Durdurma hatası: $e", name: 'TextToSpeechService');
     }
   }
 
@@ -229,7 +253,7 @@ class TextToSpeechService {
           )
           .toList();
     } catch (e) {
-      print("Dil listesi alma hatası: $e");
+      developer.log("Dil listesi alma hatası: $e", name: 'TextToSpeechService');
       return [];
     }
   }
@@ -239,7 +263,7 @@ class TextToSpeechService {
     try {
       await _flutterTts.setLanguage(languageCode);
     } catch (e) {
-      print("Dil değiştirme hatası: $e");
+      developer.log("Dil değiştirme hatası: $e", name: 'TextToSpeechService');
     }
   }
 
@@ -248,7 +272,10 @@ class TextToSpeechService {
     try {
       await _flutterTts.setSpeechRate(rate);
     } catch (e) {
-      print("Konuşma hızı ayarlama hatası: $e");
+      developer.log(
+        "Konuşma hızı ayarlama hatası: $e",
+        name: 'TextToSpeechService',
+      );
     }
   }
 
@@ -257,29 +284,41 @@ class TextToSpeechService {
     try {
       await _flutterTts.setVolume(volume);
     } catch (e) {
-      print("Ses seviyesi ayarlama hatası: $e");
+      developer.log(
+        "Ses seviyesi ayarlama hatası: $e",
+        name: 'TextToSpeechService',
+      );
     }
   }
 
   // Debug fonksiyonu
   Future<void> debugTTS() async {
-    print("=== TTS Debug Bilgileri ===");
-    print("Başlatıldı: $_isInitialized");
-    print("Oynatılıyor: $_isPlaying");
-    print("Mevcut ses dosyası: $_currentAudioPath");
+    developer.log("=== TTS Debug Bilgileri ===", name: 'TextToSpeechService');
+    developer.log("Başlatıldı: $_isInitialized", name: 'TextToSpeechService');
+    developer.log("Oynatılıyor: $_isPlaying", name: 'TextToSpeechService');
+    developer.log(
+      "Mevcut ses dosyası: $_currentAudioPath",
+      name: 'TextToSpeechService',
+    );
 
     try {
       final List<dynamic> languages = await _flutterTts.getLanguages;
-      print("Desteklenen diller: ${languages.length}");
+      developer.log(
+        "Desteklenen diller: ${languages.length}",
+        name: 'TextToSpeechService',
+      );
 
       final List<dynamic> engines = await _flutterTts.getEngines;
-      print("Mevcut engine'ler: ${engines.length}");
+      developer.log(
+        "Mevcut engine'ler: ${engines.length}",
+        name: 'TextToSpeechService',
+      );
 
       // Test metni oku
-      print("Test metni okunuyor...");
+      developer.log("Test metni okunuyor...", name: 'TextToSpeechService');
       await _flutterTts.speak("Test");
     } catch (e) {
-      print("Debug hatası: $e");
+      developer.log("Debug hatası: $e", name: 'TextToSpeechService');
     }
   }
 

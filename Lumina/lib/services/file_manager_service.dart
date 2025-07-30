@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:flutter/foundation.dart';
 
 class FileManagerService {
   static final FileManagerService _instance = FileManagerService._internal();
@@ -26,9 +26,9 @@ class FileManagerService {
         await _filesDir!.create(recursive: true);
       }
 
-      print("Dosya yöneticisi başlatıldı: ${_filesDir!.path}");
+      debugPrint("Dosya yöneticisi başlatıldı: ${_filesDir!.path}");
     } catch (e) {
-      print("Dosya yöneticisi başlatma hatası: $e");
+      debugPrint("Dosya yöneticisi başlatma hatası: $e");
     }
   }
 
@@ -56,7 +56,9 @@ class FileManagerService {
         // Web platformunda dosya kopyalama çalışmazsa, içeriği okuyup yeni dosya oluştur
         if (e.toString().contains('_Namespace') ||
             e.toString().contains('Unsupported operation')) {
-          print("Web platformu tespit edildi, alternatif yöntem kullanılıyor");
+          debugPrint(
+            "Web platformu tespit edildi, alternatif yöntem kullanılıyor",
+          );
           final Uint8List bytes = await sourceFile.readAsBytes();
           final File newFile = File(destinationPath);
           await newFile.writeAsBytes(bytes);
@@ -65,10 +67,10 @@ class FileManagerService {
         }
       }
 
-      print("Dosya kopyalandı: $destinationPath");
+      debugPrint("Dosya kopyalandı: $destinationPath");
       return destinationPath;
     } catch (e) {
-      print("Dosya kopyalama hatası: $e");
+      debugPrint("Dosya kopyalama hatası: $e");
       throw Exception('Dosya kopyalanamadı: $e');
     }
   }
@@ -93,7 +95,7 @@ class FileManagerService {
       }
       return [];
     } catch (e) {
-      print("Dosya listesi alma hatası: $e");
+      debugPrint("Dosya listesi alma hatası: $e");
       return [];
     }
   }
@@ -109,7 +111,7 @@ class FileManagerService {
       final String content = await file.readAsString();
       return content;
     } catch (e) {
-      print("Dosya okuma hatası: $e");
+      debugPrint("Dosya okuma hatası: $e");
       throw Exception('Dosya okunamadı: $e');
     }
   }
@@ -120,10 +122,10 @@ class FileManagerService {
       final File file = File(filePath);
       if (await file.exists()) {
         await file.delete();
-        print("Dosya silindi: $filePath");
+        debugPrint("Dosya silindi: $filePath");
       }
     } catch (e) {
-      print("Dosya silme hatası: $e");
+      debugPrint("Dosya silme hatası: $e");
     }
   }
 
@@ -136,7 +138,7 @@ class FileManagerService {
       }
       return 0;
     } catch (e) {
-      print("Dosya boyutu alma hatası: $e");
+      debugPrint("Dosya boyutu alma hatası: $e");
       return 0;
     }
   }

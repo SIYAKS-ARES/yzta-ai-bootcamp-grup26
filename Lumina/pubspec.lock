@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.7.0"
+  asn1lib:
+    dependency: transitive
+    description:
+      name: asn1lib
+      sha256: "9a8f69025044eb466b9b60ef3bc3ac99b4dc6c158ae9c56d25eeccf5bc56d024"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.5"
   async:
     dependency: transitive
     description:
@@ -37,58 +45,58 @@ packages:
     dependency: "direct main"
     description:
       name: audioplayers
-      sha256: c05c6147124cd63e725e861335a8b4d57300b80e6e92cea7c145c739223bbaef
+      sha256: e653f162ddfcec1da2040ba2d8553fff1662b5c2a5c636f4c21a3b11bee497de
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.1"
+    version: "6.5.0"
   audioplayers_android:
     dependency: transitive
     description:
       name: audioplayers_android
-      sha256: b00e1a0e11365d88576320ec2d8c192bc21f1afb6c0e5995d1c57ae63156acb5
+      sha256: "60a6728277228413a85755bd3ffd6fab98f6555608923813ce383b190a360605"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.3"
+    version: "5.2.1"
   audioplayers_darwin:
     dependency: transitive
     description:
       name: audioplayers_darwin
-      sha256: "3034e99a6df8d101da0f5082dcca0a2a99db62ab1d4ddb3277bed3f6f81afe08"
+      sha256: "0811d6924904ca13f9ef90d19081e4a87f7297ddc19fc3d31f60af1aaafee333"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.2"
+    version: "6.3.0"
   audioplayers_linux:
     dependency: transitive
     description:
       name: audioplayers_linux
-      sha256: "60787e73fefc4d2e0b9c02c69885402177e818e4e27ef087074cf27c02246c9e"
+      sha256: f75bce1ce864170ef5e6a2c6a61cd3339e1a17ce11e99a25bae4474ea491d001
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "4.2.1"
   audioplayers_platform_interface:
     dependency: transitive
     description:
       name: audioplayers_platform_interface
-      sha256: "365c547f1bb9e77d94dd1687903a668d8f7ac3409e48e6e6a3668a1ac2982adb"
+      sha256: "0e2f6a919ab56d0fec272e801abc07b26ae7f31980f912f24af4748763e5a656"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.0"
+    version: "7.1.1"
   audioplayers_web:
     dependency: transitive
     description:
       name: audioplayers_web
-      sha256: "22cd0173e54d92bd9b2c80b1204eb1eb159ece87475ab58c9788a70ec43c2a62"
+      sha256: "1c0f17cec68455556775f1e50ca85c40c05c714a99c5eb1d2d57cc17ba5522d7"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "5.1.1"
   audioplayers_windows:
     dependency: transitive
     description:
       name: audioplayers_windows
-      sha256: "9536812c9103563644ada2ef45ae523806b0745f7a78e89d1b5fb1951de90e1a"
+      sha256: "4048797865105b26d47628e6abb49231ea5de84884160229251f37dfcbe52fd7"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "4.2.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -178,7 +186,7 @@ packages:
     source: hosted
     version: "0.3.4+2"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: "1e445881f28f22d6140f181e07737b22f1e099a5e1ff94b0af2f9e4a463f4855"
@@ -193,6 +201,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  encrypt:
+    dependency: "direct main"
+    description:
+      name: encrypt
+      sha256: "62d9aa4670cc2a8798bab89b39fc71b6dfbacf615de6cf5001fb39f7e4a996a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -286,14 +302,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      name: flutter_dotenv
+      sha256: b7c7be5cd9f6ef7a78429cabd2774d3c4af50e79cb2b7593e3d5d763ef95c61b
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.1"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
       name: flutter_launcher_icons
-      sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
+      sha256: "10f13781741a2e3972126fae08393d3c4e01fa4cd7473326b94b72cf594195e7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.1"
+    version: "0.14.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -310,6 +334,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.28"
+  flutter_secure_storage:
+    dependency: "direct main"
+    description:
+      name: flutter_secure_storage
+      sha256: f7eceb0bc6f4fd0441e29d43cab9ac2a1c5ffd7ea7b64075136b718c46954874
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.0.0-beta.4"
+  flutter_secure_storage_darwin:
+    dependency: transitive
+    description:
+      name: flutter_secure_storage_darwin
+      sha256: f226f2a572bed96bc6542198ebaec227150786e34311d455a7e2d3d06d951845
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  flutter_secure_storage_linux:
+    dependency: transitive
+    description:
+      name: flutter_secure_storage_linux
+      sha256: "9b4b73127e857cd3117d43a70fa3dddadb6e0b253be62e6a6ab85caa0742182c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
+  flutter_secure_storage_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_secure_storage_platform_interface
+      sha256: "8ceea1223bee3c6ac1a22dabd8feefc550e4729b3675de4b5900f55afcb435d6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
+  flutter_secure_storage_web:
+    dependency: transitive
+    description:
+      name: flutter_secure_storage_web
+      sha256: "4c3f233e739545c6cb09286eeec1cc4744138372b985113acc904f7263bef517"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  flutter_secure_storage_windows:
+    dependency: transitive
+    description:
+      name: flutter_secure_storage_windows
+      sha256: ff32af20f70a8d0e59b2938fc92de35b54a74671041c814275afd80e27df9f21
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -319,10 +391,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_tts
-      sha256: cbb3fd43b946e62398560235469e6113e4fe26c40eab1b7cb5e7c417503fb3a8
+      sha256: bdf2fc4483e74450dc9fc6fe6a9b6a5663e108d4d0dad3324a22c8e26bf48af4
       url: "https://pub.dev"
     source: hosted
-    version: "3.8.5"
+    version: "4.2.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -568,6 +640,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "4be0097fcf3fd3e8449e53730c631200ebc7b88016acecab2b0da2f0149222fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.9.1"
   posix:
     dependency: transitive
     description:
@@ -641,18 +721,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "7666506885ebc8f62bb928ad4588a73e20caaff2b2cf2b2b56f67d98f4113525"
+      sha256: f999f11af9c54bd46ceb478273e06774d28723ffa2c622d2d6e7e84a358c23e0
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.9"
+    version: "30.1.42"
   syncfusion_flutter_pdf:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_pdf
-      sha256: a9e85bbfd574bb262733b33494240fda38bfeb58553537560ba4b3f54a31418b
+      sha256: "70ed9f830056bca1908bebe6f71e26e1a4935c648228ecad94edf6d1a1361bb1"
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.9"
+    version: "30.1.42"
   synchronized:
     dependency: transitive
     description:

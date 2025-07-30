@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async'; // Added for Timer
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class VideoToTranscriptPage extends StatefulWidget {
   const VideoToTranscriptPage({super.key});
@@ -327,17 +331,24 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage> {
     );
   }
 
-  void _selectVideo() {
-    // TODO: Video seçme işlevi
-    setState(() {
-      selectedVideoPath = 'sample_video.mp4';
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Video seçildi: $selectedVideoPath'),
-        backgroundColor: Colors.green,
-      ),
+  void _selectVideo() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+      allowMultiple: false,
     );
+    if (result != null && result.files.single.path != null) {
+      setState(() {
+        selectedVideoPath = result.files.single.path;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Video seçildi: $selectedVideoPath'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    }
   }
 
   void _processVideo() {
@@ -380,23 +391,44 @@ Lumina uygulaması ile erişilebilirlik artık daha kolay!
     });
   }
 
-  void _copyTranscript() {
-    // TODO: Panoya kopyala
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Transkript panoya kopyalandı'),
-        backgroundColor: Colors.green,
-      ),
-    );
+  void _copyTranscript() async {
+    if (transcriptText.isNotEmpty) {
+      await Clipboard.setData(ClipboardData(text: transcriptText));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Transkript panoya kopyalandı'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    }
   }
 
-  void _saveTranscript() {
-    // TODO: Dosya olarak kaydet
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Transkript dosyası kaydedildi'),
-        backgroundColor: Colors.blue,
-      ),
-    );
+  void _saveTranscript() async {
+    if (transcriptText.isNotEmpty) {
+      try {
+        final directory = await getApplicationDocumentsDirectory();
+        final file = File('${directory.path}/transkript.txt');
+        await file.writeAsString(transcriptText);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Transkript dosyası kaydedildi: ${file.path}'),
+              backgroundColor: Colors.blue,
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Kaydetme hatası: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
   }
 }
