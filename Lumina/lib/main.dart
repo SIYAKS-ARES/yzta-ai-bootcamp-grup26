@@ -10,7 +10,7 @@ import 'package:lumina/pages/settings_page.dart';
 import 'package:lumina/pages/debug_page.dart';
 import 'package:lumina/pages/file_explorer_page.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Firebase'i başlat
