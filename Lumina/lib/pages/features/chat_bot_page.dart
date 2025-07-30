@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../services/gemini_api_service.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class ChatMessage {
   final String text;
@@ -24,16 +27,27 @@ class _ChatBotPageState extends State<ChatBotPage> {
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
+  String? _geminiApiKey;
 
   @override
   void initState() {
     super.initState();
+    _loadGeminiApiKey();
     // Hoş geldin mesajı
-    _messages.add(ChatMessage(
-      text: 'Merhaba! Ben Lumina AI Asistan. Size nasıl yardımcı olabilirim?',
-      isUser: false,
-      timestamp: DateTime.now(),
-    ));
+    _messages.add(
+      ChatMessage(
+        text: 'Merhaba! Ben Lumina AI Asistan. Size nasıl yardımcı olabilirim?',
+        isUser: false,
+        timestamp: DateTime.now(),
+      ),
+    );
+  }
+
+  Future<void> _loadGeminiApiKey() async {
+    final key = GeminiApiService.getStaticApiKey();
+    setState(() {
+      _geminiApiKey = key;
+    });
   }
 
   @override
@@ -43,57 +57,84 @@ class _ChatBotPageState extends State<ChatBotPage> {
     super.dispose();
   }
 
-  void _sendMessage() {
+  void _sendMessage() async {
     if (_messageController.text.trim().isEmpty) return;
-
+    if (_geminiApiKey == null || _geminiApiKey!.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Lütfen önce Ayarlar sayfasından Gemini API Key ekleyin.',
+          ),
+        ),
+      );
+      return;
+    }
     final userMessage = ChatMessage(
       text: _messageController.text,
       isUser: true,
       timestamp: DateTime.now(),
     );
-
     setState(() {
       _messages.add(userMessage);
       _isTyping = true;
     });
-
     _messageController.clear();
     _scrollToBottom();
-
-    // Simüle edilmiş AI yanıtı
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        final aiResponse = _generateAIResponse(userMessage.text);
-        final aiMessage = ChatMessage(
-          text: aiResponse,
-          isUser: false,
-          timestamp: DateTime.now(),
-        );
-
-        setState(() {
-          _messages.add(aiMessage);
-          _isTyping = false;
-        });
-        _scrollToBottom();
-      }
+    // Gemini API'ye istek at
+    final aiResponse = await _fetchGeminiResponse(userMessage.text);
+    final aiMessage = ChatMessage(
+      text: aiResponse,
+      isUser: false,
+      timestamp: DateTime.now(),
+    );
+    setState(() {
+      _messages.add(aiMessage);
+      _isTyping = false;
     });
+    _scrollToBottom();
   }
 
-  String _generateAIResponse(String userMessage) {
-    final message = userMessage.toLowerCase();
-    
-    if (message.contains('merhaba') || message.contains('selam')) {
-      return 'Merhaba! Size nasıl yardımcı olabilirim?';
-    } else if (message.contains('nasılsın')) {
-      return 'Teşekkür ederim, ben iyiyim! Siz nasılsınız?';
-    } else if (message.contains('yardım') || message.contains('destek')) {
-      return 'Size şu konularda yardımcı olabilirim:\n• Metinden sese dönüştürme\n• Sesten metne çevirme\n• Video transkript\n• Genel sorularınız';
-    } else if (message.contains('teşekkür')) {
-      return 'Rica ederim! Başka bir konuda yardıma ihtiyacınız var mı?';
-    } else if (message.contains('görüşürüz') || message.contains('hoşça kal')) {
-      return 'Görüşmek üzere! İyi günler dilerim.';
+  Future<String> _fetchGeminiResponse(String prompt) async {
+    // Sistem promptu: Asistanın kendini tanıtması ve uygulamanın amacını vurgulaması
+    const systemPrompt = '''
+Senin adın Lumina AI Asistan. Sen, görme ve işitme engelli öğrencilerin dijital ders materyallerine engelsiz erişimini sağlamak için geliştirilen, yapay zeka destekli bir eğitim ve erişilebilirlik platformunun akıllı asistanısın. 
+
+Platformun temel amacı, eğitimde fırsat eşitliğini teknolojiyle desteklemek ve öğrenme sürecindeki tüm bariyerleri ortadan kaldırmaktır. PDF, ses ve video gibi statik içerikleri, her öğrencinin engel durumundan bağımsız olarak tam ve eşit şekilde faydalanabileceği dinamik, etkileşimli ve erişilebilir formatlara dönüştürürsün.
+
+Senin önceliklerin:
+- Kullanıcıya her zaman sıcak, destekleyici ve kapsayıcı bir dil ile yardımcı olmak,
+- Erişilebilirlik ve eğitim odaklı çözümler sunmak,
+- Görme ve işitme engelli bireylerin ihtiyaçlarını ön planda tutmak,
+- Platformun Text-to-Speech, Speech-to-Text, çoklu dil desteği, video transkripsiyon, OCR, sesli açıklama, öğretmen admin profili ve gamification gibi özelliklerini gerektiğinde tanıtmak ve açıklamak,
+- WCAG 2.1 AA standartlarına uygun erişilebilirlik konusunda rehberlik etmek,
+- Eğitimde kapsayıcılığı ve fırsat eşitliğini vurgulamak,
+- Platformun misyonunu ve vizyonunu gerektiğinde özetlemek.
+
+Kullanıcıdan gelen her soruya, Lumina AI Asistan olarak, yukarıdaki değerleri ve platformun amacını göz önünde bulundurarak yanıt ver. Gerektiğinde platformun özelliklerini ve erişilebilirlik avantajlarını örneklerle açıkla. 
+''';
+    final fullPrompt = '$systemPrompt\nKullanıcı: $prompt';
+    final url = Uri.parse(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$_geminiApiKey',
+    );
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'contents': [
+          {
+            'parts': [
+              {'text': fullPrompt},
+            ],
+          },
+        ],
+      }),
+    );
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final text = data['candidates']?[0]?['content']?['parts']?[0]?['text'];
+      return text ?? 'Yanıt alınamadı.';
     } else {
-      return 'Bu konuda size yardımcı olmaya çalışacağım. Daha spesifik bir soru sorabilir misiniz?';
+      return 'API hatası:  [response.statusCode}';
     }
   }
 
@@ -126,11 +167,14 @@ class _ChatBotPageState extends State<ChatBotPage> {
             onPressed: () {
               setState(() {
                 _messages.clear();
-                _messages.add(ChatMessage(
-                  text: 'Merhaba! Ben Lumina AI Asistan. Size nasıl yardımcı olabilirim?',
-                  isUser: false,
-                  timestamp: DateTime.now(),
-                ));
+                _messages.add(
+                  ChatMessage(
+                    text:
+                        'Merhaba! Ben Lumina AI Asistan. Size nasıl yardımcı olabilirim?',
+                    isUser: false,
+                    timestamp: DateTime.now(),
+                  ),
+                );
               });
             },
           ),
@@ -239,12 +283,12 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
   Widget _buildMessage(ChatMessage message) {
     final Color primaryBlue = const Color(0xFF2563EB);
-    
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Row(
-        mainAxisAlignment: message.isUser 
-            ? MainAxisAlignment.end 
+        mainAxisAlignment: message.isUser
+            ? MainAxisAlignment.end
             : MainAxisAlignment.start,
         children: [
           if (!message.isUser) ...[
@@ -255,11 +299,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 color: primaryBlue,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.smart_toy,
-                color: Colors.white,
-                size: 20,
-              ),
+              child: const Icon(Icons.smart_toy, color: Colors.white, size: 20),
             ),
             const SizedBox(width: 8),
           ],
@@ -288,11 +328,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 color: Colors.grey[300],
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 20,
-              ),
+              child: const Icon(Icons.person, color: Colors.white, size: 20),
             ),
           ],
         ],
@@ -312,11 +348,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
               color: const Color(0xFF2563EB),
               shape: BoxShape.circle,
             ),
-            child: const Icon(
-              Icons.smart_toy,
-              color: Colors.white,
-              size: 20,
-            ),
+            child: const Icon(Icons.smart_toy, color: Colors.white, size: 20),
           ),
           const SizedBox(width: 8),
           Container(
@@ -327,11 +359,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildDot(0),
-                _buildDot(1),
-                _buildDot(2),
-              ],
+              children: [_buildDot(0), _buildDot(1), _buildDot(2)],
             ),
           ),
         ],
@@ -351,4 +379,4 @@ class _ChatBotPageState extends State<ChatBotPage> {
       ),
     );
   }
-} 
+}
