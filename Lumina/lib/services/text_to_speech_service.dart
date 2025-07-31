@@ -38,17 +38,48 @@ class TextToSpeechService {
         _isPlaying = false;
       });
 
-      // Türkçe dil ayarları
+      // Türkçe dil ayarları - iyileştirilmiş
       await _flutterTts.setLanguage("tr-TR");
-      await _flutterTts.setSpeechRate(0.5); // Konuşma hızı (0.1 - 1.0)
+      await _flutterTts.setSpeechRate(0.42); // Biraz daha hızlı (optimal)
       await _flutterTts.setVolume(1.0); // Ses seviyesi (0.0 - 1.0)
-      await _flutterTts.setPitch(1.0); // Ses tonu (0.5 - 2.0)
+      await _flutterTts.setPitch(0.88); // Biraz daha yüksek ton (daha doğal)
 
-      // Platform ayarları - daha güvenli yaklaşım
+      // Platform ayarları - iyileştirilmiş
       try {
         if (Platform.isAndroid) {
+          // Android için en iyi Türkçe ses motoru
           await _flutterTts.setEngine("com.google.android.tts");
+          // Türkçe ses seçimi - daha fazla alternatif
+          final List<Map<String, String>> turkishVoices = [
+            {"name": "tr-tr-x-ism-local", "locale": "tr-TR"},
+            {"name": "tr-TR", "locale": "tr-TR"},
+            {"name": "tr-tr-x-ism", "locale": "tr-TR"},
+            {"name": "tr-tr-x-ism-local", "locale": "tr-TR"},
+          ];
+
+          bool voiceSet = false;
+          for (final voice in turkishVoices) {
+            try {
+              await _flutterTts.setVoice(voice);
+              voiceSet = true;
+              developer.log(
+                "Türkçe ses ayarlandı: ${voice['name']}",
+                name: 'TextToSpeechService',
+              );
+              break;
+            } catch (e) {
+              continue;
+            }
+          }
+
+          if (!voiceSet) {
+            developer.log(
+              "Türkçe ses ayarlanamadı, varsayılan kullanılıyor",
+              name: 'TextToSpeechService',
+            );
+          }
         } else if (Platform.isIOS) {
+          // iOS için en iyi Türkçe ses
           await _flutterTts.setEngine("com.apple.ttsbundle.siri_female_tr-TR");
         }
       } catch (e) {
@@ -57,6 +88,9 @@ class TextToSpeechService {
           name: 'TextToSpeechService',
         );
       }
+
+      // Türkçe ses optimizasyonu
+      await optimizeForTurkish();
 
       _isInitialized = true;
       developer.log("TTS başarıyla başlatıldı", name: 'TextToSpeechService');
@@ -68,7 +102,7 @@ class TextToSpeechService {
     }
   }
 
-  // PDF dosyasından metin çıkarma
+  // PDF dosyasından metin çıkarma - geliştirilmiş
   Future<String> extractTextFromPdf(String filePath) async {
     try {
       final File file = File(filePath);
@@ -77,18 +111,105 @@ class TextToSpeechService {
       }
 
       final Uint8List bytes = await file.readAsBytes();
-      final PdfDocument document = PdfDocument(inputBytes: bytes);
-      final PdfTextExtractor extractor = PdfTextExtractor(document);
-      final String text = extractor.extractText();
-      document.dispose();
 
-      return text.trim();
+      // PDF boyut kontrolü
+      if (bytes.length > 50 * 1024 * 1024) {
+        throw Exception('PDF dosyası çok büyük (maksimum 50MB)');
+      }
+
+      // PDF başlık kontrolü - daha esnek
+      final header = String.fromCharCodes(bytes.take(8));
+      if (!header.contains('PDF')) {
+        throw Exception('Geçersiz PDF dosyası');
+      }
+
+      String text = '';
+
+      // İlk yöntem: Standart çıkarma
+      try {
+        final PdfDocument document = PdfDocument(inputBytes: bytes);
+
+        if (document.pages.count == 0) {
+          document.dispose();
+          throw Exception('PDF dosyası boş');
+        }
+
+        final PdfTextExtractor extractor = PdfTextExtractor(document);
+        text = extractor.extractText();
+        document.dispose();
+
+        if (text.trim().isNotEmpty) {
+          return text.trim();
+        }
+      } catch (e) {
+        developer.log(
+          "Standart PDF çıkarma başarısız: $e",
+          name: 'TextToSpeechService',
+        );
+      }
+
+      // İkinci yöntem: Sayfa sayfa çıkarma
+      try {
+        final PdfDocument document = PdfDocument(inputBytes: bytes);
+        text = '';
+
+        for (int i = 0; i < document.pages.count; i++) {
+          try {
+            final String pageText = PdfTextExtractor(
+              document,
+            ).extractText(startPageIndex: i, endPageIndex: i);
+            if (pageText.isNotEmpty) {
+              text += pageText + '\n';
+            }
+          } catch (pageError) {
+            developer.log(
+              "Sayfa $i çıkarılamadı: $pageError",
+              name: 'TextToSpeechService',
+            );
+            continue;
+          }
+        }
+
+        document.dispose();
+
+        if (text.trim().isNotEmpty) {
+          return text.trim();
+        }
+      } catch (e) {
+        developer.log(
+          "Sayfa sayfa çıkarma başarısız: $e",
+          name: 'TextToSpeechService',
+        );
+      }
+
+      // Hiçbir yöntem başarılı olmadı
+      throw Exception(
+        'PDF dosyasından metin çıkarılamadı. Dosya korumalı, bozuk veya görsel PDF olabilir.',
+      );
     } catch (e) {
       developer.log(
         "PDF metin çıkarma hatası: $e",
         name: 'TextToSpeechService',
       );
-      throw Exception('PDF dosyasından metin çıkarılamadı: $e');
+
+      // Daha kullanıcı dostu hata mesajları
+      if (e.toString().contains('Invalid cross reference table') ||
+          e.toString().contains('corrupted')) {
+        throw Exception(
+          'PDF dosyası bozuk. Lütfen farklı bir PDF dosyası deneyin.',
+        );
+      } else if (e.toString().contains('password') ||
+          e.toString().contains('encrypted')) {
+        throw Exception('PDF dosyası şifre korumalı. Lütfen şifreyi kaldırın.');
+      } else if (e.toString().contains('protected')) {
+        throw Exception(
+          'PDF dosyası korumalı. Lütfen farklı bir PDF dosyası deneyin.',
+        );
+      } else {
+        throw Exception(
+          'PDF dosyası işlenemedi. Lütfen farklı bir dosya deneyin.',
+        );
+      }
     }
   }
 
@@ -274,6 +395,45 @@ class TextToSpeechService {
     } catch (e) {
       developer.log(
         "Konuşma hızı ayarlama hatası: $e",
+        name: 'TextToSpeechService',
+      );
+    }
+  }
+
+  // Türkçe ses kalitesini optimize et
+  Future<void> optimizeForTurkish() async {
+    try {
+      await _flutterTts.setLanguage("tr-TR");
+      await _flutterTts.setSpeechRate(0.42); // Türkçe için optimal hız
+      await _flutterTts.setPitch(0.88); // Türkçe ses tonu
+      await _flutterTts.setVolume(1.0);
+
+      // Türkçe ses seçimi
+      if (Platform.isAndroid) {
+        try {
+          await _flutterTts.setVoice({
+            "name": "tr-tr-x-ism-local",
+            "locale": "tr-TR",
+          });
+        } catch (e) {
+          try {
+            await _flutterTts.setVoice({"name": "tr-TR", "locale": "tr-TR"});
+          } catch (e2) {
+            developer.log(
+              "Türkçe ses ayarlanamadı",
+              name: 'TextToSpeechService',
+            );
+          }
+        }
+      }
+
+      developer.log(
+        "Türkçe ses optimizasyonu tamamlandı",
+        name: 'TextToSpeechService',
+      );
+    } catch (e) {
+      developer.log(
+        "Türkçe optimizasyon hatası: $e",
         name: 'TextToSpeechService',
       );
     }

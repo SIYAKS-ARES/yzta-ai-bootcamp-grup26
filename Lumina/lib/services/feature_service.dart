@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/feature_card_model.dart';
 import '../pages/features/text_to_speech_page.dart';
+import '../pages/features/advanced_tts_page.dart';
 import '../pages/features/speech_to_text_page.dart';
 import '../pages/features/chat_bot_page.dart';
 import '../pages/features/video_to_transcript_page.dart';
@@ -19,6 +20,20 @@ class FeatureService {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const TextToSpeechPage()),
+          );
+        },
+      ),
+      FeatureCardModel(
+        id: 'advanced_tts',
+        icon: '🚀',
+        title: 'Gelişmiş TTS',
+        description:
+            'Cihaz ve bulut TTS seçenekleri.\nYüksek kaliteli ses sentezi.',
+        buttonText: 'Başla',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AdvancedTTSPage()),
           );
         },
       ),
@@ -85,6 +100,22 @@ class FeatureService {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const TextToSpeechPage(),
+                ),
+              );
+            },
+          ),
+          FeatureCardModel(
+            id: 'advanced_tts',
+            icon: '🚀',
+            title: 'Gelişmiş TTS',
+            description:
+                'Cihaz ve bulut TTS seçenekleri ile yüksek kaliteli ses.',
+            buttonText: 'Başla',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AdvancedTTSPage(),
                 ),
               );
             },

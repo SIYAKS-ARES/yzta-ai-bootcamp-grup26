@@ -222,7 +222,8 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
                     children: [
                       Expanded(
                         child: ElevatedButton.icon(
-                          onPressed: _textController.text.isEmpty || isLoading
+                          onPressed:
+                              _textController.text.trim().isEmpty || isLoading
                               ? null
                               : _togglePlayback,
                           icon: isLoading
@@ -255,7 +256,8 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
                       const SizedBox(width: 12),
                       Expanded(
                         child: ElevatedButton.icon(
-                          onPressed: _textController.text.isEmpty || isLoading
+                          onPressed:
+                              _textController.text.trim().isEmpty || isLoading
                               ? null
                               : _saveAsAudio,
                           icon: isLoading
@@ -471,7 +473,18 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
 
   // Metni oynatma/durdurma fonksiyonu
   Future<void> _togglePlayback() async {
-    if (_textController.text.isEmpty) return;
+    final text = _textController.text.trim();
+    if (text.isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Lütfen okunacak metin girin'),
+            backgroundColor: Colors.orange,
+          ),
+        );
+      }
+      return;
+    }
 
     try {
       if (isPlaying) {
@@ -491,7 +504,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         setState(() {
           isPlaying = true;
         });
-        await _ttsService.speakText(_textController.text);
+        await _ttsService.speakText(text);
 
         // Kısa bir süre sonra durumu kontrol et
         Future.delayed(const Duration(milliseconds: 500), () {

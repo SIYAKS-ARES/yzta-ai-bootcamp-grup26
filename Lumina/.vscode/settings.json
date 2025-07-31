@@ -4,5 +4,6 @@
     "vs-kubernetes.kubeconfig": "./.kubeconfig",
     "vs-kubernetes.known-kubeconfigs": [
         "./.kubeconfig"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 } 
