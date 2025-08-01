@@ -46,3 +46,8 @@ app.*.map.json
 
 # Ziplenmiş proje dosyaları
 Lumina-ziplenip-atilmis-hali/
+
+# API anahtarları (güvenlik için)
+lib/services/api_keys.dart
+
+/lib/services/gemini_api_service.dart

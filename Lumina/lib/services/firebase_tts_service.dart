@@ -24,7 +24,15 @@ class FirebaseTTSService {
     required String userId,
   }) async {
     try {
-      developer.log('Dosya yükleme başlatılıyor: ${file.path}', name: 'FirebaseTTSService');
+      developer.log(
+        'Dosya yükleme başlatılıyor: ${file.path}',
+        name: 'FirebaseTTSService',
+      );
+
+      // Dosya varlığını kontrol et
+      if (!await file.exists()) {
+        throw Exception('Dosya bulunamadı');
+      }
 
       // Task ID oluştur
       final taskId = _generateTaskId();
@@ -37,32 +45,68 @@ class FirebaseTTSService {
       }
 
       // Firestore'da task dokümanı oluştur
-      await _firestore.collection(_tasksCollection).doc(taskId).set({
-        'id': taskId,
-        'userId': userId,
-        'fileName': fileName,
-        'fileExtension': fileExtension,
-        'status': 'pending',
-        'createdAt': FieldValue.serverTimestamp(),
-        'updatedAt': FieldValue.serverTimestamp(),
-      });
+      try {
+        await _firestore.collection(_tasksCollection).doc(taskId).set({
+          'id': taskId,
+          'userId': userId,
+          'fileName': fileName,
+          'fileExtension': fileExtension,
+          'status': 'pending',
+          'createdAt': FieldValue.serverTimestamp(),
+          'updatedAt': FieldValue.serverTimestamp(),
+        });
+      } catch (firestoreError) {
+        developer.log(
+          'Firestore hatası: $firestoreError',
+          name: 'FirebaseTTSService',
+        );
+        throw Exception('Veritabanı hatası: $firestoreError');
+      }
 
       // Storage'a dosya yükle
-      final storageRef = _storage.ref().child('uploads/$userId/$taskId.$fileExtension');
-      final uploadTask = storageRef.putFile(file);
+      try {
+        final storageRef = _storage.ref().child(
+          'uploads/$userId/$taskId.$fileExtension',
+        );
+        final uploadTask = storageRef.putFile(file);
 
-      // Upload progress'i dinle
-      uploadTask.snapshotEvents.listen((snapshot) {
-        final progress = snapshot.bytesTransferred / snapshot.totalBytes;
-        developer.log('Upload progress: ${(progress * 100).toStringAsFixed(1)}%', name: 'FirebaseTTSService');
-      });
+        // Upload progress'i dinle
+        uploadTask.snapshotEvents.listen((snapshot) {
+          final progress = snapshot.bytesTransferred / snapshot.totalBytes;
+          developer.log(
+            'Upload progress: ${(progress * 100).toStringAsFixed(1)}%',
+            name: 'FirebaseTTSService',
+          );
+        });
 
-      // Upload'ı bekle
-      await uploadTask;
+        // Upload'ı bekle
+        await uploadTask;
+      } catch (storageError) {
+        developer.log(
+          'Storage hatası: $storageError',
+          name: 'FirebaseTTSService',
+        );
+        // Firestore'daki task'ı güncelle
+        try {
+          await _firestore.collection(_tasksCollection).doc(taskId).update({
+            'status': 'failed',
+            'errorMessage': 'Dosya yükleme hatası: $storageError',
+            'updatedAt': FieldValue.serverTimestamp(),
+          });
+        } catch (updateError) {
+          developer.log(
+            'Task güncelleme hatası: $updateError',
+            name: 'FirebaseTTSService',
+          );
+        }
+        throw Exception('Dosya yükleme hatası: $storageError');
+      }
 
-      developer.log('Dosya başarıyla yüklendi, TTS işlemi başlatılıyor', name: 'FirebaseTTSService');
+      developer.log(
+        'Dosya başarıyla yüklendi, TTS işlemi başlatılıyor',
+        name: 'FirebaseTTSService',
+      );
       return taskId;
-
     } catch (e) {
       developer.log('Dosya yükleme hatası: $e', name: 'FirebaseTTSService');
       throw Exception('Dosya yüklenemedi: $e');
@@ -85,7 +129,10 @@ class FirebaseTTSService {
         .where('userId', isEqualTo: userId)
         .orderBy('createdAt', descending: true)
         .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) => Task.fromFirestore(doc)).toList());
+        .map(
+          (snapshot) =>
+              snapshot.docs.map((doc) => Task.fromFirestore(doc)).toList(),
+        );
   }
 
   // Ses dosyasını oynat
@@ -100,7 +147,10 @@ class FirebaseTTSService {
       await _audioPlayer.play();
       _isPlaying = true;
 
-      developer.log('Ses dosyası oynatılıyor: $audioUrl', name: 'FirebaseTTSService');
+      developer.log(
+        'Ses dosyası oynatılıyor: $audioUrl',
+        name: 'FirebaseTTSService',
+      );
     } catch (e) {
       developer.log('Ses oynatma hatası: $e', name: 'FirebaseTTSService');
       throw Exception('Ses oynatılamadı: $e');
@@ -143,7 +193,10 @@ class FirebaseTTSService {
     try {
       await _audioPlayer.seek(position);
     } catch (e) {
-      developer.log('Ses pozisyon ayarlama hatası: $e', name: 'FirebaseTTSService');
+      developer.log(
+        'Ses pozisyon ayarlama hatası: $e',
+        name: 'FirebaseTTSService',
+      );
     }
   }
 
@@ -154,7 +207,10 @@ class FirebaseTTSService {
       await _firestore.collection(_tasksCollection).doc(taskId).delete();
 
       // Storage'dan dosyaları sil
-      final taskDoc = await _firestore.collection(_tasksCollection).doc(taskId).get();
+      final taskDoc = await _firestore
+          .collection(_tasksCollection)
+          .doc(taskId)
+          .get();
       if (taskDoc.exists) {
         final data = taskDoc.data()!;
         final userId = data['userId'] as String;
@@ -162,7 +218,9 @@ class FirebaseTTSService {
         final fileExtension = data['fileExtension'] as String;
 
         // Orijinal dosyayı sil
-        final fileRef = _storage.ref().child('uploads/$userId/$taskId.$fileExtension');
+        final fileRef = _storage.ref().child(
+          'uploads/$userId/$taskId.$fileExtension',
+        );
         await fileRef.delete();
 
         // Ses dosyasını sil (varsa)
@@ -170,7 +228,10 @@ class FirebaseTTSService {
         await audioRef.delete();
       }
 
-      developer.log('Task başarıyla silindi: $taskId', name: 'FirebaseTTSService');
+      developer.log(
+        'Task başarıyla silindi: $taskId',
+        name: 'FirebaseTTSService',
+      );
     } catch (e) {
       developer.log('Task silme hatası: $e', name: 'FirebaseTTSService');
       throw Exception('Task silinemedi: $e');
@@ -189,8 +250,8 @@ class FirebaseTTSService {
 
   // Task ID oluştur
   String _generateTaskId() {
-    return DateTime.now().millisecondsSinceEpoch.toString() + 
-           (1000 + (DateTime.now().microsecond % 9000)).toString();
+    return DateTime.now().millisecondsSinceEpoch.toString() +
+        (1000 + (DateTime.now().microsecond % 9000)).toString();
   }
 
   // Servisi temizle
@@ -287,4 +348,4 @@ class Task {
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
-} 
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/feature_card_model.dart';
 import '../pages/features/text_to_speech_page.dart';
 import '../pages/features/advanced_tts_page.dart';
+import '../pages/features/experimental_tts_page.dart';
 import '../pages/features/speech_to_text_page.dart';
 import '../pages/features/chat_bot_page.dart';
 import '../pages/features/video_to_transcript_page.dart';
@@ -34,6 +35,22 @@ class FeatureService {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const AdvancedTTSPage()),
+          );
+        },
+      ),
+      FeatureCardModel(
+        id: 'experimental_tts',
+        icon: '🧪',
+        title: 'Deneysel TTS',
+        description:
+            'AI tabanlı TTS seçenekleri.\nElevenLabs, OpenAI entegrasyonu.',
+        buttonText: 'Test Et',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ExperimentalTTSPage(),
+            ),
           );
         },
       ),
