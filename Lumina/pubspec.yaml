@@ -55,6 +55,10 @@ dependencies:
   flutter_secure_storage: ^10.0.0-beta.4
   crypto: ^3.0.3
   encrypt: ^5.0.1
+  # State management için
+  provider: ^6.1.2
+  # Local storage için
+  shared_preferences: ^2.2.3
 
 
 dev_dependencies:
