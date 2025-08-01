@@ -204,43 +204,41 @@ class _ProfilePageState extends State<ProfilePage> {
                     // Firebase Auth'dan hesabı sil
                     await user.delete();
 
-                    if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            languageService.currentLocale.languageCode == 'tr'
-                                ? "Hesabınız başarıyla silindi!"
-                                : languageService.currentLocale.languageCode ==
-                                      'en'
-                                ? "Your account has been successfully deleted!"
-                                : "Ihr Konto wurde erfolgreich gelöscht!",
-                          ),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-
-                      // Giriş sayfasına yönlendir
-                      Navigator.of(
-                        context,
-                      ).pushNamedAndRemoveUntil('/', (route) => false);
-                    }
-                  }
-                } catch (e) {
-                  if (mounted) {
+                    if (!mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
                           languageService.currentLocale.languageCode == 'tr'
-                              ? "Hesap silme hatası: $e"
+                              ? "Hesabınız başarıyla silindi!"
                               : languageService.currentLocale.languageCode ==
                                     'en'
-                              ? "Account deletion error: $e"
-                              : "Kontolöschungsfehler: $e",
+                              ? "Your account has been successfully deleted!"
+                              : "Ihr Konto wurde erfolgreich gelöscht!",
                         ),
-                        backgroundColor: Colors.red,
+                        backgroundColor: Colors.green,
                       ),
                     );
+
+                    // Giriş sayfasına yönlendir
+                    Navigator.of(
+                      context,
+                    ).pushNamedAndRemoveUntil('/', (route) => false);
                   }
+                } catch (e) {
+                  if (!mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        languageService.currentLocale.languageCode == 'tr'
+                            ? "Hesap silme hatası: $e"
+                            : languageService.currentLocale.languageCode ==
+                                  'en'
+                            ? "Account deletion error: $e"
+                            : "Kontolöschungsfehler: $e",
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
                 }
               },
               child: Text(
