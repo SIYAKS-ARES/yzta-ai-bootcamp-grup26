@@ -37,7 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
             .collection('users')
             .doc(user.uid)
             .get();
-        
+
         if (doc.exists) {
           final data = doc.data()!;
           setState(() {
@@ -50,7 +50,8 @@ class _ProfilePageState extends State<ProfilePage> {
         } else {
           // Eğer Firestore'da veri yoksa varsayılan değerler
           setState(() {
-            _nameController.text = user.displayName?.split(' ').first ?? 'Kullanıcı';
+            _nameController.text =
+                user.displayName?.split(' ').first ?? 'Kullanıcı';
             _surnameController.text = user.displayName?.split(' ').last ?? '';
             _emailController.text = user.email ?? '';
             _passwordController.text = "••••••••";
@@ -63,16 +64,21 @@ class _ProfilePageState extends State<ProfilePage> {
         });
       }
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
-      final languageService = Provider.of<LanguageService>(context, listen: false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${languageService.getText('load_error')}: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+        final languageService = Provider.of<LanguageService>(
+          context,
+          listen: false,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${languageService.getText('load_error')}: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -101,10 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         // Firestore'da kullanıcı bilgilerini güncelle
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid)
-            .set({
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
           'name': _nameController.text.trim(),
           'surname': _surnameController.text.trim(),
           'email': _emailController.text.trim(),
@@ -112,43 +115,56 @@ class _ProfilePageState extends State<ProfilePage> {
         }, SetOptions(merge: true));
 
         // Şifre değişikliği varsa
-        if (_passwordController.text != "••••••••" && 
+        if (_passwordController.text != "••••••••" &&
             _passwordController.text.isNotEmpty) {
           await user.updatePassword(_passwordController.text);
-          
+
           // Firestore'da şifreyi güncelle
           await FirebaseFirestore.instance
               .collection('users')
               .doc(user.uid)
-              .update({
-            'password': _passwordController.text,
-          });
+              .update({'password': _passwordController.text});
         }
 
-        final languageService = Provider.of<LanguageService>(context, listen: false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(languageService.getText('info_updated')),
-            backgroundColor: const Color(0xFF2563EB),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-        _toggleEdit();
+        if (mounted) {
+          final languageService = Provider.of<LanguageService>(
+            context,
+            listen: false,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(languageService.getText('info_updated')),
+              backgroundColor: const Color(0xFF2563EB),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              behavior: SnackBarBehavior.floating,
+            ),
+          );
+          _toggleEdit();
+        }
       }
     } catch (e) {
-      final languageService = Provider.of<LanguageService>(context, listen: false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${languageService.getText('update_error')}: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        final languageService = Provider.of<LanguageService>(
+          context,
+          listen: false,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${languageService.getText('update_error')}: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
   void _showDeleteAccountDialog() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -160,17 +176,18 @@ class _ProfilePageState extends State<ProfilePage> {
             languageService.getText('delete_account'),
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          content: Text(
-            languageService.getText('delete_account_confirm'),
-          ),
+          content: Text(languageService.getText('delete_account_confirm')),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(languageService.currentLocale.languageCode == 'tr' 
-                ? "Hayır"
-                : languageService.currentLocale.languageCode == 'en'
-                  ? "No"
-                  : "Nein", style: TextStyle(color: Colors.grey[600])),
+              child: Text(
+                languageService.currentLocale.languageCode == 'tr'
+                    ? "Hayır"
+                    : languageService.currentLocale.languageCode == 'en'
+                    ? "No"
+                    : "Nein",
+                style: TextStyle(color: Colors.grey[600]),
+              ),
             ),
             TextButton(
               onPressed: () async {
@@ -183,40 +200,55 @@ class _ProfilePageState extends State<ProfilePage> {
                         .collection('users')
                         .doc(user.uid)
                         .delete();
-                    
+
                     // Firebase Auth'dan hesabı sil
                     await user.delete();
-                    
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(languageService.currentLocale.languageCode == 'tr' 
-                          ? "Hesabınız başarıyla silindi!"
-                          : languageService.currentLocale.languageCode == 'en'
-                            ? "Your account has been successfully deleted!"
-                            : "Ihr Konto wurde erfolgreich gelöscht!"),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                    
-                    // Giriş sayfasına yönlendir
-                    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+
+                    if (mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Hesabınız başarıyla silindi!"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "Your account has been successfully deleted!"
+                                : "Ihr Konto wurde erfolgreich gelöscht!",
+                          ),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+
+                      // Giriş sayfasına yönlendir
+                      Navigator.of(
+                        context,
+                      ).pushNamedAndRemoveUntil('/', (route) => false);
+                    }
                   }
                 } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(languageService.currentLocale.languageCode == 'tr' 
-                        ? "Hesap silme hatası: $e"
-                        : languageService.currentLocale.languageCode == 'en'
-                          ? "Account deletion error: $e"
-                          : "Kontolöschungsfehler: $e"),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          languageService.currentLocale.languageCode == 'tr'
+                              ? "Hesap silme hatası: $e"
+                              : languageService.currentLocale.languageCode ==
+                                    'en'
+                              ? "Account deletion error: $e"
+                              : "Kontolöschungsfehler: $e",
+                        ),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
                 }
               },
               child: Text(
-                languageService.currentLocale.languageCode == 'tr' ? 'Evet' : 
-                languageService.currentLocale.languageCode == 'en' ? 'Yes' : 'Ja',
+                languageService.currentLocale.languageCode == 'tr'
+                    ? 'Evet'
+                    : languageService.currentLocale.languageCode == 'en'
+                    ? 'Yes'
+                    : 'Ja',
                 style: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
@@ -257,16 +289,11 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircularProgressIndicator(
-                  color: Colors.white,
-                ),
+                const CircularProgressIndicator(color: Colors.white),
                 const SizedBox(height: 16),
                 Text(
                   languageService.getText('loading'),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ],
             ),
@@ -449,9 +476,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    languageService.currentLocale.languageCode == 'tr' 
-                      ? "Hesap Yönetimi"
-                      : languageService.currentLocale.languageCode == 'en'
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? "Hesap Yönetimi"
+                        : languageService.currentLocale.languageCode == 'en'
                         ? "Account Management"
                         : "Kontoverwaltung",
                     style: TextStyle(
@@ -466,9 +493,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   _buildActionTile(
                     icon: Icons.delete_outline,
                     title: languageService.getText('delete_account'),
-                    subtitle: languageService.currentLocale.languageCode == 'tr' 
-                      ? "Tüm verileriniz kalıcı olarak silinir"
-                      : languageService.currentLocale.languageCode == 'en'
+                    subtitle: languageService.currentLocale.languageCode == 'tr'
+                        ? "Tüm verileriniz kalıcı olarak silinir"
+                        : languageService.currentLocale.languageCode == 'en'
                         ? "All your data will be permanently deleted"
                         : "Alle Ihre Daten werden dauerhaft gelöscht",
                     onTap: _showDeleteAccountDialog,
