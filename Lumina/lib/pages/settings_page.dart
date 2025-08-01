@@ -635,33 +635,37 @@ class _SettingsPageState extends State<SettingsPage> {
             .doc(user.uid)
             .update({'password': _newPasswordController.text});
 
-        Navigator.pop(context);
+        if (mounted) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                languageService.currentLocale.languageCode == 'tr'
+                    ? "Parola başarıyla değiştirildi!"
+                    : languageService.currentLocale.languageCode == 'en'
+                    ? "Password changed successfully!"
+                    : "Passwort erfolgreich geändert!",
+              ),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
               languageService.currentLocale.languageCode == 'tr'
-                  ? "Parola başarıyla değiştirildi!"
+                  ? "Parola değiştirme hatası: $e"
                   : languageService.currentLocale.languageCode == 'en'
-                  ? "Password changed successfully!"
-                  : "Passwort erfolgreich geändert!",
+                  ? "Password change error: $e"
+                  : "Passwortänderungsfehler: $e",
             ),
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.red,
           ),
         );
       }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            languageService.currentLocale.languageCode == 'tr'
-                ? "Parola değiştirme hatası: $e"
-                : languageService.currentLocale.languageCode == 'en'
-                ? "Password change error: $e"
-                : "Passwortänderungsfehler: $e",
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
     }
   }
 
@@ -702,9 +706,11 @@ class _SettingsPageState extends State<SettingsPage> {
             onPressed: () {
               Navigator.pop(context);
               FirebaseAuth.instance.signOut();
-              Navigator.of(
-                context,
-              ).pushNamedAndRemoveUntil('/', (route) => false);
+              if (mounted) {
+                Navigator.of(
+                  context,
+                ).pushNamedAndRemoveUntil('/', (route) => false);
+              }
             },
             child: Text(
               languageService.currentLocale.languageCode == 'tr'
