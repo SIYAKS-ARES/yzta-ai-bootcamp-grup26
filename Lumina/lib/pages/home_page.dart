@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'file_explorer_page.dart';
 import 'profile_page.dart';
 import 'settings_page.dart';
 import '../services/feature_service.dart';
+import '../services/language_service.dart';
 import '../widgets/feature_card_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     final Color primaryBlue = const Color(0xFF2563EB);
     final Color softBlue = const Color(0xFF60A5FA);
     final Color cardBG = Colors.white;
+    final languageService = Provider.of<LanguageService>(context);
 
     return Scaffold(
       body: Container(
@@ -61,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            "Hoş geldiniz, ${widget.userName}!",
+                            "${languageService.getText('welcome')}, ${widget.userName}!",
                             style: TextStyle(
                               color: primaryBlue,
                               fontSize: 20,
@@ -86,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             icon: const Icon(Icons.person, size: 20),
-                            label: const Text('Profil'),
+                            label: Text(languageService.getText('profile')),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.grey[100],
                               foregroundColor: primaryBlue,
@@ -110,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             icon: const Icon(Icons.settings, size: 20),
-                            label: const Text('Ayarlar'),
+                            label: Text(languageService.getText('settings')),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.grey[100],
                               foregroundColor: primaryBlue,
@@ -146,7 +149,11 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Nasıl yardımcı olabilirim?",
+                      languageService.currentLocale.languageCode == 'tr' 
+                        ? "Nasıl yardımcı olabilirim?"
+                        : languageService.currentLocale.languageCode == 'en'
+                          ? "How can I help you?"
+                          : "Wie kann ich Ihnen helfen?",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 17,
@@ -161,7 +168,11 @@ class _HomePageState extends State<HomePage> {
                           child: SelectButton(
                             selected: selectedType == StudentType.blind,
                             icon: "👁️",
-                            text: "Ben görme engelli bir öğrenciyim",
+                            text: languageService.currentLocale.languageCode == 'tr' 
+                              ? "Ben görme engelli bir öğrenciyim"
+                              : languageService.currentLocale.languageCode == 'en'
+                                ? "I am a visually impaired student"
+                                : "Ich bin ein sehbehinderter Student",
                             onTap: () {
                               setState(() {
                                 selectedType = StudentType.blind;
@@ -175,7 +186,11 @@ class _HomePageState extends State<HomePage> {
                           child: SelectButton(
                             selected: selectedType == StudentType.deaf,
                             icon: "🦻",
-                            text: "Ben işitme engelli bir öğrenciyim",
+                            text: languageService.currentLocale.languageCode == 'tr' 
+                              ? "Ben işitme engelli bir öğrenciyim"
+                              : languageService.currentLocale.languageCode == 'en'
+                                ? "I am a hearing impaired student"
+                                : "Ich bin ein hörgeschädigter Student",
                             onTap: () {
                               setState(() {
                                 selectedType = StudentType.deaf;
@@ -208,7 +223,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "🚀 Özellikler",
+                      languageService.currentLocale.languageCode == 'tr' 
+                        ? "🚀 Özellikler"
+                        : languageService.currentLocale.languageCode == 'en'
+                          ? "🚀 Features"
+                          : "🚀 Funktionen",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 17,
@@ -289,7 +308,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "⚡ Hızlı Erişim",
+                      languageService.currentLocale.languageCode == 'tr' 
+                        ? "⚡ Hızlı Erişim"
+                        : languageService.currentLocale.languageCode == 'en'
+                          ? "⚡ Quick Access"
+                          : "⚡ Schnellzugriff",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 17,
@@ -310,7 +333,11 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             icon: const Icon(Icons.folder_open, size: 20),
-                            label: const Text('Dosyalar'),
+                            label: Text(languageService.currentLocale.languageCode == 'tr' 
+                              ? 'Dosyalar'
+                              : languageService.currentLocale.languageCode == 'en'
+                                ? 'Files'
+                                : 'Dateien'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.grey[100],
                               foregroundColor: primaryBlue,
@@ -334,7 +361,11 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             icon: const Icon(Icons.person, size: 20),
-                            label: const Text('Profil'),
+                            label: Text(languageService.currentLocale.languageCode == 'tr' 
+                              ? 'Profil'
+                              : languageService.currentLocale.languageCode == 'en'
+                                ? 'Profile'
+                                : 'Profil'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.grey[100],
                               foregroundColor: primaryBlue,
@@ -358,7 +389,11 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             icon: const Icon(Icons.settings, size: 20),
-                            label: const Text('Ayarlar'),
+                            label: Text(languageService.currentLocale.languageCode == 'tr' 
+                              ? 'Ayarlar'
+                              : languageService.currentLocale.languageCode == 'en'
+                                ? 'Settings'
+                                : 'Einstellungen'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.grey[100],
                               foregroundColor: primaryBlue,
@@ -390,7 +425,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "📂 Son Yüklenen Dosyalarım",
+                      languageService.currentLocale.languageCode == 'tr' 
+                        ? "📂 Son Yüklenen Dosyalarım"
+                        : languageService.currentLocale.languageCode == 'en'
+                          ? "📂 My Recently Uploaded Files"
+                          : "📂 Meine kürzlich hochgeladenen Dateien",
                       style: TextStyle(
                         color: const Color(0xFF2563EB),
                         fontWeight: FontWeight.bold,
@@ -407,7 +446,11 @@ class _HomePageState extends State<HomePage> {
                           color: const Color(0xFF2563EB),
                         ),
                         title: Text(fileName),
-                        subtitle: Text('Dosya yüklendi'),
+                        subtitle: Text(languageService.currentLocale.languageCode == 'tr' 
+                          ? 'Dosya yüklendi'
+                          : languageService.currentLocale.languageCode == 'en'
+                            ? 'File uploaded'
+                            : 'Datei hochgeladen'),
                       ),
                     ),
                   ],

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import '../services/language_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,15 +20,62 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool _isPasswordVisible = false;
   bool _isEditing = false;
+  bool _isLoading = true;
+  String _originalPassword = "";
 
   @override
   void initState() {
     super.initState();
-    // Varsayılan kullanıcı bilgileri
-    _nameController.text = "Ahmet";
-    _surnameController.text = "Yılmaz";
-    _emailController.text = "ahmet.yilmaz@email.com";
-    _passwordController.text = "••••••••";
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Firestore'dan kullanıcı bilgilerini al
+        final doc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
+        
+        if (doc.exists) {
+          final data = doc.data()!;
+          setState(() {
+            _nameController.text = data['name'] ?? '';
+            _surnameController.text = data['surname'] ?? '';
+            _emailController.text = user.email ?? '';
+            _originalPassword = data['password'] ?? '';
+            _passwordController.text = "••••••••";
+            _isLoading = false;
+          });
+        } else {
+          // Eğer Firestore'da veri yoksa varsayılan değerler
+          setState(() {
+            _nameController.text = user.displayName?.split(' ').first ?? 'Kullanıcı';
+            _surnameController.text = user.displayName?.split(' ').last ?? '';
+            _emailController.text = user.email ?? '';
+            _passwordController.text = "••••••••";
+            _isLoading = false;
+          });
+        }
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      final languageService = Provider.of<LanguageService>(context, listen: false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${languageService.getText('load_error')}: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   @override
@@ -47,20 +98,59 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-  void _saveChanges() {
-    // Burada bilgileri kaydetme işlemi yapılır
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Bilgiler başarıyla güncellendi!'),
-        backgroundColor: const Color(0xFF2563EB),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-    _toggleEdit();
+  Future<void> _saveChanges() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Firestore'da kullanıcı bilgilerini güncelle
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .set({
+          'name': _nameController.text.trim(),
+          'surname': _surnameController.text.trim(),
+          'email': _emailController.text.trim(),
+          'updatedAt': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+
+        // Şifre değişikliği varsa
+        if (_passwordController.text != "••••••••" && 
+            _passwordController.text.isNotEmpty) {
+          await user.updatePassword(_passwordController.text);
+          
+          // Firestore'da şifreyi güncelle
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .update({
+            'password': _passwordController.text,
+          });
+        }
+
+        final languageService = Provider.of<LanguageService>(context, listen: false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(languageService.getText('info_updated')),
+            backgroundColor: const Color(0xFF2563EB),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+        _toggleEdit();
+      }
+    } catch (e) {
+      final languageService = Provider.of<LanguageService>(context, listen: false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${languageService.getText('update_error')}: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   void _showDeleteAccountDialog() {
+    final languageService = Provider.of<LanguageService>(context, listen: false);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -68,32 +158,68 @@ class _ProfilePageState extends State<ProfilePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: const Text(
-            'Hesabı Sil',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          title: Text(
+            languageService.getText('delete_account'),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          content: const Text(
-            'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+          content: Text(
+            languageService.getText('delete_account_confirm'),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('İptal', style: TextStyle(color: Colors.grey[600])),
+              child: Text(languageService.currentLocale.languageCode == 'tr' 
+                ? "Hayır"
+                : languageService.currentLocale.languageCode == 'en'
+                  ? "No"
+                  : "Nein", style: TextStyle(color: Colors.grey[600])),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.of(context).pop();
-                // Hesap silme işlemi
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Hesap silme işlemi başlatıldı'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
+                try {
+                  final user = FirebaseAuth.instance.currentUser;
+                  if (user != null) {
+                    // Firestore'dan kullanıcı verilerini sil
+                    await FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(user.uid)
+                        .delete();
+                    
+                    // Firebase Auth'dan hesabı sil
+                    await user.delete();
+                    
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(languageService.currentLocale.languageCode == 'tr' 
+                          ? "Hesabınız başarıyla silindi!"
+                          : languageService.currentLocale.languageCode == 'en'
+                            ? "Your account has been successfully deleted!"
+                            : "Ihr Konto wurde erfolgreich gelöscht!"),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                    
+                    // Giriş sayfasına yönlendir
+                    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                  }
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(languageService.currentLocale.languageCode == 'tr' 
+                        ? "Hesap silme hatası: $e"
+                        : languageService.currentLocale.languageCode == 'en'
+                          ? "Account deletion error: $e"
+                          : "Kontolöschungsfehler: $e"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               },
-              child: const Text(
-                'Sil',
-                style: TextStyle(
+              child: Text(
+                languageService.currentLocale.languageCode == 'tr' ? 'Evet' : 
+                languageService.currentLocale.languageCode == 'en' ? 'Yes' : 'Ja',
+                style: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
@@ -110,10 +236,50 @@ class _ProfilePageState extends State<ProfilePage> {
     final Color primaryBlue = const Color(0xFF2563EB);
     final Color softBlue = const Color(0xFF60A5FA);
     final Color cardBG = Colors.white;
+    final languageService = Provider.of<LanguageService>(context);
+
+    if (_isLoading) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(languageService.getText('profile')),
+          backgroundColor: primaryBlue,
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [primaryBlue, softBlue],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  languageService.getText('loading'),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profil'),
+        title: Text(languageService.getText('profile')),
         backgroundColor: primaryBlue,
         foregroundColor: Colors.white,
         elevation: 0,
@@ -150,7 +316,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text('👤', style: TextStyle(fontSize: 28)),
                   const SizedBox(width: 12),
                   Text(
-                    "Profil Bilgilerim",
+                    languageService.getText('profile_info'),
                     style: TextStyle(
                       color: primaryBlue,
                       fontSize: 20,
@@ -210,7 +376,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   // Ad
                   _buildInputField(
-                    label: "Ad",
+                    label: languageService.getText('name'),
                     controller: _nameController,
                     icon: Icons.person_outline,
                     enabled: _isEditing,
@@ -219,7 +385,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   // Soyad
                   _buildInputField(
-                    label: "Soyad",
+                    label: languageService.getText('surname'),
                     controller: _surnameController,
                     icon: Icons.person_outline,
                     enabled: _isEditing,
@@ -228,7 +394,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   // E-posta
                   _buildInputField(
-                    label: "E-posta",
+                    label: languageService.getText('email'),
                     controller: _emailController,
                     icon: Icons.email_outlined,
                     enabled: _isEditing,
@@ -253,9 +419,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           minimumSize: const Size(double.infinity, 50),
                         ),
-                        child: const Text(
-                          "Değişiklikleri Kaydet",
-                          style: TextStyle(
+                        child: Text(
+                          languageService.getText('save_changes'),
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
@@ -285,7 +451,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hesap Yönetimi",
+                    languageService.currentLocale.languageCode == 'tr' 
+                      ? "Hesap Yönetimi"
+                      : languageService.currentLocale.languageCode == 'en'
+                        ? "Account Management"
+                        : "Kontoverwaltung",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
@@ -297,8 +467,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   // Hesabı sil
                   _buildActionTile(
                     icon: Icons.delete_outline,
-                    title: "Hesabı Sil",
-                    subtitle: "Tüm verileriniz kalıcı olarak silinir",
+                    title: languageService.getText('delete_account'),
+                    subtitle: languageService.currentLocale.languageCode == 'tr' 
+                      ? "Tüm verileriniz kalıcı olarak silinir"
+                      : languageService.currentLocale.languageCode == 'en'
+                        ? "All your data will be permanently deleted"
+                        : "Alle Ihre Daten werden dauerhaft gelöscht",
                     onTap: _showDeleteAccountDialog,
                     isDestructive: true,
                   ),
@@ -363,11 +537,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildPasswordField() {
+    final languageService = Provider.of<LanguageService>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Şifre",
+          languageService.getText('password'),
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 14,

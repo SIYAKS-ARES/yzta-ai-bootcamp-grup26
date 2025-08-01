@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import '../services/language_service.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -209,6 +211,7 @@ class _AuthPageState extends State<AuthPage>
 
   @override
   Widget build(BuildContext context) {
+    final languageService = Provider.of<LanguageService>(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -269,6 +272,7 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildLogo() {
+    final languageService = Provider.of<LanguageService>(context, listen: false);
     return Column(
       children: [
         Container(
@@ -302,7 +306,11 @@ class _AuthPageState extends State<AuthPage>
         ),
         SizedBox(height: 8),
         Text(
-          'Herkes için erişilebilir',
+          languageService.currentLocale.languageCode == 'tr' 
+            ? 'Herkes için erişilebilir'
+            : languageService.currentLocale.languageCode == 'en'
+              ? 'Accessible for everyone'
+              : 'Zugänglich für alle',
           style: TextStyle(fontSize: 14, color: Color(0xFF475569)),
         ),
       ],
@@ -310,6 +318,7 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildTabs() {
+    final languageService = Provider.of<LanguageService>(context, listen: false);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -342,8 +351,16 @@ class _AuthPageState extends State<AuthPage>
         unselectedLabelColor: Color(0xFF64748b),
         labelStyle: TextStyle(fontWeight: FontWeight.w500),
         tabs: [
-          Tab(text: 'Giriş Yap'),
-          Tab(text: 'Kayıt Ol'),
+          Tab(text: languageService.currentLocale.languageCode == 'tr' 
+            ? 'Giriş Yap'
+            : languageService.currentLocale.languageCode == 'en'
+              ? 'Login'
+              : 'Anmelden'),
+          Tab(text: languageService.currentLocale.languageCode == 'tr' 
+            ? 'Kayıt Ol'
+            : languageService.currentLocale.languageCode == 'en'
+              ? 'Register'
+              : 'Registrieren'),
         ],
       ),
     );
@@ -392,20 +409,33 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildLoginForm() {
+    final languageService = Provider.of<LanguageService>(context, listen: false);
     return Form(
       key: _loginFormKey,
       child: Column(
         children: [
           _buildTextField(
             controller: _loginEmailController,
-            label: 'E-posta Adresi',
+            label: languageService.currentLocale.languageCode == 'tr' 
+              ? 'E-posta Adresi'
+              : languageService.currentLocale.languageCode == 'en'
+                ? 'Email Address'
+                : 'E-Mail-Adresse',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'E-posta adresi gerekli';
+                return languageService.currentLocale.languageCode == 'tr' 
+                  ? 'E-posta adresi gerekli'
+                  : languageService.currentLocale.languageCode == 'en'
+                    ? 'Email address is required'
+                    : 'E-Mail-Adresse ist erforderlich';
               }
               if (!value!.contains('@')) {
-                return 'Geçerli bir e-posta adresi girin';
+                return languageService.currentLocale.languageCode == 'tr' 
+                  ? 'Geçerli bir e-posta adresi girin'
+                  : languageService.currentLocale.languageCode == 'en'
+                    ? 'Please enter a valid email address'
+                    : 'Bitte geben Sie eine gültige E-Mail-Adresse ein';
               }
               return null;
             },
@@ -413,7 +443,11 @@ class _AuthPageState extends State<AuthPage>
           SizedBox(height: 16),
           _buildTextField(
             controller: _loginPasswordController,
-            label: 'Şifre',
+            label: languageService.currentLocale.languageCode == 'tr' 
+              ? 'Şifre'
+              : languageService.currentLocale.languageCode == 'en'
+                ? 'Password'
+                : 'Passwort',
             isPassword: true,
             isPasswordVisible: _loginPasswordVisible,
             onPasswordToggle: () {
@@ -423,7 +457,11 @@ class _AuthPageState extends State<AuthPage>
             },
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Şifre gerekli';
+                return languageService.currentLocale.languageCode == 'tr' 
+                  ? 'Şifre gerekli'
+                  : languageService.currentLocale.languageCode == 'en'
+                    ? 'Password is required'
+                    : 'Passwort ist erforderlich';
               }
               return null;
             },
@@ -436,10 +474,21 @@ class _AuthPageState extends State<AuthPage>
                 _rememberMe = value ?? false;
               });
             },
-            text: 'Beni hatırla',
+            text: languageService.currentLocale.languageCode == 'tr' 
+              ? 'Beni hatırla'
+              : languageService.currentLocale.languageCode == 'en'
+                ? 'Remember me'
+                : 'Angemeldet bleiben',
           ),
           SizedBox(height: 20),
-          _buildSubmitButton('Giriş Yap', _handleLogin),
+          _buildSubmitButton(
+            languageService.currentLocale.languageCode == 'tr' 
+              ? 'Giriş Yap'
+              : languageService.currentLocale.languageCode == 'en'
+                ? 'Login'
+                : 'Anmelden', 
+            _handleLogin
+          ),
           SizedBox(height: 20),
           _buildDivider(),
           SizedBox(height: 20),
@@ -452,16 +501,25 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildRegisterForm() {
+    final languageService = Provider.of<LanguageService>(context, listen: false);
     return Form(
       key: _registerFormKey,
       child: Column(
         children: [
           _buildTextField(
             controller: _registerNameController,
-            label: 'Ad Soyad',
+            label: languageService.currentLocale.languageCode == 'tr' 
+              ? 'Ad Soyad'
+              : languageService.currentLocale.languageCode == 'en'
+                ? 'Full Name'
+                : 'Vor- und Nachname',
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Ad soyad gerekli';
+                return languageService.currentLocale.languageCode == 'tr' 
+                  ? 'Ad soyad gerekli'
+                  : languageService.currentLocale.languageCode == 'en'
+                    ? 'Full name is required'
+                    : 'Vor- und Nachname ist erforderlich';
               }
               return null;
             },
