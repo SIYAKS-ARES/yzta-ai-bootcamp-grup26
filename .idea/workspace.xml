@@ -6,81 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dd9b2e5d-8301-4980-b556-7abb8ede948f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/yzta-ai-bootcamp-grup26.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yzta-ai-bootcamp-grup26.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/Lumina Background Removed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/Lumina Small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/Lumina.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/linkedin-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/logo-deneme-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/logo-deneme-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/logo-deneme-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GK &amp; SS/Icon/logo-deneme.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/project/PROJECT@v11_mod=5e5ab771412b1d7983e32d4a43b5ad70_hash=bfdfe7dc352907fc980b868725387e98plugins=1OJSG6M1FOV3XYQCBH7Z29RZ0FPR9XDE1-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=00378c79004ed37b399a5be702bdaf61-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=028e8e7d14cebd347d0e532edfdacdc9-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=0521b6f0dc2b535fb74ff3793d4ca3c3-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=07f255403b82de65cdbeeba5065f99b3-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=125228c62eb022dd629d826c3445f1b5-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=1a83810324d7a6448fe29a70a541dcc0-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=1cac5bef886d3104325d6dc92e72d0b9-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=1e4b3c814a29a80c0657fe25c44a16ca-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=1fd3fe400f26988a83741087a2337439-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=2c04b11182647bf500b92dc23009284e-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=2dfa71f55fa4705efc1b6423c43fc69a-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=31c6b7341e16f0d99dbdc009cbc1c8ab-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=38099cab2345edf4db1fdeb474ec46bc-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=4439e3ec4045077d728dc789c4999e11-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=4d69981ac388c573a856568bc9cf31b8-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=4f9729cdea0c6ca1298d7c98fdaa4a83-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=5bf6c92ba1179c9fbded943c07653c09-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=606e842780d7cf774e77bf4606a1530d-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=663b1f68d08dd503c3f7253615d01e34-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=674bbd1785689a745f15187e37818bfc-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=6758a8e61dae24e25e97848a6c54e789-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=67c23f6bfd04128984c16b444eab5201-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=69c0481c035bd5598084a4f572674d31-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=69e1d69a4aa683f2c3dc070a18fa9213-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=6a1f85242a55f513a5ebeefdd21a7614-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=6a54a60feb779c3c86a0fe5962a4ee4d-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=7051e499328dccc43b8ee582f3ee5ca4-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=71d2ae1e75af0c67fdb0c0554bca9c37-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=7489806da4f6bc17e955212b7b6dcc14-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=7aabcf618bdc3ee692c3280c4c97a1e3-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=8c64c50c953c78e989cd4bad1bfec1a1-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=8cf5bea56710c250cf31598dc635c40b-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=919b1f8aa9a4de1cd2263f34d3eaefc2-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=9c661608c6c89aa9f5fecbffb8ff175d-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=9ee8b2c89716956d1b115206f7497c84-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=9f026adb1cd5ca952f97f28d7f667813-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=acde5a8e43f695d606ba0dce6c0a0de9-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=ae8343df8c4710d98e14f97557f78d91-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=b668829e5224b3ac9cf1816f9d2ee80d-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=b8eaadd691fa8aa7a7e9bb96a5dd08cd-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=bf53255e9f7b6ec3ab70acd8d8455601-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=c0f834edb3ccbd9c8af3f10247b39eb8-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=c80c3267de22825dce0512d334b92cb1-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=cf753c6ab5c3af23ae53bf0bc51e17e3-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=dbd73e8c97ffce3b9622eef0fd6241ad-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=e04e17465d04b80d1f4c42e84d3ffcb4-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=e6d834d7b630e4fc728278f9a44430ed-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=ebaa026aed5aaecdc74147d4029c4414-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=ecf48bcdf34f0dd78a4c434ec591ec07-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=ed060b49c4fbdcda7ae295f5a814c2ff-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=ed89d795d844053fc0e2f2def939de57-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=f38c72300e17a1bd129340fe61a3e280-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=f51a5c18728fca52909218a1175c483f-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=fddcd38f28f48004282e199087ac2baa-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/Lumina/build/ios/XCBuildData/PIFCache/workspace/WORKSPACE@v11_hash=(null)_subobjects=85e4dff8e24ba3cc09e8f25b9e40cfed-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/lib/services/feature_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/services/feature_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/lib/services/text_to_speech_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/services/text_to_speech_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,25 +31,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Flutter.son.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/Desktop/son&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Flutter.son.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "io.flutter.reload.alreadyRun": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/pc/Desktop/son",
+    "settings.editor.selected.configurable": "dart.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="son" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/yzta-ai-bootcamp-grup26-main/Lumina/lib/main.dart" />

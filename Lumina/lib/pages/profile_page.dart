@@ -231,8 +231,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       content: Text(
                         languageService.currentLocale.languageCode == 'tr'
                             ? "Hesap silme hatası: $e"
-                            : languageService.currentLocale.languageCode ==
-                                  'en'
+                            : languageService.currentLocale.languageCode == 'en'
                             ? "Account deletion error: $e"
                             : "Kontolöschungsfehler: $e",
                       ),
