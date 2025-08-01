@@ -47,7 +47,31 @@ app.*.map.json
 # Ziplenmiş proje dosyaları
 Lumina-ziplenip-atilmis-hali/
 
-# API anahtarları (güvenlik için)
+# ⚠️ GÜVENLİK - API ANAHTARLARI VE HASSAS BİLGİLER ⚠️
+# Bu dosyalar asla GitHub'a yüklenmemelidir!
 lib/services/api_keys.dart
-
 /lib/services/gemini_api_service.dart
+
+# Firebase konfigürasyon dosyaları (güvenlik için)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+lib/firebase_options.dart
+
+# Environment dosyaları
+.env
+.env.local
+.env.production
+.env.development
+
+# Keystore dosyaları
+*.keystore
+*.jks
+key.properties
+
+# Log dosyaları
+*.log
+logs/
+
+# Geçici dosyalar
+*.tmp
+*.temp
