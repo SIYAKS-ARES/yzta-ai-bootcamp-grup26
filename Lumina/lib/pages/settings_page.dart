@@ -28,9 +28,11 @@ class _SettingsPageState extends State<SettingsPage> {
   String ttsLanguage = "tr-TR";
 
   // Parola değiştirme controllers
-  final TextEditingController _currentPasswordController = TextEditingController();
+  final TextEditingController _currentPasswordController =
+      TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   // Gemini API Key ile ilgili tüm kodları kaldır
 
@@ -49,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
             .collection('users')
             .doc(user.uid)
             .get();
-        
+
         if (doc.exists) {
           final data = doc.data()!;
           setState(() {
@@ -139,7 +141,10 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               title: Text(
                 _isLoading ? languageService.getText('loading') : _userName,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                ),
               ),
               subtitle: Text(_isLoading ? '' : _userEmail),
               trailing: IconButton(
@@ -163,7 +168,9 @@ class _SettingsPageState extends State<SettingsPage> {
             title: Text(languageService.getText('language')),
             trailing: DropdownButton<String>(
               value: languageService.supportedLocales.entries
-                  .firstWhere((entry) => entry.value == languageService.currentLocale)
+                  .firstWhere(
+                    (entry) => entry.value == languageService.currentLocale,
+                  )
                   .key,
               items: languageService.supportedLocales.keys.map((lang) {
                 return DropdownMenuItem<String>(value: lang, child: Text(lang));
@@ -194,11 +201,13 @@ class _SettingsPageState extends State<SettingsPage> {
           // Parola Değiştir
           ListTile(
             leading: const Icon(Icons.lock_reset),
-            title: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Parola Değiştir"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Change Password"
-                : "Passwort ändern"),
+            title: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Parola Değiştir"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "Change Password"
+                  : "Passwort ändern",
+            ),
             onTap: () {
               _showChangePasswordDialog();
             },
@@ -222,9 +231,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       Icon(Icons.volume_up, color: primaryBlue),
                       const SizedBox(width: 12),
                       Text(
-                        languageService.currentLocale.languageCode == 'tr' 
-                          ? "Ses Ayarları"
-                          : languageService.currentLocale.languageCode == 'en'
+                        languageService.currentLocale.languageCode == 'tr'
+                            ? "Ses Ayarları"
+                            : languageService.currentLocale.languageCode == 'en'
                             ? "Audio Settings"
                             : "Audioeinstellungen",
                         style: TextStyle(
@@ -242,9 +251,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        languageService.currentLocale.languageCode == 'tr' 
-                          ? "Konuşma Hızı: ${(speechRate * 100).round()}%"
-                          : languageService.currentLocale.languageCode == 'en'
+                        languageService.currentLocale.languageCode == 'tr'
+                            ? "Konuşma Hızı: ${(speechRate * 100).round()}%"
+                            : languageService.currentLocale.languageCode == 'en'
                             ? "Speech Rate: ${(speechRate * 100).round()}%"
                             : "Sprechgeschwindigkeit: ${(speechRate * 100).round()}%",
                         style: const TextStyle(fontWeight: FontWeight.w500),
@@ -273,9 +282,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        languageService.currentLocale.languageCode == 'tr' 
-                          ? "Ses Seviyesi: ${(volume * 100).round()}%"
-                          : languageService.currentLocale.languageCode == 'en'
+                        languageService.currentLocale.languageCode == 'tr'
+                            ? "Ses Seviyesi: ${(volume * 100).round()}%"
+                            : languageService.currentLocale.languageCode == 'en'
                             ? "Volume Level: ${(volume * 100).round()}%"
                             : "Lautstärke: ${(volume * 100).round()}%",
                         style: const TextStyle(fontWeight: FontWeight.w500),
@@ -304,19 +313,22 @@ class _SettingsPageState extends State<SettingsPage> {
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       onPressed: () async {
-                        final testText = languageService.currentLocale.languageCode == 'tr' 
-                          ? "Bu bir test sesidir. Ayarlarınız çalışıyor."
-                          : languageService.currentLocale.languageCode == 'en'
+                        final testText =
+                            languageService.currentLocale.languageCode == 'tr'
+                            ? "Bu bir test sesidir. Ayarlarınız çalışıyor."
+                            : languageService.currentLocale.languageCode == 'en'
                             ? "This is a test sound. Your settings are working."
                             : "Dies ist ein Testton. Ihre Einstellungen funktionieren.";
                         await _ttsService.speakText(testText);
                       },
                       icon: const Icon(Icons.play_arrow),
-                      label: Text(languageService.currentLocale.languageCode == 'tr' 
-                        ? "Ses Testi"
-                        : languageService.currentLocale.languageCode == 'en'
-                          ? "Audio Test"
-                          : "Audiotest"),
+                      label: Text(
+                        languageService.currentLocale.languageCode == 'tr'
+                            ? "Ses Testi"
+                            : languageService.currentLocale.languageCode == 'en'
+                            ? "Audio Test"
+                            : "Audiotest",
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryBlue,
                         foregroundColor: Colors.white,
@@ -344,61 +356,20 @@ class _SettingsPageState extends State<SettingsPage> {
                   builder: (context) => AlertDialog(
                     title: Text(languageService.getText('dark_theme')),
                     content: Text(
-                      val ? languageService.getText('dark_theme') + " seçildi." : "Açık tema seçildi.",
+                      val
+                          ? "${languageService.getText('dark_theme')} seçildi."
+                          : "Açık tema seçildi.",
                     ),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Text(languageService.getText('ok')),
                       ),
-                            ],
-      ),
-    );
-  }
-
-
-
-  void _showLogoutDialog() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(languageService.currentLocale.languageCode == 'tr' 
-          ? "Çıkış Yap"
-          : languageService.currentLocale.languageCode == 'en'
-            ? "Logout"
-            : "Abmelden"),
-        content: Text(languageService.currentLocale.languageCode == 'tr' 
-          ? "Çıkış yapmak istediğinizden emin misiniz?"
-          : languageService.currentLocale.languageCode == 'en'
-            ? "Are you sure you want to logout?"
-            : "Sind Sie sicher, dass Sie sich abmelden möchten?"),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Hayır"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "No"
-                : "Nein"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              FirebaseAuth.instance.signOut();
-              Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                    ],
+                  ),
+                );
+              }
             },
-            child: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Evet"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Yes"
-                : "Ja"),
-          ),
-        ],
-      ),
-    );
-  }
-},
             secondary: const Icon(Icons.brightness_6),
             title: Text(languageService.getText('dark_theme')),
           ),
@@ -413,11 +384,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: Text(languageService.getText('help_support')),
-                  content: Text(languageService.currentLocale.languageCode == 'tr' 
-                    ? "Her türlü soru için: destek@lumina.com"
-                    : languageService.currentLocale.languageCode == 'en'
-                      ? "For any questions: support@lumina.com"
-                      : "Bei Fragen: support@lumina.com"),
+                  content: Text(
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? "Her türlü soru için: destek@lumina.com"
+                        : languageService.currentLocale.languageCode == 'en'
+                        ? "For any questions: support@lumina.com"
+                        : "Bei Fragen: support@lumina.com",
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
@@ -440,9 +413,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 builder: (context) => AlertDialog(
                   title: Text(languageService.getText('privacy_policy')),
                   content: Text(
-                    languageService.currentLocale.languageCode == 'tr' 
-                      ? "Bu gizlilik politikası, Lumina uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklar. Kişisel bilgileriniz güvenli bir şekilde saklanır ve üçüncü taraflarla paylaşılmaz. Uygulama kullanımı sırasında toplanan veriler sadece hizmet kalitesini artırmak için kullanılır."
-                      : languageService.currentLocale.languageCode == 'en'
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? "Bu gizlilik politikası, Lumina uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklar. Kişisel bilgileriniz güvenli bir şekilde saklanır ve üçüncü taraflarla paylaşılmaz. Uygulama kullanımı sırasında toplanan veriler sadece hizmet kalitesini artırmak için kullanılır."
+                        : languageService.currentLocale.languageCode == 'en'
                         ? "This privacy policy explains how the Lumina app collects, uses, and protects user data. Your personal information is stored securely and is not shared with third parties. Data collected during app usage is only used to improve service quality."
                         : "Diese Datenschutzrichtlinie erklärt, wie die Lumina-App Benutzerdaten sammelt, verwendet und schützt. Ihre persönlichen Informationen werden sicher gespeichert und nicht an Dritte weitergegeben. Während der App-Nutzung gesammelte Daten werden nur zur Verbesserung der Servicequalität verwendet.",
                   ),
@@ -461,25 +434,31 @@ class _SettingsPageState extends State<SettingsPage> {
           // Güncellemeleri kontrol et
           ListTile(
             leading: const Icon(Icons.update),
-            title: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Güncellemeleri Kontrol Et"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Check for Updates"
-                : "Nach Updates suchen"),
+            title: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Güncellemeleri Kontrol Et"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "Check for Updates"
+                  : "Nach Updates suchen",
+            ),
             onTap: () {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: Text(languageService.currentLocale.languageCode == 'tr' 
-                    ? "Güncellemeler"
-                    : languageService.currentLocale.languageCode == 'en'
-                      ? "Updates"
-                      : "Updates"),
-                  content: Text(languageService.currentLocale.languageCode == 'tr' 
-                    ? "Uygulamanız güncel!"
-                    : languageService.currentLocale.languageCode == 'en'
-                      ? "Your app is up to date!"
-                      : "Ihre App ist auf dem neuesten Stand!"),
+                  title: Text(
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? "Güncellemeler"
+                        : languageService.currentLocale.languageCode == 'en'
+                        ? "Updates"
+                        : "Updates",
+                  ),
+                  content: Text(
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? "Uygulamanız güncel!"
+                        : languageService.currentLocale.languageCode == 'en'
+                        ? "Your app is up to date!"
+                        : "Ihre App ist auf dem neuesten Stand!",
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
@@ -497,7 +476,10 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: const Icon(Icons.logout, color: Colors.red),
             title: Text(
               languageService.getText('logout'),
-              style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             onTap: () {
               _showLogoutDialog();
@@ -518,19 +500,24 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showChangePasswordDialog() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     _currentPasswordController.clear();
     _newPasswordController.clear();
     _confirmPasswordController.clear();
-    
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(languageService.currentLocale.languageCode == 'tr' 
-          ? "Parola Değiştir"
-          : languageService.currentLocale.languageCode == 'en'
-            ? "Change Password"
-            : "Passwort ändern"),
+        title: Text(
+          languageService.currentLocale.languageCode == 'tr'
+              ? "Parola Değiştir"
+              : languageService.currentLocale.languageCode == 'en'
+              ? "Change Password"
+              : "Passwort ändern",
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -538,9 +525,9 @@ class _SettingsPageState extends State<SettingsPage> {
               controller: _currentPasswordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: languageService.currentLocale.languageCode == 'tr' 
-                  ? "Mevcut Parola"
-                  : languageService.currentLocale.languageCode == 'en'
+                labelText: languageService.currentLocale.languageCode == 'tr'
+                    ? "Mevcut Parola"
+                    : languageService.currentLocale.languageCode == 'en'
                     ? "Current Password"
                     : "Aktuelles Passwort",
                 border: const OutlineInputBorder(),
@@ -551,9 +538,9 @@ class _SettingsPageState extends State<SettingsPage> {
               controller: _newPasswordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: languageService.currentLocale.languageCode == 'tr' 
-                  ? "Yeni Parola"
-                  : languageService.currentLocale.languageCode == 'en'
+                labelText: languageService.currentLocale.languageCode == 'tr'
+                    ? "Yeni Parola"
+                    : languageService.currentLocale.languageCode == 'en'
                     ? "New Password"
                     : "Neues Passwort",
                 border: const OutlineInputBorder(),
@@ -564,9 +551,9 @@ class _SettingsPageState extends State<SettingsPage> {
               controller: _confirmPasswordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: languageService.currentLocale.languageCode == 'tr' 
-                  ? "Yeni Parolayı Onayla"
-                  : languageService.currentLocale.languageCode == 'en'
+                labelText: languageService.currentLocale.languageCode == 'tr'
+                    ? "Yeni Parolayı Onayla"
+                    : languageService.currentLocale.languageCode == 'en'
                     ? "Confirm New Password"
                     : "Neues Passwort bestätigen",
                 border: const OutlineInputBorder(),
@@ -581,11 +568,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           TextButton(
             onPressed: () => _changePassword(),
-            child: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Değiştir"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Change"
-                : "Ändern"),
+            child: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Değiştir"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "Change"
+                  : "Ändern",
+            ),
           ),
         ],
       ),
@@ -594,7 +583,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
   // TTS dilini güncelle
   void _updateTTSLanguage() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     final languageCode = languageService.currentLocale.languageCode;
     switch (languageCode) {
       case 'tr':
@@ -612,15 +604,20 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Future<void> _changePassword() async {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     if (_newPasswordController.text != _confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(languageService.currentLocale.languageCode == 'tr' 
-            ? "Yeni parolalar eşleşmiyor!"
-            : languageService.currentLocale.languageCode == 'en'
-              ? "New passwords don't match!"
-              : "Neue Passwörter stimmen nicht überein!"),
+          content: Text(
+            languageService.currentLocale.languageCode == 'tr'
+                ? "Yeni parolalar eşleşmiyor!"
+                : languageService.currentLocale.languageCode == 'en'
+                ? "New passwords don't match!"
+                : "Neue Passwörter stimmen nicht überein!",
+          ),
           backgroundColor: Colors.red,
         ),
       );
@@ -631,23 +628,23 @@ class _SettingsPageState extends State<SettingsPage> {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         await user.updatePassword(_newPasswordController.text);
-        
+
         // Firestore'da da güncelle
         await FirebaseFirestore.instance
             .collection('users')
             .doc(user.uid)
-            .update({
-          'password': _newPasswordController.text,
-        });
+            .update({'password': _newPasswordController.text});
 
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Parola başarıyla değiştirildi!"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Password changed successfully!"
-                : "Passwort erfolgreich geändert!"),
+            content: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Parola başarıyla değiştirildi!"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "Password changed successfully!"
+                  : "Passwort erfolgreich geändert!",
+            ),
             backgroundColor: Colors.green,
           ),
         );
@@ -655,11 +652,13 @@ class _SettingsPageState extends State<SettingsPage> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(languageService.currentLocale.languageCode == 'tr' 
-            ? "Parola değiştirme hatası: $e"
-            : languageService.currentLocale.languageCode == 'en'
-              ? "Password change error: $e"
-              : "Passwortänderungsfehler: $e"),
+          content: Text(
+            languageService.currentLocale.languageCode == 'tr'
+                ? "Parola değiştirme hatası: $e"
+                : languageService.currentLocale.languageCode == 'en'
+                ? "Password change error: $e"
+                : "Passwortänderungsfehler: $e",
+          ),
           backgroundColor: Colors.red,
         ),
       );
@@ -667,40 +666,53 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showLogoutDialog() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(languageService.currentLocale.languageCode == 'tr' 
-          ? "Çıkış Yap"
-          : languageService.currentLocale.languageCode == 'en'
-            ? "Logout"
-            : "Abmelden"),
-        content: Text(languageService.currentLocale.languageCode == 'tr' 
-          ? "Çıkış yapmak istediğinizden emin misiniz?"
-          : languageService.currentLocale.languageCode == 'en'
-            ? "Are you sure you want to logout?"
-            : "Sind Sie sicher, dass Sie sich abmelden möchten?"),
+        title: Text(
+          languageService.currentLocale.languageCode == 'tr'
+              ? "Çıkış Yap"
+              : languageService.currentLocale.languageCode == 'en'
+              ? "Logout"
+              : "Abmelden",
+        ),
+        content: Text(
+          languageService.currentLocale.languageCode == 'tr'
+              ? "Çıkış yapmak istediğinizden emin misiniz?"
+              : languageService.currentLocale.languageCode == 'en'
+              ? "Are you sure you want to logout?"
+              : "Sind Sie sicher, dass Sie sich abmelden möchten?",
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Hayır"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "No"
-                : "Nein"),
+            child: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Hayır"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "No"
+                  : "Nein",
+            ),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               FirebaseAuth.instance.signOut();
-              Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil('/', (route) => false);
             },
-            child: Text(languageService.currentLocale.languageCode == 'tr' 
-              ? "Evet"
-              : languageService.currentLocale.languageCode == 'en'
-                ? "Yes"
-                : "Ja"),
+            child: Text(
+              languageService.currentLocale.languageCode == 'tr'
+                  ? "Evet"
+                  : languageService.currentLocale.languageCode == 'en'
+                  ? "Yes"
+                  : "Ja",
+            ),
           ),
         ],
       ),

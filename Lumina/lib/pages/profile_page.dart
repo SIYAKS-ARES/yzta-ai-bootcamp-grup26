@@ -21,7 +21,6 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _isPasswordVisible = false;
   bool _isEditing = false;
   bool _isLoading = true;
-  String _originalPassword = "";
 
   @override
   void initState() {
@@ -45,7 +44,6 @@ class _ProfilePageState extends State<ProfilePage> {
             _nameController.text = data['name'] ?? '';
             _surnameController.text = data['surname'] ?? '';
             _emailController.text = user.email ?? '';
-            _originalPassword = data['password'] ?? '';
             _passwordController.text = "••••••••";
             _isLoading = false;
           });

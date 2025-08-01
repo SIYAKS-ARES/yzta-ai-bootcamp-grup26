@@ -211,7 +211,6 @@ class _AuthPageState extends State<AuthPage>
 
   @override
   Widget build(BuildContext context) {
-    final languageService = Provider.of<LanguageService>(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

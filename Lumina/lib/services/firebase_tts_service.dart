@@ -1,12 +1,10 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:just_audio/just_audio.dart';
 import 'dart:developer' as developer;
 
 class FirebaseTTSService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -214,7 +212,6 @@ class FirebaseTTSService {
       if (taskDoc.exists) {
         final data = taskDoc.data()!;
         final userId = data['userId'] as String;
-        final fileName = data['fileName'] as String;
         final fileExtension = data['fileExtension'] as String;
 
         // Orijinal dosyayı sil

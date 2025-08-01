@@ -159,7 +159,7 @@ class TextToSpeechService {
               document,
             ).extractText(startPageIndex: i, endPageIndex: i);
             if (pageText.isNotEmpty) {
-              text += pageText + '\n';
+              text += '$pageText\n';
             }
           } catch (pageError) {
             developer.log(
