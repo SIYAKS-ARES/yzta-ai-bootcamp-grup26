@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/advanced_tts_service.dart';
 import '../../services/api_keys.dart';
+import '../../services/language_service.dart';
 
 class ExperimentalTTSPage extends StatefulWidget {
   const ExperimentalTTSPage({super.key});
@@ -178,9 +180,10 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
     final isLoggedIn = _getCurrentUserId() != null;
     final isDisabled =
         provider == TTSProvider.cloud && !isLoggedIn ||
-        provider == TTSProvider.elevenlabs && !ApiKeys.isElevenLabsConfigured ||
-        provider == TTSProvider.openai && !ApiKeys.isOpenAIConfigured ||
-        provider == TTSProvider.gemini && !ApiKeys.isGeminiConfigured;
+        provider == TTSProvider.elevenlabs &&
+            !_isProviderConfigured(provider) ||
+        provider == TTSProvider.openai && !_isProviderConfigured(provider) ||
+        provider == TTSProvider.gemini && !_isProviderConfigured(provider);
 
     // Bulut TTS için Blaze plan uyarısı
     final showBlazeWarning = provider == TTSProvider.cloud && isSelected;
@@ -477,7 +480,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
           if (!isLoggedIn) const SizedBox(height: 12),
 
           // API durumu uyarıları
-          if (!ApiKeys.isElevenLabsConfigured)
+          if (!_isProviderConfigured(TTSProvider.elevenlabs))
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -503,9 +506,10 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               ),
             ),
 
-          if (!ApiKeys.isElevenLabsConfigured) const SizedBox(height: 12),
+          if (!_isProviderConfigured(TTSProvider.elevenlabs))
+            const SizedBox(height: 12),
 
-          if (!ApiKeys.isOpenAIConfigured)
+          if (!_isProviderConfigured(TTSProvider.openai))
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -531,10 +535,11 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               ),
             ),
 
-          if (!ApiKeys.isOpenAIConfigured) const SizedBox(height: 12),
+          if (!_isProviderConfigured(TTSProvider.openai))
+            const SizedBox(height: 12),
 
           // OpenAI kota uyarısı kaldırıldı - test için aktif
-          if (!ApiKeys.isGeminiConfigured)
+          if (!_isProviderConfigured(TTSProvider.gemini))
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -560,7 +565,8 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               ),
             ),
 
-          if (!ApiKeys.isGeminiConfigured) const SizedBox(height: 12),
+          if (!_isProviderConfigured(TTSProvider.gemini))
+            const SizedBox(height: 12),
 
           Container(
             padding: const EdgeInsets.all(12),
@@ -725,5 +731,24 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
 
   String? _getCurrentUserId() {
     return FirebaseAuth.instance.currentUser?.uid;
+  }
+
+  // 🔒 GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
+  bool _isProviderConfigured(TTSProvider provider) {
+    switch (provider) {
+      case TTSProvider.elevenlabs:
+        final key = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
+        return key.isNotEmpty && key != 'YOUR_ELEVENLABS_API_KEY_HERE';
+      case TTSProvider.openai:
+        final key = dotenv.env['OPENAI_API_KEY'] ?? '';
+        return key.isNotEmpty && key != 'YOUR_OPENAI_API_KEY_HERE';
+      case TTSProvider.gemini:
+        final key = dotenv.env['GEMINI_API_KEY'] ?? '';
+        return key.isNotEmpty && key != 'YOUR_GEMINI_API_KEY_HERE';
+      case TTSProvider.cloud:
+        return true; // Firebase her zaman mevcut
+      case TTSProvider.device:
+        return true; // Cihaz TTS her zaman mevcut
+    }
   }
 }

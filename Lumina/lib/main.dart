@@ -13,7 +13,6 @@ import 'package:lumina/pages/debug_page.dart';
 import 'package:lumina/pages/file_explorer_page.dart';
 import 'package:lumina/services/language_service.dart';
 import 'package:lumina/services/theme_service.dart';
-import 'services/api_keys.dart';
 import 'services/firebase_config_service.dart';
 
 Future<void> main() async {
@@ -24,7 +23,7 @@ Future<void> main() async {
 
   // 🔒 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
   try {
-    ApiKeys.validateApiKeys();
+    _validateApiKeys();
     print('✅ API anahtarları güvenli şekilde yapılandırıldı');
   } catch (e) {
     print('🚨 GÜVENLİK UYARISI: $e');
@@ -62,6 +61,24 @@ Future<void> main() async {
       child: LuminaApp(),
     ),
   );
+}
+
+// 🔒 GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
+void _validateApiKeys() {
+  final elevenLabsKey = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
+  final openAIKey = dotenv.env['OPENAI_API_KEY'] ?? '';
+  final geminiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
+
+  if (elevenLabsKey.isEmpty ||
+      elevenLabsKey == 'YOUR_ELEVENLABS_API_KEY_HERE') {
+    throw Exception('ElevenLabs API anahtarı yapılandırılmamış!');
+  }
+  if (openAIKey.isEmpty || openAIKey == 'YOUR_OPENAI_API_KEY_HERE') {
+    throw Exception('OpenAI API anahtarı yapılandırılmamış!');
+  }
+  if (geminiKey.isEmpty || geminiKey == 'YOUR_GEMINI_API_KEY_HERE') {
+    throw Exception('Gemini API anahtarı yapılandırılmamış!');
+  }
 }
 
 class LuminaApp extends StatefulWidget {

@@ -3,11 +3,23 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:just_audio/just_audio.dart';
 import 'dart:developer' as developer;
+import 'dart:typed_data';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'api_keys.dart';
 
 class ElevenLabsTTSService {
   static const String _baseUrl = 'https://api.elevenlabs.io/v1';
-  static String get _apiKey => ApiKeys.elevenLabsApiKey;
+
+  // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
+  static String get _apiKey {
+    final key = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
+    if (key.isEmpty || key == 'YOUR_ELEVENLABS_API_KEY_HERE') {
+      throw Exception(
+        'ElevenLabs API anahtarı yapılandırılmamış! .env dosyasını kontrol edin.',
+      );
+    }
+    return key;
+  }
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;

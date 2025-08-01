@@ -1,13 +1,25 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:just_audio/just_audio.dart';
 import 'dart:developer' as developer;
 import 'api_keys.dart';
 
 class OpenAITTSService {
   static const String _baseUrl = 'https://api.openai.com/v1/audio/speech';
-  static String get _apiKey => ApiKeys.openAIApiKey;
+
+  // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
+  static String get _apiKey {
+    final key = dotenv.env['OPENAI_API_KEY'] ?? '';
+    if (key.isEmpty || key == 'YOUR_OPENAI_API_KEY_HERE') {
+      throw Exception(
+        'OpenAI API anahtarı yapılandırılmamış! .env dosyasını kontrol edin.',
+      );
+    }
+    return key;
+  }
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
