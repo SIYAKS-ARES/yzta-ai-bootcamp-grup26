@@ -350,25 +350,24 @@ class _SettingsPageState extends State<SettingsPage> {
             value: themeService.isDarkMode,
             onChanged: (val) async {
               await themeService.setTheme(val);
-              if (mounted) {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text(languageService.getText('dark_theme')),
-                    content: Text(
-                      val
-                          ? "${languageService.getText('dark_theme')} seçildi."
-                          : "Açık tema seçildi.",
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text(languageService.getText('ok')),
-                      ),
-                    ],
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(languageService.getText('dark_theme')),
+                  content: Text(
+                    val
+                        ? "${languageService.getText('dark_theme')} seçildi."
+                        : "Açık tema seçildi.",
                   ),
-                );
-              }
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text(languageService.getText('ok')),
+                    ),
+                  ],
+                ),
+              );
             },
             secondary: const Icon(Icons.brightness_6),
             title: Text(languageService.getText('dark_theme')),
