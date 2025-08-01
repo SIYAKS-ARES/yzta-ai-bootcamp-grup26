@@ -14,17 +14,15 @@ import 'package:lumina/pages/file_explorer_page.dart';
 import 'package:lumina/services/language_service.dart';
 import 'package:lumina/services/theme_service.dart';
 import 'services/api_keys.dart';
+import 'services/firebase_config_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Firebase'i başlat
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   // .env dosyasını yükle
   await dotenv.load(fileName: ".env");
 
-  // 🚨 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
+  // 🔒 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
   try {
     ApiKeys.validateApiKeys();
     print('✅ API anahtarları güvenli şekilde yapılandırıldı');
@@ -32,6 +30,19 @@ Future<void> main() async {
     print('🚨 GÜVENLİK UYARISI: $e');
     // Uygulama çalışmaya devam edebilir ama API özellikleri çalışmayacak
   }
+
+  // 🔒 GÜVENLİK KONTROLÜ - Firebase konfigürasyonunu doğrula
+  try {
+    FirebaseConfigService.validateFirebaseConfig();
+    print('✅ Firebase konfigürasyonu güvenli şekilde yapılandırıldı');
+  } catch (e) {
+    print('🚨 FIREBASE GÜVENLİK UYARISI: $e');
+    // Firebase olmadan uygulama çalışamaz
+    throw Exception('Firebase konfigürasyonu gerekli!');
+  }
+
+  // Firebase'i başlat
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // iOS Simulator için keychain kullanımını devre dışı bırak
   if (defaultTargetPlatform == TargetPlatform.iOS) {

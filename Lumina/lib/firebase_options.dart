@@ -3,6 +3,8 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'services/firebase_config_service.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -40,47 +42,44 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD6KRHoWXauLmXCR-ULvhYu9JYUavJENBQ',
-    appId: '1:321895588705:web:ef2f5e625dda254e939b20',
-    messagingSenderId: '321895588705',
-    projectId: 'lumina-app-da3a6',
-    authDomain: 'lumina-app-da3a6.firebaseapp.com',
-    storageBucket: 'lumina-app-da3a6.firebasestorage.app',
-  );
+  // 🔒 GÜVENLİ: Firebase konfigürasyonu .env dosyasından okunuyor
+  static FirebaseOptions get web {
+    try {
+      return FirebaseConfigService.getFirebaseOptions('web');
+    } catch (e) {
+      throw Exception('Firebase Web konfigürasyonu yüklenemedi: $e');
+    }
+  }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCb183PcXVYfAXpaiWfzg8tOAu8xNV4tes',
-    appId: '1:321895588705:android:9c1e1d3dff094ebc939b20',
-    messagingSenderId: '321895588705',
-    projectId: 'lumina-app-da3a6',
-    storageBucket: 'lumina-app-da3a6.firebasestorage.app',
-  );
+  static FirebaseOptions get android {
+    try {
+      return FirebaseConfigService.getFirebaseOptions('android');
+    } catch (e) {
+      throw Exception('Firebase Android konfigürasyonu yüklenemedi: $e');
+    }
+  }
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAedyCOk6mTMNv1zDsShzi8h5dfkvZDiAg',
-    appId: '1:321895588705:ios:0d67736c3ed9807a939b20',
-    messagingSenderId: '321895588705',
-    projectId: 'lumina-app-da3a6',
-    storageBucket: 'lumina-app-da3a6.firebasestorage.app',
-    iosBundleId: 'com.example.lumina',
-  );
+  static FirebaseOptions get ios {
+    try {
+      return FirebaseConfigService.getFirebaseOptions('ios');
+    } catch (e) {
+      throw Exception('Firebase iOS konfigürasyonu yüklenemedi: $e');
+    }
+  }
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAedyCOk6mTMNv1zDsShzi8h5dfkvZDiAg',
-    appId: '1:321895588705:ios:0d67736c3ed9807a939b20',
-    messagingSenderId: '321895588705',
-    projectId: 'lumina-app-da3a6',
-    storageBucket: 'lumina-app-da3a6.firebasestorage.app',
-    iosBundleId: 'com.example.lumina',
-  );
+  static FirebaseOptions get macos {
+    try {
+      return FirebaseConfigService.getFirebaseOptions('macos');
+    } catch (e) {
+      throw Exception('Firebase macOS konfigürasyonu yüklenemedi: $e');
+    }
+  }
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyD6KRHoWXauLmXCR-ULvhYu9JYUavJENBQ',
-    appId: '1:321895588705:web:b7d2a9b3dcbd7de7939b20',
-    messagingSenderId: '321895588705',
-    projectId: 'lumina-app-da3a6',
-    authDomain: 'lumina-app-da3a6.firebaseapp.com',
-    storageBucket: 'lumina-app-da3a6.firebasestorage.app',
-  );
+  static FirebaseOptions get windows {
+    try {
+      return FirebaseConfigService.getFirebaseOptions('windows');
+    } catch (e) {
+      throw Exception('Firebase Windows konfigürasyonu yüklenemedi: $e');
+    }
+  }
 }
