@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 🔒 GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // 🔒 GÜVENLİK: Kullanıcının kendi verilerine erişim kontrolü
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // 🔒 GÜVENLİK: Task koleksiyonu kuralları
+    match /tasks/{taskId} {
+      // Okuma: Sadece task sahibi okuyabilir
+      allow read: if isOwner(resource.data.userId);
+      
+      // Yazma: Sadece task sahibi yazabilir
+      allow create: if isAuthenticated() && 
+        request.auth.uid == request.resource.data.userId;
+      
+      // Güncelleme: Sadece task sahibi güncelleyebilir
+      allow update: if isOwner(resource.data.userId) && 
+        request.auth.uid == request.resource.data.userId;
+      
+      // Silme: Sadece task sahibi silebilir
+      allow delete: if isOwner(resource.data.userId);
+    }
+    
+    // 🔒 GÜVENLİK: Kullanıcı profilleri
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // 🔒 GÜVENLİK: Diğer tüm koleksiyonlar için varsayılan red
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

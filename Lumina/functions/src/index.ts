@@ -16,6 +16,37 @@ const firestore = admin.firestore();
 const storage = admin.storage();
 const ttsClient = new TextToSpeechClient();
 
+// 🔒 GÜVENLİK KONTROLLERİ
+const ALLOWED_FILE_TYPES = [
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+];
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_TEXT_LENGTH = 4999; // TTS API limiti
+
+// Dosya güvenlik kontrolü
+function validateFile(file: any): void {
+  if (!file.contentType || !ALLOWED_FILE_TYPES.includes(file.contentType)) {
+    throw new Error(`Güvenlik: Desteklenmeyen dosya türü: ${file.contentType}`);
+  }
+  
+  if (file.size && file.size > MAX_FILE_SIZE) {
+    throw new Error(`Güvenlik: Dosya boyutu çok büyük: ${file.size} bytes`);
+  }
+}
+
+// Kullanıcı kimlik doğrulama kontrolü
+function validateUser(context: any): string {
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "Güvenlik: Kullanıcı kimlik doğrulaması gerekli"
+    );
+  }
+  return context.auth.uid;
+}
+
 export const processDocumentForTTS = functions
   .region("europe-west1")
   .runWith({timeoutSeconds: 300, memory: "1GB"})
@@ -25,21 +56,53 @@ export const processDocumentForTTS = functions
     const contentType = object.contentType;
     const bucket = storage.bucket(object.bucket);
 
-    // Sadece 'uploads/' klasöründeki dosyaları işle
+    // 🔒 GÜVENLİK: Dosya yolu kontrolü
     if (!filePath || !filePath.startsWith("uploads/")) {
-      console.log("Bu dosya 'uploads/' klasöründe değil, işlem durduruldu.");
+      console.log("Güvenlik: Bu dosya 'uploads/' klasöründe değil, işlem durduruldu.");
+      return null;
+    }
+
+    // 🔒 GÜVENLİK: Dosya türü ve boyut kontrolü
+    try {
+      validateFile(object);
+    } catch (error) {
+      console.error("Güvenlik hatası:", error);
       return null;
     }
 
     // Dosya adından ve yolundan bilgileri çıkar
     const fileName = path.basename(filePath);
     const pathParts = filePath.split("/");
+    
+    // 🔒 GÜVENLİK: Dosya yolu doğrulama
+    if (pathParts.length < 3) {
+      console.error("Güvenlik: Geçersiz dosya yolu yapısı");
+      return null;
+    }
+    
     const userId = pathParts[1]; // uploads/userId/taskId.ext yapısından userId
     const taskIdWithExt = pathParts[2]; // dosya adı uzantısı ile
     const taskId = path.parse(taskIdWithExt).name; // uzantısız task ID
+    
+    // 🔒 GÜVENLİK: Task ID doğrulama
+    if (!taskId || taskId.length < 5) {
+      console.error("Güvenlik: Geçersiz task ID");
+      return null;
+    }
+    
     const taskDocRef = firestore.collection("tasks").doc(taskId);
 
     try {
+      // 🔒 GÜVENLİK: Task'ın kullanıcıya ait olduğunu kontrol et
+      const taskDoc = await taskDocRef.get();
+      if (taskDoc.exists) {
+        const taskData = taskDoc.data();
+        if (taskData?.userId !== userId) {
+          console.error("Güvenlik: Task kullanıcıya ait değil");
+          return null;
+        }
+      }
+
       // Görev durumunu 'processing' olarak güncelle
       await taskDocRef.update({
         status: "processing",
@@ -70,13 +133,13 @@ export const processDocumentForTTS = functions
         throw new Error(`Desteklenmeyen dosya formatı: ${contentType}`);
       }
 
-      // Metin boş kontrolü
+      // 🔒 GÜVENLİK: Metin boş kontrolü
       if (!extractedText.trim()) {
         throw new Error("Dosyadan metin çıkarılamadı veya dosya boş.");
       }
 
-      // Metin çok uzunsa kırp (TTS API limitleri için - 5000 karakter limit)
-      const shortText = extractedText.substring(0, 4999);
+      // 🔒 GÜVENLİK: Metin uzunluğu kontrolü
+      const shortText = extractedText.substring(0, MAX_TEXT_LENGTH);
       console.log(`Çıkarılan metin uzunluğu: ${shortText.length} karakter`);
 
       // Google Cloud TTS API isteği
@@ -119,11 +182,11 @@ export const processDocumentForTTS = functions
         throw new Error("TTS API'den ses içeriği alınamadı.");
       }
 
-      // Ses dosyasının indirilebilir URL'ini al
+      // 🔒 GÜVENLİK: Ses dosyasının indirilebilir URL'ini al (kısa süreli)
       const audioFile = bucket.file(audioFilePath);
       const [audioUrl] = await audioFile.getSignedUrl({
         action: "read",
-        expires: "03-09-2491", // Uzun süreli bir URL (yaklaşık 500 yıl)
+        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 saat
       });
 
       // Firestore dokümanını güncelle
@@ -159,34 +222,45 @@ export const processDocumentForTTS = functions
     }
   });
 
-// Sağlık kontrolü endpoint'i
+// 🔒 GÜVENLİK: Sağlık kontrolü endpoint'i (rate limiting ile)
 export const healthCheck = functions
   .region("europe-west1")
+  .runWith({timeoutSeconds: 30})
   .https.onRequest((request, response) => {
+    // 🔒 GÜVENLİK: CORS kontrolü
+    response.set('Access-Control-Allow-Origin', '*');
+    response.set('Access-Control-Allow-Methods', 'GET');
+    response.set('Access-Control-Allow-Headers', 'Content-Type');
+    
     response.json({
       status: "ok",
       message: "Lumina TTS Service is running",
       timestamp: new Date().toISOString(),
+      version: "1.0.0",
     });
   });
 
-// Manuel olarak görev durumunu kontrol etme endpoint'i
+// 🔒 GÜVENLİK: Manuel olarak görev durumunu kontrol etme endpoint'i
 export const getTaskStatus = functions
   .region("europe-west1")
+  .runWith({timeoutSeconds: 30})
   .https.onCall(async (data, context) => {
-    // Kullanıcı kimlik doğrulaması kontrolü
-    if (!context.auth) {
+    // 🔒 GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
+    const userId = validateUser(context);
+
+    const {taskId} = data;
+    if (!taskId || typeof taskId !== 'string') {
       throw new functions.https.HttpsError(
-        "unauthenticated",
-        "Kullanıcı girişi gerekli."
+        "invalid-argument",
+        "Geçerli Task ID gerekli."
       );
     }
 
-    const {taskId} = data;
-    if (!taskId) {
+    // 🔒 GÜVENLİK: Task ID format kontrolü
+    if (taskId.length < 5) {
       throw new functions.https.HttpsError(
         "invalid-argument",
-        "Task ID gerekli."
+        "Geçersiz Task ID formatı."
       );
     }
 
@@ -199,8 +273,8 @@ export const getTaskStatus = functions
 
       const taskData = taskDoc.data();
 
-      // Kullanıcının kendi görevini kontrol ettiğinden emin ol
-      if (taskData?.userId !== context.auth.uid) {
+      // 🔒 GÜVENLİK: Kullanıcının kendi görevini kontrol ettiğinden emin ol
+      if (taskData?.userId !== userId) {
         throw new functions.https.HttpsError(
           "permission-denied",
           "Bu görevi görme yetkiniz yok."

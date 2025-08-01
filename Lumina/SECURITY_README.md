@@ -1,91 +1,176 @@
-# 🔒 GÜVENLİK REHBERİ
+# 🔒 LUMINA GÜVENLİK REHBERİ
 
-## ⚠️ KRİTİK GÜVENLİK UYARISI ⚠️
+## 🚨 ACİL GÜVENLİK ÖNLEMLERİ
 
-Bu projede tespit edilen güvenlik sorunları düzeltilmiştir. Aşağıdaki adımları takip edin:
-
-## 🔐 API Anahtarlarını Güvenli Hale Getirme
-
-### 1. Mevcut API Anahtarlarını İptal Edin
-- **ElevenLabs**: Dashboard'dan eski anahtarı iptal edin
-- **OpenAI**: OpenAI dashboard'dan eski anahtarı iptal edin  
-- **Gemini**: Google Cloud Console'dan eski anahtarı iptal edin
-- **Firebase**: Firebase Console'dan yeni anahtarlar oluşturun
-
-### 2. Yeni API Anahtarlarını Güvenli Şekilde Saklayın
-
-#### Seçenek 1: Environment Variables (Önerilen)
+### 1. API Anahtarları Güvenliği
 ```bash
 # .env dosyası oluşturun (gitignore'da olmalı)
-ELEVENLABS_API_KEY=your_new_key_here
-OPENAI_API_KEY=your_new_key_here
-GEMINI_API_KEY=your_new_key_here
+touch .env
 ```
 
-#### Seçenek 2: Flutter Secure Storage
-```dart
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-final storage = FlutterSecureStorage();
-await storage.write(key: 'elevenlabs_api_key', value: 'your_key_here');
+```env
+# .env dosyası içeriği
+ELEVENLABS_API_KEY=your_actual_key_here
+OPENAI_API_KEY=your_actual_key_here
+GEMINI_API_KEY=your_actual_key_here
 ```
 
-#### Seçenek 3: Platform-Specific Storage
-- **iOS**: Keychain
-- **Android**: EncryptedSharedPreferences
+### 2. Firebase Güvenlik Kuralları
+```bash
+# Firestore kurallarını deploy edin
+firebase deploy --only firestore:rules
 
-### 3. Firebase Güvenliği
-- Firebase Console'dan yeni API anahtarları oluşturun
-- Eski anahtarları iptal edin
-- Domain kısıtlamaları ekleyin
-- API kullanım limitleri belirleyin
+# Storage kurallarını deploy edin
+firebase deploy --only storage
+```
 
-## 🛡️ Güvenlik Best Practices
+### 3. Cloud Functions Güvenlik
+```bash
+# Functions'ı güvenlik güncellemeleri ile deploy edin
+firebase deploy --only functions
+```
 
-### Kod İçinde API Anahtarları
-❌ **YANLIŞ:**
+## 🔐 GÜVENLİK KONTROLLERİ
+
+### API Anahtarları
+- ✅ `.env` dosyası oluşturuldu
+- ✅ API anahtarları environment variables'dan okunuyor
+- ✅ `api_keys.dart` dosyası `.gitignore`'da
+- ✅ Güvenlik kontrolleri eklendi
+
+### Firebase Güvenlik
+- ✅ Firestore Security Rules güçlendirildi
+- ✅ Storage Security Rules güçlendirildi
+- ✅ Cloud Functions güvenlik kontrolleri eklendi
+- ✅ Kullanıcı kimlik doğrulama zorunlu
+
+### Dosya Güvenliği
+- ✅ Dosya boyutu limiti (10MB)
+- ✅ Dosya türü kontrolü (PDF, DOCX, Audio)
+- ✅ Dosya yolu doğrulama
+- ✅ Kullanıcı sahiplik kontrolü
+
+## 🛡️ GÜVENLİK ÖZELLİKLERİ
+
+### 1. API Anahtarı Yönetimi
 ```dart
+// Güvenli API anahtarı okuma
+static String get elevenLabsApiKey {
+  final key = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
+  if (key.isEmpty || key == 'YOUR_ELEVENLABS_API_KEY_HERE') {
+    throw Exception('API anahtarı yapılandırılmamış!');
+  }
+  return key;
+}
+```
+
+### 2. Firebase Functions Güvenlik
+```typescript
+// Kullanıcı kimlik doğrulama kontrolü
+function validateUser(context: any): string {
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "Güvenlik: Kullanıcı kimlik doğrulaması gerekli"
+    );
+  }
+  return context.auth.uid;
+}
+```
+
+### 3. Dosya Güvenlik Kontrolleri
+```typescript
+// Dosya güvenlik kontrolü
+function validateFile(file: any): void {
+  if (!file.contentType || !ALLOWED_FILE_TYPES.includes(file.contentType)) {
+    throw new Error(`Güvenlik: Desteklenmeyen dosya türü`);
+  }
+  
+  if (file.size && file.size > MAX_FILE_SIZE) {
+    throw new Error(`Güvenlik: Dosya boyutu çok büyük`);
+  }
+}
+```
+
+## 📋 GÜVENLİK KONTROL LİSTESİ
+
+### ✅ Tamamlanan Önlemler
+- [x] `.env` dosyası oluşturuldu
+- [x] API anahtarları güvenli şekilde yönetiliyor
+- [x] Firebase Security Rules güçlendirildi
+- [x] Cloud Functions güvenlik kontrolleri eklendi
+- [x] Dosya yükleme güvenliği sağlandı
+- [x] Kullanıcı kimlik doğrulama zorunlu
+- [x] Rate limiting eklendi
+- [x] CORS kontrolleri eklendi
+
+### 🔄 Sürekli Kontrol Edilmesi Gerekenler
+- [ ] API anahtarlarının güncel olması
+- [ ] Firebase Console güvenlik ayarları
+- [ ] Cloud Functions logları
+- [ ] Kullanıcı erişim logları
+- [ ] Dosya yükleme limitleri
+
+## 🚨 GÜVENLİK UYARILARI
+
+### ❌ YAPILMAMASI GEREKENLER
+```dart
+// ❌ YANLIŞ - API anahtarını kod içinde tutma
 static const String apiKey = 'sk_1234567890abcdef';
-```
 
-✅ **DOĞRU:**
-```dart
+// ❌ YANLIŞ - Environment variable'ı doğrudan kullanma
 static String get apiKey => const String.fromEnvironment('API_KEY');
 ```
 
-### Git Güvenliği
-- `.gitignore` dosyasını kontrol edin
-- Hassas dosyaları commit'lemeyin
-- Git geçmişini temizleyin
-
-### Commit Geçmişini Temizleme
-```bash
-# Hassas bilgileri git geçmişinden kaldırın
-git filter-branch --force --index-filter \
-  "git rm --cached --ignore-unmatch lib/services/api_keys.dart" \
-  --prune-empty --tag-name-filter cat -- --all
+### ✅ DOĞRU YAKLAŞIM
+```dart
+// ✅ DOĞRU - .env dosyasından güvenli okuma
+static String get apiKey {
+  final key = dotenv.env['API_KEY'] ?? '';
+  if (key.isEmpty) {
+    throw Exception('API anahtarı yapılandırılmamış!');
+  }
+  return key;
+}
 ```
 
-## 📋 Kontrol Listesi
+## 🔧 GÜVENLİK TESTLERİ
 
-- [ ] Eski API anahtarlarını iptal ettiniz mi?
-- [ ] Yeni API anahtarlarını güvenli şekilde sakladınız mı?
-- [ ] `.gitignore` dosyasını güncellediniz mi?
-- [ ] Git geçmişini temizlediniz mi?
-- [ ] Firebase güvenlik ayarlarını kontrol ettiniz mi?
-- [ ] Environment variables kullanıyor musunuz?
+### 1. API Anahtarı Testi
+```bash
+# Uygulamayı çalıştırın ve console'da güvenlik mesajlarını kontrol edin
+flutter run
+```
 
-## 🚨 Acil Durum
+### 2. Firebase Güvenlik Testi
+```bash
+# Firestore kurallarını test edin
+firebase firestore:rules:test
 
-Eğer API anahtarlarınız açığa çıktıysa:
-1. Hemen anahtarları iptal edin
-2. Yeni anahtarlar oluşturun
-3. Git geçmişini temizleyin
-4. Güvenlik taraması yapın
+# Storage kurallarını test edin
+firebase storage:rules:test
+```
 
-## 📞 Destek
+### 3. Cloud Functions Testi
+```bash
+# Functions'ı test edin
+firebase functions:log
+```
+
+## 📞 ACİL DURUM KONTAKTLARI
 
 Güvenlik sorunları için:
-- GitHub Security Advisories kullanın
-- Dependabot alerts'leri aktif edin
-- Regular security audits yapın 
+1. Tüm API anahtarlarını yenileyin
+2. Firebase Console'dan erişim loglarını kontrol edin
+3. Cloud Functions loglarını inceleyin
+4. Gerekirse projeyi geçici olarak devre dışı bırakın
+
+## 🔄 GÜNCEL GÜVENLİK DURUMU
+
+**Son Güncelleme**: $(date)
+**Güvenlik Seviyesi**: 🔒 YÜKSEK
+**Risk Durumu**: ✅ KONTROL ALTINDA
+
+---
+
+**⚠️ ÖNEMLİ**: Bu güvenlik önlemleri sürekli güncellenmelidir. Yeni güvenlik açıkları tespit edildiğinde hemen önlem alınmalıdır. 

@@ -16,7 +16,103 @@ class FirebaseTTSService {
   // Task model
   static const String _tasksCollection = 'tasks';
 
-  // Dosya yükleme ve TTS işlemi başlatma
+  // Basitleştirilmiş TTS işlemi - Cloud Functions olmadan
+  Future<String?> createTextToSpeechTask({
+    required String text,
+    required String userId,
+  }) async {
+    try {
+      developer.log(
+        'Metin TTS işlemi başlatılıyor: ${text.length} karakter',
+        name: 'FirebaseTTSService',
+      );
+
+      // Task ID oluştur
+      final taskId = _generateTaskId();
+
+      // Firestore'da task dokümanı oluştur
+      try {
+        await _firestore.collection(_tasksCollection).doc(taskId).set({
+          'id': taskId,
+          'userId': userId,
+          'fileName': 'text_input.txt',
+          'fileExtension': 'txt',
+          'textContent': text, // Metin içeriğini sakla
+          'status': 'pending',
+          'createdAt': FieldValue.serverTimestamp(),
+          'updatedAt': FieldValue.serverTimestamp(),
+        });
+      } catch (firestoreError) {
+        developer.log(
+          'Firestore hatası: $firestoreError',
+          name: 'FirebaseTTSService',
+        );
+        throw Exception('Veritabanı hatası: $firestoreError');
+      }
+
+      developer.log(
+        'TTS task oluşturuldu: $taskId',
+        name: 'FirebaseTTSService',
+      );
+
+      // Simüle edilmiş işlem - gerçek TTS yerine
+      await _simulateTTSProcessing(taskId, text);
+
+      return taskId;
+    } catch (e) {
+      developer.log(
+        'TTS task oluşturma hatası: $e',
+        name: 'FirebaseTTSService',
+      );
+      throw Exception('TTS task oluşturulamadı: $e');
+    }
+  }
+
+  // Simüle edilmiş TTS işlemi
+  Future<void> _simulateTTSProcessing(String taskId, String text) async {
+    try {
+      // İşlem durumunu güncelle
+      await _firestore.collection(_tasksCollection).doc(taskId).update({
+        'status': 'processing',
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+
+      // Simüle edilmiş işlem süresi
+      await Future.delayed(const Duration(seconds: 2));
+
+      // Simüle edilmiş ses URL'i (gerçek TTS yerine)
+      final simulatedAudioUrl =
+          'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav';
+
+      // Firestore dokümanını güncelle
+      await _firestore.collection(_tasksCollection).doc(taskId).update({
+        'status': 'completed',
+        'audioUrl': simulatedAudioUrl,
+        'audioPath': 'simulated/audio.mp3',
+        'processedTextLength': text.length,
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+
+      developer.log(
+        'Simüle edilmiş TTS işlemi tamamlandı: $taskId',
+        name: 'FirebaseTTSService',
+      );
+    } catch (e) {
+      developer.log(
+        'Simüle edilmiş TTS hatası: $e',
+        name: 'FirebaseTTSService',
+      );
+
+      // Hata durumunda Firestore'u güncelle
+      await _firestore.collection(_tasksCollection).doc(taskId).update({
+        'status': 'failed',
+        'errorMessage': 'TTS işlemi başarısız: $e',
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+    }
+  }
+
+  // Dosya yükleme ve TTS işlemi başlatma (eski yöntem - Cloud Functions gerektirir)
   Future<String?> uploadFileAndCreateTask({
     required File file,
     required String userId,
@@ -268,6 +364,7 @@ class Task {
   final String? audioPath;
   final int? processedTextLength;
   final String? errorMessage;
+  final String? textContent; // Metin içeriği için yeni alan
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -281,6 +378,7 @@ class Task {
     this.audioPath,
     this.processedTextLength,
     this.errorMessage,
+    this.textContent,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -297,6 +395,7 @@ class Task {
       audioPath: data['audioPath'],
       processedTextLength: data['processedTextLength'],
       errorMessage: data['errorMessage'],
+      textContent: data['textContent'],
       createdAt: (data['createdAt'] as Timestamp).toDate(),
       updatedAt: (data['updatedAt'] as Timestamp).toDate(),
     );
@@ -313,6 +412,7 @@ class Task {
       'audioPath': audioPath,
       'processedTextLength': processedTextLength,
       'errorMessage': errorMessage,
+      'textContent': textContent,
       'createdAt': Timestamp.fromDate(createdAt),
       'updatedAt': Timestamp.fromDate(updatedAt),
     };
@@ -328,6 +428,7 @@ class Task {
     String? audioPath,
     int? processedTextLength,
     String? errorMessage,
+    String? textContent,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -341,6 +442,7 @@ class Task {
       audioPath: audioPath ?? this.audioPath,
       processedTextLength: processedTextLength ?? this.processedTextLength,
       errorMessage: errorMessage ?? this.errorMessage,
+      textContent: textContent ?? this.textContent,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );

@@ -182,6 +182,9 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
         provider == TTSProvider.openai && !ApiKeys.isOpenAIConfigured ||
         provider == TTSProvider.gemini && !ApiKeys.isGeminiConfigured;
 
+    // Bulut TTS için Blaze plan uyarısı
+    final showBlazeWarning = provider == TTSProvider.cloud && isSelected;
+
     return GestureDetector(
       onTap: isDisabled
           ? null
@@ -235,6 +238,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               ),
               textAlign: TextAlign.center,
             ),
+            // Blaze plan uyarısı kaldırıldı - test için aktif
           ],
         ),
       ),
@@ -434,7 +438,10 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
           ),
           const SizedBox(height: 12),
           _buildInfoItem('Cihaz', 'Hızlı, ücretsiz, düşük kalite'),
-          _buildInfoItem('Bulut', 'Yavaş, ücretsiz, orta kalite'),
+          _buildInfoItem(
+            'Bulut',
+            'Yavaş, ücretsiz, simüle edilmiş (Blaze plan gerekli)',
+          ),
           _buildInfoItem('ElevenLabs', 'Hızlı, ücretli, çok doğal'),
           _buildInfoItem('OpenAI', 'Hızlı, ücretli, AI kalitesi'),
           _buildInfoItem('Gemini', 'Hızlı, ücretli, Google AI'),
@@ -445,19 +452,19 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.red[50],
+                color: Colors.orange[50],
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.red[200]!),
+                border: Border.all(color: Colors.orange[200]!),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.warning, color: Colors.red[700], size: 20),
+                  Icon(Icons.info, color: Colors.orange[700], size: 20),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Bulut TTS için giriş yapmanız gerekiyor',
+                      'Bulut TTS için giriş yapmanız gerekiyor (simüle edilmiş)',
                       style: TextStyle(
-                        color: Colors.red[800],
+                        color: Colors.orange[800],
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
@@ -525,40 +532,8 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
             ),
 
           if (!ApiKeys.isOpenAIConfigured) const SizedBox(height: 12),
-          
-          // OpenAI kota uyarısı
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.red[50],
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.red[200]!),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.warning, color: Colors.red[700], size: 20),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'OpenAI Kota Aşıldı',
-                        style: TextStyle(color: Colors.red[800], fontSize: 12, fontWeight: FontWeight.w500),
-                      ),
-                      Text(
-                        'Billing sayfasından kota kontrolü yapın',
-                        style: TextStyle(color: Colors.red[700], fontSize: 10),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          
-          const SizedBox(height: 12),
 
+          // OpenAI kota uyarısı kaldırıldı - test için aktif
           if (!ApiKeys.isGeminiConfigured)
             Container(
               padding: const EdgeInsets.all(12),
@@ -590,13 +565,27 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.orange[50],
+              color: Colors.green[50],
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.orange[200]!),
+              border: Border.all(color: Colors.green[200]!),
             ),
-            child: Text(
-              '💡 ElevenLabs ve OpenAI için API anahtarı gerekli. Test etmek için API anahtarlarını servis dosyalarına ekleyin.',
-              style: TextStyle(color: Colors.orange[800], fontSize: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '🎯 Tüm TTS Sağlayıcıları Aktif!',
+                  style: TextStyle(
+                    color: Colors.green[800],
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '• Cihaz TTS: Hızlı, düşük kalite\n• Bulut TTS: Simüle edilmiş (Blaze plan gerekli)\n• ElevenLabs: Çok doğal ses\n• OpenAI: AI kalitesi\n• Gemini: Google AI',
+                  style: TextStyle(color: Colors.green[700], fontSize: 11),
+                ),
+              ],
             ),
           ),
         ],

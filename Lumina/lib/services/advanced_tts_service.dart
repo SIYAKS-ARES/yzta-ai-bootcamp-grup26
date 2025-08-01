@@ -109,18 +109,15 @@ class AdvancedTTSService {
   Future<void> _speakWithCloud(String text, String userId) async {
     try {
       _isProcessing = true;
-      
+
       // Kullanıcı ID kontrolü
       if (userId.isEmpty) {
         throw Exception('Geçersiz kullanıcı ID');
       }
-      
-      // Geçici dosya oluştur
-      final tempFile = await _createTempTextFile(text);
-      
-      // Task oluştur
-      final taskId = await _cloudTTS.uploadFileAndCreateTask(
-        file: tempFile,
+
+      // Doğrudan metin TTS işlemi başlat
+      final taskId = await _cloudTTS.createTextToSpeechTask(
+        text: text,
         userId: userId,
       );
 
@@ -129,7 +126,10 @@ class AdvancedTTSService {
         throw Exception('Task oluşturulamadı');
       }
 
-      developer.log('Cloud TTS task oluşturuldu: $taskId', name: 'AdvancedTTSService');
+      developer.log(
+        'Cloud TTS task oluşturuldu: $taskId',
+        name: 'AdvancedTTSService',
+      );
 
       // Stream'i güvenli şekilde dinle
       bool taskCompleted = false;
@@ -139,9 +139,12 @@ class AdvancedTTSService {
       await for (final task in _cloudTTS.getTaskStream(taskId)) {
         try {
           timeoutCounter++;
-          
-          developer.log('Cloud TTS durum: ${task.status}', name: 'AdvancedTTSService');
-          
+
+          developer.log(
+            'Cloud TTS durum: ${task.status}',
+            name: 'AdvancedTTSService',
+          );
+
           if (task.status == 'completed' && task.audioUrl != null) {
             await _playCloudAudio(task.audioUrl!);
             taskCompleted = true;
@@ -149,7 +152,10 @@ class AdvancedTTSService {
           } else if (task.status == 'failed') {
             _isProcessing = false;
             final errorMsg = task.errorMessage ?? 'Bulut TTS işlemi başarısız';
-            developer.log('Cloud TTS başarısız: $errorMsg', name: 'AdvancedTTSService');
+            developer.log(
+              'Cloud TTS başarısız: $errorMsg',
+              name: 'AdvancedTTSService',
+            );
             throw Exception(errorMsg);
           } else if (timeoutCounter > maxTimeout) {
             _isProcessing = false;
@@ -157,7 +163,10 @@ class AdvancedTTSService {
           }
         } catch (e) {
           _isProcessing = false;
-          developer.log('Cloud TTS stream hatası: $e', name: 'AdvancedTTSService');
+          developer.log(
+            'Cloud TTS stream hatası: $e',
+            name: 'AdvancedTTSService',
+          );
           rethrow;
         }
       }
@@ -166,7 +175,6 @@ class AdvancedTTSService {
         _isProcessing = false;
         throw Exception('Bulut TTS işlemi tamamlanamadı');
       }
-
     } catch (e) {
       _isProcessing = false;
       developer.log('Cloud TTS genel hata: $e', name: 'AdvancedTTSService');

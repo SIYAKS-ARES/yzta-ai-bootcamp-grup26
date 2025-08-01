@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:lumina/pages/auth_page.dart';
 import 'package:lumina/pages/home_page.dart';
 import 'package:lumina/pages/profile_page.dart';
@@ -12,12 +13,25 @@ import 'package:lumina/pages/debug_page.dart';
 import 'package:lumina/pages/file_explorer_page.dart';
 import 'package:lumina/services/language_service.dart';
 import 'package:lumina/services/theme_service.dart';
+import 'services/api_keys.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Firebase'i başlat
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // .env dosyasını yükle
+  await dotenv.load(fileName: ".env");
+
+  // 🚨 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
+  try {
+    ApiKeys.validateApiKeys();
+    print('✅ API anahtarları güvenli şekilde yapılandırıldı');
+  } catch (e) {
+    print('🚨 GÜVENLİK UYARISI: $e');
+    // Uygulama çalışmaya devam edebilir ama API özellikleri çalışmayacak
+  }
 
   // iOS Simulator için keychain kullanımını devre dışı bırak
   if (defaultTargetPlatform == TargetPlatform.iOS) {
@@ -54,9 +68,12 @@ class _LuminaAppState extends State<LuminaApp> {
   }
 
   Future<void> _initializeServices() async {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     final themeService = Provider.of<ThemeService>(context, listen: false);
-    
+
     await Future.wait([
       languageService.loadLanguage(),
       themeService.loadTheme(),
