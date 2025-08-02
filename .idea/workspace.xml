@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dd9b2e5d-8301-4980-b556-7abb8ede948f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yzta-ai-bootcamp-grup26.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yzta-ai-bootcamp-grup26.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/pages/settings_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lumina/lib/services/text_to_speech_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/lib/services/text_to_speech_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lumina/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Lumina/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +30,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Flutter.main.executor": "Debug",
     "Flutter.son.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -51,8 +49,8 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="son" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="$PROJECT_DIR$/yzta-ai-bootcamp-grup26-main/Lumina/lib/main.dart" />
+    <configuration name="main" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/Lumina/lib/main.dart" />
       <method v="2" />
     </configuration>
   </component>

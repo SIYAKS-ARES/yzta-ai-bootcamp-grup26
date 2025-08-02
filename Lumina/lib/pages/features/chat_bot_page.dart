@@ -28,7 +28,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
-  bool _isLoading = false;
+  final bool _isLoading = false;
   final LanguageService _languageService = LanguageService();
 
   // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
