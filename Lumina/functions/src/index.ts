@@ -58,7 +58,7 @@ export const processDocumentForTTS = functions
 
     // 🔒 GÜVENLİK: Dosya yolu kontrolü
     if (!filePath || !filePath.startsWith("uploads/")) {
-      console.log("Güvenlik: Bu dosya 'uploads/' klasöründe değil, işlem durduruldu.");
+      // Güvenlik: Bu dosya 'uploads/' klasöründe değil, işlem durduruldu
       return null;
     }
 
@@ -66,7 +66,7 @@ export const processDocumentForTTS = functions
     try {
       validateFile(object);
     } catch (error) {
-      console.error("Güvenlik hatası:", error);
+      // Güvenlik hatası
       return null;
     }
 
@@ -76,7 +76,7 @@ export const processDocumentForTTS = functions
     
     // 🔒 GÜVENLİK: Dosya yolu doğrulama
     if (pathParts.length < 3) {
-      console.error("Güvenlik: Geçersiz dosya yolu yapısı");
+      // Güvenlik: Geçersiz dosya yolu yapısı
       return null;
     }
     
@@ -86,7 +86,7 @@ export const processDocumentForTTS = functions
     
     // 🔒 GÜVENLİK: Task ID doğrulama
     if (!taskId || taskId.length < 5) {
-      console.error("Güvenlik: Geçersiz task ID");
+      // Güvenlik: Geçersiz task ID
       return null;
     }
     
@@ -98,7 +98,7 @@ export const processDocumentForTTS = functions
       if (taskDoc.exists) {
         const taskData = taskDoc.data();
         if (taskData?.userId !== userId) {
-          console.error("Güvenlik: Task kullanıcıya ait değil");
+          // Güvenlik: Task kullanıcıya ait değil
           return null;
         }
       }
@@ -112,7 +112,7 @@ export const processDocumentForTTS = functions
       // Dosyayı geçici bir dizine indir
       const tempFilePath = path.join(os.tmpdir(), fileName);
       await bucket.file(filePath).download({destination: tempFilePath});
-      console.log(`Dosya ${tempFilePath} konumuna indirildi.`);
+      // Dosya geçici konuma indirildi
 
       let extractedText = "";
 
@@ -121,14 +121,14 @@ export const processDocumentForTTS = functions
         const dataBuffer = fs.readFileSync(tempFilePath);
         const data = await pdfParse(dataBuffer);
         extractedText = data.text;
-        console.log("PDF metni başarıyla çıkarıldı.");
+        // PDF metni başarıyla çıkarıldı
       } else if (
         contentType ===
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       ) {
         const result = await extractRawText({path: tempFilePath});
         extractedText = result.value;
-        console.log("DOCX metni başarıyla çıkarıldı.");
+        // DOCX metni başarıyla çıkarıldı
       } else {
         throw new Error(`Desteklenmeyen dosya formatı: ${contentType}`);
       }
@@ -140,7 +140,7 @@ export const processDocumentForTTS = functions
 
       // 🔒 GÜVENLİK: Metin uzunluğu kontrolü
       const shortText = extractedText.substring(0, MAX_TEXT_LENGTH);
-      console.log(`Çıkarılan metin uzunluğu: ${shortText.length} karakter`);
+      // Çıkarılan metin uzunluğu kontrol edildi
 
       // Google Cloud TTS API isteği
       const request = {
@@ -157,7 +157,7 @@ export const processDocumentForTTS = functions
       };
 
       const [response] = await ttsClient.synthesizeSpeech(request);
-      console.log("TTS API ile ses dosyası başarıyla oluşturuldu.");
+      // TTS API ile ses dosyası başarıyla oluşturuldu
 
       // Oluşturulan MP3 dosyasını Storage'a yükle
       const audioFileName = `${taskId}.mp3`;
@@ -177,7 +177,7 @@ export const processDocumentForTTS = functions
             },
           },
         });
-        console.log(`Ses dosyası ${audioFilePath} konumuna yüklendi.`);
+        // Ses dosyası Storage'a yüklendi
       } else {
         throw new Error("TTS API'den ses içeriği alınamadı.");
       }
@@ -198,7 +198,7 @@ export const processDocumentForTTS = functions
         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
       });
 
-      console.log(`Görev ${taskId} başarıyla tamamlandı.`);
+      // Görev başarıyla tamamlandı
 
       // Geçici dosyaları temizle
       fs.unlinkSync(tempFilePath);
@@ -208,7 +208,7 @@ export const processDocumentForTTS = functions
 
       return null;
     } catch (error) {
-      console.error(`Hata oluştu - Görev ${taskId}:`, error);
+      // Hata oluştu
 
       // Hata durumunda Firestore'u güncelle
       await taskDocRef.update({
@@ -286,7 +286,7 @@ export const getTaskStatus = functions
         ...taskData,
       };
     } catch (error) {
-      console.error("getTaskStatus hatası:", error);
+      // getTaskStatus hatası
       if (error instanceof functions.https.HttpsError) {
         throw error;
       }

@@ -24,18 +24,18 @@ Future<void> main() async {
   // 🔒 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
   try {
     _validateApiKeys();
-    print('✅ API anahtarları güvenli şekilde yapılandırıldı');
+    // API anahtarları güvenli şekilde yapılandırıldı
   } catch (e) {
-    print('🚨 GÜVENLİK UYARISI: $e');
+    // Güvenlik uyarısı: API anahtarları yapılandırılmamış
     // Uygulama çalışmaya devam edebilir ama API özellikleri çalışmayacak
   }
 
   // 🔒 GÜVENLİK KONTROLÜ - Firebase konfigürasyonunu doğrula
   try {
     FirebaseConfigService.validateFirebaseConfig();
-    print('✅ Firebase konfigürasyonu güvenli şekilde yapılandırıldı');
+    // Firebase konfigürasyonu güvenli şekilde yapılandırıldı
   } catch (e) {
-    print('🚨 FIREBASE GÜVENLİK UYARISI: $e');
+    // Firebase güvenlik uyarısı
     // Firebase olmadan uygulama çalışamaz
     throw Exception('Firebase konfigürasyonu gerekli!');
   }

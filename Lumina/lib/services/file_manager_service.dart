@@ -26,9 +26,9 @@ class FileManagerService {
         await _filesDir!.create(recursive: true);
       }
 
-      debugPrint("Dosya yöneticisi başlatıldı: ${_filesDir!.path}");
+      // Dosya yöneticisi başlatıldı
     } catch (e) {
-      debugPrint("Dosya yöneticisi başlatma hatası: $e");
+      // Dosya yöneticisi başlatma hatası
     }
   }
 
@@ -56,9 +56,7 @@ class FileManagerService {
         // Web platformunda dosya kopyalama çalışmazsa, içeriği okuyup yeni dosya oluştur
         if (e.toString().contains('_Namespace') ||
             e.toString().contains('Unsupported operation')) {
-          debugPrint(
-            "Web platformu tespit edildi, alternatif yöntem kullanılıyor",
-          );
+          // Web platformu tespit edildi, alternatif yöntem kullanılıyor
           final Uint8List bytes = await sourceFile.readAsBytes();
           final File newFile = File(destinationPath);
           await newFile.writeAsBytes(bytes);
@@ -67,10 +65,10 @@ class FileManagerService {
         }
       }
 
-      debugPrint("Dosya kopyalandı: $destinationPath");
+      // Dosya kopyalandı
       return destinationPath;
     } catch (e) {
-      debugPrint("Dosya kopyalama hatası: $e");
+      // Dosya kopyalama hatası
       throw Exception('Dosya kopyalanamadı: $e');
     }
   }
@@ -95,7 +93,7 @@ class FileManagerService {
       }
       return [];
     } catch (e) {
-      debugPrint("Dosya listesi alma hatası: $e");
+      // Dosya listesi alma hatası
       return [];
     }
   }
@@ -111,7 +109,7 @@ class FileManagerService {
       final String content = await file.readAsString();
       return content;
     } catch (e) {
-      debugPrint("Dosya okuma hatası: $e");
+      // Dosya okuma hatası
       throw Exception('Dosya okunamadı: $e');
     }
   }
@@ -122,10 +120,10 @@ class FileManagerService {
       final File file = File(filePath);
       if (await file.exists()) {
         await file.delete();
-        debugPrint("Dosya silindi: $filePath");
+        // Dosya silindi
       }
     } catch (e) {
-      debugPrint("Dosya silme hatası: $e");
+      // Dosya silme hatası
     }
   }
 
@@ -138,7 +136,7 @@ class FileManagerService {
       }
       return 0;
     } catch (e) {
-      debugPrint("Dosya boyutu alma hatası: $e");
+      // Dosya boyutu alma hatası
       return 0;
     }
   }

@@ -412,7 +412,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         final file = result.files.single;
         String fileName = file.name;
 
-        debugPrint("Seçilen dosya: $fileName, Boyut: ${file.size} bytes");
+        // Seçilen dosya bilgileri
 
         setState(() {
           selectedFileName = fileName;
@@ -426,7 +426,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
           text = await _ttsService.processUploadedFile(file.path!, fileName);
         } else if (file.bytes != null) {
           // Web platformu - dosya verilerini doğrudan işle
-          debugPrint("Web platformu tespit edildi, dosya verilerini işleme");
+          // Web platformu tespit edildi, dosya verilerini işleme
           text = await _webFileService.processFile(file.bytes!, fileName);
         }
 
@@ -458,7 +458,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
         }
       }
     } catch (e) {
-      debugPrint("Dosya seçme hatası: $e");
+      // Dosya seçme hatası
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Hata: $e'), backgroundColor: Colors.red),
@@ -572,9 +572,9 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
       setState(() {
         uploadedFiles = files;
       });
-      debugPrint("Yüklenen dosyalar: ${files.length}");
+      // Yüklenen dosyalar
     } catch (e) {
-      debugPrint("Dosya listesi yükleme hatası: $e");
+      // Dosya listesi yükleme hatası
     }
   }
 

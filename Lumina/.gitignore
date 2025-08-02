@@ -44,7 +44,7 @@ app.*.map.json
 /android/app/release
 
 # 🔒 GÜVENLİK: API anahtarları ve konfigürasyon dosyaları
-lib/services/api_keys.dart
+# lib/services/api_keys.dart - Silindi, artık kullanılmıyor
 lib/services/firebase_config_service.dart
 
 # 🔒 GÜVENLİK: Environment dosyaları

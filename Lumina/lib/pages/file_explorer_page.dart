@@ -71,7 +71,7 @@ class _FileExplorerPageState extends State<FileExplorerPage> {
         _showPermissionDialog();
       }
     } catch (e) {
-      debugPrint('Dosya yöneticisi başlatılırken hata: $e');
+      // Dosya yöneticisi başlatılırken hata
       // Hata durumunda test verileri göster
       _loadTestData();
     } finally {
@@ -112,7 +112,7 @@ class _FileExplorerPageState extends State<FileExplorerPage> {
         this.files = files;
       });
     } catch (e) {
-      debugPrint('Dizin içeriği yüklenirken hata: $e');
+      // Dizin içeriği yüklenirken hata
     }
   }
 

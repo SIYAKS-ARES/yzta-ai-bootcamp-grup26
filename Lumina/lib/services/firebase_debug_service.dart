@@ -46,7 +46,7 @@ class FirebaseDebugService {
         };
       }).toList();
     } catch (e) {
-      debugPrint('Kullanıcı listesi alınamadı: $e');
+      // Kullanıcı listesi alınamadı
       return [];
     }
   }
@@ -112,7 +112,7 @@ class FirebaseDebugService {
       await _auth.signOut();
       return true;
     } catch (e) {
-      debugPrint('Keychain test hatası: $e');
+      // Keychain test hatası
       return false;
     }
   }
