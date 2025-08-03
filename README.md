@@ -8,50 +8,27 @@
 <div align="center">
   <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
   
-  <!-- Main Video Player - Testing All Platforms -->
+  <!-- Main Video Player - GitHub Compatible -->
   <div style="max-width: 1000px; margin: 0 auto 30px auto;">
     
-    <!-- Vimeo Embed Test -->
+    <!-- Primary Demo with Thumbnail -->
     <div style="margin-bottom: 30px;">
-      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Vimeo Embed Test</h3>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-        <iframe src="https://player.vimeo.com/video/1106932404?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;dnt=1" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                title="Lumina AI Platform Demo">
-        </iframe>
+      <h3 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 24px;">🎬 Watch Full Demo</h3>
+      <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.2); cursor: pointer;" onclick="window.open('https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing', '_blank')">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 20px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 20px;">🎬</div>
+          <h4 style="color: white; margin: 0 0 15px 0; font-size: 20px;">Lumina AI Platform Demo</h4>
+          <p style="color: white; margin: 0; font-size: 16px; opacity: 0.9;">
+            Complete MVP Demonstration<br>
+            All features functional and tested
+          </p>
+          <div style="margin-top: 20px; padding: 12px 24px; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block;">
+            <span style="color: white; font-weight: bold;">Click to Watch Full Demo</span>
+          </div>
+        </div>
       </div>
-      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
-        <em>Vimeo Embed - Direct Play Test</em>
-      </p>
-    </div>
-
-    <!-- Streamable Embed Test -->
-    <div style="margin-bottom: 30px;">
-      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Streamable Embed Test</h3>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-        <iframe src="https://streamable.com/e/0pihg0" 
-                frameborder="0" 
-                allowfullscreen 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-        </iframe>
-      </div>
-      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
-        <em>Streamable Embed - Direct Play Test</em>
-      </p>
-    </div>
-
-    <!-- Catbox Direct Video Test -->
-    <div style="margin-bottom: 30px;">
-      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Catbox Direct Video Test</h3>
-      <video width="100%" controls style="border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-        <source src="https://files.catbox.moe/s9i8ia.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
-        <em>Catbox Direct Video - Native HTML5 Player Test</em>
+      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
+        <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
       </p>
     </div>
 
@@ -78,7 +55,7 @@
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto;">
     
     <!-- Alternative Links Grid -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; max-width: 900px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; max-width: 1000px; margin: 0 auto;">
       
       <!-- YouTube Shorts -->
       <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
@@ -128,6 +105,22 @@
         </a>
       </div>
 
+      <!-- Catbox Link -->
+      <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h3 style="color: white; margin: 0 0 15px 0; font-size: 16px;">📁 Catbox</h3>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px;">
+            <strong>Direct File</strong><br>
+            Native player
+          </p>
+        </div>
+        <a href="https://files.catbox.moe/s9i8ia.mp4" 
+           target="_blank" 
+           style="display: inline-block; background: #8b5cf6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
     </div>
     
     <!-- YouTube Shorts Alternative -->
@@ -164,50 +157,28 @@
 <div align="center">
   <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
   
-  <!-- Main Video Player - Testing All Platforms -->
+  <!-- Main Video Player - GitHub Compatible -->
   <div style="max-width: 1200px; margin: 0 auto 40px auto;">
     
-    <!-- Vimeo Embed Test -->
+    <!-- Primary Demo with Thumbnail -->
     <div style="margin-bottom: 40px;">
-      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Vimeo Embed Test</h3>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
-        <iframe src="https://player.vimeo.com/video/1106932404?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;dnt=1" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                title="Lumina AI Platform Demo">
-        </iframe>
+      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 28px;">🎬 Complete Platform Demo</h3>
+      <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,0.25); cursor: pointer;" onclick="window.open('https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing', '_blank')">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 40px; text-align: center;">
+          <div style="font-size: 64px; margin-bottom: 30px;">🎬</div>
+          <h4 style="color: white; margin: 0 0 20px 0; font-size: 28px;">Lumina AI Platform - Complete Demo</h4>
+          <p style="color: white; margin: 0; font-size: 18px; line-height: 1.6; opacity: 0.9;">
+            <strong>Full MVP Demonstration</strong><br>
+            All features functional and tested<br>
+            Complete user journey showcase
+          </p>
+          <div style="margin-top: 30px; padding: 15px 30px; background: rgba(255,255,255,0.2); border-radius: 12px; display: inline-block;">
+            <span style="color: white; font-weight: bold; font-size: 18px;">Click to Watch Complete Demo</span>
+          </div>
+        </div>
       </div>
-      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
-        <em>Vimeo Embed - Direct Play Test</em>
-      </p>
-    </div>
-
-    <!-- Streamable Embed Test -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Streamable Embed Test</h3>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
-        <iframe src="https://streamable.com/e/0pihg0" 
-                frameborder="0" 
-                allowfullscreen 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-        </iframe>
-      </div>
-      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
-        <em>Streamable Embed - Direct Play Test</em>
-      </p>
-    </div>
-
-    <!-- Catbox Direct Video Test -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Catbox Direct Video Test</h3>
-      <video width="100%" controls style="border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
-        <source src="https://files.catbox.moe/s9i8ia.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
-        <em>Catbox Direct Video - Native HTML5 Player Test</em>
+      <p style="text-align: center; margin-top: 20px; font-size: 18px; color: #666;">
+        <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
       </p>
     </div>
 
