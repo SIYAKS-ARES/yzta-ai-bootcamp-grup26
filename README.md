@@ -5,9 +5,48 @@
 
 <!--![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)-->
 
+<div align="center">
+  <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
+  
+  <video width="100%" controls style="max-width: 600px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+    <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/50.final-teslim.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <p>
+    <strong>📺 <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none;">Watch Full Demo on Google Drive</a></strong>
+  </p>
+  
+  <p><em>✅ <strong>MVP Successfully Completed</strong> - All features functional and tested</em></p>
+</div>
+
 # **Team & Product Name**
 
 ### **`Lumina`**
+
+---
+
+## 🎬 **Final Platform Demo**
+
+<div align="center">
+  <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
+  
+  <video width="100%" controls style="max-width: 800px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+    <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/50.final-teslim.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <p><em>🎯 <strong>MVP Successfully Completed</strong> - All features functional and tested</em></p>
+  
+  <p>
+    <strong>🔗 Direct Link:</strong> 
+    <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold;">
+      📺 Watch on Google Drive
+    </a>
+  </p>
+</div>
+
+---
 
 # Information About Team and Product
 
