@@ -23,92 +23,16 @@
       </p>
     </div>
 
-    <!-- Alternative Links - YouTube Prominent -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
-      
-      <!-- YouTube Shorts - Prominent -->
-      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 35px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
-        <h4 style="color: white; margin: 0 0 20px 0; font-size: 22px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
-        <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 16px; margin-bottom: 25px; text-align: center;">
-          <p style="color: white; margin: 0; font-size: 18px; line-height: 1.5;">
-            <strong>Quick Demo Version</strong><br>
-            Mobile-first showcase<br>
-            Perfect for social media sharing
-          </p>
-        </div>
-        <div style="text-align: center;">
-          <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
-             target="_blank" 
-             style="display: inline-block; background: #FF0000; color: white; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
-            🎬 Watch on YouTube Shorts
-          </a>
-        </div>
+    <!-- Alternative Links - Simple Blue Links -->
+    <div style="text-align: center; margin-top: 30px;">
+      <h4 style="color: #333; margin-bottom: 20px; font-size: 20px;">📱 Alternative Platforms</h4>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 800px; margin: 0 auto;">
+        <a href="https://youtube.com/shorts/dbhLAWYP5gw" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 YouTube Shorts</a>
+        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">📺 Google Drive</a>
+        <a href="https://vimeo.com/1106932404?share=copy" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 Vimeo</a>
+        <a href="https://streamable.com/0pihg0" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">⚡ Streamable</a>
+        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🌐 LimeWire</a>
       </div>
-
-      <!-- Google Drive -->
-      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">📺 Google Drive</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>High Quality</strong><br>
-            Full resolution
-          </p>
-        </div>
-        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
-           target="_blank" 
-           style="display: inline-block; background: #2563EB; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- Vimeo -->
-      <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Professional</strong><br>
-            Direct embed
-          </p>
-        </div>
-        <a href="https://vimeo.com/1106932404?share=copy" 
-           target="_blank" 
-           style="display: inline-block; background: #1ab7ea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- Streamable -->
-      <div style="background: linear-gradient(135deg, #00d4aa 0%, #0099cc 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">⚡ Streamable</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Fast Loading</strong><br>
-            Direct play
-          </p>
-        </div>
-        <a href="https://streamable.com/0pihg0" 
-           target="_blank" 
-           style="display: inline-block; background: #00d4aa; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- LimeWire -->
-      <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🌐 LimeWire</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Alternative</strong><br>
-            Web platform
-          </p>
-        </div>
-        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" 
-           target="_blank" 
-           style="display: inline-block; background: #8b5cf6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
     </div>
     
   </div>
@@ -144,92 +68,16 @@
       </p>
     </div>
 
-    <!-- Alternative Links - YouTube Prominent -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
-      
-      <!-- YouTube Shorts - Prominent -->
-      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 35px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
-        <h4 style="color: white; margin: 0 0 20px 0; font-size: 22px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
-        <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 16px; margin-bottom: 25px; text-align: center;">
-          <p style="color: white; margin: 0; font-size: 18px; line-height: 1.5;">
-            <strong>Quick Demo Version</strong><br>
-            Mobile-first showcase<br>
-            Perfect for social media sharing
-          </p>
-        </div>
-        <div style="text-align: center;">
-          <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
-             target="_blank" 
-             style="display: inline-block; background: #FF0000; color: white; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
-            🎬 Watch on YouTube Shorts
-          </a>
-        </div>
+    <!-- Alternative Links - Simple Blue Links -->
+    <div style="text-align: center; margin-top: 30px;">
+      <h4 style="color: #333; margin-bottom: 20px; font-size: 20px;">📱 Alternative Platforms</h4>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 800px; margin: 0 auto;">
+        <a href="https://youtube.com/shorts/dbhLAWYP5gw" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 YouTube Shorts</a>
+        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">📺 Google Drive</a>
+        <a href="https://vimeo.com/1106932404?share=copy" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 Vimeo</a>
+        <a href="https://streamable.com/0pihg0" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">⚡ Streamable</a>
+        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🌐 LimeWire</a>
       </div>
-
-      <!-- Google Drive -->
-      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">📺 Google Drive</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>High Quality</strong><br>
-            Full resolution
-          </p>
-        </div>
-        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
-           target="_blank" 
-           style="display: inline-block; background: #2563EB; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- Vimeo -->
-      <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Professional</strong><br>
-            Direct embed
-          </p>
-        </div>
-        <a href="https://vimeo.com/1106932404?share=copy" 
-           target="_blank" 
-           style="display: inline-block; background: #1ab7ea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- Streamable -->
-      <div style="background: linear-gradient(135deg, #00d4aa 0%, #0099cc 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">⚡ Streamable</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Fast Loading</strong><br>
-            Direct play
-          </p>
-        </div>
-        <a href="https://streamable.com/0pihg0" 
-           target="_blank" 
-           style="display: inline-block; background: #00d4aa; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
-      <!-- LimeWire -->
-      <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🌐 LimeWire</h4>
-        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
-            <strong>Alternative</strong><br>
-            Web platform
-          </p>
-        </div>
-        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" 
-           target="_blank" 
-           style="display: inline-block; background: #8b5cf6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
-          🎬 Watch
-        </a>
-      </div>
-
     </div>
     
   </div>
@@ -787,15 +635,15 @@
     <p><strong>Team:</strong> Zeynep İrem Tekin & İpek Eylül Atmaca (Frontend developers)</p>
     <p><strong>Evidence:</strong> See Group Conversations for development coordination</p>
 
-    <h4>Backend API Development:</h4>
-    <p><strong>Firebase Setup:</strong> Authentication, Firestore database, Storage configuration</p>
-    <p><strong>API Integration:</strong> Gemini API for AI features implementation</p>
-    <p><strong>Team:</strong> Esra EFEL & Taha Dursun (Backend developers)</p>
+    `<h4>`Backend API Development:`</h4>`
+    `<p><strong>`Firebase Setup:`</strong>` Authentication, Firestore database, Storage configuration`</p>`
+    `<p><strong>`API Integration:`</strong>` Gemini API for AI features implementation`</p>`
+    `<p><strong>`Team:`</strong>` Esra EFEL & Taha Dursun (Backend developers)`</p>`
 
-    <h4>AI Integration (TTS & STT):</h4>
-    <p><strong>Text-to-Speech:</strong> Gemini API integration for document reading</p>
-    <p><strong>Speech-to-Text:</strong> Audio transcription for hearing impaired users</p>
-    <p><strong>Testing:</strong> Accessibility compliance verified throughout development</p>
+    `<h4>`AI Integration (TTS & STT):`</h4>`
+    `<p><strong>`Text-to-Speech:`</strong>` Gemini API integration for document reading`</p>`
+    `<p><strong>`Speech-to-Text:`</strong>` Audio transcription for hearing impaired users`</p>`
+    `<p><strong>`Testing:`</strong>` Accessibility compliance verified throughout development`</p>`
 
 </details>
 
@@ -817,14 +665,14 @@
       </div>
     </div>
 
-    <h4>Key Development Decisions:</h4>
-    <ul>
-      <li><strong>Frontend Architecture:</strong> Flutter widget-based component structure</li>
-      <li><strong>Backend Services:</strong> Firebase microservices approach</li>
-      <li><strong>AI Integration:</strong> Gemini API unified pipeline for TTS/STT</li>
-      <li><strong>Accessibility Focus:</strong> WCAG 2.1 AA compliance throughout development</li>
-      <li><strong>User Experience:</strong> Mobile-first responsive design principles</li>
-    </ul>
+    `<h4>`Key Development Decisions:`</h4>`
+    `<ul>`
+      `<li><strong>`Frontend Architecture:`</strong>` Flutter widget-based component structure`</li>`
+      `<li><strong>`Backend Services:`</strong>` Firebase microservices approach`</li>`
+      `<li><strong>`AI Integration:`</strong>` Gemini API unified pipeline for TTS/STT`</li>`
+      `<li><strong>`Accessibility Focus:`</strong>` WCAG 2.1 AA compliance throughout development`</li>`
+      `<li><strong>`User Experience:`</strong>` Mobile-first responsive design principles`</li>`
+    `</ul>`
 
 </details>
 
@@ -842,25 +690,25 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/8.Ana-Sayfa-Taslak.jpeg" style="max-width: 100%; height: auto;">
-        <p><em>Home Page Design - Initial Concept</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/9.Ana-Sayfa-Taslak-2.jpeg" style="max-width: 100%; height: auto;">
-        <p><em>Home Page Design - Enhanced Version</em></p>
-      </div>
-    </div>
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/8.Ana-Sayfa-Taslak.jpeg" style="max-width: 100%; height: auto;">`
+        `<p><em>`Home Page Design - Initial Concept`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/9.Ana-Sayfa-Taslak-2.jpeg" style="max-width: 100%; height: auto;">`
+        `<p><em>`Home Page Design - Enhanced Version`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>Design Principles Implementation:</h4>
-    <ul>
-      <li><strong>Accessibility First:</strong> High contrast, large touch targets, screen reader compatible</li>
-      <li><strong>Intuitive Navigation:</strong> Clear visual hierarchy, familiar UI patterns</li>
-      <li><strong>Responsive Layout:</strong> Adaptive design for different screen sizes</li>
-      <li><strong>Error Prevention:</strong> Clear form validation and user feedback</li>
-      <li><strong>Inclusive Design:</strong> Support for users with various disabilities</li>
-    </ul>
+    `<h4>`Design Principles Implementation:`</h4>`
+    `<ul>`
+      `<li><strong>`Accessibility First:`</strong>` High contrast, large touch targets, screen reader compatible`</li>`
+      `<li><strong>`Intuitive Navigation:`</strong>` Clear visual hierarchy, familiar UI patterns`</li>`
+      `<li><strong>`Responsive Layout:`</strong>` Adaptive design for different screen sizes`</li>`
+      `<li><strong>`Error Prevention:`</strong>` Clear form validation and user feedback`</li>`
+      `<li><strong>`Inclusive Design:`</strong>` Support for users with various disabilities`</li>`
+    `</ul>`
 
 </details>
 
@@ -882,33 +730,33 @@
       </div>
     </div>
 
-    <h4>Meeting Outcomes:</h4>
-    <p><strong>İlk Toplantı (Development Kickoff):</strong></p>
-    <ul>
-      <li>Flutter development environment setup tamamlandı</li>
-      <li>Firebase backend architecture planlandı</li>
-      <li>Text-to-Speech ve Speech-to-Text feature specifications belirlendi</li>
-      <li>Frontend UI/UX tasarım sürecine başlandı</li>
-    </ul>
+    `<h4>`Meeting Outcomes:`</h4>`
+    `<p><strong>`İlk Toplantı (Development Kickoff):`</strong></p>`
+    `<ul>`
+      `<li>`Flutter development environment setup tamamlandı`</li>`
+      `<li>`Firebase backend architecture planlandı`</li>`
+      `<li>`Text-to-Speech ve Speech-to-Text feature specifications belirlendi`</li>`
+      `<li>`Frontend UI/UX tasarım sürecine başlandı`</li>`
+    `</ul>`
 
-    <p><strong>İkinci Toplantı (Mid-Sprint Review):</strong></p>
-    <ul>
-      <li>Gemini API entegrasyonu başarıyla gerçekleştirildi</li>
-      <li>Login page ve home page tasarımları tamamlandı</li>
-      <li>Firebase authentication sistemi kuruldu</li>
-      <li>Accessibility testing süreçleri başlatıldı</li>
-    </ul>
+    `<p><strong>`İkinci Toplantı (Mid-Sprint Review):`</strong></p>`
+    `<ul>`
+      `<li>`Gemini API entegrasyonu başarıyla gerçekleştirildi`</li>`
+      `<li>`Login page ve home page tasarımları tamamlandı`</li>`
+      `<li>`Firebase authentication sistemi kuruldu`</li>`
+      `<li>`Accessibility testing süreçleri başlatıldı`</li>`
+    `</ul>`
 
-    <p><strong>Üçüncü Toplantı (Sprint Completion):</strong></p>
-    <ul>
-      <li>TTS ve STT özellikleri functional hale getirildi</li>
-      <li>Frontend sayfa tasarımları finalize edildi</li>
-      <li>Database schema implement edildi</li>
-      <li>Sprint 3 planning ve backlog refinement yapıldı</li>
-    </ul>
+    `<p><strong>`Üçüncü Toplantı (Sprint Completion):`</strong></p>`
+    `<ul>`
+      `<li>`TTS ve STT özellikleri functional hale getirildi`</li>`
+      `<li>`Frontend sayfa tasarımları finalize edildi`</li>`
+      `<li>`Database schema implement edildi`</li>`
+      `<li>`Sprint 3 planning ve backlog refinement yapıldı`</li>`
+    `</ul>`
 
-    <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/10.Toplantı-ScreenShot.png" style="max-width: 100%; height: auto; margin: 10px 0;">
-    <p><em>Live Development Meeting - Team Collaboration Session</em></p>
+    `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/10.Toplantı-ScreenShot.png" style="max-width: 100%; height: auto; margin: 10px 0;">`
+    `<p><em>`Live Development Meeting - Team Collaboration Session`</em></p>`
 
 </details>
 
@@ -930,14 +778,14 @@
       </div>
     </div>
 
-    <h4>Communication Highlights:</h4>
-    <ul>
-      <li><strong>Real-time Coordination:</strong> WhatsApp grup üzerinden sürekli geliştirme koordinasyonu</li>
-      <li><strong>Feature Integration:</strong> Frontend ve backend ekipleri arası sürekli senkronizasyon</li>
-      <li><strong>Problem Solving:</strong> Hızlı issue resolution ve teknik karar alma</li>
-      <li><strong>Progress Updates:</strong> Günlük development progress sharing</li>
-      <li><strong>Quality Assurance:</strong> Continuous testing ve code review süreçleri</li>
-    </ul>
+    `<h4>`Communication Highlights:`</h4>`
+    `<ul>`
+      `<li><strong>`Real-time Coordination:`</strong>` WhatsApp grup üzerinden sürekli geliştirme koordinasyonu`</li>`
+      `<li><strong>`Feature Integration:`</strong>` Frontend ve backend ekipleri arası sürekli senkronizasyon`</li>`
+      `<li><strong>`Problem Solving:`</strong>` Hızlı issue resolution ve teknik karar alma`</li>`
+      `<li><strong>`Progress Updates:`</strong>` Günlük development progress sharing`</li>`
+      `<li><strong>`Quality Assurance:`</strong>` Continuous testing ve code review süreçleri`</li>`
+    `</ul>`
 
 </details>
 
@@ -955,24 +803,22 @@
       </div>
     </div>
 
-    <h4>Sprint Burndown & Task Completion:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">
-        <p><em>Sprint 2 Burndown Chart</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">
-        <p><em>Task Completion Status</em></p>
-      </div>
-    </div>
+    `<h4>`Sprint Burndown & Task Completion:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.13%20PM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Sprint 2 Burndown Chart`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%203.07.36%20PM.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Task Completion Status`</em></p>`
+      `</div>`
+    `</div>`
 
-    <img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto; margin: 10px 0;">
-    <p><em>Complete Sprint 2 Overview - Final Board State</em></p>
+    `<img src="GK%20%26%20SS/%C4%B0kinci%20Sprint/Screenshot%202025-07-07%20at%209.50.57%20PM.png" style="max-width: 100%; height: auto; margin: 10px 0;">`
+    `<p><em>`Complete Sprint 2 Overview - Final Board State`</em></p>`
 
-  </details>
-
-
+</details>
 
 - **Sprint Notes**:
 
@@ -1059,51 +905,51 @@
       </div>
     </div>
 
-    <h4>🔗 Live Notion Workspace:</h4>
-    <ul>
-      <li><strong>Üçüncü Sprint Notion Board:</strong> <a href="https://spotty-tang-58d.notion.site/nc-Sprint-23ebc3b0417680dfbab0c2723c53a640?source=copy_link" target="_blank">Sprint Planning & Development Tracking</a></li>
-    </ul>
+    `<h4>`🔗 Live Notion Workspace:`</h4>`
+    `<ul>`
+      `<li><strong>`Üçüncü Sprint Notion Board:`</strong>` `<a href="https://spotty-tang-58d.notion.site/nc-Sprint-23ebc3b0417680dfbab0c2723c53a640?source=copy_link" target="_blank">`Sprint Planning & Development Tracking`</a></li>`
+    `</ul>`
 
-    <h4>Sprint 3 Hedefleri ve Planlama:</h4>
-    <p><strong>1. Sprint Öncesi Durum Değerlendirmesi:</strong></p>
-    <ul>
-      <li>İkinci sprint sonunda bazı sayfalar (özellikle Ana Sayfa ve Transkript modülü) hâlen tamamlanmamış veya işlevsel hale getirilmemişti</li>
-      <li>UI/UX açısından eksiklikler içeren birçok sayfa yalnızca temel iskelet hâlindeydi</li>
-      <li>Teknik açıdan bazı özelliklerin yalnızca ön yüzü geliştirilmiş, arka uç ile entegrasyon sağlanmamıştı</li>
-    </ul>
+    `<h4>`Sprint 3 Hedefleri ve Planlama:`</h4>`
+    `<p><strong>`1. Sprint Öncesi Durum Değerlendirmesi:`</strong></p>`
+    `<ul>`
+      `<li>`İkinci sprint sonunda bazı sayfalar (özellikle Ana Sayfa ve Transkript modülü) hâlen tamamlanmamış veya işlevsel hale getirilmemişti`</li>`
+      `<li>`UI/UX açısından eksiklikler içeren birçok sayfa yalnızca temel iskelet hâlindeydi`</li>`
+      `<li>`Teknik açıdan bazı özelliklerin yalnızca ön yüzü geliştirilmiş, arka uç ile entegrasyon sağlanmamıştı`</li>`
+    `</ul>`
 
-    <p><strong>2. Üçüncü Sprint Hedefleri:</strong></p>
-    <ul>
-      <li>Bu sprintin temel amacı, ürünün <strong>fonksiyonel bir versiyonunu (MVP)</strong> ortaya koymak olarak belirlendi</li>
-      <li>Uygulamanın temel bileşenleri olan Giriş, Ana sayfa, TTS, STT ve ChatBot modülleri, Video transkript özelliği eksiksiz ve test edilebilir şekilde tamamlanmak üzere sprint kapsamına alındı</li>
-    </ul>
+    `<p><strong>`2. Üçüncü Sprint Hedefleri:`</strong></p>`
+    `<ul>`
+      `<li>`Bu sprintin temel amacı, ürünün `<strong>`fonksiyonel bir versiyonunu (MVP)`</strong>` ortaya koymak olarak belirlendi`</li>`
+      `<li>`Uygulamanın temel bileşenleri olan Giriş, Ana sayfa, TTS, STT ve ChatBot modülleri, Video transkript özelliği eksiksiz ve test edilebilir şekilde tamamlanmak üzere sprint kapsamına alındı`</li>`
+    `</ul>`
 
-    <p><strong>3. Tasarım (UI/UX) Planlaması:</strong></p>
-    <ul>
-      <li>Önceki sprintte alınan geri bildirimlere dayanarak tüm arayüzlerin yeniden değerlendirilmesi kararlaştırıldı</li>
-      <li><strong>Kullanıcı akışı, renk uyumu, yazı fontları ve boşluk düzenleri</strong> gibi detaylar yeniden ele alınacak</li>
-      <li>Mehmet Said liderliğinde her modülün UI düzeni wireframe üzerinden gözden geçirilerek son hali sprint içinde çizilip geliştirilecek</li>
-    </ul>
+    `<p><strong>`3. Tasarım (UI/UX) Planlaması:`</strong></p>`
+    `<ul>`
+      `<li>`Önceki sprintte alınan geri bildirimlere dayanarak tüm arayüzlerin yeniden değerlendirilmesi kararlaştırıldı`</li>`
+      `<li><strong>`Kullanıcı akışı, renk uyumu, yazı fontları ve boşluk düzenleri`</strong>` gibi detaylar yeniden ele alınacak`</li>`
+      `<li>`Mehmet Said liderliğinde her modülün UI düzeni wireframe üzerinden gözden geçirilerek son hali sprint içinde çizilip geliştirilecek`</li>`
+    `</ul>`
 
-    <p><strong>4. Teknik Planlama:</strong></p>
-    <ul>
-      <li>Backend ile frontend arasındaki entegrasyon eksiklikleri giderilecek</li>
-      <li>STT ve TTS modüllerinin dış servislerle doğru ve stabil şekilde çalışması için gerekli bağlantılar test edilecek</li>
-      <li><strong>Video transkript modülünün</strong> teknik mimarisi yeniden ele alınacak ve çalışır hâle getirilmesi sprintin en öncelikli görevlerinden biri olacak</li>
-    </ul>
+    `<p><strong>`4. Teknik Planlama:`</strong></p>`
+    `<ul>`
+      `<li>`Backend ile frontend arasındaki entegrasyon eksiklikleri giderilecek`</li>`
+      `<li>`STT ve TTS modüllerinin dış servislerle doğru ve stabil şekilde çalışması için gerekli bağlantılar test edilecek`</li>`
+      `<li><strong>`Video transkript modülünün`</strong>` teknik mimarisi yeniden ele alınacak ve çalışır hâle getirilmesi sprintin en öncelikli görevlerinden biri olacak`</li>`
+    `</ul>`
 
-    <p><strong>5. Görev Dağılımı ve Ekip Düzenlemesi:</strong></p>
-    <ul>
-      <li><strong>İpek:</strong> Video transkript modülüne odaklanacak</li>
-      <li><strong>Esra & Zeynep:</strong> Yeni bir özellik önerisi geliştirip, bu özelliği bu sprintte tamamlamayı hedefleyecek</li>
-      <li><strong>Taha:</strong> Backend geliştirmeden çıkarılarak özellik geliştirme tarafına yönlendirildi</li>
-    </ul>
+    `<p><strong>`5. Görev Dağılımı ve Ekip Düzenlemesi:`</strong></p>`
+    `<ul>`
+      `<li><strong>`İpek:`</strong>` Video transkript modülüne odaklanacak`</li>`
+      `<li><strong>`Esra & Zeynep:`</strong>` Yeni bir özellik önerisi geliştirip, bu özelliği bu sprintte tamamlamayı hedefleyecek`</li>`
+      `<li><strong>`Taha:`</strong>` Backend geliştirmeden çıkarılarak özellik geliştirme tarafına yönlendirildi`</li>`
+    `</ul>`
 
-    <p><strong>6. Sprint Yöneticiliği ve Koordinasyon:</strong></p>
-    <ul>
-      <li>Sprint sürecinin planlanması, takvimlendirilmesi, görevlerin Trello/Notion üzerinden izlenmesi ve ekip içi koordinasyon konuları <strong>Mehmet Said Hüseyinoğlu</strong> tarafından üstlenilmiştir</li>
-      <li>Mehmet ayrıca tasarım, backend ve tüm modül entegrasyonlarının teknik mimarisini belirleyip ekibe yönlendirmelerde bulunacaktır</li>
-    </ul>
+    `<p><strong>`6. Sprint Yöneticiliği ve Koordinasyon:`</strong></p>`
+    `<ul>`
+      `<li>`Sprint sürecinin planlanması, takvimlendirilmesi, görevlerin Trello/Notion üzerinden izlenmesi ve ekip içi koordinasyon konuları `<strong>`Mehmet Said Hüseyinoğlu`</strong>` tarafından üstlenilmiştir`</li>`
+      `<li>`Mehmet ayrıca tasarım, backend ve tüm modül entegrasyonlarının teknik mimarisini belirleyip ekibe yönlendirmelerde bulunacaktır`</li>`
+    `</ul>`
 
 </details>
 
@@ -1121,48 +967,48 @@
       </div>
     </div>
 
-    <h4>Ana Sayfa Gelişimi:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/10.ana-sayfa-son-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Ana Sayfa - Final Tasarım</em></p>
-      </div>
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/9.ana-sayfa-ilk-hali.mp4" type="video/mp4">
+    `<h4>`Ana Sayfa Gelişimi:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/10.ana-sayfa-son-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Ana Sayfa - Final Tasarım`</em></p>`
+      `</div>`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/9.ana-sayfa-ilk-hali.mp4" type="video/mp4">`
           Ana Sayfa İlk Hali Demo
-        </video>
-        <p><em>Ana Sayfa - İlk Hali Demo Video</em></p>
-      </div>
-    </div>
+        `</video>`
+        `<p><em>`Ana Sayfa - İlk Hali Demo Video`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>Profil Sayfası Gelişimi:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/15.profil-ilk-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Profil Sayfası - İlk Tasarım</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/16.profil-ikinci-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Profil Sayfası - İkinci Tasarım</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/17.profil-son-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Profil Sayfası - Final Tasarım</em></p>
-      </div>
-    </div>
+    `<h4>`Profil Sayfası Gelişimi:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/15.profil-ilk-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Profil Sayfası - İlk Tasarım`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/16.profil-ikinci-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Profil Sayfası - İkinci Tasarım`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/17.profil-son-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Profil Sayfası - Final Tasarım`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>Ayarlar Sayfası Gelişimi:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/18.ayarlar-ikinci-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Ayarlar Sayfası - İkinci Tasarım</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/19.ayarlar-son-hali.png" style="max-width: 100%; height: auto;">
-        <p><em>Ayarlar Sayfası - Final Tasarım</em></p>
-      </div>
-    </div>
+    `<h4>`Ayarlar Sayfası Gelişimi:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/18.ayarlar-ikinci-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Ayarlar Sayfası - İkinci Tasarım`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/19.ayarlar-son-hali.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Ayarlar Sayfası - Final Tasarım`</em></p>`
+      `</div>`
+    `</div>`
 
 </details>
 
@@ -1180,44 +1026,44 @@
       </div>
     </div>
 
-    <h4>Video Transkript Özelliği Geliştirme:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/38.video-transkript-eski.png" style="max-width: 100%; height: auto;">
-        <p><em>Video Transkript - Eski Versiyon</em></p>
-      </div>
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/48.video-deneme.mp4" type="video/mp4">
+    `<h4>`Video Transkript Özelliği Geliştirme:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/38.video-transkript-eski.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Video Transkript - Eski Versiyon`</em></p>`
+      `</div>`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/48.video-deneme.mp4" type="video/mp4">`
           Video Transkript Deneme
-        </video>
-        <p><em>Video Transkript - Deneme Videosu</em></p>
-      </div>
-    </div>
+        `</video>`
+        `<p><em>`Video Transkript - Deneme Videosu`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>ChatBot Geliştirme Süreci:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/27.chat-bot-eski-deneme.png" style="max-width: 100%; height: auto;">
-        <p><em>ChatBot - İlk Deneme</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/30.chat-bot-eski-deneme-4.png" style="max-width: 100%; height: auto;">
-        <p><em>ChatBot - Gelişmiş Versiyon</em></p>
-      </div>
-    </div>
+    `<h4>`ChatBot Geliştirme Süreci:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/27.chat-bot-eski-deneme.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`ChatBot - İlk Deneme`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/30.chat-bot-eski-deneme-4.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`ChatBot - Gelişmiş Versiyon`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>TTS (Text-to-Speech) Hata Çözümleri:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/35.tts-hatalari.png" style="max-width: 100%; height: auto;">
-        <p><em>TTS Hataları - Debug Süreci</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/20.tts-hatasi.png" style="max-width: 100%; height: auto;">
-        <p><em>TTS Hatası - Çözüm Süreci</em></p>
-      </div>
-    </div>
+    `<h4>`TTS (Text-to-Speech) Hata Çözümleri:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/35.tts-hatalari.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`TTS Hataları - Debug Süreci`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/20.tts-hatasi.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`TTS Hatası - Çözüm Süreci`</em></p>`
+      `</div>`
+    `</div>`
 
 </details>
 
@@ -1230,41 +1076,41 @@
     </video>
     <p><em>Final Platform Demo - Tüm özelliklerin çalışır durumda olduğu final versiyon</em></p>
 
-    <h4>Platform Geliştirme Süreci:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-232635.mp4" type="video/mp4">
+    `<h4>`Platform Geliştirme Süreci:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-232635.mp4" type="video/mp4">`
           Platform Geliştirme Süreci 1
-        </video>
-        <p><em>Platform Geliştirme Süreci - Aşama 1</em></p>
-      </div>
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-232919.mp4" type="video/mp4">
+        `</video>`
+        `<p><em>`Platform Geliştirme Süreci - Aşama 1`</em></p>`
+      `</div>`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-232919.mp4" type="video/mp4">`
           Platform Geliştirme Süreci 2
-        </video>
-        <p><em>Platform Geliştirme Süreci - Aşama 2</em></p>
-      </div>
-    </div>
+        `</video>`
+        `<p><em>`Platform Geliştirme Süreci - Aşama 2`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>Video Transkript Testleri:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-233037.mp4" type="video/mp4">
+    `<h4>`Video Transkript Testleri:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-233037.mp4" type="video/mp4">`
           Video Transkript Test 1
-        </video>
-        <p><em>Video Transkript Test - Whisper Entegrasyonu</em></p>
-      </div>
-      <div>
-        <video width="100%" controls>
-          <source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-233412.mp4" type="video/mp4">
+        `</video>`
+        `<p><em>`Video Transkript Test - Whisper Entegrasyonu`</em></p>`
+      `</div>`
+      `<div>`
+        `<video width="100%" controls>`
+          `<source src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/screen-20250803-233412.mp4" type="video/mp4">`
           Video Transkript Test 2
-        </video>
-        <p><em>Video Transkript Test - Final Entegrasyon</em></p>
-      </div>
-    </div>
+        `</video>`
+        `<p><em>`Video Transkript Test - Final Entegrasyon`</em></p>`
+      `</div>`
+    `</div>`
 
 </details>
 
@@ -1274,25 +1120,25 @@
     <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/11.grup-sohbeti.png" style="max-width: 100%; height: auto; margin: 10px 0;">
     <p><em>Üçüncü Sprint Grup Sohbeti - Final Koordinasyon ve Görev Tamamlama</em></p>
 
-    <h4>Platform Geliştirme Süreci:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0;">
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/1.png" style="max-width: 100%; height: auto;">
-        <p><em>Platform Geliştirme - Aşama 1</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/2.png" style="max-width: 100%; height: auto;">
-        <p><em>Platform Geliştirme - Aşama 2</em></p>
-      </div>
-      <div>
-        <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/3.png" style="max-width: 100%; height: auto;">
-        <p><em>Platform Geliştirme - Aşama 3</em></p>
-      </div>
-    </div>
+    `<h4>`Platform Geliştirme Süreci:`</h4>`
+    `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0;">`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/1.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Platform Geliştirme - Aşama 1`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/2.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Platform Geliştirme - Aşama 2`</em></p>`
+      `</div>`
+      `<div>`
+        `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/3.png" style="max-width: 100%; height: auto;">`
+        `<p><em>`Platform Geliştirme - Aşama 3`</em></p>`
+      `</div>`
+    `</div>`
 
-    <h4>Final App Görünümü:</h4>
-    <img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/31.app-gorunum.png" style="max-width: 100%; height: auto; margin: 10px 0;">
-    <p><em>Final App Görünümü - Tüm sayfaların tamamlanmış hali</em></p>
+    `<h4>`Final App Görünümü:`</h4>`
+    `<img src="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/31.app-gorunum.png" style="max-width: 100%; height: auto; margin: 10px 0;">`
+    `<p><em>`Final App Görünümü - Tüm sayfaların tamamlanmış hali`</em></p>`
 
 </details>
 
@@ -1310,7 +1156,7 @@
 - **Daily Scrum Evidence**: *Final sprint coordination via WhatsApp group communications*
 - **Product Backlog URL:**
 
-  - **🔗 Live Notion Workspace**: <a href="https://spotty-tang-58d.notion.site/nc-Sprint-23ebc3b0417680dfbab0c2723c53a640?source=copy_link" target="_blank">Üçüncü Sprint Board</a>
+  - **🔗 Live Notion Workspace**: `<a href="https://spotty-tang-58d.notion.site/nc-Sprint-23ebc3b0417680dfbab0c2723c53a640?source=copy_link" target="_blank">`Üçüncü Sprint Board`</a>`
   - **Evidence**: All tasks completed, comprehensive documentation and demo videos available
 - **Sprint Review**:
 
@@ -1357,7 +1203,7 @@
 
 ## Platform Demo
 
-  **Platform Demo Video:** <a href="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/50.final-teslim.mp4" target="_blank">Final Platform Demo - Lumina AI Platform</a>
+  **Platform Demo Video:** `<a href="GK%20%26%20SS/%C3%9C%C3%A7%C3%BCnc%C3%BC%20Sprint/50.final-teslim.mp4" target="_blank">`Final Platform Demo - Lumina AI Platform`</a>`
 
   **Current Status:** ✅ **COMPLETED** - MVP successfully completed, all features functional and tested
 
