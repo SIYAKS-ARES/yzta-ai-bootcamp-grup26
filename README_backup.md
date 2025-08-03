@@ -1,22 +1,4 @@
-<html>
-  <body>
-
-  ![lumina](GK%20%26%20SS/Icon/Lumina%20Small.png)
-
-<!--![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)-->
-
-## 🎯 **BOOTCAMP FINAL DEMO**
-
-![Lumina AI Platform Demo](assets/final-demo.gif)
-
-**📱 Alternative Platforms:**
-🎬 [YouTube Shorts](https://youtube.com/shorts/dbhLAWYP5gw) • 
-📺 [Google Drive](https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing) • 
-🎬 [Vimeo](https://vimeo.com/1106932404?share=copy) • 
-⚡ [Streamable](https://streamable.com/0pihg0) • 
-🌐 [LimeWire](https://limewire.com/d/IJsK6#ETqkNkvDaU)
-
-✅ **MVP Successfully Completed** - All features functional and tested
+![lumina](GK%20%26%20SS/Icon/Lumina%20Small.png)
 
 # **Team & Product Name**
 
@@ -24,7 +6,29 @@
 
 ---
 
+## 🎬 **BOOTCAMP FINAL DEMO**
 
+<div align="center">
+
+### 🚀 Lumina AI Platform - Bootcamp Final Demo
+
+![Complete Platform Demo](assets/final-demo.gif)
+
+*📺 **Primary Demo** - Complete MVP demonstration with all features*
+
+---
+
+### 📱 Alternative Platforms
+
+🎬 [YouTube Shorts](https://youtube.com/shorts/dbhLAWYP5gw) • 
+📺 [Google Drive](https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing) • 
+🎬 [Vimeo](https://vimeo.com/1106932404?share=copy) • 
+⚡ [Streamable](https://streamable.com/0pihg0) • 
+🌐 [LimeWire](https://limewire.com/d/IJsK6#ETqkNkvDaU)
+
+*✅ **MVP Successfully Completed** - All features functional and tested*
+
+</div>
 
 ---
 
@@ -1214,6 +1218,3 @@
 **Son Güncelleme**: 3 Ağustos 2025, 11:45 PM
 **Güncelleyen**: Mehmet Said Hüseyinoğlu (Scrum Master)
 **Documentation Status**: ✅ **COMPLETE** - All sprints documented, MVP delivered, bootcamp requirements fulfilled
-
-</body>
-  </html>
