@@ -8,31 +8,52 @@
 <div align="center">
   <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
   
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
-    
-    <!-- Full Demo Section -->
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-      <h3 style="color: white; margin: 0 0 15px 0;">🚀 Full Platform Demo</h3>
-      <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-        <p style="color: white; margin: 0; font-size: 14px;">
-          <strong>📺 Complete MVP Demo</strong><br>
-          All features functional and tested
-        </p>
-      </div>
+  <!-- Main Video Player -->
+  <div style="max-width: 800px; margin: 0 auto 30px auto;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); text-align: center;">
+      <h3 style="color: white; margin: 0 0 20px 0; font-size: 24px;">🎬 Watch Full Demo</h3>
+      <p style="color: white; margin: 0 0 25px 0; font-size: 16px; line-height: 1.5;">
+        <strong>Complete MVP Demonstration</strong><br>
+        All features functional and tested<br>
+        Direct video playback available
+      </p>
       <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
          target="_blank" 
-         style="display: inline-block; background: #2563EB; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
-        🎬 Watch Full Demo
+         style="display: inline-block; background: #2563EB; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+        🎬 Watch Full Demo Video
+      </a>
+    </div>
+    <p style="margin-top: 15px; font-size: 16px; color: #666; text-align: center;">
+      <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
+    </p>
+  </div>
+  
+  <!-- Alternative Links -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto;">
+    
+    <!-- YouTube Shorts Alternative -->
+    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+      <h3 style="color: white; margin: 0 0 15px 0;">📱 Mobile Showcase</h3>
+      <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+        <p style="color: white; margin: 0; font-size: 14px;">
+          <strong>YouTube Shorts</strong><br>
+          Mobile-first showcase
+        </p>
+      </div>
+      <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
+         target="_blank" 
+         style="display: inline-block; background: #FF0000; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+        🎬 Watch on YouTube
       </a>
     </div>
     
-    <!-- YouTube Shorts Section -->
+    <!-- YouTube Shorts Alternative -->
     <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-      <h3 style="color: white; margin: 0 0 15px 0;">📱 YouTube Shorts</h3>
+      <h3 style="color: white; margin: 0 0 15px 0;">📱 Alternative</h3>
       <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
         <p style="color: white; margin: 0; font-size: 14px;">
-          <strong>📱 Mobile-First Demo</strong><br>
-          Lumina AI Platform showcase
+          <strong>YouTube Shorts</strong><br>
+          Mobile-first showcase
         </p>
       </div>
       <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
@@ -60,32 +81,54 @@
 <div align="center">
   <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
   
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; margin: 0 auto;">
+  <!-- Main Video Player -->
+  <div style="max-width: 1000px; margin: 0 auto 40px auto;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25); text-align: center;">
+      <h3 style="color: white; margin: 0 0 25px 0; font-size: 28px;">🎬 Complete Platform Demo</h3>
+      <p style="color: white; margin: 0 0 30px 0; font-size: 18px; line-height: 1.6;">
+        <strong>Full MVP Demonstration</strong><br>
+        All features functional and tested<br>
+        Complete user journey showcase<br>
+        Direct video playback available
+      </p>
+      <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
+         target="_blank" 
+         style="display: inline-block; background: #2563EB; color: white; padding: 18px 36px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);">
+        🎬 Watch Complete Demo Video
+      </a>
+    </div>
+    <p style="margin-top: 20px; font-size: 18px; color: #666; text-align: center;">
+      <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
+    </p>
+  </div>
+  
+  <!-- Alternative Links -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 800px; margin: 0 auto;">
     
-    <!-- Full Demo Section -->
+    <!-- GitHub Releases Alternative -->
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">🚀 Complete Platform Demo</h4>
+      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">📺 Alternative Platform</h4>
       <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
         <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
-          <strong>📺 Full MVP Demonstration</strong><br>
-          All features functional and tested<br>
-          Complete user journey showcase
+          <strong>Google Drive</strong><br>
+          Watch on Google Drive<br>
+          Alternative viewing option
         </p>
       </div>
       <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
          target="_blank" 
          style="display: inline-block; background: #2563EB; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
-        🎬 Watch Full Demo on Google Drive
+        🎬 Watch on Google Drive
       </a>
     </div>
     
-    <!-- YouTube Shorts Section -->
+    <!-- YouTube Shorts Alternative -->
     <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">📱 YouTube Shorts Demo</h4>
+      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">📱 Mobile Showcase</h4>
       <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
         <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
-          <strong>📱 Mobile-First Showcase</strong><br>
-          Lumina AI Platform highlights<br>
+          <strong>YouTube Shorts</strong><br>
+          Mobile-first showcase<br>
           Quick feature overview
         </p>
       </div>
