@@ -24,13 +24,13 @@
     </div>
 
     <!-- Alternative Links - YouTube Prominent -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
       
       <!-- YouTube Shorts - Prominent -->
-      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
-        <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
-        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center;">
-          <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
+      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 35px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
+        <h4 style="color: white; margin: 0 0 20px 0; font-size: 22px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
+        <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 16px; margin-bottom: 25px; text-align: center;">
+          <p style="color: white; margin: 0; font-size: 18px; line-height: 1.5;">
             <strong>Quick Demo Version</strong><br>
             Mobile-first showcase<br>
             Perfect for social media sharing
@@ -39,7 +39,7 @@
         <div style="text-align: center;">
           <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
              target="_blank" 
-             style="display: inline-block; background: #FF0000; color: white; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
+             style="display: inline-block; background: #FF0000; color: white; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
             🎬 Watch on YouTube Shorts
           </a>
         </div>
@@ -63,7 +63,7 @@
 
       <!-- Vimeo -->
       <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">�� Vimeo</h4>
         <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
           <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
             <strong>Professional</strong><br>
@@ -73,6 +73,38 @@
         <a href="https://vimeo.com/1106932404?share=copy" 
            target="_blank" 
            style="display: inline-block; background: #1ab7ea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
+      <!-- Streamable -->
+      <div style="background: linear-gradient(135deg, #00d4aa 0%, #0099cc 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">⚡ Streamable</h4>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
+            <strong>Fast Loading</strong><br>
+            Direct play
+          </p>
+        </div>
+        <a href="https://streamable.com/0pihg0" 
+           target="_blank" 
+           style="display: inline-block; background: #00d4aa; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
+      <!-- LimeWire -->
+      <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🌐 LimeWire</h4>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
+            <strong>Alternative</strong><br>
+            Web platform
+          </p>
+        </div>
+        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" 
+           target="_blank" 
+           style="display: inline-block; background: #8b5cf6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
           🎬 Watch
         </a>
       </div>
@@ -113,13 +145,13 @@
     </div>
 
     <!-- Alternative Links - YouTube Prominent -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
       
       <!-- YouTube Shorts - Prominent -->
-      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
-        <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
-        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center;">
-          <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
+      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 35px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); grid-column: 1 / -1;">
+        <h4 style="color: white; margin: 0 0 20px 0; font-size: 22px; text-align: center;">📱 YouTube Shorts - Mobile Showcase</h4>
+        <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 16px; margin-bottom: 25px; text-align: center;">
+          <p style="color: white; margin: 0; font-size: 18px; line-height: 1.5;">
             <strong>Quick Demo Version</strong><br>
             Mobile-first showcase<br>
             Perfect for social media sharing
@@ -128,7 +160,7 @@
         <div style="text-align: center;">
           <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
              target="_blank" 
-             style="display: inline-block; background: #FF0000; color: white; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
+             style="display: inline-block; background: #FF0000; color: white; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);">
             🎬 Watch on YouTube Shorts
           </a>
         </div>
@@ -152,7 +184,7 @@
 
       <!-- Vimeo -->
       <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">�� Vimeo</h4>
         <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
           <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
             <strong>Professional</strong><br>
@@ -162,6 +194,38 @@
         <a href="https://vimeo.com/1106932404?share=copy" 
            target="_blank" 
            style="display: inline-block; background: #1ab7ea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
+      <!-- Streamable -->
+      <div style="background: linear-gradient(135deg, #00d4aa 0%, #0099cc 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">⚡ Streamable</h4>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
+            <strong>Fast Loading</strong><br>
+            Direct play
+          </p>
+        </div>
+        <a href="https://streamable.com/0pihg0" 
+           target="_blank" 
+           style="display: inline-block; background: #00d4aa; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
+      <!-- LimeWire -->
+      <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🌐 LimeWire</h4>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
+            <strong>Alternative</strong><br>
+            Web platform
+          </p>
+        </div>
+        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" 
+           target="_blank" 
+           style="display: inline-block; background: #8b5cf6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
           🎬 Watch
         </a>
       </div>
