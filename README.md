@@ -1,7 +1,4 @@
-<html>
-  <body>
-
-  ![lumina](GK%20%26%20SS/Icon/Lumina%20Small.png)
+![lumina](GK%20%26%20SS/Icon/Lumina%20Small.png)
 
 <!--![team and product](GK%20&%20SS/%C4%B0lk%20Sprint/Screenshot%202025-06-29%20at%203.27.57%20PM.png)-->
 
@@ -18,13 +15,11 @@
 
 ✅ **MVP Successfully Completed** - All features functional and tested
 
+---
+
 # **Team & Product Name**
 
 ### **`Lumina`**
-
----
-
-
 
 ---
 
@@ -1214,6 +1209,3 @@
 **Son Güncelleme**: 3 Ağustos 2025, 11:45 PM
 **Güncelleyen**: Mehmet Said Hüseyinoğlu (Scrum Master)
 **Documentation Status**: ✅ **COMPLETE** - All sprints documented, MVP delivered, bootcamp requirements fulfilled
-
-</body>
-  </html>
