@@ -20,6 +20,28 @@
   <p><em>✅ <strong>MVP Successfully Completed</strong> - All features functional and tested</em></p>
 </div>
 
+<div align="center">
+  <h3>📱 <strong>YouTube Shorts Demo</strong></h3>
+  
+  <div style="max-width: 400px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+    <iframe 
+      width="100%" 
+      height="600" 
+      src="https://www.youtube.com/embed/dbhLAWYP5gw" 
+      title="Lumina AI Platform - YouTube Shorts Demo" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+  <p>
+    <strong>🎬 <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" target="_blank" style="color: #FF0000; text-decoration: none;">Watch on YouTube Shorts</a></strong>
+  </p>
+  
+  <p><em>📱 <strong>Mobile-First Demo</strong> - Lumina AI Platform showcase</em></p>
+</div>
+
 # **Team & Product Name**
 
 ### **`Lumina`**
@@ -44,6 +66,28 @@
       📺 Watch on Google Drive
     </a>
   </p>
+</div>
+
+<div align="center">
+  <h3>📱 YouTube Shorts Demo</h3>
+  
+  <div style="max-width: 400px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+    <iframe 
+      width="100%" 
+      height="600" 
+      src="https://www.youtube.com/embed/dbhLAWYP5gw" 
+      title="Lumina AI Platform - YouTube Shorts Demo" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+  <p>
+    <strong>🎬 <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" target="_blank" style="color: #FF0000; text-decoration: none; font-weight: bold;">Watch on YouTube Shorts</a></strong>
+  </p>
+  
+  <p><em>📱 <strong>Mobile-First Demo</strong> - Lumina AI Platform showcase</em></p>
 </div>
 
 ---
