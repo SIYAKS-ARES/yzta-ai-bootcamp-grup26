@@ -57,6 +57,7 @@ dependencies:
   encrypt: ^5.0.1
   # Video işleme için
   video_player: ^2.8.3
+  # Video işleme için native Android MediaCodec kullanılacak
   # Whisper.cpp için
   flutter_rust_bridge: ^2.11.1
   ffi: ^2.1.2

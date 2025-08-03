@@ -112,8 +112,7 @@ class FeatureService {
             id: 'text_to_speech',
             icon: '🔊',
             title: 'Metinden Sese',
-            description:
-                'PDF ve metin dosyalarınızı sesli hale getirin.\nCihaz ve ElevenLabs seçenekleri.',
+            description: 'PDF ve metin dosyalarınızı sesli hale getirin.',
             buttonText: 'Başla',
             onPressed: () {
               Navigator.push(

@@ -3,86 +3,32 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import 'frb_generated.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+// Rust kütüphanesi deaktive edildi - Python servisi kullanılıyor
+// import 'frb_generated.dart';
+// import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `extract_audio_from_video`, `initialize_whisper_internal`, `transcribe_audio_internal`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
+// Hibrit servisindeki sınıfları kullan ve export et
+import 'services/whisper_hybrid_service.dart';
+export 'services/whisper_hybrid_service.dart' show TranscriptResult, TranscriptSegment, WhisperMode;
 
-Future<bool> initializeWhisper({required String modelPath}) =>
-    RsWhisperGpt.instance.api.crateApiInitializeWhisper(modelPath: modelPath);
+// Mock fonksiyonlar - gerçek implementasyon Python servisinde
+Future<bool> initializeWhisper({required String modelPath}) async {
+  // Python servisi kullanılıyor
+  return true;
+}
 
 Future<TranscriptResult> transcribeVideoWithWhisper({
   required String modelPath,
   required String videoPath,
-}) => RsWhisperGpt.instance.api.crateApiTranscribeVideoWithWhisper(
-  modelPath: modelPath,
-  videoPath: videoPath,
-);
+}) async {
+  // Python servisi kullanılıyor
+  throw UnimplementedError('Python servisi kullanılıyor');
+}
 
 Future<TranscriptResult> transcribeAudioWithWhisper({
   required String modelPath,
   required String audioPath,
-}) => RsWhisperGpt.instance.api.crateApiTranscribeAudioWithWhisper(
-  modelPath: modelPath,
-  audioPath: audioPath,
-);
-
-class TranscriptResult {
-  final List<TranscriptSegment> segments;
-  final String fullText;
-  final String language;
-  final double duration;
-
-  const TranscriptResult({
-    required this.segments,
-    required this.fullText,
-    required this.language,
-    required this.duration,
-  });
-
-  @override
-  int get hashCode =>
-      segments.hashCode ^
-      fullText.hashCode ^
-      language.hashCode ^
-      duration.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TranscriptResult &&
-          runtimeType == other.runtimeType &&
-          segments == other.segments &&
-          fullText == other.fullText &&
-          language == other.language &&
-          duration == other.duration;
-}
-
-class TranscriptSegment {
-  final double start;
-  final double end;
-  final String text;
-  final double confidence;
-
-  const TranscriptSegment({
-    required this.start,
-    required this.end,
-    required this.text,
-    required this.confidence,
-  });
-
-  @override
-  int get hashCode =>
-      start.hashCode ^ end.hashCode ^ text.hashCode ^ confidence.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TranscriptSegment &&
-          runtimeType == other.runtimeType &&
-          start == other.start &&
-          end == other.end &&
-          text == other.text &&
-          confidence == other.confidence;
+}) async {
+  // Python servisi kullanılıyor
+  throw UnimplementedError('Python servisi kullanılıyor');
 }

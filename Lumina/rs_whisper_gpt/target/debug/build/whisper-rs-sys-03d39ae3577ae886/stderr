@@ -1,3 +1,23 @@
+./whisper.cpp/ggml.h:514:9: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:524:9: error: unknown type name 'int32_t'
+./whisper.cpp/ggml.h:524:55: error: use of undeclared identifier 'int32_t'
+./whisper.cpp/ggml.h:533:9: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:534:9: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:554:9: error: unknown type name 'uint8_t'
+./whisper.cpp/ggml.h:590:9: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:591:9: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:633:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:634:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:635:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:636:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:646:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:647:14: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:653:57: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:706:19: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:711:13: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:716:13: error: unknown type name 'int64_t'
+./whisper.cpp/ggml.h:717:13: error: unknown type name 'int64_t'
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
   CMake.

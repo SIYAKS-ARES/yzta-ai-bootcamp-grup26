@@ -62,7 +62,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
           return Transform.scale(
             scale: _scaleAnimation.value,
             child: Container(
-              height: 160,
+              height: 170,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -85,7 +85,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                 ],
               ),
               child: Padding(
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.all(14),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,18 +95,18 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(6),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
                             widget.feature.icon,
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 16),
                           ),
                         ),
                         SizedBox(height: 8),
@@ -114,7 +114,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                           widget.feature.title,
                           style: TextStyle(
                             color: primaryBlue,
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.3,
                           ),
@@ -129,9 +129,9 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                       widget.feature.description,
                       style: TextStyle(
                         color: Color(0xFF64748b),
-                        fontSize: 11,
+                        fontSize: 10,
                         fontWeight: FontWeight.w500,
-                        height: 1.3,
+                        height: 1.2,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -140,7 +140,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                     // Buton
                     Container(
                       width: double.infinity,
-                      height: 36,
+                      height: 40,
                       decoration: BoxDecoration(
                         gradient: widget.feature.isEnabled
                             ? LinearGradient(
@@ -178,7 +178,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget>
                                     ? Colors.white
                                     : Color(0xFF9ca3af),
                                 fontWeight: FontWeight.w600,
-                                fontSize: 12,
+                                fontSize: 11,
                                 letterSpacing: 0.3,
                               ),
                             ),

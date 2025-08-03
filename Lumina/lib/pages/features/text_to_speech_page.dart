@@ -404,7 +404,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
           const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(
+              Flexible(
                 child: _buildProviderChip(
                   TTSProvider.device,
                   'Cihaz TTS',
@@ -414,7 +414,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(
+              Flexible(
                 child: _buildProviderChip(
                   TTSProvider.elevenlabs,
                   'ElevenLabs',
@@ -424,7 +424,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(
+              Flexible(
                 child: _buildProviderChip(
                   TTSProvider.gemini,
                   'Gemini',
@@ -460,9 +460,8 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
               });
             },
       child: Container(
-        width: double.infinity,
-        height: 100,
-        padding: const EdgeInsets.all(12),
+        height: 140,
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           gradient: isSelected
               ? LinearGradient(
@@ -510,7 +509,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
               color: isSelected
                   ? Colors.white
                   : (isDisabled ? Color(0xFF9ca3af) : Color(0xFF6b7280)),
-              size: 26,
+              size: 28,
             ),
             const SizedBox(height: 6),
             Text(
@@ -520,21 +519,25 @@ class _TextToSpeechPageState extends State<TextToSpeechPage>
                     ? Colors.white
                     : (isDisabled ? Color(0xFF9ca3af) : Color(0xFF374151)),
                 fontWeight: FontWeight.w700,
-                fontSize: 12,
+                fontSize: 13,
               ),
               textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: 2),
+            SizedBox(height: 3),
             Text(
               subtitle,
               style: TextStyle(
                 color: isSelected
                     ? Colors.white.withValues(alpha: 0.8)
                     : (isDisabled ? Color(0xFF9ca3af) : Color(0xFF6b7280)),
-                fontSize: 9,
+                fontSize: 10,
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

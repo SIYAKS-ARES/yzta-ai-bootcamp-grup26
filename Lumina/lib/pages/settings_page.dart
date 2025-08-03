@@ -6,6 +6,8 @@ import 'profile_page.dart';
 import '../services/text_to_speech_service.dart';
 import '../services/language_service.dart';
 import '../services/theme_service.dart';
+import '../services/whisper_service.dart';
+import '../api.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -27,6 +29,10 @@ class _SettingsPageState extends State<SettingsPage>
   double speechRate = 0.5;
   double volume = 1.0;
   String ttsLanguage = "tr-TR";
+
+  // Whisper ayarları
+  WhisperMode _selectedWhisperMode = WhisperMode.auto;
+  bool _isWhisperInitialized = false;
 
   // Parola değiştirme controllers
   final TextEditingController _currentPasswordController =
@@ -89,11 +95,30 @@ class _SettingsPageState extends State<SettingsPage>
           _isLoading = false;
         });
       }
+
+      // Whisper ayarlarını yükle
+      await _loadWhisperSettings();
+
       _animationController.forward();
     } catch (e) {
       setState(() {
         _isLoading = false;
       });
+    }
+  }
+
+  Future<void> _loadWhisperSettings() async {
+    try {
+      final whisperService = Provider.of<WhisperService>(
+        context,
+        listen: false,
+      );
+      setState(() {
+        _selectedWhisperMode = whisperService.currentMode;
+        _isWhisperInitialized = whisperService.isInitialized;
+      });
+    } catch (e) {
+      // Hata durumunda varsayılan değerler kullan
     }
   }
 
@@ -816,6 +841,252 @@ class _SettingsPageState extends State<SettingsPage>
                       },
                       activeColor: primaryBlue,
                       activeTrackColor: primaryBlue.withValues(alpha: 0.3),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Whisper Ayarları Bölümü
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFfef3c7), Color(0xFFfde68a)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.mic_rounded,
+                            color: Color(0xFFd97706),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          "Whisper Transkript Ayarları",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Color(0xFF1f2937),
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Sağlayıcı Seçimi
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Transkript Sağlayıcısı",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Color(0xFF374151),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFf8fafc),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Color(0xFFe2e8f0),
+                              width: 1.5,
+                            ),
+                          ),
+                          child: DropdownButton<WhisperMode>(
+                            value: _selectedWhisperMode,
+                            items: [
+                              DropdownMenuItem(
+                                value: WhisperMode.auto,
+                                child: Text(
+                                  "Otomatik Seçim",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: WhisperMode.local,
+                                child: Text(
+                                  "Yerel Whisper (Offline)",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: WhisperMode.api,
+                                child: Text(
+                                  "OpenAI API",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                            onChanged: (WhisperMode? newValue) async {
+                              if (newValue != null) {
+                                // setMode kaldırıldı - artık sadece API kullanılıyor
+                                setState(() {
+                                  _selectedWhisperMode = newValue;
+                                });
+                              }
+                            },
+                            underline: SizedBox(),
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: primaryBlue,
+                              size: 20,
+                            ),
+                            dropdownColor: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+
+                    // API Anahtarı (sadece API modunda göster)
+                    if (_selectedWhisperMode == WhisperMode.api) ...[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "OpenAI API Anahtarı",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color(0xFF374151),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: "sk-...",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                  color: Color(0xFFe2e8f0),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                  color: primaryBlue,
+                                  width: 2,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 12,
+                              ),
+                            ),
+                            onChanged: (value) {
+                              final whisperService =
+                                  Provider.of<WhisperService>(
+                                    context,
+                                    listen: false,
+                                  );
+                              whisperService.setApiKey(value);
+                            },
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            "API anahtarınızı güvenli şekilde saklayın",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF6b7280),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+
+                    // Durum Bilgisi
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _isWhisperInitialized
+                                ? Color(0xFFdcfce7)
+                                : Color(0xFFfef2f2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                _isWhisperInitialized
+                                    ? Icons.check_circle
+                                    : Icons.error,
+                                color: _isWhisperInitialized
+                                    ? Color(0xFF16a34a)
+                                    : Color(0xFFdc2626),
+                                size: 16,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                _isWhisperInitialized
+                                    ? "Hazır"
+                                    : "Başlatılamadı",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: _isWhisperInitialized
+                                      ? Color(0xFF16a34a)
+                                      : Color(0xFFdc2626),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          "Mevcut: ${Provider.of<WhisperService>(context, listen: false).getModeInfo()}",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF6b7280),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

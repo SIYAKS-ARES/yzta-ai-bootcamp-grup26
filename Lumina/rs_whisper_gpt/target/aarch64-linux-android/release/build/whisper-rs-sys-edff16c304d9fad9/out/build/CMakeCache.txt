@@ -14,226 +14,35 @@
 # EXTERNAL cache entries
 ########################
 
-//whisper: build shared libs
-BUILD_SHARED_LIBS:BOOL=OFF
-
-//Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-addr2line
-
-//Archiver
-CMAKE_AR:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar
+//No help, variable specified on the command line.
+BUILD_SHARED_LIBS:UNINITIALIZED=OFF
 
 //No help, variable specified on the command line.
 CMAKE_ASM_COMPILER:UNINITIALIZED=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang
 
-//Flags used by the compiler during all build types.
-CMAKE_ASM_FLAGS:STRING= -DANDROID -ffunction-sections -fdata-sections -fPIC
+//No help, variable specified on the command line.
+CMAKE_ASM_FLAGS:UNINITIALIZED= -DANDROID -ffunction-sections -fdata-sections -fPIC
 
-//Flags used by the compiler during debug builds.
-CMAKE_ASM_FLAGS_DEBUG:STRING=
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:UNINITIALIZED=Release
 
-//Flags used by the compiler during release builds.
-CMAKE_ASM_FLAGS_RELEASE:STRING=
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER:UNINITIALIZED=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang
 
-//Choose the type of build, options are: None Debug Release RelWithDebInfo
-// MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Release
+//No help, variable specified on the command line.
+CMAKE_CXX_FLAGS:UNINITIALIZED= -DANDROID -ffunction-sections -fdata-sections -fPIC
 
-//Enable/Disable color output during build.
-CMAKE_COLOR_MAKEFILE:BOOL=ON
+//No help, variable specified on the command line.
+CMAKE_C_COMPILER:UNINITIALIZED=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang
 
-//CXX compiler
-CMAKE_CXX_COMPILER:STRING=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++
-
-//LLVM archiver
-CMAKE_CXX_COMPILER_AR:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar
-
-//`clang-scan-deps` dependency scanner
-CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang-scan-deps
-
-//Generate index for LLVM archive
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ranlib
-
-//Flags used by the compiler during all build types.
-CMAKE_CXX_FLAGS:STRING= -DANDROID -ffunction-sections -fdata-sections -fPIC
-
-//Flags used by the compiler during debug builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=
-
-//Flags used by the CXX compiler during MINSIZEREL builds.
-CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
-
-//Flags used by the compiler during release builds.
-CMAKE_CXX_FLAGS_RELEASE:STRING=
-
-//Flags used by the c++ compiler during release builds with enabled
-// asserts.
-CMAKE_CXX_FLAGS_RELEASEGG:STRING=-O3
-
-//Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
-
-//Flags used by the c++ compiler during release builds with debug
-// symbols and enabled asserts.
-CMAKE_CXX_FLAGS_RELWITHDEBINFOGG:STRING=-O2 -g
-
-//Libraries linked by default with all C++ applications.
-CMAKE_CXX_STANDARD_LIBRARIES:STRING=-latomic -lm
-
-//C compiler
-CMAKE_C_COMPILER:STRING=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang
-
-//LLVM archiver
-CMAKE_C_COMPILER_AR:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar
-
-//`clang-scan-deps` dependency scanner
-CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang-scan-deps
-
-//Generate index for LLVM archive
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ranlib
-
-//Flags used by the compiler during all build types.
-CMAKE_C_FLAGS:STRING= -DANDROID -ffunction-sections -fdata-sections -fPIC
-
-//Flags used by the compiler during debug builds.
-CMAKE_C_FLAGS_DEBUG:STRING=
-
-//Flags used by the C compiler during MINSIZEREL builds.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
-
-//Flags used by the compiler during release builds.
-CMAKE_C_FLAGS_RELEASE:STRING=
-
-//Flags used by the compiler during release builds with enabled
-// asserts.
-CMAKE_C_FLAGS_RELEASEGG:STRING=-O3
-
-//Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
-
-//Flags used by the compiler during release builds with debug symbols
-// and enabled asserts.
-CMAKE_C_FLAGS_RELWITHDEBINFOGG:STRING=-O2 -g
-
-//Libraries linked by default with all C applications.
-CMAKE_C_STANDARD_LIBRARIES:STRING=-latomic -lm
-
-//Path to a program.
-CMAKE_DLLTOOL:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-dlltool
-
-//Flags used by the linker.
-CMAKE_EXE_LINKER_FLAGS:STRING=
-
-//Flags used by the linker during DEBUG builds.
-CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
-
-//Flags used by the linker during MINSIZEREL builds.
-CMAKE_EXE_LINKER_FLAGS_MINSIZEREL:STRING=
-
-//Flags used by the linker during RELEASE builds.
-CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
-
-//Flags used for linking binaries during release builds with enabled
-// asserts.
-CMAKE_EXE_LINKER_FLAGS_RELEASEGG:STRING=
-
-//Flags used by the linker during RELWITHDEBINFO builds.
-CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//Flags used for linking binaries during release builds with debug
-// symbols and enabled asserts.
-CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFOGG:STRING=
-
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+//No help, variable specified on the command line.
+CMAKE_C_FLAGS:UNINITIALIZED= -DANDROID -ffunction-sections -fdata-sections -fPIC
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/pkgRedirects
 
-//User executables (bin)
-CMAKE_INSTALL_BINDIR:PATH=bin
-
-//Read-only architecture-independent data (DATAROOTDIR)
-CMAKE_INSTALL_DATADIR:PATH=
-
-//Read-only architecture-independent data root (share)
-CMAKE_INSTALL_DATAROOTDIR:PATH=share
-
-//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
-CMAKE_INSTALL_DOCDIR:PATH=
-
-//C header files (include)
-CMAKE_INSTALL_INCLUDEDIR:PATH=include
-
-//Info documentation (DATAROOTDIR/info)
-CMAKE_INSTALL_INFODIR:PATH=
-
-//Object code libraries (lib)
-CMAKE_INSTALL_LIBDIR:PATH=lib
-
-//Program executables (libexec)
-CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
-
-//Locale-dependent data (DATAROOTDIR/locale)
-CMAKE_INSTALL_LOCALEDIR:PATH=
-
-//Modifiable single-machine data (var)
-CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
-
-//Man documentation (DATAROOTDIR/man)
-CMAKE_INSTALL_MANDIR:PATH=
-
-//C header files for non-gcc (/usr/include)
-CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
-
-//Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out
-
-//Run-time variable data (LOCALSTATEDIR/run)
-CMAKE_INSTALL_RUNSTATEDIR:PATH=
-
-//System admin executables (sbin)
-CMAKE_INSTALL_SBINDIR:PATH=sbin
-
-//Modifiable architecture-independent data (com)
-CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
-
-//Read-only single-machine data (etc)
-CMAKE_INSTALL_SYSCONFDIR:PATH=etc
-
-//Path to a program.
-CMAKE_LINKER:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld
-
-//Path to a program.
-CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
-
-//Flags used by the linker during the creation of modules.
-CMAKE_MODULE_LINKER_FLAGS:STRING=
-
-//Flags used by the linker during the creation of modules during
-// DEBUG builds.
-CMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=
-
-//Flags used by the linker during the creation of modules during
-// MINSIZEREL builds.
-CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL:STRING=
-
-//Flags used by the linker during the creation of modules during
-// RELEASE builds.
-CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
-
-//Flags used by the linker during the creation of modules during
-// RELWITHDEBINFO builds.
-CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//Path to a program.
-CMAKE_NM:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-nm
-
-//Path to a program.
-CMAKE_OBJCOPY:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objcopy
-
-//Path to a program.
-CMAKE_OBJDUMP:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objdump
+//No help, variable specified on the command line.
+CMAKE_INSTALL_PREFIX:UNINITIALIZED=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -259,149 +68,29 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=4
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
-//Ranlib
-CMAKE_RANLIB:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ranlib
-
-//Path to a program.
-CMAKE_READELF:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-readelf
-
-//Flags used by the linker during the creation of dll's.
-CMAKE_SHARED_LINKER_FLAGS:STRING=
-
-//Flags used by the linker during the creation of shared libraries
-// during DEBUG builds.
-CMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=
-
-//Flags used by the linker during the creation of shared libraries
-// during MINSIZEREL builds.
-CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL:STRING=
-
-//Flags used by the linker during the creation of shared libraries
-// during RELEASE builds.
-CMAKE_SHARED_LINKER_FLAGS_RELEASE:STRING=
-
-//Flags used by the shared libraries linker during release builds
-// with enabled asserts.
-CMAKE_SHARED_LINKER_FLAGS_RELEASEGG:STRING=
-
-//Flags used by the linker during the creation of shared libraries
-// during RELWITHDEBINFO builds.
-CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//Flags used by the shared libraries linker during release builds
-// with debug symbols and enabled asserts.
-CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFOGG:STRING=
-
-//If set, runtime paths are not added when installing shared libraries,
-// but are added when building.
-CMAKE_SKIP_INSTALL_RPATH:BOOL=NO
-
-//If set, runtime paths are not added when using shared libraries.
-CMAKE_SKIP_RPATH:BOOL=NO
-
-//Flags used by the linker during the creation of static libraries
-// during all build types.
-CMAKE_STATIC_LINKER_FLAGS:STRING=
-
-//Flags used by the linker during the creation of static libraries
-// during DEBUG builds.
-CMAKE_STATIC_LINKER_FLAGS_DEBUG:STRING=
-
-//Flags used by the linker during the creation of static libraries
-// during MINSIZEREL builds.
-CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL:STRING=
-
-//Flags used by the linker during the creation of static libraries
-// during RELEASE builds.
-CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
-
-//Flags used by the linker during the creation of static libraries
-// during RELWITHDEBINFO builds.
-CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//Strip
-CMAKE_STRIP:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip
-
 //No help, variable specified on the command line.
 CMAKE_SYSTEM_NAME:UNINITIALIZED=Android
 
 //No help, variable specified on the command line.
 CMAKE_SYSTEM_PROCESSOR:UNINITIALIZED=aarch64
 
-//Path to a program.
-CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
-
-//The CMake toolchain file
-CMAKE_TOOLCHAIN_FILE:FILEPATH=/Users/siyaksares/Library/Android/sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake
-
 //No help, variable specified on the command line.
 CMAKE_VERBOSE_MAKEFILE:BOOL=ON
 
-//Git command line client
-GIT_EXECUTABLE:FILEPATH=/opt/homebrew/bin/git
+//No help, variable specified on the command line.
+WHISPER_ALL_WARNINGS:UNINITIALIZED=OFF
 
-//whisper: enable all compiler warnings
-WHISPER_ALL_WARNINGS:BOOL=OFF
+//No help, variable specified on the command line.
+WHISPER_ALL_WARNINGS_3RD_PARTY:UNINITIALIZED=OFF
 
-//whisper: enable all compiler warnings in 3rd party libs
-WHISPER_ALL_WARNINGS_3RD_PARTY:BOOL=OFF
+//No help, variable specified on the command line.
+WHISPER_BUILD_EXAMPLES:UNINITIALIZED=OFF
 
-//whisper: use BLAS libraries
-WHISPER_BLAS:BOOL=OFF
-
-//whisper: BLAS library vendor
-WHISPER_BLAS_VENDOR:BOOL=OFF
-
-//whisper: build examples
-WHISPER_BUILD_EXAMPLES:BOOL=OFF
-
-//whisper: build tests
-WHISPER_BUILD_TESTS:BOOL=OFF
-
-//whisper: use CLBlast
-WHISPER_CLBLAST:BOOL=OFF
-
-//whisper: support for cuBLAS
-WHISPER_CUBLAS:BOOL=OFF
-
-//whisper: support for hipBLAS
-WHISPER_HIPBLAS:BOOL=OFF
+//No help, variable specified on the command line.
+WHISPER_BUILD_TESTS:UNINITIALIZED=OFF
 
 //No help, variable specified on the command line.
 WHISPER_METAL:UNINITIALIZED=OFF
-
-//whisper: disable AVX
-WHISPER_NO_AVX:BOOL=OFF
-
-//whisper: disable AVX2
-WHISPER_NO_AVX2:BOOL=OFF
-
-//whisper: disable F16c
-WHISPER_NO_F16C:BOOL=OFF
-
-//whisper: disable FMA
-WHISPER_NO_FMA:BOOL=OFF
-
-//whisper: prefer OpenBLAS
-WHISPER_OPENBLAS:BOOL=OFF
-
-//whisper: support for OpenVINO
-WHISPER_OPENVINO:BOOL=OFF
-
-//whisper: enable perf timings
-WHISPER_PERF:BOOL=OFF
-
-//whisper: enable address sanitizer
-WHISPER_SANITIZE_ADDRESS:BOOL=OFF
-
-//whisper: enable thread sanitizer
-WHISPER_SANITIZE_THREAD:BOOL=OFF
-
-//whisper: enable undefined sanitizer
-WHISPER_SANITIZE_UNDEFINED:BOOL=OFF
-
-//whisper: support for libSDL2
-WHISPER_SDL2:BOOL=OFF
 
 //Value Computed by CMake
 whisper.cpp_BINARY_DIR:STATIC=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build
@@ -412,18 +101,11 @@ whisper.cpp_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 whisper.cpp_SOURCE_DIR:STATIC=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/whisper.cpp
 
-//Dependencies for the target
-whisper_LIB_DEPENDS:STATIC=general;m;general;-pthread;
-
 
 ########################
 # INTERNAL cache entries
 ########################
 
-//ADVANCED property for variable: CMAKE_ADDR2LINE
-CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_AR
-CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build
 //Major version of cmake used to create the current loaded cache
@@ -432,86 +114,16 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=0
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
-//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
-CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=/opt/homebrew/bin/cmake
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=/opt/homebrew/bin/cpack
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/opt/homebrew/bin/ctest
-//ADVANCED property for variable: CMAKE_CXX_COMPILER
-CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
-CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS
-CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
-CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS
-CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
-CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_MINSIZEREL
-CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELEASE
-CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELEASEGG
-CMAKE_CXX_FLAGS_RELEASEGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
-CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFOGG
-CMAKE_CXX_FLAGS_RELWITHDEBINFOGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_CXX_STANDARD_LIBRARIES
-CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_AR
-CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_CLANG_SCAN_DEPS
-CMAKE_C_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
-CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS
-CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
-CMAKE_C_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_MINSIZEREL
-CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELEASE
-CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELEASEGG
-CMAKE_C_FLAGS_RELEASEGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
-CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFOGG
-CMAKE_C_FLAGS_RELWITHDEBINFOGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_STANDARD_LIBRARIES
-CMAKE_C_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_DLLTOOL
-CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
 CMAKE_EDIT_COMMAND:INTERNAL=/opt/homebrew/bin/ccmake
 //Whether to issue deprecation errors for macros and functions.
 CMAKE_ERROR_DEPRECATED:INTERNAL=FALSE
-//Executable file format
-CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
-CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
-CMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_MINSIZEREL
-CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELEASE
-CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELEASEGG
-CMAKE_EXE_LINKER_FLAGS_RELEASEGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
-CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFOGG
-CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFOGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -522,133 +134,25 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Test CMAKE_HAVE_LIBC_PTHREAD
-CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=
-//Have library pthreads
-CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
-//Have library pthread
-CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/whisper.cpp
-//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
-CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
-CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
-CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
-CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
-CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
-CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
-CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
-CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
-CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
-CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
-CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
-CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
-CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
-CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
-CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
-//Install .so files without execute permission.
-CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
-//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
-CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_LINKER
-CMAKE_LINKER-ADVANCED:INTERNAL=1
 //Name of CMakeLists files to read
 CMAKE_LIST_FILE_NAME:INTERNAL=CMakeLists.txt
-//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
-CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
-CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
-CMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL
-CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELEASE
-CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
-CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_NM
-CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
-//ADVANCED property for variable: CMAKE_OBJCOPY
-CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_OBJDUMP
-CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RANLIB
-CMAKE_RANLIB-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_READELF
-CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
 CMAKE_ROOT:INTERNAL=/opt/homebrew/share/cmake
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
-CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
-CMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL
-CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELEASE
-CMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELEASEGG
-CMAKE_SHARED_LINKER_FLAGS_RELEASEGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO
-CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFOGG
-CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFOGG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SKIP_INSTALL_RPATH
-CMAKE_SKIP_INSTALL_RPATH-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_SKIP_RPATH
-CMAKE_SKIP_RPATH-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS
-CMAKE_STATIC_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_DEBUG
-CMAKE_STATIC_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL
-CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELEASE
-CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO
-CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STRIP
-CMAKE_STRIP-ADVANCED:INTERNAL=1
 //Suppress errors that are meant for the author of the CMakeLists.txt
 // files.
 CMAKE_SUPPRESS_DEVELOPER_ERRORS:INTERNAL=TRUE
 //Suppress Warnings that are meant for the author of the CMakeLists.txt
 // files.
 CMAKE_SUPPRESS_DEVELOPER_WARNINGS:INTERNAL=FALSE
-//ADVANCED property for variable: CMAKE_TAPI
-CMAKE_TAPI-ADVANCED:INTERNAL=1
 //uname command
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
-//ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
-CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Whether to issue warnings for deprecated functionality.
 CMAKE_WARN_DEPRECATED:INTERNAL=TRUE
-//Details about finding Git
-FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[/opt/homebrew/bin/git][v2.50.1()]
-//Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//ADVANCED property for variable: GIT_EXECUTABLE
-GIT_EXECUTABLE-ADVANCED:INTERNAL=1
-//Result of TRY_COMPILE
-THREADS_HAVE_PTHREAD_ARG:INTERNAL=TRUE
-//CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out
 

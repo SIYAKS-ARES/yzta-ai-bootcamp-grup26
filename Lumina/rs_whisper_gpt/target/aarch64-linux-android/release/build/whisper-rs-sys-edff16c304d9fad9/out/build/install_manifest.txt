@@ -1,3 +1,0 @@
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/lib/static/libwhisper.a
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/include/ggml.h
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/include/whisper.h

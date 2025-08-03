@@ -335,25 +335,22 @@ class _HomePageState extends State<HomePage> {
 
                           if (selectedType == StudentType.none) {
                             // Grid layout for all features
-                            return SizedBox(
-                              height: 400, // Sabit yükseklik
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                physics: const BouncingScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 12,
-                                      mainAxisSpacing: 12,
-                                      childAspectRatio: 0.9,
-                                    ),
-                                itemCount: features.length,
-                                itemBuilder: (context, index) {
-                                  return FeatureCardWidget(
-                                    feature: features[index],
-                                  );
-                                },
-                              ),
+                            return GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 12,
+                                    mainAxisSpacing: 12,
+                                    childAspectRatio: 0.85,
+                                  ),
+                              itemCount: features.length,
+                              itemBuilder: (context, index) {
+                                return FeatureCardWidget(
+                                  feature: features[index],
+                                );
+                              },
                             );
                           } else {
                             // List layout for specific student types

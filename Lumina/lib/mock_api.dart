@@ -1,10 +1,13 @@
 import 'frb_generated.dart';
 import 'api.dart';
+import 'package:flutter/foundation.dart';
 
 class MockRsWhisperGptApi implements RsWhisperGptApi {
   @override
   Future<bool> crateApiInitializeWhisper({required String modelPath}) async {
-    print('Mock: Whisper initialize edildi - $modelPath');
+    if (kDebugMode) {
+      debugPrint('Mock: Whisper initialize edildi - $modelPath');
+    }
     return true;
   }
 
@@ -13,7 +16,9 @@ class MockRsWhisperGptApi implements RsWhisperGptApi {
     required String modelPath,
     required String audioPath,
   }) async {
-    print('Mock: Audio transkript edildi - $audioPath');
+    if (kDebugMode) {
+      debugPrint('Mock: Audio transkript edildi - $audioPath');
+    }
     return TranscriptResult(
       segments: [
         TranscriptSegment(
@@ -34,7 +39,9 @@ class MockRsWhisperGptApi implements RsWhisperGptApi {
     required String modelPath,
     required String videoPath,
   }) async {
-    print('Mock: Video transkript edildi - $videoPath');
+    if (kDebugMode) {
+      debugPrint('Mock: Video transkript edildi - $videoPath');
+    }
     return TranscriptResult(
       segments: [
         TranscriptSegment(

@@ -51,6 +51,7 @@ lib/services/firebase_config_service.dart
 
 # 🔒 GÜVENLİK: Environment dosyaları
 .env
+.env.example
 .env.local
 .env.production
 .env.development
@@ -68,7 +69,6 @@ Lumina-ziplenip-atilmis-hali/
 key.properties
 
 # Log dosyaları
-*.log
 logs/
 
 # Geçici dosyalar
