@@ -13,7 +13,10 @@ import 'package:lumina/pages/debug_page.dart';
 import 'package:lumina/pages/file_explorer_page.dart';
 import 'package:lumina/services/language_service.dart';
 import 'package:lumina/services/theme_service.dart';
+import 'package:lumina/services/whisper_service.dart';
 import 'services/firebase_config_service.dart';
+import 'frb_generated.dart';
+import 'mock_api.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,11 +55,23 @@ Future<void> main() async {
     );
   }
 
+  // Flutter Rust Bridge'i başlat
+  try {
+    await RsWhisperGpt.init();
+    print('Flutter Rust Bridge başarıyla initialize edildi');
+  } catch (e) {
+    print('Flutter Rust Bridge initialize hatası: $e');
+    // Mock mode ile devam et
+    print('Mock mode ile devam ediliyor...');
+    RsWhisperGpt.initMock(api: MockRsWhisperGptApi());
+  }
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LanguageService()),
         ChangeNotifierProvider(create: (_) => ThemeService()),
+        ChangeNotifierProvider(create: (_) => WhisperService()),
       ],
       child: LuminaApp(),
     ),

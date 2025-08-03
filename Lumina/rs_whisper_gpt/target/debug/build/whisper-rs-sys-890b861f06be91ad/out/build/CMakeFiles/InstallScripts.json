@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-890b861f06be91ad/out/build/cmake_install.cmake",
-		"/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-890b861f06be91ad/out/build/bindings/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

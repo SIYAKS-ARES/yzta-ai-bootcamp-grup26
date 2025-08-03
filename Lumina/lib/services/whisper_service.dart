@@ -1,97 +1,95 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart';
 import '../api.dart';
-import '../frb_generated.dart';
+// import '../frb_generated.dart';
 
-class WhisperService {
+class WhisperService extends ChangeNotifier {
   static final WhisperService _instance = WhisperService._internal();
   factory WhisperService() => _instance;
   WhisperService._internal();
 
-  RsWhisperGptApi? _rustService;
   bool _isInitialized = false;
+  bool _isInitializing = false;
   String? _lastError;
 
   String? get lastError => _lastError;
+  bool get isInitialized => _isInitialized;
+  bool get isInitializing => _isInitializing;
 
-  Future<bool> initialize() async {
+  // API kullanarak başlatma
+  Future<bool> _ensureInitialized() async {
+    if (_isInitialized) return true;
+    if (_isInitializing) {
+      while (_isInitializing) {
+        await Future.delayed(Duration(milliseconds: 100));
+      }
+      return _isInitialized;
+    }
+
+    _isInitializing = true;
     try {
       // Model dosyasının yolunu belirle
       final modelPath = await _getModelPath();
 
-      // Rust servisini başlat
-      _rustService = RsWhisperGptApiImpl(
-        handler: const SseHandler(),
-        wire: RsWhisperGptWire(),
-        generalizedFrbRustBinding: GeneralizedFrbRustBinding(),
-        portManager: PortManager(),
-      );
-
-      // Whisper'ı başlat
-      final initialized = await _rustService!.crateApiInitializeWhisper(
-        modelPath: modelPath,
-      );
+      // API ile Whisper'ı başlat
+      final initialized = await initializeWhisper(modelPath: modelPath);
 
       _isInitialized = initialized;
       _lastError = null;
+      notifyListeners();
 
       return initialized;
     } catch (e) {
       _lastError = e.toString();
       _isInitialized = false;
+      notifyListeners();
       return false;
+    } finally {
+      _isInitializing = false;
+      notifyListeners();
     }
+  }
+
+  Future<bool> initialize() async {
+    return await _ensureInitialized();
   }
 
   Future<String> _getModelPath() async {
-    // Önce assets'te ara
     final appDir = await getApplicationDocumentsDirectory();
     final modelDir = Directory('${appDir.path}/whisper_models');
-
     if (!await modelDir.exists()) {
       await modelDir.create(recursive: true);
     }
-
-    final modelPath = '${modelDir.path}/ggml-tiny.bin';
-
-    // Model dosyası yoksa indir
-    if (!await File(modelPath).exists()) {
-      await _downloadModel(modelPath);
-    }
-
-    return modelPath;
-  }
-
-  Future<void> _downloadModel(String modelPath) async {
-    // Whisper tiny model'ini indir
-    const modelUrl =
-        'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
-
-    try {
-      final response = await HttpClient().getUrl(Uri.parse(modelUrl));
-      final httpResponse = await response.close();
-
-      final file = File(modelPath);
-      final sink = file.openWrite();
-
-      await for (final chunk in httpResponse) {
-        sink.add(chunk);
-      }
-
-      await sink.close();
-    } catch (e) {
-      throw Exception('Model indirilemedi: $e');
-    }
+    return '${modelDir.path}/ggml-tiny.bin';
   }
 
   Future<TranscriptResult?> transcribeVideo(String videoPath) async {
-    if (!_isInitialized) {
-      _lastError = 'Whisper servisi başlatılmamış';
+    // API kullanarak transkript
+    final initialized = await _ensureInitialized();
+    if (!initialized) {
+      _lastError = 'Whisper servisi başlatılamadı';
       return null;
     }
 
     try {
       final modelPath = await _getModelPath();
+
+      // Video dosyasının varlığını kontrol et
+      final videoFile = File(videoPath);
+      if (!await videoFile.exists()) {
+        _lastError = 'Video dosyası bulunamadı: $videoPath';
+        return null;
+      }
+
+      // Video dosya boyutunu kontrol et
+      final fileSize = await videoFile.length();
+      if (fileSize > 100 * 1024 * 1024) {
+        // 100MB limit
+        _lastError = 'Video dosyası çok büyük (max 100MB)';
+        return null;
+      }
+
       final result = await transcribeVideoWithWhisper(
         modelPath: modelPath,
         videoPath: videoPath,
@@ -101,13 +99,16 @@ class WhisperService {
       return result;
     } catch (e) {
       _lastError = e.toString();
+      print('Whisper transkript hatası: $e');
       return null;
     }
   }
 
   Future<TranscriptResult?> transcribeAudio(String audioPath) async {
-    if (!_isInitialized) {
-      _lastError = 'Whisper servisi başlatılmamış';
+    // API kullanarak transkript
+    final initialized = await _ensureInitialized();
+    if (!initialized) {
+      _lastError = 'Whisper servisi başlatılamadı';
       return null;
     }
 
@@ -126,10 +127,9 @@ class WhisperService {
     }
   }
 
-  bool get isInitialized => _isInitialized;
-
+  @override
   void dispose() {
-    _isInitialized = false;
-    RsWhisperGpt.dispose();
+    // Cleanup
+    super.dispose();
   }
 }

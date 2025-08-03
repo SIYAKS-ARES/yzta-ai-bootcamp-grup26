@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import '../../services/whisper_service.dart';
 import '../../api.dart';
 
@@ -21,13 +22,13 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
   String transcriptText = '';
   double progress = 0.0;
 
-  // Whisper servisi
-  final WhisperService _whisperService = WhisperService();
-  bool _isWhisperInitialized = false;
-
   // Transkript sonucu
   TranscriptResult? _transcriptResult;
   List<TranscriptSegment> _segments = [];
+
+  // Debug bilgileri
+  String _debugInfo = '';
+  bool _showDebugInfo = false;
 
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -51,7 +52,7 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
   @override
   void dispose() {
     _animationController.dispose();
-    _whisperService.dispose();
+    // _whisperService.dispose(); // Removed as WhisperService is now provided by Provider
     super.dispose();
   }
 
@@ -62,11 +63,15 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
         isProcessing = true;
       });
 
-      final initialized = await _whisperService.initialize();
+      // Lazy loading - Whisper servisi otomatik başlatılacak
+      final initialized = await Provider.of<WhisperService>(
+        context,
+        listen: false,
+      ).initialize();
 
       if (mounted) {
         setState(() {
-          _isWhisperInitialized = initialized;
+          // _isWhisperInitialized = initialized; // Removed as WhisperService is now provided by Provider
           isProcessing = false;
         });
 
@@ -74,7 +79,8 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
           _showSuccessSnackBar('Whisper servisi başarıyla başlatıldı');
         } else {
           _showErrorSnackBar(
-            _whisperService.lastError ?? 'Whisper servisi başlatılamadı',
+            Provider.of<WhisperService>(context, listen: false).lastError ??
+                'Whisper servisi başlatılamadı',
           );
         }
       }
@@ -82,7 +88,7 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
       if (mounted) {
         setState(() {
           isProcessing = false;
-          _isWhisperInitialized = false;
+          // _isWhisperInitialized = false; // Removed as WhisperService is now provided by Provider
         });
         _showErrorSnackBar('Whisper başlatma hatası: $e');
       }
@@ -95,188 +101,261 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
     final Color softBlue = const Color(0xFF60A5FA);
     final Color accentPurple = const Color(0xFF8B5CF6);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Container(
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withValues(alpha: 0.3),
-                    Colors.white.withValues(alpha: 0.1),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(14),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.15),
-                    blurRadius: 12,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Icon(
-                Icons.auto_awesome_rounded,
-                size: 24,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Video Transkript',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 24,
-                      color: Colors.white,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  Text(
-                    'AI ile Video İçeriğini Metne Dönüştür',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 13,
-                      color: Colors.white.withValues(alpha: 0.9),
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Status indicator
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: _isWhisperInitialized
-                    ? Colors.green.withValues(alpha: 0.2)
-                    : Colors.orange.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: _isWhisperInitialized
-                      ? Colors.green.withValues(alpha: 0.5)
-                      : Colors.orange.withValues(alpha: 0.5),
-                  width: 1,
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      color: _isWhisperInitialized
-                          ? Colors.green
-                          : Colors.orange,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    _isWhisperInitialized ? 'Hazır' : 'Başlatılıyor',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: _isWhisperInitialized
-                          ? Colors.green
-                          : Colors.orange,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [primaryBlue, accentPurple, softBlue],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: [0.0, 0.5, 1.0],
-            ),
-          ),
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
-        ),
-      ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              accentPurple.withValues(alpha: 0.1),
-              softBlue.withValues(alpha: 0.05),
-              Color(0xFFf8fafc),
-              Color(0xFFffffff),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.0, 0.3, 0.7, 1.0],
-          ),
-        ),
-        child: FadeTransition(
-          opacity: _fadeAnimation,
-          child: SafeArea(
-            child: CustomScrollView(
-              physics: BouncingScrollPhysics(),
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        // Hoş geldiniz kartı
-                        _buildWelcomeCard(),
-                        const SizedBox(height: 24),
-
-                        // Video seçimi
-                        _buildVideoSelectionCard(),
-                        const SizedBox(height: 24),
-
-                        // İşlem durumu
-                        if (isProcessing) ...[
-                          _buildProcessingCard(),
-                          const SizedBox(height: 24),
-                        ],
-
-                        // Transkript sonucu
-                        if (transcriptText.isNotEmpty) ...[
-                          _buildTranscriptCard(),
-                        ] else if (!isProcessing) ...[
-                          // Boş durum
-                          _buildEmptyStateCard(),
-                        ],
-
-                        // İşlem butonu
-                        if (selectedVideoPath != null && !isProcessing) ...[
-                          const SizedBox(height: 24),
-                          _buildProcessButton(),
-                        ],
-
-                        // Bottom padding
-                        const SizedBox(height: 40),
+    return Consumer<WhisperService>(
+      builder: (context, whisperService, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.white.withValues(alpha: 0.3),
+                        Colors.white.withValues(alpha: 0.1),
                       ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.15),
+                        blurRadius: 12,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.auto_awesome_rounded,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Video Transkript',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 24,
+                          color: Colors.white,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                      Text(
+                        'AI ile video transkript oluştur',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            actions: [
+              // Whisper durumu göstergesi
+              Container(
+                margin: EdgeInsets.only(right: 16),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: whisperService.isInitialized
+                      ? Colors.green.withValues(alpha: 0.2)
+                      : Colors.orange.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: whisperService.isInitialized
+                        ? Colors.green.withValues(alpha: 0.5)
+                        : Colors.orange.withValues(alpha: 0.5),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: whisperService.isInitialized
+                            ? Colors.green
+                            : Colors.orange,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      whisperService.isInitialized ? 'Hazır' : 'Başlatılıyor',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: whisperService.isInitialized
+                            ? Colors.green
+                            : Colors.orange,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [primaryBlue, accentPurple, softBlue],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.0, 0.5, 1.0],
+                ),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+            ),
           ),
-        ),
-      ),
+          body: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  accentPurple.withValues(alpha: 0.1),
+                  softBlue.withValues(alpha: 0.05),
+                  Color(0xFFf8fafc),
+                  Color(0xFFffffff),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.0, 0.3, 0.7, 1.0],
+              ),
+            ),
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: SafeArea(
+                child: CustomScrollView(
+                  physics: BouncingScrollPhysics(),
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            // Hoş geldiniz kartı
+                            _buildWelcomeCard(),
+                            const SizedBox(height: 24),
+
+                            // Video seçimi
+                            _buildVideoSelectionCard(),
+                            const SizedBox(height: 24),
+
+                            // İşlem durumu
+                            if (isProcessing) ...[
+                              _buildProcessingCard(),
+                              const SizedBox(height: 24),
+                            ],
+
+                            // Transkript sonucu
+                            if (transcriptText.isNotEmpty) ...[
+                              _buildTranscriptCard(),
+                            ] else if (!isProcessing) ...[
+                              // Boş durum
+                              _buildEmptyStateCard(),
+                            ],
+
+                            // İşlem butonu
+                            if (selectedVideoPath != null && !isProcessing) ...[
+                              const SizedBox(height: 24),
+                              _buildProcessButton(),
+                            ],
+
+                            // Bottom padding
+                            const SizedBox(height: 40),
+
+                            // Debug toggle butonu
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _showDebugInfo = !_showDebugInfo;
+                                  if (_showDebugInfo) {
+                                    _updateDebugInfo();
+                                  }
+                                });
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: Colors.white.withValues(alpha: 0.2),
+                                  ),
+                                ),
+                                child: Text(
+                                  _showDebugInfo ? 'Debug Kapat' : 'Debug Aç',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Debug butonu
+                            if (_showDebugInfo)
+                              Container(
+                                margin: EdgeInsets.only(top: 16),
+                                padding: EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.white.withValues(alpha: 0.2),
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Debug Bilgileri',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      _debugInfo,
+                                      style: TextStyle(
+                                        color: Colors.white.withValues(
+                                          alpha: 0.8,
+                                        ),
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -1152,7 +1231,10 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
 
   // İşlem butonu
   Widget _buildProcessButton() {
-    final bool canProcess = _isWhisperInitialized;
+    final bool canProcess = Provider.of<WhisperService>(
+      context,
+      listen: false,
+    ).isInitialized;
     final String buttonText = transcriptText.isEmpty
         ? 'AI Transkript Oluştur'
         : 'Yeniden Oluştur';
@@ -1232,7 +1314,7 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
 
   void _processVideo() async {
     if (selectedVideoPath == null) return;
-    if (!_isWhisperInitialized) {
+    if (!Provider.of<WhisperService>(context, listen: false).isInitialized) {
       _showErrorSnackBar('Whisper servisi henüz başlatılmadı');
       return;
     }
@@ -1246,17 +1328,37 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
     });
 
     try {
-      // Progress güncelleme timer'ı
-      Timer.periodic(const Duration(milliseconds: 100), (timer) {
-        if (progress < 0.9) {
+      // Progress güncelleme timer'ı - daha gerçekçi progress
+      Timer.periodic(const Duration(milliseconds: 200), (timer) {
+        if (progress < 0.8) {
           setState(() {
-            progress += 0.01;
+            progress += 0.005; // Daha yavaş artış
           });
         }
       });
 
+      // Video dosya boyutunu kontrol et
+      final videoFile = File(selectedVideoPath!);
+      final fileSize = await videoFile.length();
+      final fileSizeMB = fileSize / (1024 * 1024);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Video işleniyor... (${fileSizeMB.toStringAsFixed(1)}MB)',
+            ),
+            backgroundColor: Colors.blue,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+
       // Whisper ile transkript oluştur
-      final result = await _whisperService.transcribeVideo(selectedVideoPath!);
+      final result = await Provider.of<WhisperService>(
+        context,
+        listen: false,
+      ).transcribeVideo(selectedVideoPath!);
 
       if (result != null) {
         setState(() {
@@ -1267,13 +1369,16 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
           isProcessing = false;
         });
 
-        _showSuccessSnackBar('Transkript başarıyla oluşturuldu!');
+        _showSuccessSnackBar(
+          'Transkript başarıyla oluşturuldu! (${result.language.toUpperCase()})',
+        );
       } else {
         setState(() {
           isProcessing = false;
         });
         _showErrorSnackBar(
-          _whisperService.lastError ?? 'Transkript oluşturulamadı',
+          Provider.of<WhisperService>(context, listen: false).lastError ??
+              'Transkript oluşturulamadı',
         );
       }
     } catch (e) {
@@ -1379,5 +1484,21 @@ class _VideoToTranscriptPageState extends State<VideoToTranscriptPage>
         }
       }
     }
+  }
+
+  void _updateDebugInfo() {
+    setState(() {
+      _debugInfo =
+          '''
+Whisper Durumu: ${Provider.of<WhisperService>(context, listen: false).isInitialized ? 'Başlatıldı' : 'Başlatılmadı'}
+Video Seçili: ${selectedVideoPath != null ? 'Evet' : 'Hayır'}
+İşlem Durumu: ${isProcessing ? 'İşleniyor' : 'Bekliyor'}
+Progress: ${(progress * 100).toStringAsFixed(1)}%
+FFmpeg: Yüklü
+Model: Tiny (39MB)
+Son Hata: ${Provider.of<WhisperService>(context, listen: false).lastError ?? 'Yok'}
+      '''
+              .trim();
+    });
   }
 }

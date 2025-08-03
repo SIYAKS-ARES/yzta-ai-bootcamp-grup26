@@ -1,0 +1,10 @@
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/lock_api-3406d823f2d48f17.d: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/mutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/remutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/rwlock.rs
+
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/liblock_api-3406d823f2d48f17.rlib: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/mutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/remutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/rwlock.rs
+
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/liblock_api-3406d823f2d48f17.rmeta: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/mutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/remutex.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/rwlock.rs
+
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/lib.rs:
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/mutex.rs:
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/remutex.rs:
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lock_api-0.4.13/src/rwlock.rs:

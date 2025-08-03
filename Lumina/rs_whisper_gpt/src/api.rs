@@ -40,13 +40,17 @@ fn transcribe_audio_internal(model_path: &str, audio_path: &str) -> Result<Trans
     // i16'dan f32'ye dönüştür
     let samples_f32: Vec<f32> = samples.iter().map(|&s| s as f32 / 32768.0).collect();
     
-    // Whisper parametrelerini ayarla
+    // Whisper parametrelerini optimize et
     let mut params = FullParams::new(SamplingStrategy::Greedy { best_of: 1 });
-    params.set_language(Some("tr")); // Türkçe için
+    // Dil tespitini otomatik yap
+    params.set_language(None); // Otomatik dil tespiti
     params.set_print_special(false);
     params.set_print_progress(false);
     params.set_print_timestamps(true);
     params.set_single_segment(false);
+    // Daha iyi doğruluk için parametreler
+    params.set_temperature(0.0); // Deterministik sonuçlar
+    params.set_max_initial_ts(1.0);
 
     // Transkript oluştur
     let mut state = context.create_state()?;
@@ -75,10 +79,17 @@ fn transcribe_audio_internal(model_path: &str, audio_path: &str) -> Result<Trans
         total_duration = end;
     }
 
+    // Dil tespiti için basit bir yaklaşım kullan
+    let detected_language = if full_text.contains("the") || full_text.contains("and") || full_text.contains("is") {
+        "en"
+    } else {
+        "tr"
+    };
+
     Ok(TranscriptResult {
         segments,
         full_text: full_text.trim().to_string(),
-        language: "tr".to_string(),
+        language: detected_language.to_string(),
         duration: total_duration,
     })
 }

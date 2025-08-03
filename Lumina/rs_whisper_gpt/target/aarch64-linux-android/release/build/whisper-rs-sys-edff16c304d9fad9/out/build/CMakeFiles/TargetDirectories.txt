@@ -1,0 +1,13 @@
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/whisper.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/edit_cache.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/rebuild_cache.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/list_install_components.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/install.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/install/local.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/CMakeFiles/install/strip.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/edit_cache.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/rebuild_cache.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/list_install_components.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/install.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/install/local.dir
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/whisper-rs-sys-edff16c304d9fad9/out/build/bindings/CMakeFiles/install/strip.dir

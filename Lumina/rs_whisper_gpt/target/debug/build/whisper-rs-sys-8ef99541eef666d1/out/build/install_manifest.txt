@@ -1,3 +1,0 @@
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-8ef99541eef666d1/out/lib/static/libwhisper.a
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-8ef99541eef666d1/out/include/ggml.h
-/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-8ef99541eef666d1/out/include/whisper.h

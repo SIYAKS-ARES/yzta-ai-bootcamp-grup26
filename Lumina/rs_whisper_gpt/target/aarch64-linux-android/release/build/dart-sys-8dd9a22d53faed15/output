@@ -1,0 +1,66 @@
+OUT_DIR = Some(/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/dart-sys-8dd9a22d53faed15/out)
+OPT_LEVEL = Some(3)
+TARGET = Some(aarch64-linux-android)
+HOST = Some(aarch64-apple-darwin)
+cargo:rerun-if-env-changed=CC_aarch64-linux-android
+CC_aarch64-linux-android = None
+cargo:rerun-if-env-changed=CC_aarch64_linux_android
+CC_aarch64_linux_android = None
+cargo:rerun-if-env-changed=TARGET_CC
+TARGET_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+RUSTC_WRAPPER = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(false)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=TARGET_CFLAGS
+TARGET_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64_linux_android
+CFLAGS_aarch64_linux_android = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64-linux-android
+CFLAGS_aarch64-linux-android = None
+CARGO_ENCODED_RUSTFLAGS = Some()
+cargo:warning=/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dart-sys-4.1.5/dart-sdk/include/dart_api_dl.c:33:31: warning: unused parameter 'object' [-Wunused-parameter]
+cargo:warning=   33 |     Dart_WeakPersistentHandle object, intptr_t external_size) {
+cargo:warning=      |                               ^
+cargo:warning=/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dart-sys-4.1.5/dart-sdk/include/dart_api_dl.c:33:48: warning: unused parameter 'external_size' [-Wunused-parameter]
+cargo:warning=   33 |     Dart_WeakPersistentHandle object, intptr_t external_size) {
+cargo:warning=      |                                                ^
+cargo:warning=/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dart-sys-4.1.5/dart-sdk/include/dart_api_dl.c:38:28: warning: unused parameter 'object' [-Wunused-parameter]
+cargo:warning=   38 |     Dart_FinalizableHandle object,
+cargo:warning=      |                            ^
+cargo:warning=/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dart-sys-4.1.5/dart-sdk/include/dart_api_dl.c:39:17: warning: unused parameter 'strong_ref_to_object' [-Wunused-parameter]
+cargo:warning=   39 |     Dart_Handle strong_ref_to_object,
+cargo:warning=      |                 ^
+cargo:warning=/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dart-sys-4.1.5/dart-sdk/include/dart_api_dl.c:40:14: warning: unused parameter 'external_allocation_size' [-Wunused-parameter]
+cargo:warning=   40 |     intptr_t external_allocation_size) {
+cargo:warning=      |              ^
+cargo:warning=5 warnings generated.
+cargo:rerun-if-env-changed=AR_aarch64-linux-android
+AR_aarch64-linux-android = None
+cargo:rerun-if-env-changed=AR_aarch64_linux_android
+AR_aarch64_linux_android = None
+cargo:rerun-if-env-changed=TARGET_AR
+TARGET_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+LLVM (http://llvm.org/):
+  LLVM version 18.0.1
+  Optimized build.
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rerun-if-env-changed=TARGET_ARFLAGS
+TARGET_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64_linux_android
+ARFLAGS_aarch64_linux_android = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64-linux-android
+ARFLAGS_aarch64-linux-android = None
+LLVM (http://llvm.org/):
+  LLVM version 18.0.1
+  Optimized build.
+cargo:rustc-link-lib=static=dart_api_dl
+cargo:rustc-link-search=native=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/build/dart-sys-8dd9a22d53faed15/out

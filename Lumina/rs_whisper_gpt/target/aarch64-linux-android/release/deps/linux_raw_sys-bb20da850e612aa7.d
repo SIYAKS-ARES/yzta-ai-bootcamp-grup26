@@ -1,0 +1,9 @@
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/linux_raw_sys-bb20da850e612aa7.d: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/general.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/ioctl.rs
+
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/liblinux_raw_sys-bb20da850e612aa7.rlib: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/general.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/ioctl.rs
+
+/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/aarch64-linux-android/release/deps/liblinux_raw_sys-bb20da850e612aa7.rmeta: /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/lib.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/general.rs /Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/ioctl.rs
+
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/lib.rs:
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/general.rs:
+/Users/siyaksares/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.4/src/aarch64/ioctl.rs:
