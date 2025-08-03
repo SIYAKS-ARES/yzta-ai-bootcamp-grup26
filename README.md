@@ -8,14 +8,14 @@
 <div align="center">
   <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
   
-  <!-- Main Video Player - Direct GitHub Embed -->
+  <!-- Main Video Player - GitHub Native Support -->
   <div style="max-width: 1000px; margin: 0 auto 30px auto;">
     
     <!-- Primary Demo Video -->
     <div style="margin-bottom: 40px;">
       <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 28px;">🎬 Complete Platform Demo</h3>
       <video width="100%" controls style="border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-        <source src="assets/final-demo.mp4" type="video/mp4">
+        <source src="assets/final-demo-small.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <p style="text-align: center; margin-top: 20px; font-size: 18px; color: #666;">
@@ -63,7 +63,7 @@
 
       <!-- Vimeo -->
       <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">�� Vimeo</h4>
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
         <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
           <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
             <strong>Professional</strong><br>
@@ -129,14 +129,14 @@
 <div align="center">
   <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
   
-  <!-- Main Video Player - Direct GitHub Embed -->
+  <!-- Main Video Player - GitHub Native Support -->
   <div style="max-width: 1200px; margin: 0 auto 40px auto;">
     
     <!-- Primary Demo Video -->
     <div style="margin-bottom: 40px;">
       <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 28px;">🎬 Complete Platform Demo</h3>
       <video width="100%" controls style="border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
-        <source src="assets/final-demo.mp4" type="video/mp4">
+        <source src="assets/final-demo-small.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <p style="text-align: center; margin-top: 20px; font-size: 18px; color: #666;">
@@ -184,7 +184,7 @@
 
       <!-- Vimeo -->
       <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">�� Vimeo</h4>
+        <h4 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h4>
         <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
           <p style="color: white; margin: 0; font-size: 12px; line-height: 1.4;">
             <strong>Professional</strong><br>
