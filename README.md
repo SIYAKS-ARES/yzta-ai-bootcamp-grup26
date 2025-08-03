@@ -8,31 +8,28 @@
 <div align="center">
   <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
   
-  <!-- Main Video Player - GitHub Native Support -->
+  <!-- Main Demo - GIF Format -->
   <div style="max-width: 1000px; margin: 0 auto 30px auto;">
     
-    <!-- Primary Demo Video -->
+    <!-- Primary Demo GIF -->
     <div style="margin-bottom: 40px;">
       <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 28px;">🎬 Complete Platform Demo</h3>
-      <video width="100%" controls style="border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-        <source src="assets/final-demo-small.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <img src="assets/final-demo.gif" alt="Lumina AI Platform Demo" style="width: 100%; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
       <p style="text-align: center; margin-top: 20px; font-size: 18px; color: #666;">
         <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
       </p>
     </div>
 
-    <!-- Alternative Links - Simple Blue Links -->
+    <!-- Alternative Links - Simple Markdown Links -->
     <div style="text-align: center; margin-top: 30px;">
       <h4 style="color: #333; margin-bottom: 20px; font-size: 20px;">📱 Alternative Platforms</h4>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 800px; margin: 0 auto;">
-        <a href="https://youtube.com/shorts/dbhLAWYP5gw" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 YouTube Shorts</a>
-        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">📺 Google Drive</a>
-        <a href="https://vimeo.com/1106932404?share=copy" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 Vimeo</a>
-        <a href="https://streamable.com/0pihg0" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">⚡ Streamable</a>
-        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🌐 LimeWire</a>
-      </div>
+      <p style="font-size: 16px; line-height: 2;">
+        🎬 [YouTube Shorts](https://youtube.com/shorts/dbhLAWYP5gw) • 
+        📺 [Google Drive](https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing) • 
+        🎬 [Vimeo](https://vimeo.com/1106932404?share=copy) • 
+        ⚡ [Streamable](https://streamable.com/0pihg0) • 
+        🌐 [LimeWire](https://limewire.com/d/IJsK6#ETqkNkvDaU)
+      </p>
     </div>
     
   </div>
@@ -53,31 +50,28 @@
 <div align="center">
   <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
   
-  <!-- Main Video Player - GitHub Native Support -->
+  <!-- Main Demo - GIF Format -->
   <div style="max-width: 1200px; margin: 0 auto 40px auto;">
     
-    <!-- Primary Demo Video -->
+    <!-- Primary Demo GIF -->
     <div style="margin-bottom: 40px;">
       <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 28px;">🎬 Complete Platform Demo</h3>
-      <video width="100%" controls style="border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
-        <source src="assets/final-demo-small.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <img src="assets/final-demo.gif" alt="Lumina AI Platform Demo" style="width: 100%; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
       <p style="text-align: center; margin-top: 20px; font-size: 18px; color: #666;">
         <em>📺 <strong>Primary Demo</strong> - Complete MVP demonstration with all features</em>
       </p>
     </div>
 
-    <!-- Alternative Links - Simple Blue Links -->
+    <!-- Alternative Links - Simple Markdown Links -->
     <div style="text-align: center; margin-top: 30px;">
       <h4 style="color: #333; margin-bottom: 20px; font-size: 20px;">📱 Alternative Platforms</h4>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 800px; margin: 0 auto;">
-        <a href="https://youtube.com/shorts/dbhLAWYP5gw" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 YouTube Shorts</a>
-        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">📺 Google Drive</a>
-        <a href="https://vimeo.com/1106932404?share=copy" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🎬 Vimeo</a>
-        <a href="https://streamable.com/0pihg0" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">⚡ Streamable</a>
-        <a href="https://limewire.com/d/IJsK6#ETqkNkvDaU" target="_blank" style="color: #2563EB; text-decoration: none; font-weight: bold; font-size: 16px;">🌐 LimeWire</a>
-      </div>
+      <p style="font-size: 16px; line-height: 2;">
+        🎬 [YouTube Shorts](https://youtube.com/shorts/dbhLAWYP5gw) • 
+        📺 [Google Drive](https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing) • 
+        🎬 [Vimeo](https://vimeo.com/1106932404?share=copy) • 
+        ⚡ [Streamable](https://streamable.com/0pihg0) • 
+        🌐 [LimeWire](https://limewire.com/d/IJsK6#ETqkNkvDaU)
+      </p>
     </div>
     
   </div>
