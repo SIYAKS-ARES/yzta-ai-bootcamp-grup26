@@ -227,6 +227,7 @@ class _ProfilePageState extends State<ProfilePage>
             ),
             ElevatedButton(
               onPressed: () async {
+                final currentContext = context;
                 Navigator.of(context).pop();
                 try {
                   final user = FirebaseAuth.instance.currentUser;
@@ -240,40 +241,60 @@ class _ProfilePageState extends State<ProfilePage>
                     // Firebase Auth'dan hesabı sil
                     await user.delete();
 
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          languageService.currentLocale.languageCode == 'tr'
-                              ? "Hesabınız başarıyla silindi!"
-                              : languageService.currentLocale.languageCode ==
-                                    'en'
-                              ? "Your account has been successfully deleted!"
-                              : "Ihr Konto wurde erfolgreich gelöscht!",
+                    if (currentContext.mounted) {
+                      final currentLanguageService =
+                          Provider.of<LanguageService>(
+                            currentContext,
+                            listen: false,
+                          );
+                      ScaffoldMessenger.of(currentContext).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            currentLanguageService.currentLocale.languageCode ==
+                                    'tr'
+                                ? "Hesabınız başarıyla silindi!"
+                                : currentLanguageService
+                                          .currentLocale
+                                          .languageCode ==
+                                      'en'
+                                ? "Your account has been successfully deleted!"
+                                : "Ihr Konto wurde erfolgreich gelöscht!",
+                          ),
+                          backgroundColor: Color(0xFF16a34a),
                         ),
-                        backgroundColor: Color(0xFF16a34a),
-                      ),
-                    );
+                      );
+                    }
 
                     // Giriş sayfasına yönlendir
-                    Navigator.of(
-                      context,
-                    ).pushNamedAndRemoveUntil('/', (route) => false);
+                    if (currentContext.mounted) {
+                      Navigator.of(
+                        currentContext,
+                      ).pushNamedAndRemoveUntil('/', (route) => false);
+                    }
                   }
                 } catch (e) {
-                  if (!mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        languageService.currentLocale.languageCode == 'tr'
-                            ? "Hesap silme hatası: $e"
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "Account deletion error: $e"
-                            : "Kontolöschungsfehler: $e",
+                  if (currentContext.mounted) {
+                    final currentLanguageService = Provider.of<LanguageService>(
+                      currentContext,
+                      listen: false,
+                    );
+                    ScaffoldMessenger.of(currentContext).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          currentLanguageService.currentLocale.languageCode ==
+                                  'tr'
+                              ? "Hesap silme hatası: $e"
+                              : currentLanguageService
+                                        .currentLocale
+                                        .languageCode ==
+                                    'en'
+                              ? "Account deletion error: $e"
+                              : "Kontolöschungsfehler: $e",
+                        ),
+                        backgroundColor: Colors.red,
                       ),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
+                    );
+                  }
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -283,13 +304,22 @@ class _ProfilePageState extends State<ProfilePage>
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Text(
-                languageService.currentLocale.languageCode == 'tr'
-                    ? 'Evet'
-                    : languageService.currentLocale.languageCode == 'en'
-                    ? 'Yes'
-                    : 'Ja',
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              child: Builder(
+                builder: (context) {
+                  final currentLanguageService = Provider.of<LanguageService>(
+                    context,
+                    listen: false,
+                  );
+                  return Text(
+                    currentLanguageService.currentLocale.languageCode == 'tr'
+                        ? 'Evet'
+                        : currentLanguageService.currentLocale.languageCode ==
+                              'en'
+                        ? 'Yes'
+                        : 'Ja',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  );
+                },
               ),
             ),
           ],

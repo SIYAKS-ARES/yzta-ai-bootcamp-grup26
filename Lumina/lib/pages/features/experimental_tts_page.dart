@@ -157,15 +157,8 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
     IconData icon,
   ) {
     final isSelected = selectedProvider == provider;
-    final isLoggedIn = _getCurrentUserId() != null;
     final isDisabled =
         provider == TTSProvider.elevenlabs && !_isProviderConfigured(provider);
-
-    // ElevenLabs için API key uyarısı
-    final showApiWarning =
-        provider == TTSProvider.elevenlabs &&
-        isSelected &&
-        !_isProviderConfigured(provider);
 
     return GestureDetector(
       onTap: isDisabled
@@ -392,8 +385,6 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
   }
 
   Widget _buildInfoCard() {
-    final isLoggedIn = _getCurrentUserId() != null;
-
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(

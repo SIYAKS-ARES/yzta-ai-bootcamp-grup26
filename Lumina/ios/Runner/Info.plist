@@ -22,7 +22,7 @@
 	<key>NSDocumentsFolderUsageDescription</key>
 	<string>PDF ve metin dosyalarını okumak için erişime ihtiyacımız var.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Ses kaydı yapmak için mikrofon erişimine ihtiyacımız var.</string>
+	<string>Sesten metne dönüştürme özelliği için mikrofon erişimine ihtiyacımız var. Bu özellik sesinizi metne çevirmek için kullanılır.</string>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>

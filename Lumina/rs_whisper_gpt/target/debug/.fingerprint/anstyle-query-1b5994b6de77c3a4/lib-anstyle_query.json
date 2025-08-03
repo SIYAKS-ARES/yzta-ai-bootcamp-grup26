@@ -1,0 +1,1 @@
+{"rustc":12610991425282158916,"features":"[]","declared_features":"[]","target":10705714425685373190,"profile":468293941044590873,"path":2699259059354908569,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug/.fingerprint/anstyle-query-1b5994b6de77c3a4/dep-lib-anstyle_query","checksum":false}}],"rustflags":["--cfg","frb_expand"],"config":2069994364910194474,"compile_kind":0}

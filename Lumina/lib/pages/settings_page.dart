@@ -780,28 +780,39 @@ class _SettingsPageState extends State<SettingsPage>
                     Switch(
                       value: themeService.isDarkMode,
                       onChanged: (val) async {
+                        final currentContext = context;
                         await themeService.setTheme(val);
-                        if (!mounted) return;
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            title: Text(languageService.getText('dark_theme')),
-                            content: Text(
-                              val
-                                  ? "${languageService.getText('dark_theme')} seçildi."
-                                  : "Açık tema seçildi.",
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text(languageService.getText('ok')),
+                        if (currentContext.mounted) {
+                          final currentLanguageService =
+                              Provider.of<LanguageService>(
+                                currentContext,
+                                listen: false,
+                              );
+                          showDialog(
+                            context: currentContext,
+                            builder: (BuildContext dialogContext) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            ],
-                          ),
-                        );
+                              title: Text(
+                                currentLanguageService.getText('dark_theme'),
+                              ),
+                              content: Text(
+                                val
+                                    ? "${currentLanguageService.getText('dark_theme')} seçildi."
+                                    : "Açık tema seçildi.",
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(dialogContext),
+                                  child: Text(
+                                    currentLanguageService.getText('ok'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
                       },
                       activeColor: primaryBlue,
                       activeTrackColor: primaryBlue.withValues(alpha: 0.3),

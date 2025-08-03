@@ -1,0 +1,195 @@
+cargo:rustc-link-lib=dylib=c++
+cargo:rustc-link-lib=framework=Accelerate
+cargo:rerun-if-changed=wrapper.h
+cargo:rerun-if-env-changed=TARGET
+cargo:rerun-if-env-changed=BINDGEN_EXTRA_CLANG_ARGS_aarch64-apple-darwin
+cargo:rerun-if-env-changed=BINDGEN_EXTRA_CLANG_ARGS_aarch64_apple_darwin
+cargo:rerun-if-env-changed=BINDGEN_EXTRA_CLANG_ARGS
+cargo:rerun-if-changed=wrapper.h
+cargo:rerun-if-changed=./whisper.cpp/whisper.h
+cargo:rerun-if-changed=./whisper.cpp/ggml.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/ptrcheck.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_header_macro.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_ptrdiff_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_size_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_rsize_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_wchar_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_null.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_max_align_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_offsetof.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdbool.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_header_macro.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_ptrdiff_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_size_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_rsize_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_wchar_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_max_align_t.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_offsetof.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
+cargo:rerun-if-changed=/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdbool.h
+cargo:rerun-if-changed=./whisper.cpp/ggml.h
+CMAKE_TOOLCHAIN_FILE_aarch64-apple-darwin = None
+CMAKE_TOOLCHAIN_FILE_aarch64_apple_darwin = None
+HOST_CMAKE_TOOLCHAIN_FILE = None
+CMAKE_TOOLCHAIN_FILE = None
+CMAKE_GENERATOR_aarch64-apple-darwin = None
+CMAKE_GENERATOR_aarch64_apple_darwin = None
+HOST_CMAKE_GENERATOR = None
+CMAKE_GENERATOR = None
+CMAKE_PREFIX_PATH_aarch64-apple-darwin = None
+CMAKE_PREFIX_PATH_aarch64_apple_darwin = None
+HOST_CMAKE_PREFIX_PATH = None
+CMAKE_PREFIX_PATH = None
+CMAKE_aarch64-apple-darwin = None
+CMAKE_aarch64_apple_darwin = None
+HOST_CMAKE = None
+CMAKE = None
+running: cd "/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build" && CMAKE_PREFIX_PATH="" LC_ALL="C" "cmake" "-Wdev" "--debug-output" "/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/" "-DCMAKE_OSX_ARCHITECTURES=arm64" "-DBUILD_SHARED_LIBS=OFF" "-DWHISPER_ALL_WARNINGS=OFF" "-DWHISPER_ALL_WARNINGS_3RD_PARTY=OFF" "-DWHISPER_BUILD_TESTS=OFF" "-DWHISPER_BUILD_EXAMPLES=OFF" "-DWHISPER_METAL=OFF" "-DCMAKE_BUILD_TYPE=RelWithDebInfo" "-DCMAKE_INSTALL_PREFIX=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5" "-DCMAKE_C_COMPILER=/usr/bin/cc" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5" "-DCMAKE_CXX_COMPILER=/usr/bin/c++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5" "-DCMAKE_ASM_COMPILER=/usr/bin/cc" "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
+Running with debug output on.
+-- The C compiler identification is AppleClang 17.0.0.17000013
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake
+-- The CXX compiler identification is AppleClang 17.0.0.17000013
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake
+-- Detecting C compiler ABI info
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake
+-- Detecting C compiler ABI info - done
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake
+-- Check for working C compiler: /usr/bin/cc - skipped
+   Called from: [2]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake
+-- Detecting C compile features
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake
+-- Detecting C compile features - done
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake
+-- Detecting CXX compiler ABI info
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake
+-- Detecting CXX compiler ABI info - done
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+   Called from: [2]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake
+-- Detecting CXX compile features
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake
+-- Detecting CXX compile features - done
+   Called from: [3]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [2]	/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake
+-- Found Git: /opt/homebrew/bin/git (found version "2.50.1")
+   Called from: [5]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [4]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/cmake/GitVars.cmake
+                [3]	/opt/homebrew/share/cmake/Modules/FindGit.cmake
+                [2]	/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+   Called from: [5]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [4]	/opt/homebrew/share/cmake/Modules/FindThreads.cmake
+                [3]	/opt/homebrew/share/cmake/Modules/FindThreads.cmake
+                [2]	/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+   Called from: [5]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [4]	/opt/homebrew/share/cmake/Modules/FindThreads.cmake
+                [3]	/opt/homebrew/share/cmake/Modules/FindThreads.cmake
+                [2]	/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake
+-- Found Threads: TRUE
+   Called from: [4]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+                [3]	/opt/homebrew/share/cmake/Modules/FindThreads.cmake
+                [2]	/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake
+                [1]	/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake
+-- Accelerate framework found
+   Called from: [1]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+-- CMAKE_SYSTEM_PROCESSOR: arm64
+   Called from: [1]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+-- ARM detected
+   Called from: [1]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+-- Configuring done (1.1s)
+-- Generating /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build
+   Called from: [1]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/CMakeLists.txt
+-- Generating /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build/bindings
+   Called from: [1]	/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/bindings/CMakeLists.txt
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build
+running: cd "/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build" && LC_ALL="C" "cmake" "--build" "/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build" "--target" "install" "--config" "Release" "--parallel" "8"
+Change Dir: '/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build'
+
+Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile -j8 install
+/opt/homebrew/bin/cmake -S/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp -B/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build --check-build-system CMakeFiles/Makefile.cmake 0
+/opt/homebrew/bin/cmake -E cmake_progress_start /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build/CMakeFiles /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build//CMakeFiles/progress.marks
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/Makefile2 all
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/whisper.dir/build.make CMakeFiles/whisper.dir/depend
+cd /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build && /opt/homebrew/bin/cmake -E cmake_depends "Unix Makefiles" /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build/CMakeFiles/whisper.dir/DependInfo.cmake "--color="
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/whisper.dir/build.make CMakeFiles/whisper.dir/build
+[ 16%] Building C object CMakeFiles/whisper.dir/ggml-alloc.c.o
+/usr/bin/cc -DGGML_USE_ACCELERATE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE=600 -I/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/. -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5 -Werror=vla -O2 -g -DNDEBUG -arch arm64 -MD -MT CMakeFiles/whisper.dir/ggml-alloc.c.o -MF CMakeFiles/whisper.dir/ggml-alloc.c.o.d -o CMakeFiles/whisper.dir/ggml-alloc.c.o -c /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/ggml-alloc.c
+[ 33%] Building C object CMakeFiles/whisper.dir/ggml.c.o
+/usr/bin/cc -DGGML_USE_ACCELERATE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE=600 -I/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/. -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5 -Werror=vla -O2 -g -DNDEBUG -arch arm64 -MD -MT CMakeFiles/whisper.dir/ggml.c.o -MF CMakeFiles/whisper.dir/ggml.c.o.d -o CMakeFiles/whisper.dir/ggml.c.o -c /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/ggml.c
+[ 50%] Building CXX object CMakeFiles/whisper.dir/whisper.cpp.o
+/usr/bin/c++ -DGGML_USE_ACCELERATE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE=600 -I/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/. -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5 -O2 -g -DNDEBUG -arch arm64 -MD -MT CMakeFiles/whisper.dir/whisper.cpp.o -MF CMakeFiles/whisper.dir/whisper.cpp.o.d -o CMakeFiles/whisper.dir/whisper.cpp.o -c /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/whisper.cpp
+[ 66%] Building C object CMakeFiles/whisper.dir/ggml-backend.c.o
+/usr/bin/cc -DGGML_USE_ACCELERATE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE=600 -I/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/. -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5 -Werror=vla -O2 -g -DNDEBUG -arch arm64 -MD -MT CMakeFiles/whisper.dir/ggml-backend.c.o -MF CMakeFiles/whisper.dir/ggml-backend.c.o.d -o CMakeFiles/whisper.dir/ggml-backend.c.o -c /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/ggml-backend.c
+[ 83%] Building C object CMakeFiles/whisper.dir/ggml-quants.c.o
+/usr/bin/cc -DGGML_USE_ACCELERATE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE=600 -I/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/. -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -ffunction-sections -fdata-sections -fPIC --target=arm64-apple-macosx -mmacosx-version-min=15.5 -Werror=vla -O2 -g -DNDEBUG -arch arm64 -MD -MT CMakeFiles/whisper.dir/ggml-quants.c.o -MF CMakeFiles/whisper.dir/ggml-quants.c.o.d -o CMakeFiles/whisper.dir/ggml-quants.c.o -c /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/whisper.cpp/ggml-quants.c
+[100%] Linking CXX static library libwhisper.a
+/opt/homebrew/bin/cmake -P CMakeFiles/whisper.dir/cmake_clean_target.cmake
+/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/whisper.dir/link.txt --verbose=1
+/usr/bin/ar qc libwhisper.a CMakeFiles/whisper.dir/ggml.c.o "CMakeFiles/whisper.dir/ggml-alloc.c.o" "CMakeFiles/whisper.dir/ggml-backend.c.o" "CMakeFiles/whisper.dir/ggml-quants.c.o" CMakeFiles/whisper.dir/whisper.cpp.o
+/usr/bin/ranlib libwhisper.a
+[100%] Built target whisper
+/opt/homebrew/bin/cmake -E cmake_progress_start /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build/CMakeFiles 0
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/Makefile2 preinstall
+make[1]: Nothing to be done for `preinstall'.
+Install the project...
+/opt/homebrew/bin/cmake -P cmake_install.cmake
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/lib/static/libwhisper.a
+-- Installing: /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/include/ggml.h
+-- Installing: /Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/include/whisper.h
+
+cargo:root=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out
+cargo:rustc-link-search=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out/build
+cargo:rustc-link-search=native=/Users/siyaksares/Developer/GitHub/yzta-ai-bootcamp-grup26/Lumina/rs_whisper_gpt/target/debug/build/whisper-rs-sys-f637d1b5a34acd54/out
+cargo:rustc-link-lib=static=whisper

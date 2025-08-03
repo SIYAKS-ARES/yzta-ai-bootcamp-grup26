@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../../services/language_service.dart';
 
 class ChatMessage {
   final String text;
@@ -29,8 +28,6 @@ class _ChatBotPageState extends State<ChatBotPage>
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
-  final bool _isLoading = false;
-  final LanguageService _languageService = LanguageService();
 
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;

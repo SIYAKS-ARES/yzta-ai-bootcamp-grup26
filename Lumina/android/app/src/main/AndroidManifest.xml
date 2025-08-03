@@ -13,6 +13,7 @@
     <!-- Speech to Text için gerekli izinler -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MICROPHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="Lumina"
         android:name="${applicationName}"

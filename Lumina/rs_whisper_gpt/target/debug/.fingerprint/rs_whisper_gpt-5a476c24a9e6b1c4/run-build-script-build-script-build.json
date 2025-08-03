@@ -1,0 +1,1 @@
+{"rustc":12610991425282158916,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[16473670708147405640,"build_script_build",false,7436273758558644009]],"local":[{"RerunIfChanged":{"output":"debug/build/rs_whisper_gpt-5a476c24a9e6b1c4/output","paths":["src/api.rs","../lib/bridge_generated.dart"]}}],"rustflags":[],"config":0,"compile_kind":0}

@@ -55,6 +55,11 @@ dependencies:
   flutter_secure_storage: ^10.0.0-beta.4
   crypto: ^3.0.3
   encrypt: ^5.0.1
+  # Video işleme için
+  video_player: ^2.8.3
+  # Whisper.cpp için
+  flutter_rust_bridge: ^2.11.1
+  ffi: ^2.1.2
   # State management için
   provider: ^6.1.2
   # Local storage için
@@ -72,6 +77,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
+  ffigen: ^8.0.0
+  build_runner: ^2.4.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

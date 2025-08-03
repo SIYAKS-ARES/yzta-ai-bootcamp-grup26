@@ -19,12 +19,15 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
 
   bool isListening = false;
   bool isLoading = false;
+  bool isInitialized = false;
   String recognizedText = '';
   String partialText = '';
+  String? lastError;
   List<FileSystemEntity> savedTextFiles = [];
 
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
+  late Animation<double> _pulseAnimation;
 
   @override
   void initState() {
@@ -36,10 +39,58 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
+    _pulseAnimation = Tween<double>(begin: 0.8, end: 1.2).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
 
-    _sttService.initialize();
+    _initializeSTT();
     _loadSavedTextFiles();
     _animationController.forward();
+  }
+
+  // STT servisini başlatma
+  Future<void> _initializeSTT() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+
+      bool initialized = await _sttService.initialize();
+
+      if (mounted) {
+        setState(() {
+          isInitialized = initialized;
+          isLoading = false;
+        });
+
+        if (!initialized) {
+          _showErrorSnackBar(_sttService.lastError ?? 'Servis başlatılamadı');
+        } else {
+          // Dil bilgisini göster
+          String languageInfo = _sttService.currentLocaleId;
+          if (languageInfo.startsWith('tr')) {
+            languageInfo = 'Türkçe (${_sttService.currentLocaleId})';
+          }
+
+          // Android emülatör uyarısı
+          if (Platform.isAndroid) {
+            _showSuccessSnackBar(
+              'Ses tanıma servisi hazır - $languageInfo\nNot: Emülatörde sorun yaşayabilirsiniz',
+            );
+          } else {
+            _showSuccessSnackBar('Ses tanıma servisi hazır - $languageInfo');
+          }
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+          isInitialized = false;
+        });
+        _showErrorSnackBar('Başlatma hatası: $e');
+      }
+    }
   }
 
   @override
@@ -122,6 +173,14 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
+        actions: [
+          // Debug butonu
+          IconButton(
+            icon: Icon(Icons.bug_report_rounded),
+            onPressed: _debugSTT,
+            tooltip: 'Debug Bilgileri',
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,
@@ -147,8 +206,8 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // Hoş geldiniz kartı
-                    _buildWelcomeCard(),
+                    // Durum kartı
+                    _buildStatusCard(),
                     const SizedBox(height: 20),
 
                     // Mikrofon kontrolü
@@ -181,128 +240,72 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
     );
   }
 
-  // Hoş geldiniz kartı
-  Widget _buildWelcomeCard() {
+  // Durum kartı - yeni
+  Widget _buildStatusCard() {
     return Container(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.98),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Color(0xFF2563EB).withValues(alpha: 0.08),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-          BoxShadow(
-            color: Color(0xFF60A5FA).withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(14),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFF2563EB).withValues(alpha: 0.15),
-                      blurRadius: 8,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  Icons.mic_rounded,
-                  color: Color(0xFF2563EB),
-                  size: 26,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Sesten Metne Dönüştürücü',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                        color: Color(0xFF1f2937),
-                        letterSpacing: 0.3,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Sesinizi metne dönüştürün',
-                      style: TextStyle(
-                        color: Color(0xFF6b7280),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(18),
+            padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFFf0f9ff), Color(0xFFe0f2fe)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Color(0xFFbfdbfe), width: 1.5),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xFF0ea5e9).withValues(alpha: 0.1),
-                  blurRadius: 8,
-                  offset: Offset(0, 2),
-                ),
-              ],
+              color: isInitialized ? Colors.green : Colors.red,
+              borderRadius: BorderRadius.circular(12),
             ),
-            child: Row(
+            child: Icon(
+              isInitialized ? Icons.check_circle : Icons.error,
+              color: Colors.white,
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.info_outline_rounded,
-                  color: Color(0xFF0ea5e9),
-                  size: 20,
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    'Net ve yavaş konuşun. Gürültülü ortamlardan kaçının.',
-                    style: TextStyle(
-                      color: Color(0xFF0c4a6e),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
+                Text(
+                  isInitialized ? 'Servis Hazır' : 'Servis Başlatılıyor...',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Color(0xFF1f2937),
                   ),
+                ),
+                Text(
+                  isInitialized
+                      ? 'Ses tanıma servisi aktif'
+                      : 'Lütfen bekleyin...',
+                  style: TextStyle(color: Color(0xFF6b7280), fontSize: 14),
                 ),
               ],
             ),
           ),
+          if (isLoading)
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2563EB)),
+              ),
+            ),
         ],
       ),
     );
   }
 
-  // Mikrofon kontrolü kartı
+  // Mikrofon kontrolü kartı - geliştirilmiş
   Widget _buildMicrophoneCard() {
     return Container(
       padding: const EdgeInsets.all(28),
@@ -384,7 +387,9 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
               ],
             ),
             child: ElevatedButton.icon(
-              onPressed: isLoading ? null : _toggleListening,
+              onPressed: (!isInitialized || isLoading)
+                  ? null
+                  : _toggleListening,
               icon: isLoading
                   ? SizedBox(
                       width: 20,
@@ -394,14 +399,28 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     )
-                  : Icon(
-                      isListening ? Icons.stop_rounded : Icons.mic_rounded,
-                      size: 24,
+                  : AnimatedBuilder(
+                      animation: _pulseAnimation,
+                      builder: (context, child) {
+                        return Transform.scale(
+                          scale: isListening ? _pulseAnimation.value : 1.0,
+                          child: Icon(
+                            isListening
+                                ? Icons.stop_rounded
+                                : Icons.mic_rounded,
+                            size: 24,
+                          ),
+                        );
+                      },
                     ),
               label: Text(
                 isLoading
                     ? 'İşleniyor...'
-                    : (isListening ? 'Dinlemeyi Durdur' : 'Dinlemeye Başla'),
+                    : (!isInitialized
+                          ? 'Servis Başlatılıyor...'
+                          : (isListening
+                                ? 'Dinlemeyi Durdur'
+                                : 'Dinlemeye Başla')),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
               style: ElevatedButton.styleFrom(
@@ -463,7 +482,7 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
                           ),
                         ),
                         Text(
-                          'Konuşmaya başlayın',
+                          'Konuşmaya başlayın (${_sttService.currentLocaleId})',
                           style: TextStyle(
                             color: Color(0xFF7f1d1d),
                             fontWeight: FontWeight.w500,
@@ -477,12 +496,39 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
               ),
             ),
           ],
+          if (lastError != null) ...[
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Color(0xFFfef2f2),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Color(0xFFfecaca), width: 1.5),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.error_outline_rounded,
+                    color: Color(0xFFdc2626),
+                    size: 20,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      lastError!,
+                      style: TextStyle(color: Color(0xFF991b1b), fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );
   }
 
-  // Tanınan metin alanı kartı
+  // Tanınan metin alanı kartı - geliştirilmiş
   Widget _buildTextAreaCard() {
     return Container(
       padding: const EdgeInsets.all(28),
@@ -533,6 +579,16 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
                   letterSpacing: 0.3,
                 ),
               ),
+              Spacer(),
+              if (_textController.text.isNotEmpty)
+                Text(
+                  '${_textController.text.length} karakter',
+                  style: TextStyle(
+                    color: Color(0xFF6b7280),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
             ],
           ),
           const SizedBox(height: 16),
@@ -587,7 +643,7 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
     );
   }
 
-  // Kontrol butonları
+  // Kontrol butonları - geliştirilmiş
   Widget _buildControlButtons() {
     return Column(
       children: [
@@ -810,6 +866,10 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
               _buildTipChip('Gürültülü ortamlardan kaçının'),
               _buildTipChip('Mikrofonu ağzınıza yakın tutun'),
               _buildTipChip('Cümle sonlarında duraklayın'),
+              _buildTipChip('Türkçe karakterleri vurgulayın'),
+              _buildTipChip('Kısa cümleler kullanın'),
+              if (Platform.isAndroid)
+                _buildTipChip('Emülatörde fiziksel cihazdan daha az doğru'),
             ],
           ),
         ],
@@ -817,71 +877,235 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
     );
   }
 
-  // Dinleme başlatma/durdurma fonksiyonu
+  // Dinleme başlatma/durdurma fonksiyonu - geliştirilmiş
   Future<void> _toggleListening() async {
     try {
       if (isListening) {
         await _sttService.stopListening();
-        setState(() {
-          isListening = false;
-        });
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Dinleme durduruldu'),
-              backgroundColor: Color(0xFF6366f1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          );
+          setState(() {
+            isListening = false;
+          });
+          _showSuccessSnackBar('Dinleme durduruldu');
         }
       } else {
-        setState(() {
-          isListening = true;
-          partialText = '';
-        });
+        // Android emülatör uyarısı
+        if (Platform.isAndroid) {
+          _showInfoSnackBar(
+            'Android emülatörde ses tanıma sınırlı olabilir. Fiziksel cihazda daha iyi sonuç alırsınız.',
+          );
+        }
 
-        await _sttService.startListening(
+        if (mounted) {
+          setState(() {
+            isListening = true;
+            partialText = '';
+            lastError = null;
+          });
+        }
+
+        bool success = await _sttService.startListening(
           onResult: (text) {
-            setState(() {
-              recognizedText = text;
-              _textController.text = text;
-            });
+            if (mounted) {
+              setState(() {
+                recognizedText = text;
+                _textController.text = text;
+              });
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Metin tanındı: ${text.length} karakter'),
-                backgroundColor: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            );
+              // Türkçe karakter kontrolü ve düzeltme
+              String correctedText = _correctTurkishText(text);
+              if (correctedText != text) {
+                setState(() {
+                  _textController.text = correctedText;
+                  recognizedText = correctedText;
+                });
+                _showSuccessSnackBar(
+                  'Metin düzeltildi: ${correctedText.length} karakter',
+                );
+              } else {
+                _showSuccessSnackBar('Metin tanındı: ${text.length} karakter');
+              }
+            }
           },
           onListeningComplete: () {
-            setState(() {
-              isListening = false;
-            });
+            if (mounted) {
+              setState(() {
+                isListening = false;
+              });
+            }
+          },
+          onError: (error) {
+            if (mounted) {
+              setState(() {
+                lastError = error;
+                isListening = false;
+              });
+
+              // Android emülatör için özel mesaj
+              if (Platform.isAndroid && error.contains('emülatör')) {
+                _showErrorSnackBar(
+                  '$error\nFiziksel cihazda test etmeyi deneyin.',
+                );
+              } else {
+                _showErrorSnackBar(error);
+              }
+            }
           },
         );
+
+        if (!success && mounted) {
+          setState(() {
+            isListening = false;
+            lastError = _sttService.lastError;
+          });
+        }
       }
     } catch (e) {
-      setState(() {
-        isListening = false;
-      });
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Hata: $e'),
-            backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+        setState(() {
+          isListening = false;
+          lastError = e.toString();
+        });
+        _showErrorSnackBar('Hata: $e');
+      }
+    }
+  }
+
+  // Debug fonksiyonu - geliştirilmiş
+  Future<void> _debugSTT() async {
+    try {
+      final debugInfo = await _sttService.debugSTT();
+
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Row(
+              children: [
+                Icon(Icons.bug_report_rounded, color: Color(0xFF2563EB)),
+                SizedBox(width: 8),
+                Text('Debug Bilgileri'),
+              ],
             ),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Platform bilgisi
+                  _buildDebugSection('Platform Bilgisi', {
+                    'İşletim Sistemi': Platform.operatingSystem,
+                    'Platform': Platform.isAndroid ? 'Android' : 'iOS',
+                    'Emülatör': Platform.isAndroid
+                        ? 'Muhtemelen Evet'
+                        : 'Hayır',
+                  }),
+
+                  // Servis durumu
+                  _buildDebugSection('Servis Durumu', {
+                    'Başlatıldı': debugInfo['initialized']
+                        ? '✅ Evet'
+                        : '❌ Hayır',
+                    'Dinleniyor': debugInfo['isListening']
+                        ? '🔴 Evet'
+                        : '⚪ Hayır',
+                    'Son Hata': debugInfo['lastError'] ?? 'Yok',
+                  }),
+
+                  // Dil bilgisi
+                  _buildDebugSection('Dil Bilgisi', {
+                    'Mevcut Dil': debugInfo['currentLocaleId'] ?? 'Bilinmiyor',
+                    'Desteklenen Dil Sayısı':
+                        debugInfo['supportedLocalesCount'] ?? 'Bilinmiyor',
+                  }),
+
+                  // Son tanınan metin
+                  if (debugInfo['lastWords'] != null &&
+                      debugInfo['lastWords'].isNotEmpty)
+                    _buildDebugSection('Son Tanınan Metin', {
+                      'Metin': debugInfo['lastWords'],
+                      'Karakter Sayısı': debugInfo['lastWords'].length
+                          .toString(),
+                    }),
+
+                  // Desteklenen diller
+                  if (debugInfo['supportedLocales'] != null)
+                    _buildDebugSection(
+                      'Desteklenen Diller',
+                      Map.fromEntries(
+                        (debugInfo['supportedLocales'] as List).map(
+                          (locale) => MapEntry(locale['id'], locale['name']),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text('Kapat'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _showSuccessSnackBar('Debug bilgileri kopyalandı');
+                },
+                child: Text('Kopyala'),
+              ),
+            ],
           ),
         );
       }
+    } catch (e) {
+      if (mounted) {
+        _showErrorSnackBar('Debug hatası: $e');
+      }
     }
+  }
+
+  Widget _buildDebugSection(String title, Map<String, dynamic> data) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+              color: Color(0xFF2563EB),
+            ),
+          ),
+        ),
+        ...data.entries.map(
+          (entry) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${entry.key}: ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: Color(0xFF374151),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    '${entry.value}',
+                    style: TextStyle(fontSize: 14, color: Color(0xFF6B7280)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Divider(height: 16),
+      ],
+    );
   }
 
   // Metni temizleme fonksiyonu
@@ -890,29 +1114,22 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
       _textController.clear();
       recognizedText = '';
       partialText = '';
+      lastError = null;
     });
 
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Metin temizlendi'),
-          backgroundColor: Color(0xFF6366f1),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      );
-    }
+    _showSuccessSnackBar('Metin temizlendi');
   }
 
-  // Metni kaydetme fonksiyonu
+  // Metni kaydetme fonksiyonu - geliştirilmiş
   Future<void> _saveText() async {
     if (_textController.text.isEmpty) return;
 
     try {
-      setState(() {
-        isLoading = true;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = true;
+        });
+      }
 
       final String fileName =
           'taninan_metin_${DateTime.now().millisecondsSinceEpoch}';
@@ -924,32 +1141,18 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
       await _loadSavedTextFiles();
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Metin kaydedildi: ${path.basename(filePath)}'),
-            backgroundColor: Colors.green,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        _showSuccessSnackBar('Metin kaydedildi: ${path.basename(filePath)}');
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Hata: $e'),
-            backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        _showErrorSnackBar('Kaydetme hatası: $e');
       }
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 
@@ -1014,45 +1217,32 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
   // Metin dosyası içeriğini yükle
   Future<void> _loadTextFileContent(String filePath) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = true;
+        });
+      }
 
       final File file = File(filePath);
       final String content = await file.readAsString();
 
-      setState(() {
-        _textController.text = content;
-        recognizedText = content;
-      });
-
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('${path.basename(filePath)} yüklendi'),
-            backgroundColor: Colors.green,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        setState(() {
+          _textController.text = content;
+          recognizedText = content;
+        });
+        _showSuccessSnackBar('${path.basename(filePath)} yüklendi');
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Hata: $e'),
-            backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        _showErrorSnackBar('Yükleme hatası: $e');
       }
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 
@@ -1064,27 +1254,11 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
       await _loadSavedTextFiles();
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('${path.basename(filePath)} silindi'),
-            backgroundColor: Color(0xFF6366f1),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        _showSuccessSnackBar('${path.basename(filePath)} silindi');
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Silme hatası: $e'),
-            backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        _showErrorSnackBar('Silme hatası: $e');
       }
     }
   }
@@ -1095,5 +1269,94 @@ class _SpeechToTextPageState extends State<SpeechToTextPage>
       backgroundColor: const Color(0xFFE0E7FF),
       labelStyle: const TextStyle(color: Color(0xFF2563EB)),
     );
+  }
+
+  // SnackBar yardımcı fonksiyonları
+  void _showSuccessSnackBar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Color(0xFF16a34a),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+    }
+  }
+
+  void _showErrorSnackBar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Color(0xFFdc2626),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+    }
+  }
+
+  // Bilgi SnackBar'ı - yeni
+  void _showInfoSnackBar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Color(0xFF0ea5e9),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          duration: Duration(seconds: 4),
+        ),
+      );
+    }
+  }
+
+  // Türkçe metin düzeltme fonksiyonu
+  String _correctTurkishText(String text) {
+    if (text.isEmpty) return text;
+
+    // Yaygın Türkçe karakter hatalarını düzelt
+    String corrected = text;
+
+    // Büyük harf düzeltmeleri
+    corrected = corrected.replaceAll('i̇', 'İ'); // i + nokta = İ
+    corrected = corrected.replaceAll('İ', 'İ'); // I + nokta = İ
+
+    // Küçük harf düzeltmeleri
+    corrected = corrected.replaceAll('İ', 'i'); // İ -> i (başta değilse)
+    if (corrected.isNotEmpty && corrected[0] == 'i') {
+      corrected = 'İ${corrected.substring(1)}';
+    }
+
+    // Yaygın kelime düzeltmeleri
+    Map<String, String> corrections = {
+      'evet': 'evet',
+      'hayır': 'hayır',
+      'tamam': 'tamam',
+      'merhaba': 'merhaba',
+      'güle güle': 'güle güle',
+      'teşekkürler': 'teşekkürler',
+      'rica ederim': 'rica ederim',
+      'lütfen': 'lütfen',
+      'affedersiniz': 'affedersiniz',
+      'özür dilerim': 'özür dilerim',
+    };
+
+    // Kelime düzeltmelerini uygula
+    corrections.forEach((wrong, correct) {
+      corrected = corrected.replaceAll(wrong, correct);
+    });
+
+    // Cümle başı büyük harf yapma
+    if (corrected.isNotEmpty) {
+      corrected = '${corrected[0].toUpperCase()}${corrected.substring(1)}';
+    }
+
+    return corrected;
   }
 }

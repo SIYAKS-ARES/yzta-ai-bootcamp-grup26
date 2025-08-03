@@ -335,7 +335,7 @@ class _HomePageState extends State<HomePage> {
 
                           if (selectedType == StudentType.none) {
                             // Grid layout for all features
-                            return Container(
+                            return SizedBox(
                               height: 400, // Sabit yükseklik
                               child: GridView.builder(
                                 shrinkWrap: true,

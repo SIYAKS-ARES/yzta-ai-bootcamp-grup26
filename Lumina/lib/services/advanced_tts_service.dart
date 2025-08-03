@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'text_to_speech_service.dart';
 import 'firebase_tts_service.dart';
 import 'elevenlabs_tts_service.dart';
@@ -73,16 +72,16 @@ class AdvancedTTSService {
           break;
         case TTSProvider.cloud:
           throw Exception('Firebase Cloud TTS devre dışı - simüle edilmiş');
-          break;
         case TTSProvider.elevenlabs:
           await _speakWithElevenLabs(text);
-          break;
         case TTSProvider.openai:
-          throw Exception('OpenAI TTS devre dışı - API anahtarı yapılandırılmamış');
-          break;
+          throw Exception(
+            'OpenAI TTS devre dışı - API anahtarı yapılandırılmamış',
+          );
         case TTSProvider.gemini:
-          throw Exception('Gemini TTS devre dışı - Google Cloud TTS API aktif değil');
-          break;
+          throw Exception(
+            'Gemini TTS devre dışı - Google Cloud TTS API aktif değil',
+          );
       }
     } catch (e) {
       developer.log('Metin okuma hatası: $e', name: 'AdvancedTTSService');
@@ -97,83 +96,6 @@ class AdvancedTTSService {
       await _deviceTTS.speakText(text);
     } catch (e) {
       _isPlaying = false;
-      rethrow;
-    }
-  }
-
-  // Bulut TTS
-  Future<void> _speakWithCloud(String text, String userId) async {
-    try {
-      _isProcessing = true;
-
-      // Kullanıcı ID kontrolü
-      if (userId.isEmpty) {
-        throw Exception('Geçersiz kullanıcı ID');
-      }
-
-      // Doğrudan metin TTS işlemi başlat
-      final taskId = await _cloudTTS.createTextToSpeechTask(
-        text: text,
-        userId: userId,
-      );
-
-      if (taskId == null || taskId.isEmpty) {
-        _isProcessing = false;
-        throw Exception('Task oluşturulamadı');
-      }
-
-      developer.log(
-        'Cloud TTS task oluşturuldu: $taskId',
-        name: 'AdvancedTTSService',
-      );
-
-      // Stream'i güvenli şekilde dinle
-      bool taskCompleted = false;
-      int timeoutCounter = 0;
-      const maxTimeout = 30; // 30 saniye timeout
-
-      await for (final task in _cloudTTS.getTaskStream(taskId)) {
-        try {
-          timeoutCounter++;
-
-          developer.log(
-            'Cloud TTS durum: ${task.status}',
-            name: 'AdvancedTTSService',
-          );
-
-          if (task.status == 'completed' && task.audioUrl != null) {
-            await _playCloudAudio(task.audioUrl!);
-            taskCompleted = true;
-            break;
-          } else if (task.status == 'failed') {
-            _isProcessing = false;
-            final errorMsg = task.errorMessage ?? 'Bulut TTS işlemi başarısız';
-            developer.log(
-              'Cloud TTS başarısız: $errorMsg',
-              name: 'AdvancedTTSService',
-            );
-            throw Exception(errorMsg);
-          } else if (timeoutCounter > maxTimeout) {
-            _isProcessing = false;
-            throw Exception('Bulut TTS işlemi zaman aşımına uğradı');
-          }
-        } catch (e) {
-          _isProcessing = false;
-          developer.log(
-            'Cloud TTS stream hatası: $e',
-            name: 'AdvancedTTSService',
-          );
-          rethrow;
-        }
-      }
-
-      if (!taskCompleted) {
-        _isProcessing = false;
-        throw Exception('Bulut TTS işlemi tamamlanamadı');
-      }
-    } catch (e) {
-      _isProcessing = false;
-      developer.log('Cloud TTS genel hata: $e', name: 'AdvancedTTSService');
       rethrow;
     }
   }
@@ -194,66 +116,6 @@ class AdvancedTTSService {
       _isProcessing = false;
       rethrow;
     }
-  }
-
-  // OpenAI TTS
-  Future<void> _speakWithOpenAI(String text) async {
-    try {
-      _isProcessing = true;
-      final audioPath = await _openAITTS.synthesizeSpeech(
-        text: text,
-        voice: 'alloy',
-        speed: 1.0,
-      );
-
-      _isProcessing = false;
-      _isPlaying = true;
-      await _openAITTS.playAudio(audioPath);
-    } catch (e) {
-      _isProcessing = false;
-      rethrow;
-    }
-  }
-
-  // Gemini TTS
-  Future<void> _speakWithGemini(String text) async {
-    try {
-      _isProcessing = true;
-      final audioPath = await _geminiTTS.synthesizeSpeech(
-        text: text,
-        voice: 'gemini-1.0-pro',
-        speed: 1.0,
-      );
-
-      _isProcessing = false;
-      _isPlaying = true;
-      await _geminiTTS.playAudio(audioPath);
-    } catch (e) {
-      _isProcessing = false;
-      rethrow;
-    }
-  }
-
-  // Bulut ses dosyasını oynat
-  Future<void> _playCloudAudio(String audioUrl) async {
-    try {
-      _isProcessing = false;
-      _isPlaying = true;
-      await _cloudTTS.playAudio(audioUrl);
-    } catch (e) {
-      _isPlaying = false;
-      rethrow;
-    }
-  }
-
-  // Geçici metin dosyası oluştur
-  Future<File> _createTempTextFile(String text) async {
-    final tempDir = Directory.systemTemp;
-    final tempFile = File(
-      '${tempDir.path}/temp_text_${DateTime.now().millisecondsSinceEpoch}.txt',
-    );
-    await tempFile.writeAsString(text);
-    return tempFile;
   }
 
   // Oynatmayı durdur

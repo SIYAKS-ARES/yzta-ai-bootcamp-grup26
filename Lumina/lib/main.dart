@@ -66,21 +66,13 @@ Future<void> main() async {
 // 🔒 GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
 void _validateApiKeys() {
   final elevenLabsKey = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
-  final openAIKey = dotenv.env['OPENAI_API_KEY'] ?? '';
-  final geminiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
 
   if (elevenLabsKey.isEmpty ||
       elevenLabsKey == 'YOUR_ELEVENLABS_API_KEY_HERE') {
     throw Exception('ElevenLabs API anahtarı yapılandırılmamış!');
   }
-  // OpenAI API anahtarı kontrolü kaldırıldı - devre dışı
-  // if (openAIKey.isEmpty || openAIKey == 'YOUR_OPENAI_API_KEY_HERE') {
-  //   throw Exception('OpenAI API anahtarı yapılandırılmamış!');
-  // }
-  // Gemini API anahtarı kontrolü kaldırıldı - devre dışı
-  // if (geminiKey.isEmpty || geminiKey == 'YOUR_GEMINI_API_KEY_HERE') {
-  //   throw Exception('Gemini API anahtarı yapılandırılmamış!');
-  // }
+  // OpenAI ve Gemini API anahtarı kontrolleri devre dışı
+  // Bu API'ler şu anda kullanılmadığı için kontrol edilmiyor
 }
 
 class LuminaApp extends StatefulWidget {
