@@ -72,20 +72,16 @@ class AdvancedTTSService {
           await _speakWithDevice(text);
           break;
         case TTSProvider.cloud:
-          if (userId != null) {
-            await _speakWithCloud(text, userId);
-          } else {
-            throw Exception('Cloud TTS için kullanıcı ID gerekli');
-          }
+          throw Exception('Firebase Cloud TTS devre dışı - simüle edilmiş');
           break;
         case TTSProvider.elevenlabs:
           await _speakWithElevenLabs(text);
           break;
         case TTSProvider.openai:
-          await _speakWithOpenAI(text);
+          throw Exception('OpenAI TTS devre dışı - API anahtarı yapılandırılmamış');
           break;
         case TTSProvider.gemini:
-          await _speakWithGemini(text);
+          throw Exception('Gemini TTS devre dışı - Google Cloud TTS API aktif değil');
           break;
       }
     } catch (e) {

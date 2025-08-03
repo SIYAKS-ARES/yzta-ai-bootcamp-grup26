@@ -14,7 +14,8 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageState extends State<SettingsPage>
+    with SingleTickerProviderStateMixin {
   final TextToSpeechService _ttsService = TextToSpeechService();
 
   bool notificationsEnabled = true;
@@ -34,13 +35,30 @@ class _SettingsPageState extends State<SettingsPage> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  // Gemini API Key ile ilgili tüm kodları kaldır
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
     super.initState();
+    _animationController = AnimationController(
+      duration: Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
     _loadUserData();
-    // _loadGeminiApiKey(); // Removed as per edit hint
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _ttsService.dispose();
+    _currentPasswordController.dispose();
+    _newPasswordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadUserData() async {
@@ -71,6 +89,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _isLoading = false;
         });
       }
+      _animationController.forward();
     } catch (e) {
       setState(() {
         _isLoading = false;
@@ -78,424 +97,1050 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  // Future<void> _loadGeminiApiKey() async { // Removed as per edit hint
-  //   final key = await GeminiApiService.getApiKey(); // Removed as per edit hint
-  //   setState(() { // Removed as per edit hint
-  //     _savedGeminiApiKey = key; // Removed as per edit hint
-  //   }); // Removed as per edit hint
-  // } // Removed as per edit hint
-
-  // Future<void> _saveGeminiApiKey() async { // Removed as per edit hint
-  //   if (_geminiApiKey.isEmpty) return; // Removed as per edit hint
-  //   await GeminiApiService.saveApiKey(_geminiApiKey); // Removed as per edit hint
-  //   setState(() { // Removed as per edit hint
-  //     _savedGeminiApiKey = _geminiApiKey; // Removed as per edit hint
-  //     _geminiApiKey = ''; // Removed as per edit hint
-  //   }); // Removed as per edit hint
-  //   if (mounted) { // Removed as per edit hint
-  //     ScaffoldMessenger.of(context).showSnackBar( // Removed as per edit hint
-  //       const SnackBar(content: Text('Gemini API Key kaydedildi!')), // Removed as per edit hint
-  //     ); // Removed as per edit hint
-  //   } // Removed as per edit hint
-  // } // Removed as per edit hint
-
-  // Future<void> _deleteGeminiApiKey() async { // Removed as per edit hint
-  //   await GeminiApiService.deleteApiKey(); // Removed as per edit hint
-  //   setState(() { // Removed as per edit hint
-  //     _savedGeminiApiKey = null; // Removed as per edit hint
-  //   }); // Removed as per edit hint
-  //   if (mounted) { // Removed as per edit hint
-  //     ScaffoldMessenger.of( // Removed as per edit hint
-  //       context, // Removed as per edit hint
-  //     ).showSnackBar(const SnackBar(content: Text('Gemini API Key silindi!'))); // Removed as per edit hint
-  //   } // Removed as per edit hint
-  // } // Removed as per edit hint
-
   @override
   Widget build(BuildContext context) {
-    final Color primaryBlue = const Color(0xFF2563EB);
+    final Color primaryBlue = const Color(0xFF1e40af);
+    final Color softBlue = const Color(0xFF3b82f6);
+    final Color lightBlue = const Color(0xFF60a5fa);
     final languageService = Provider.of<LanguageService>(context);
     final themeService = Provider.of<ThemeService>(context);
+
+    if (_isLoading) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(languageService.getText('settings')),
+          backgroundColor: primaryBlue,
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                primaryBlue,
+                softBlue,
+                lightBlue,
+                Color(0xFF93c5fd),
+                Color(0xFFdbeafe),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 3,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  languageService.getText('loading'),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(languageService.getText('settings')),
         backgroundColor: primaryBlue,
         foregroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(24),
-        children: [
-          // Kullanıcı info header
-          Card(
-            elevation: 0,
-            color: const Color(0xFFF1F5FB),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: ListTile(
-              leading: const CircleAvatar(
-                radius: 26,
-                backgroundColor: Color(0xFF60A5FA),
-                child: Icon(Icons.person, color: Colors.white, size: 30),
-              ),
-              title: Text(
-                _isLoading ? languageService.getText('loading') : _userName,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                ),
-              ),
-              subtitle: Text(_isLoading ? '' : _userEmail),
-              trailing: IconButton(
-                icon: const Icon(Icons.edit, color: Colors.grey),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProfilePage(),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              primaryBlue,
+              softBlue,
+              lightBlue,
+              Color(0xFF93c5fd),
+              Color(0xFFdbeafe),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: ListView(
+            padding: const EdgeInsets.all(20),
+            children: [
+              // Kullanıcı info header
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.15),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
                     ),
-                  );
-                },
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          // Dil seçimi
-          ListTile(
-            leading: const Icon(Icons.language),
-            title: Text(languageService.getText('language')),
-            trailing: DropdownButton<String>(
-              value: languageService.supportedLocales.entries
-                  .firstWhere(
-                    (entry) => entry.value == languageService.currentLocale,
-                  )
-                  .key,
-              items: languageService.supportedLocales.keys.map((lang) {
-                return DropdownMenuItem<String>(value: lang, child: Text(lang));
-              }).toList(),
-              onChanged: (val) async {
-                if (val != null) {
-                  await languageService.changeLanguage(val);
-                  _updateTTSLanguage();
-                }
-              },
-            ),
-          ),
-          const Divider(),
-
-          // Bildirimler
-          SwitchListTile(
-            value: notificationsEnabled,
-            onChanged: (val) {
-              setState(() {
-                notificationsEnabled = val;
-              });
-            },
-            secondary: const Icon(Icons.notifications),
-            title: Text(languageService.getText('notifications')),
-          ),
-          const Divider(),
-
-          // Parola Değiştir
-          ListTile(
-            leading: const Icon(Icons.lock_reset),
-            title: Text(
-              languageService.currentLocale.languageCode == 'tr'
-                  ? "Parola Değiştir"
-                  : languageService.currentLocale.languageCode == 'en'
-                  ? "Change Password"
-                  : "Passwort ändern",
-            ),
-            onTap: () {
-              _showChangePasswordDialog();
-            },
-          ),
-          const Divider(),
-
-          // TTS Ayarları Bölümü
-          Card(
-            elevation: 0,
-            color: const Color(0xFFF1F5FB),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.volume_up, color: primaryBlue),
-                      const SizedBox(width: 12),
-                      Text(
-                        languageService.currentLocale.languageCode == 'tr'
-                            ? "Ses Ayarları"
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "Audio Settings"
-                            : "Audioeinstellungen",
-                        style: TextStyle(
+                    BoxShadow(
+                      color: softBlue.withValues(alpha: 0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [primaryBlue, softBlue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: primaryBlue.withValues(alpha: 0.3),
+                            blurRadius: 12,
+                            offset: Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        Icons.person_rounded,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _userName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              color: Color(0xFF1f2937),
+                              letterSpacing: 0.3,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            _userEmail,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFF6b7280),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: primaryBlue.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.edit_rounded,
                           color: primaryBlue,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfilePage(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Dil seçimi
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        languageService.getText('language'),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Color(0xFF1f2937),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-
-                  // Konuşma hızı
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        languageService.currentLocale.languageCode == 'tr'
-                            ? "Konuşma Hızı: ${(speechRate * 100).round()}%"
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "Speech Rate: ${(speechRate * 100).round()}%"
-                            : "Sprechgeschwindigkeit: ${(speechRate * 100).round()}%",
-                        style: const TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
-                      const SizedBox(height: 8),
-                      Slider(
-                        value: speechRate,
-                        min: 0.1,
-                        max: 1.0,
-                        divisions: 9,
-                        activeColor: primaryBlue,
-                        onChanged: (value) {
-                          setState(() {
-                            speechRate = value;
-                          });
-                          _ttsService.setSpeechRate(value);
+                      decoration: BoxDecoration(
+                        color: Color(0xFFf8fafc),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Color(0xFFe2e8f0),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: DropdownButton<String>(
+                        value: languageService.supportedLocales.entries
+                            .firstWhere(
+                              (entry) =>
+                                  entry.value == languageService.currentLocale,
+                            )
+                            .key,
+                        items: languageService.supportedLocales.keys.map((
+                          lang,
+                        ) {
+                          return DropdownMenuItem<String>(
+                            value: lang,
+                            child: Text(
+                              lang,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF1f2937),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (val) async {
+                          if (val != null) {
+                            await languageService.changeLanguage(val);
+                            _updateTTSLanguage();
+                          }
                         },
+                        underline: SizedBox(),
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: primaryBlue,
+                          size: 20,
+                        ),
+                        dropdownColor: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
+              ),
 
-                  const SizedBox(height: 16),
-
-                  // Ses seviyesi
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        languageService.currentLocale.languageCode == 'tr'
-                            ? "Ses Seviyesi: ${(volume * 100).round()}%"
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "Volume Level: ${(volume * 100).round()}%"
-                            : "Lautstärke: ${(volume * 100).round()}%",
-                        style: const TextStyle(fontWeight: FontWeight.w500),
+              // Bildirimler
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      const SizedBox(height: 8),
-                      Slider(
-                        value: volume,
-                        min: 0.0,
-                        max: 1.0,
-                        divisions: 10,
-                        activeColor: primaryBlue,
-                        onChanged: (value) {
-                          setState(() {
-                            volume = value;
-                          });
-                          _ttsService.setVolume(value);
-                        },
+                      child: Icon(
+                        Icons.notifications_rounded,
+                        color: primaryBlue,
+                        size: 20,
                       ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Test butonu
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: () async {
-                        final testText =
-                            languageService.currentLocale.languageCode == 'tr'
-                            ? "Bu bir test sesidir. Ayarlarınız çalışıyor."
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "This is a test sound. Your settings are working."
-                            : "Dies ist ein Testton. Ihre Einstellungen funktionieren.";
-                        await _ttsService.speakText(testText);
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        languageService.getText('notifications'),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Color(0xFF1f2937),
+                        ),
+                      ),
+                    ),
+                    Switch(
+                      value: notificationsEnabled,
+                      onChanged: (val) {
+                        setState(() {
+                          notificationsEnabled = val;
+                        });
                       },
-                      icon: const Icon(Icons.play_arrow),
-                      label: Text(
-                        languageService.currentLocale.languageCode == 'tr'
-                            ? "Ses Testi"
-                            : languageService.currentLocale.languageCode == 'en'
-                            ? "Audio Test"
-                            : "Audiotest",
+                      activeColor: primaryBlue,
+                      activeTrackColor: primaryBlue.withValues(alpha: 0.3),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Parola Değiştir
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      _showChangePasswordDialog();
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdcfce7), Color(0xFFbbf7d0)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.lock_reset_rounded,
+                            color: Color(0xFF16a34a),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Parola Değiştir"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "Change Password"
+                                : "Passwort ändern",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xFF1f2937),
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Color(0xFF9ca3af),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              // TTS Ayarları Bölümü
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.volume_up_rounded,
+                            color: primaryBlue,
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          languageService.currentLocale.languageCode == 'tr'
+                              ? "Ses Ayarları"
+                              : languageService.currentLocale.languageCode ==
+                                    'en'
+                              ? "Audio Settings"
+                              : "Audioeinstellungen",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Color(0xFF1f2937),
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Konuşma hızı
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              languageService.currentLocale.languageCode == 'tr'
+                                  ? "Konuşma Hızı"
+                                  : languageService
+                                            .currentLocale
+                                            .languageCode ==
+                                        'en'
+                                  ? "Speech Rate"
+                                  : "Sprechgeschwindigkeit",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Color(0xFF374151),
+                              ),
+                            ),
+                            Text(
+                              "${(speechRate * 100).round()}%",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: primaryBlue,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: primaryBlue,
+                            inactiveTrackColor: Color(0xFFe5e7eb),
+                            thumbColor: primaryBlue,
+                            overlayColor: primaryBlue.withValues(alpha: 0.1),
+                            trackHeight: 4,
+                            thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius: 8,
+                            ),
+                            overlayShape: RoundSliderOverlayShape(
+                              overlayRadius: 16,
+                            ),
+                          ),
+                          child: Slider(
+                            value: speechRate,
+                            min: 0.1,
+                            max: 1.0,
+                            divisions: 9,
+                            onChanged: (value) {
+                              setState(() {
+                                speechRate = value;
+                              });
+                              _ttsService.setSpeechRate(value);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Ses seviyesi
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              languageService.currentLocale.languageCode == 'tr'
+                                  ? "Ses Seviyesi"
+                                  : languageService
+                                            .currentLocale
+                                            .languageCode ==
+                                        'en'
+                                  ? "Volume Level"
+                                  : "Lautstärke",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Color(0xFF374151),
+                              ),
+                            ),
+                            Text(
+                              "${(volume * 100).round()}%",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: primaryBlue,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: primaryBlue,
+                            inactiveTrackColor: Color(0xFFe5e7eb),
+                            thumbColor: primaryBlue,
+                            overlayColor: primaryBlue.withValues(alpha: 0.1),
+                            trackHeight: 4,
+                            thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius: 8,
+                            ),
+                            overlayShape: RoundSliderOverlayShape(
+                              overlayRadius: 16,
+                            ),
+                          ),
+                          child: Slider(
+                            value: volume,
+                            min: 0.0,
+                            max: 1.0,
+                            divisions: 10,
+                            onChanged: (value) {
+                              setState(() {
+                                volume = value;
+                              });
+                              _ttsService.setVolume(value);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Test butonu
+                    Container(
+                      width: double.infinity,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xFF3b82f6), Color(0xFF1d4ed8)],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xFF3b82f6).withValues(alpha: 0.3),
+                            blurRadius: 8,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryBlue,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                      child: ElevatedButton.icon(
+                        onPressed: () async {
+                          final testText =
+                              languageService.currentLocale.languageCode == 'tr'
+                              ? "Bu bir test sesidir. Ayarlarınız çalışıyor."
+                              : languageService.currentLocale.languageCode ==
+                                    'en'
+                              ? "This is a test sound. Your settings are working."
+                              : "Dies ist ein Testton. Ihre Einstellungen funktionieren.";
+                          await _ttsService.speakText(testText);
+                        },
+                        icon: Icon(Icons.play_arrow_rounded, size: 20),
+                        label: Text(
+                          languageService.currentLocale.languageCode == 'tr'
+                              ? "Ses Testi"
+                              : languageService.currentLocale.languageCode ==
+                                    'en'
+                              ? "Audio Test"
+                              : "Audiotest",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          foregroundColor: Colors.white,
+                          shadowColor: Colors.transparent,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ),
-          const SizedBox(height: 20),
 
-          // Tema Değiştir
-          SwitchListTile(
-            value: themeService.isDarkMode,
-            onChanged: (val) async {
-              await themeService.setTheme(val);
-              if (!mounted) return;
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(languageService.getText('dark_theme')),
-                  content: Text(
-                    val
-                        ? "${languageService.getText('dark_theme')} seçildi."
-                        : "Açık tema seçildi.",
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(languageService.getText('ok')),
+              // Tema Değiştir
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
                     ),
                   ],
                 ),
-              );
-            },
-            secondary: const Icon(Icons.brightness_6),
-            title: Text(languageService.getText('dark_theme')),
-          ),
-          const Divider(),
-
-          // Yardım ve Destek
-          ListTile(
-            leading: const Icon(Icons.help_outline),
-            title: Text(languageService.getText('help_support')),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(languageService.getText('help_support')),
-                  content: Text(
-                    languageService.currentLocale.languageCode == 'tr'
-                        ? "Her türlü soru için: destek@lumina.com"
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "For any questions: support@lumina.com"
-                        : "Bei Fragen: support@lumina.com",
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(languageService.getText('ok')),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.brightness_6_rounded,
+                        color: primaryBlue,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        languageService.getText('dark_theme'),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Color(0xFF1f2937),
+                        ),
+                      ),
+                    ),
+                    Switch(
+                      value: themeService.isDarkMode,
+                      onChanged: (val) async {
+                        await themeService.setTheme(val);
+                        if (!mounted) return;
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            title: Text(languageService.getText('dark_theme')),
+                            content: Text(
+                              val
+                                  ? "${languageService.getText('dark_theme')} seçildi."
+                                  : "Açık tema seçildi.",
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text(languageService.getText('ok')),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      activeColor: primaryBlue,
+                      activeTrackColor: primaryBlue.withValues(alpha: 0.3),
                     ),
                   ],
                 ),
-              );
-            },
-          ),
-          const Divider(),
-
-          // Gizlilik Politikası
-          ListTile(
-            leading: const Icon(Icons.privacy_tip_outlined),
-            title: Text(languageService.getText('privacy_policy')),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(languageService.getText('privacy_policy')),
-                  content: Text(
-                    languageService.currentLocale.languageCode == 'tr'
-                        ? "Bu gizlilik politikası, Lumina uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklar. Kişisel bilgileriniz güvenli bir şekilde saklanır ve üçüncü taraflarla paylaşılmaz. Uygulama kullanımı sırasında toplanan veriler sadece hizmet kalitesini artırmak için kullanılır."
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "This privacy policy explains how the Lumina app collects, uses, and protects user data. Your personal information is stored securely and is not shared with third parties. Data collected during app usage is only used to improve service quality."
-                        : "Diese Datenschutzrichtlinie erklärt, wie die Lumina-App Benutzerdaten sammelt, verwendet und schützt. Ihre persönlichen Informationen werden sicher gespeichert und nicht an Dritte weitergegeben. Während der App-Nutzung gesammelte Daten werden nur zur Verbesserung der Servicequalität verwendet.",
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(languageService.getText('ok')),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          const Divider(),
-
-          // Güncellemeleri kontrol et
-          ListTile(
-            leading: const Icon(Icons.update),
-            title: Text(
-              languageService.currentLocale.languageCode == 'tr'
-                  ? "Güncellemeleri Kontrol Et"
-                  : languageService.currentLocale.languageCode == 'en'
-                  ? "Check for Updates"
-                  : "Nach Updates suchen",
-            ),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(
-                    languageService.currentLocale.languageCode == 'tr'
-                        ? "Güncellemeler"
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "Updates"
-                        : "Updates",
-                  ),
-                  content: Text(
-                    languageService.currentLocale.languageCode == 'tr'
-                        ? "Uygulamanız güncel!"
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "Your app is up to date!"
-                        : "Ihre App ist auf dem neuesten Stand!",
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(languageService.getText('ok')),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 22),
-
-          // Çıkış yap
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: Text(
-              languageService.getText('logout'),
-              style: const TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
               ),
-            ),
-            onTap: () {
-              _showLogoutDialog();
-            },
+
+              // Yardım ve Destek
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          title: Text(languageService.getText('help_support')),
+                          content: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Her türlü soru için: destek@lumina.com"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "For any questions: support@lumina.com"
+                                : "Bei Fragen: support@lumina.com",
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(languageService.getText('ok')),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.help_outline_rounded,
+                            color: primaryBlue,
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            languageService.getText('help_support'),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xFF1f2937),
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Color(0xFF9ca3af),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              // Gizlilik Politikası
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          title: Text(
+                            languageService.getText('privacy_policy'),
+                          ),
+                          content: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Bu gizlilik politikası, Lumina uygulamasının kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklar. Kişisel bilgileriniz güvenli bir şekilde saklanır ve üçüncü taraflarla paylaşılmaz. Uygulama kullanımı sırasında toplanan veriler sadece hizmet kalitesini artırmak için kullanılır."
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "This privacy policy explains how the Lumina app collects, uses, and protects user data. Your personal information is stored securely and is not shared with third parties. Data collected during app usage is only used to improve service quality."
+                                : "Diese Datenschutzrichtlinie erklärt, wie die Lumina-App Benutzerdaten sammelt, verwendet und schützt. Ihre persönlichen Informationen werden sicher gespeichert und nicht an Dritte weitergegeben. Während der App-Nutzung gesammelte Daten werden nur zur Verbesserung der Servicequalität verwendet.",
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(languageService.getText('ok')),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdcfce7), Color(0xFFbbf7d0)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.privacy_tip_outlined,
+                            color: Color(0xFF16a34a),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            languageService.getText('privacy_policy'),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xFF1f2937),
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Color(0xFF9ca3af),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              // Güncellemeleri kontrol et
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          title: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Güncellemeler"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "Updates"
+                                : "Updates",
+                          ),
+                          content: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Uygulamanız güncel!"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "Your app is up to date!"
+                                : "Ihre App ist auf dem neuesten Stand!",
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(languageService.getText('ok')),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.update_rounded,
+                            color: primaryBlue,
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            languageService.currentLocale.languageCode == 'tr'
+                                ? "Güncellemeleri Kontrol Et"
+                                : languageService.currentLocale.languageCode ==
+                                      'en'
+                                ? "Check for Updates"
+                                : "Nach Updates suchen",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xFF1f2937),
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Color(0xFF9ca3af),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              // Çıkış yap
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      _showLogoutDialog();
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFfef2f2), Color(0xFFfecaca)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.logout_rounded,
+                            color: Color(0xFFdc2626),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            languageService.getText('logout'),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xFFdc2626),
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Color(0xFF9ca3af),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _ttsService.dispose();
-    _currentPasswordController.dispose();
-    _newPasswordController.dispose();
-    _confirmPasswordController.dispose();
-    super.dispose();
   }
 
   void _showChangePasswordDialog() {
@@ -510,6 +1155,7 @@ class _SettingsPageState extends State<SettingsPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           languageService.currentLocale.languageCode == 'tr'
               ? "Parola Değiştir"
@@ -529,7 +1175,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     : languageService.currentLocale.languageCode == 'en'
                     ? "Current Password"
                     : "Aktuelles Passwort",
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -542,7 +1190,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     : languageService.currentLocale.languageCode == 'en'
                     ? "New Password"
                     : "Neues Passwort",
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -555,7 +1205,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     : languageService.currentLocale.languageCode == 'en'
                     ? "Confirm New Password"
                     : "Neues Passwort bestätigen",
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ],
@@ -565,8 +1217,15 @@ class _SettingsPageState extends State<SettingsPage> {
             onPressed: () => Navigator.pop(context),
             child: Text(languageService.getText('cancel')),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () => _changePassword(),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF3b82f6),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
             child: Text(
               languageService.currentLocale.languageCode == 'tr'
                   ? "Değiştir"
@@ -645,7 +1304,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ? "Password changed successfully!"
                     : "Passwort erfolgreich geändert!",
               ),
-              backgroundColor: Colors.green,
+              backgroundColor: Color(0xFF16a34a),
             ),
           );
         }
@@ -676,6 +1335,7 @@ class _SettingsPageState extends State<SettingsPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           languageService.currentLocale.languageCode == 'tr'
               ? "Çıkış Yap"
@@ -701,7 +1361,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   : "Nein",
             ),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
               FirebaseAuth.instance.signOut();
@@ -711,6 +1371,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 ).pushNamedAndRemoveUntil('/', (route) => false);
               }
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFFdc2626),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
             child: Text(
               languageService.currentLocale.languageCode == 'tr'
                   ? "Evet"

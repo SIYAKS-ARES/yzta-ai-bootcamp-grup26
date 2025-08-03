@@ -134,31 +134,13 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               _buildProviderChip(
                 TTSProvider.device,
                 'Cihaz',
-                'Hızlı, düşük kalite',
+                'Ücretsiz, hızlı',
                 Icons.phone_android,
-              ),
-              _buildProviderChip(
-                TTSProvider.cloud,
-                'Bulut',
-                'Yavaş, yüksek kalite',
-                Icons.cloud,
               ),
               _buildProviderChip(
                 TTSProvider.elevenlabs,
                 'ElevenLabs',
-                'Çok doğal ses',
-                Icons.psychology,
-              ),
-              _buildProviderChip(
-                TTSProvider.openai,
-                'OpenAI',
-                'AI kalitesi',
-                Icons.smart_toy,
-              ),
-              _buildProviderChip(
-                TTSProvider.gemini,
-                'Gemini',
-                'Google AI',
+                'Ücretli, doğal',
                 Icons.psychology,
               ),
             ],
@@ -177,14 +159,13 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
     final isSelected = selectedProvider == provider;
     final isLoggedIn = _getCurrentUserId() != null;
     final isDisabled =
-        provider == TTSProvider.cloud && !isLoggedIn ||
-        provider == TTSProvider.elevenlabs &&
-            !_isProviderConfigured(provider) ||
-        provider == TTSProvider.openai && !_isProviderConfigured(provider) ||
-        provider == TTSProvider.gemini && !_isProviderConfigured(provider);
+        provider == TTSProvider.elevenlabs && !_isProviderConfigured(provider);
 
-    // Bulut TTS için Blaze plan uyarısı
-    final showBlazeWarning = provider == TTSProvider.cloud && isSelected;
+    // ElevenLabs için API key uyarısı
+    final showApiWarning =
+        provider == TTSProvider.elevenlabs &&
+        isSelected &&
+        !_isProviderConfigured(provider);
 
     return GestureDetector(
       onTap: isDisabled
@@ -438,46 +419,11 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
             ),
           ),
           const SizedBox(height: 12),
-          _buildInfoItem('Cihaz', 'Hızlı, ücretsiz, düşük kalite'),
-          _buildInfoItem(
-            'Bulut',
-            'Yavaş, ücretsiz, simüle edilmiş (Blaze plan gerekli)',
-          ),
-          _buildInfoItem('ElevenLabs', 'Hızlı, ücretli, çok doğal'),
-          _buildInfoItem('OpenAI', 'Hızlı, ücretli, AI kalitesi'),
-          _buildInfoItem('Gemini', 'Hızlı, ücretli, Google AI'),
+          _buildInfoItem('Cihaz TTS', 'Ücretsiz, hızlı, düşük kalite'),
+          _buildInfoItem('ElevenLabs TTS', 'Ücretli, çok doğal ses kalitesi'),
           const SizedBox(height: 12),
 
-          // Giriş durumu uyarısı
-          if (!isLoggedIn)
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.orange[50],
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.orange[200]!),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.info, color: Colors.orange[700], size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Bulut TTS için giriş yapmanız gerekiyor (simüle edilmiş)',
-                      style: TextStyle(
-                        color: Colors.orange[800],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-          if (!isLoggedIn) const SizedBox(height: 12),
-
-          // API durumu uyarıları
+          // ElevenLabs API durumu uyarısı
           if (!_isProviderConfigured(TTSProvider.elevenlabs))
             Container(
               padding: const EdgeInsets.all(12),
@@ -492,7 +438,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'ElevenLabs için API anahtarı gerekli',
+                      'ElevenLabs için API anahtarı gerekli (ücretli servis)',
                       style: TextStyle(
                         color: Colors.orange[800],
                         fontSize: 12,
@@ -505,65 +451,6 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
             ),
 
           if (!_isProviderConfigured(TTSProvider.elevenlabs))
-            const SizedBox(height: 12),
-
-          if (!_isProviderConfigured(TTSProvider.openai))
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.orange[50],
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.orange[200]!),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.api, color: Colors.orange[700], size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'OpenAI için API anahtarı gerekli',
-                      style: TextStyle(
-                        color: Colors.orange[800],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-          if (!_isProviderConfigured(TTSProvider.openai))
-            const SizedBox(height: 12),
-
-          // OpenAI kota uyarısı kaldırıldı - test için aktif
-          if (!_isProviderConfigured(TTSProvider.gemini))
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.orange[50],
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.orange[200]!),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.api, color: Colors.orange[700], size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Gemini için API anahtarı gerekli',
-                      style: TextStyle(
-                        color: Colors.orange[800],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-          if (!_isProviderConfigured(TTSProvider.gemini))
             const SizedBox(height: 12),
 
           Container(
@@ -577,7 +464,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '🎯 Tüm TTS Sağlayıcıları Aktif!',
+                  '🎯 Aktif TTS Sağlayıcıları!',
                   style: TextStyle(
                     color: Colors.green[800],
                     fontSize: 12,
@@ -586,7 +473,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '• Cihaz TTS: Hızlı, düşük kalite\n• Bulut TTS: Simüle edilmiş (Blaze plan gerekli)\n• ElevenLabs: Çok doğal ses\n• OpenAI: AI kalitesi\n• Gemini: Google AI',
+                  '• Cihaz TTS: Ücretsiz, hızlı, düşük kalite\n• ElevenLabs TTS: Ücretli, çok doğal ses kalitesi',
                   style: TextStyle(color: Colors.green[700], fontSize: 11),
                 ),
               ],
@@ -635,11 +522,11 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
   String _getProviderName(TTSProvider provider) {
     switch (provider) {
       case TTSProvider.device:
-        return 'Cihaz TTS';
+        return 'Cihaz TTS (Ücretsiz)';
+      case TTSProvider.elevenlabs:
+        return 'ElevenLabs TTS (Ücretli)';
       case TTSProvider.cloud:
         return 'Firebase Cloud';
-      case TTSProvider.elevenlabs:
-        return 'ElevenLabs API';
       case TTSProvider.openai:
         return 'OpenAI TTS';
       case TTSProvider.gemini:
@@ -673,22 +560,6 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
         });
 
         final userId = _getCurrentUserId();
-
-        // Bulut TTS için kullanıcı ID kontrolü
-        if (selectedProvider == TTSProvider.cloud && userId == null) {
-          setState(() {
-            isPlaying = false;
-          });
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Bulut TTS için giriş yapmanız gerekiyor'),
-                backgroundColor: Colors.orange,
-              ),
-            );
-          }
-          return;
-        }
 
         await _ttsService.speakText(text, userId: userId);
       }
@@ -737,16 +608,14 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
       case TTSProvider.elevenlabs:
         final key = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
         return key.isNotEmpty && key != 'YOUR_ELEVENLABS_API_KEY_HERE';
-      case TTSProvider.openai:
-        final key = dotenv.env['OPENAI_API_KEY'] ?? '';
-        return key.isNotEmpty && key != 'YOUR_OPENAI_API_KEY_HERE';
-      case TTSProvider.gemini:
-        final key = dotenv.env['GEMINI_API_KEY'] ?? '';
-        return key.isNotEmpty && key != 'YOUR_GEMINI_API_KEY_HERE';
-      case TTSProvider.cloud:
-        return true; // Firebase her zaman mevcut
       case TTSProvider.device:
         return true; // Cihaz TTS her zaman mevcut
+      case TTSProvider.cloud:
+        return true; // Firebase her zaman mevcut
+      case TTSProvider.openai:
+        return false; // OpenAI devre dışı
+      case TTSProvider.gemini:
+        return false; // Gemini devre dışı
     }
   }
 }

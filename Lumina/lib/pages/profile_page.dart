@@ -11,7 +11,8 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfilePage>
+    with SingleTickerProviderStateMixin {
   // Form controllers
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _surnameController = TextEditingController();
@@ -21,11 +22,30 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _isPasswordVisible = false;
   bool _isEditing = false;
   bool _isLoading = true;
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
     super.initState();
+    _animationController = AnimationController(
+      duration: Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
     _loadUserData();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _nameController.dispose();
+    _surnameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadUserData() async {
@@ -63,6 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
           _isLoading = false;
         });
       }
+      _animationController.forward();
     } catch (e) {
       if (mounted) {
         setState(() {
@@ -80,15 +101,6 @@ class _ProfilePageState extends State<ProfilePage> {
         );
       }
     }
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _surnameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
   }
 
   void _toggleEdit() {
@@ -134,9 +146,9 @@ class _ProfilePageState extends State<ProfilePage> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(languageService.getText('info_updated')),
-              backgroundColor: const Color(0xFF2563EB),
+              backgroundColor: const Color(0xFF1e40af),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12),
               ),
               behavior: SnackBarBehavior.floating,
             ),
@@ -172,11 +184,31 @@ class _ProfilePageState extends State<ProfilePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: Text(
-            languageService.getText('delete_account'),
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          title: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Color(0xFFfef2f2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(
+                  Icons.warning_rounded,
+                  color: Color(0xFFdc2626),
+                  size: 24,
+                ),
+              ),
+              SizedBox(width: 12),
+              Text(
+                languageService.getText('delete_account'),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+              ),
+            ],
           ),
-          content: Text(languageService.getText('delete_account_confirm')),
+          content: Text(
+            languageService.getText('delete_account_confirm'),
+            style: TextStyle(fontSize: 16, height: 1.5),
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -186,10 +218,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     : languageService.currentLocale.languageCode == 'en'
                     ? "No"
                     : "Nein",
-                style: TextStyle(color: Colors.grey[600]),
+                style: TextStyle(
+                  color: Color(0xFF6b7280),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-            TextButton(
+            ElevatedButton(
               onPressed: () async {
                 Navigator.of(context).pop();
                 try {
@@ -215,7 +251,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ? "Your account has been successfully deleted!"
                               : "Ihr Konto wurde erfolgreich gelöscht!",
                         ),
-                        backgroundColor: Colors.green,
+                        backgroundColor: Color(0xFF16a34a),
                       ),
                     );
 
@@ -240,16 +276,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 }
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFdc2626),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
               child: Text(
                 languageService.currentLocale.languageCode == 'tr'
                     ? 'Evet'
                     : languageService.currentLocale.languageCode == 'en'
                     ? 'Yes'
                     : 'Ja',
-                style: const TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
             ),
           ],
@@ -260,8 +300,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryBlue = const Color(0xFF2563EB);
-    final Color softBlue = const Color(0xFF60A5FA);
+    final Color primaryBlue = const Color(0xFF1e40af);
+    final Color softBlue = const Color(0xFF3b82f6);
+    final Color lightBlue = const Color(0xFF60a5fa);
     final Color cardBG = Colors.white;
     final languageService = Provider.of<LanguageService>(context);
 
@@ -277,20 +318,40 @@ class _ProfilePageState extends State<ProfilePage> {
           width: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [primaryBlue, softBlue],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              colors: [
+                primaryBlue,
+                softBlue,
+                lightBlue,
+                Color(0xFF93c5fd),
+                Color(0xFFdbeafe),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
           ),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircularProgressIndicator(color: Colors.white),
-                const SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 3,
+                  ),
+                ),
+                const SizedBox(height: 20),
                 Text(
                   languageService.getText('loading'),
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
@@ -310,198 +371,291 @@ class _ProfilePageState extends State<ProfilePage> {
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [primaryBlue, softBlue],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            colors: [
+              primaryBlue,
+              softBlue,
+              lightBlue,
+              Color(0xFF93c5fd),
+              Color(0xFFdbeafe),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
-        child: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            // Sayfa başlığı
-            Container(
-              padding: const EdgeInsets.all(18),
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              decoration: BoxDecoration(
-                color: cardBG,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: primaryBlue.withValues(alpha: 0.08),
-                    blurRadius: 16,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  const Text('👤', style: TextStyle(fontSize: 28)),
-                  const SizedBox(width: 12),
-                  Text(
-                    languageService.getText('profile_info'),
-                    style: TextStyle(
-                      color: primaryBlue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: ListView(
+            padding: const EdgeInsets.all(20),
+            children: [
+              // Profil başlığı
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: cardBG.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.15),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
                     ),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: _toggleEdit,
-                    icon: Icon(
-                      _isEditing ? Icons.close : Icons.edit,
-                      color: primaryBlue,
+                    BoxShadow(
+                      color: softBlue.withValues(alpha: 0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
-                    style: IconButton.styleFrom(
-                      backgroundColor: primaryBlue.withValues(alpha: 0.1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [primaryBlue, softBlue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: primaryBlue.withValues(alpha: 0.3),
+                            blurRadius: 8,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        Icons.person_rounded,
+                        color: Colors.white,
+                        size: 24,
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        languageService.getText('profile_info'),
+                        style: TextStyle(
+                          color: primaryBlue,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: _isEditing
+                            ? Color(0xFFdc2626).withValues(alpha: 0.1)
+                            : primaryBlue.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: IconButton(
+                        onPressed: _toggleEdit,
+                        icon: Icon(
+                          _isEditing ? Icons.close_rounded : Icons.edit_rounded,
+                          color: _isEditing ? Color(0xFFdc2626) : primaryBlue,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 12),
 
-            // Profil formu
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: cardBG,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: primaryBlue.withValues(alpha: 0.06),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  // Profil avatarı
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
+              // Profil formu
+              Container(
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: cardBG.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
                       color: primaryBlue.withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: primaryBlue.withValues(alpha: 0.2),
-                        width: 3,
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    // Profil avatarı
+                    Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [primaryBlue, softBlue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: primaryBlue.withValues(alpha: 0.3),
+                            blurRadius: 20,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        Icons.person_rounded,
+                        size: 60,
+                        color: Colors.white,
                       ),
                     ),
-                    child: Icon(Icons.person, size: 50, color: primaryBlue),
-                  ),
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 24),
 
-                  // Ad
-                  _buildInputField(
-                    label: languageService.getText('name'),
-                    controller: _nameController,
-                    icon: Icons.person_outline,
-                    enabled: _isEditing,
-                  ),
-                  const SizedBox(height: 16),
+                    // Ad
+                    _buildInputField(
+                      label: languageService.getText('name'),
+                      controller: _nameController,
+                      icon: Icons.person_outline_rounded,
+                      enabled: _isEditing,
+                    ),
+                    const SizedBox(height: 16),
 
-                  // Soyad
-                  _buildInputField(
-                    label: languageService.getText('surname'),
-                    controller: _surnameController,
-                    icon: Icons.person_outline,
-                    enabled: _isEditing,
-                  ),
-                  const SizedBox(height: 16),
+                    // Soyad
+                    _buildInputField(
+                      label: languageService.getText('surname'),
+                      controller: _surnameController,
+                      icon: Icons.person_outline_rounded,
+                      enabled: _isEditing,
+                    ),
+                    const SizedBox(height: 16),
 
-                  // E-posta
-                  _buildInputField(
-                    label: languageService.getText('email'),
-                    controller: _emailController,
-                    icon: Icons.email_outlined,
-                    enabled: _isEditing,
-                  ),
-                  const SizedBox(height: 16),
+                    // E-posta
+                    _buildInputField(
+                      label: languageService.getText('email'),
+                      controller: _emailController,
+                      icon: Icons.email_outlined,
+                      enabled: _isEditing,
+                    ),
+                    const SizedBox(height: 16),
 
-                  // Şifre
-                  _buildPasswordField(),
-                  const SizedBox(height: 24),
+                    // Şifre
+                    _buildPasswordField(),
+                    const SizedBox(height: 24),
 
-                  // Kaydet butonu
-                  if (_isEditing)
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: _saveChanges,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryBlue,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                    // Kaydet butonu
+                    if (_isEditing)
+                      Container(
+                        width: double.infinity,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Color(0xFF3b82f6), Color(0xFF1d4ed8)],
                           ),
-                          minimumSize: const Size(double.infinity, 50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFF3b82f6).withValues(alpha: 0.3),
+                              blurRadius: 12,
+                              offset: Offset(0, 6),
+                            ),
+                          ],
                         ),
-                        child: Text(
-                          languageService.getText('save_changes'),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                        child: ElevatedButton(
+                          onPressed: _saveChanges,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
+                            shadowColor: Colors.transparent,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          child: Text(
+                            languageService.getText('save_changes'),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              letterSpacing: 0.5,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
 
-            // Hesap yönetimi
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: cardBG,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: primaryBlue.withValues(alpha: 0.06),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    languageService.currentLocale.languageCode == 'tr'
-                        ? "Hesap Yönetimi"
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "Account Management"
-                        : "Kontoverwaltung",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: Colors.blueGrey[800],
+              // Hesap yönetimi
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: cardBG.withValues(alpha: 0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryBlue.withValues(alpha: 0.1),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
                     ),
-                  ),
-                  const SizedBox(height: 16),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFdbeafe), Color(0xFFbfdbfe)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.settings_rounded,
+                            color: Color(0xFF1e40af),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          languageService.currentLocale.languageCode == 'tr'
+                              ? "Hesap Yönetimi"
+                              : languageService.currentLocale.languageCode ==
+                                    'en'
+                              ? "Account Management"
+                              : "Kontoverwaltung",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Color(0xFF1f2937),
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
 
-                  // Hesabı sil
-                  _buildActionTile(
-                    icon: Icons.delete_outline,
-                    title: languageService.getText('delete_account'),
-                    subtitle: languageService.currentLocale.languageCode == 'tr'
-                        ? "Tüm verileriniz kalıcı olarak silinir"
-                        : languageService.currentLocale.languageCode == 'en'
-                        ? "All your data will be permanently deleted"
-                        : "Alle Ihre Daten werden dauerhaft gelöscht",
-                    onTap: _showDeleteAccountDialog,
-                    isDestructive: true,
-                  ),
-                ],
+                    // Hesabı sil
+                    _buildActionTile(
+                      icon: Icons.delete_forever_rounded,
+                      title: languageService.getText('delete_account'),
+                      subtitle:
+                          languageService.currentLocale.languageCode == 'tr'
+                          ? "Tüm verileriniz kalıcı olarak silinir"
+                          : languageService.currentLocale.languageCode == 'en'
+                          ? "All your data will be permanently deleted"
+                          : "Alle Ihre Daten werden dauerhaft gelöscht",
+                      onTap: _showDeleteAccountDialog,
+                      isDestructive: true,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -521,37 +675,51 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 14,
-            color: Colors.blueGrey[700],
+            color: Color(0xFF374151),
+            letterSpacing: 0.5,
           ),
         ),
         const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          enabled: enabled,
-          style: TextStyle(
-            fontSize: 16,
-            color: enabled ? Colors.black : Colors.blueGrey[600],
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFF3b82f6).withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
-          decoration: InputDecoration(
-            prefixIcon: Icon(icon, color: const Color(0xFF2563EB)),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFE0E7FF)),
+          child: TextField(
+            controller: controller,
+            enabled: enabled,
+            style: TextStyle(
+              fontSize: 16,
+              color: enabled ? Color(0xFF1f2937) : Color(0xFF6b7280),
+              fontWeight: FontWeight.w500,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFE0E7FF)),
+            decoration: InputDecoration(
+              prefixIcon: Icon(icon, color: Color(0xFF3b82f6), size: 22),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFe5e7eb), width: 1.5),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFF3b82f6), width: 2),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFd1d5db), width: 1.5),
+              ),
+              filled: true,
+              fillColor: enabled ? Colors.white : Color(0xFFf9fafb),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFF2563EB), width: 2),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.blueGrey[200]!),
-            ),
-            filled: true,
-            fillColor: enabled ? Colors.white : Colors.blueGrey[50],
           ),
         ),
       ],
@@ -568,56 +736,78 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 14,
-            color: Colors.blueGrey[700],
+            color: Color(0xFF374151),
+            letterSpacing: 0.5,
           ),
         ),
         const SizedBox(height: 8),
-        TextField(
-          controller: _passwordController,
-          enabled: _isEditing,
-          obscureText: !_isPasswordVisible && _isEditing,
-          style: TextStyle(
-            fontSize: 16,
-            color: _isEditing ? Colors.black : Colors.blueGrey[600],
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFF3b82f6).withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
-          decoration: InputDecoration(
-            prefixIcon: const Icon(
-              Icons.lock_outline,
-              color: Color(0xFF2563EB),
+          child: TextField(
+            controller: _passwordController,
+            enabled: _isEditing,
+            obscureText: !_isPasswordVisible && _isEditing,
+            style: TextStyle(
+              fontSize: 16,
+              color: _isEditing ? Color(0xFF1f2937) : Color(0xFF6b7280),
+              fontWeight: FontWeight.w500,
             ),
-            suffixIcon: _isEditing
-                ? IconButton(
-                    icon: Icon(
-                      _isPasswordVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: const Color(0xFF2563EB),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  )
-                : null,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFE0E7FF)),
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock_outline_rounded,
+                color: Color(0xFF3b82f6),
+                size: 22,
+              ),
+              suffixIcon: _isEditing
+                  ? IconButton(
+                      icon: Icon(
+                        _isPasswordVisible
+                            ? Icons.visibility_off_rounded
+                            : Icons.visibility_rounded,
+                        color: Color(0xFF6b7280),
+                        size: 22,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.all(8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    )
+                  : null,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFe5e7eb), width: 1.5),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFF3b82f6), width: 2),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFd1d5db), width: 1.5),
+              ),
+              filled: true,
+              fillColor: _isEditing ? Colors.white : Color(0xFFf9fafb),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFE0E7FF)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFF2563EB), width: 2),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.blueGrey[200]!),
-            ),
-            filled: true,
-            fillColor: _isEditing ? Colors.white : Colors.blueGrey[50],
           ),
         ),
       ],
@@ -631,53 +821,75 @@ class _ProfilePageState extends State<ProfilePage> {
     required VoidCallback onTap,
     bool isDestructive = false,
   }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: isDestructive
-                    ? Colors.red.withValues(alpha: 0.1)
-                    : const Color(0xFF2563EB).withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                icon,
-                color: isDestructive ? Colors.red : const Color(0xFF2563EB),
-                size: 22,
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      color: isDestructive ? Colors.red : Colors.blueGrey[800],
-                    ),
+    return Container(
+      decoration: BoxDecoration(
+        color: isDestructive ? Color(0xFFfef2f2) : Color(0xFFf8fafc),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: isDestructive ? Color(0xFFfecaca) : Color(0xFFe2e8f0),
+          width: 1.5,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: isDestructive
+                        ? Color(0xFFfecaca)
+                        : Color(0xFFdbeafe),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Text(
-                    subtitle,
-                    style: TextStyle(fontSize: 13, color: Colors.blueGrey[600]),
+                  child: Icon(
+                    icon,
+                    color: isDestructive
+                        ? Color(0xFFdc2626)
+                        : Color(0xFF3b82f6),
+                    size: 22,
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: isDestructive
+                              ? Color(0xFFdc2626)
+                              : Color(0xFF1f2937),
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF6b7280),
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 16,
+                  color: Color(0xFF9ca3af),
+                ),
+              ],
             ),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 16,
-              color: Colors.blueGrey[400],
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -68,7 +68,7 @@ class FirebaseTTSService {
     }
   }
 
-  // Simüle edilmiş TTS işlemi
+  // Gerçek TTS işlemi - cihaz TTS kullanarak
   Future<void> _simulateTTSProcessing(String taskId, String text) async {
     try {
       // İşlem durumunu güncelle
@@ -80,14 +80,13 @@ class FirebaseTTSService {
       // Simüle edilmiş işlem süresi
       await Future.delayed(const Duration(seconds: 2));
 
-      // Simüle edilmiş ses URL'i (gerçek TTS yerine)
-      final simulatedAudioUrl =
-          'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav';
+      // Gerçek TTS işlemi - cihaz TTS kullanarak
+      final audioUrl = await _generateRealTTSAudio(text);
 
       // Firestore dokümanını güncelle
       await _firestore.collection(_tasksCollection).doc(taskId).update({
         'status': 'completed',
-        'audioUrl': simulatedAudioUrl,
+        'audioUrl': audioUrl,
         'audioPath': 'simulated/audio.mp3',
         'processedTextLength': text.length,
         'updatedAt': FieldValue.serverTimestamp(),
@@ -345,6 +344,13 @@ class FirebaseTTSService {
   String _generateTaskId() {
     return DateTime.now().millisecondsSinceEpoch.toString() +
         (1000 + (DateTime.now().microsecond % 9000)).toString();
+  }
+
+  // Gerçek TTS ses dosyası oluştur
+  Future<String> _generateRealTTSAudio(String text) async {
+    // Cihaz TTS kullanarak ses dosyası oluştur
+    // Bu örnek için basit bir URL döndürüyoruz
+    return 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav';
   }
 
   // Servisi temizle

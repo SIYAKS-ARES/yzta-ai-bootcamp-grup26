@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/feature_card_model.dart';
 import '../pages/features/text_to_speech_page.dart';
-import '../pages/features/advanced_tts_page.dart';
+// import '../pages/features/advanced_tts_page.dart'; // Deaktif edildi
 import '../pages/features/experimental_tts_page.dart';
 import '../pages/features/speech_to_text_page.dart';
 import '../pages/features/chat_bot_page.dart';
@@ -15,7 +15,7 @@ class FeatureService {
         icon: '🔊',
         title: 'Metinden Sese',
         description:
-            'Metin dosyalarınızı sesli hale getirin.\nDinlemeye hemen başlayın.',
+            'Cihaz ve ElevenLabs TTS seçenekleri.\nÜcretsiz ve ücretli kalite.',
         buttonText: 'Başla',
         onPressed: () {
           Navigator.push(
@@ -24,36 +24,38 @@ class FeatureService {
           );
         },
       ),
-      FeatureCardModel(
-        id: 'advanced_tts',
-        icon: '🚀',
-        title: 'Gelişmiş TTS',
-        description:
-            'Cihaz ve bulut TTS seçenekleri.\nYüksek kaliteli ses sentezi.',
-        buttonText: 'Başla',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AdvancedTTSPage()),
-          );
-        },
-      ),
-      FeatureCardModel(
-        id: 'experimental_tts',
-        icon: '🧪',
-        title: 'Deneysel TTS',
-        description:
-            'AI tabanlı TTS seçenekleri.\nElevenLabs, OpenAI entegrasyonu.',
-        buttonText: 'Test Et',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ExperimentalTTSPage(),
-            ),
-          );
-        },
-      ),
+      // Gelişmiş TTS deaktif edildi - özellikler metinden sese sayfasına taşındı
+      // FeatureCardModel(
+      //   id: 'advanced_tts',
+      //   icon: '🚀',
+      //   title: 'Gelişmiş TTS',
+      //   description:
+      //       'Cihaz ve bulut TTS seçenekleri.\nYüksek kaliteli ses sentezi.',
+      //   buttonText: 'Başla',
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => const AdvancedTTSPage()),
+      //     );
+      //   },
+      // ),
+      // Deneysel TTS deaktif edildi - özellikler gerçek TTS sayfasına taşındı
+      // FeatureCardModel(
+      //   id: 'experimental_tts',
+      //   icon: '🧪',
+      //   title: 'Deneysel TTS',
+      //   description:
+      //       'AI tabanlı TTS seçenekleri.\nElevenLabs, OpenAI entegrasyonu.',
+      //   buttonText: 'Test Et',
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => const ExperimentalTTSPage(),
+      //       ),
+      //     );
+      //   },
+      // ),
       FeatureCardModel(
         id: 'speech_to_text',
         icon: '🎤',
@@ -110,7 +112,7 @@ class FeatureService {
             id: 'text_to_speech',
             icon: '🔊',
             title: 'Metinden Sese',
-            description: 'PDF ve metin dosyalarınızı sesli hale getirin.',
+            description: 'PDF ve metin dosyalarınızı sesli hale getirin.\nCihaz ve ElevenLabs seçenekleri.',
             buttonText: 'Başla',
             onPressed: () {
               Navigator.push(
@@ -121,22 +123,23 @@ class FeatureService {
               );
             },
           ),
-          FeatureCardModel(
-            id: 'advanced_tts',
-            icon: '🚀',
-            title: 'Gelişmiş TTS',
-            description:
-                'Cihaz ve bulut TTS seçenekleri ile yüksek kaliteli ses.',
-            buttonText: 'Başla',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AdvancedTTSPage(),
-                ),
-              );
-            },
-          ),
+          // Gelişmiş TTS deaktif edildi
+          // FeatureCardModel(
+          //   id: 'advanced_tts',
+          //   icon: '🚀',
+          //   title: 'Gelişmiş TTS',
+          //   description:
+          //       'Cihaz ve bulut TTS seçenekleri ile yüksek kaliteli ses.',
+          //   buttonText: 'Başla',
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const AdvancedTTSPage(),
+          //       ),
+          //     );
+          //   },
+          // ),
           FeatureCardModel(
             id: 'chat_bot',
             icon: '🤖',

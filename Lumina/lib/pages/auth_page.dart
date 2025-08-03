@@ -39,10 +39,14 @@ class _AuthPageState extends State<AuthPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
   void dispose() {
+    _tabController.removeListener(() {});
     _tabController.dispose();
     _loginEmailController.dispose();
     _loginPasswordController.dispose();
@@ -271,7 +275,10 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildLogo() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     return Column(
       children: [
         Container(
@@ -305,9 +312,9 @@ class _AuthPageState extends State<AuthPage>
         ),
         SizedBox(height: 8),
         Text(
-          languageService.currentLocale.languageCode == 'tr' 
-            ? 'Herkes için erişilebilir'
-            : languageService.currentLocale.languageCode == 'en'
+          languageService.currentLocale.languageCode == 'tr'
+              ? 'Herkes için erişilebilir'
+              : languageService.currentLocale.languageCode == 'en'
               ? 'Accessible for everyone'
               : 'Zugänglich für alle',
           style: TextStyle(fontSize: 14, color: Color(0xFF475569)),
@@ -317,49 +324,105 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildTabs() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     return Container(
+      height: 48,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFFeff6ff), Color(0xFFdbeafe)],
-        ),
+        color: Color(0xFFf1f5f9),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFF3b82f6).withValues(alpha: 0.2)),
+        border: Border.all(color: Color(0xFFe2e8f0), width: 1),
       ),
-      child: TabBar(
-        controller: _tabController,
-        indicator: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.white, Color(0xFFf8fafc)],
-          ),
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFF3b82f6).withValues(alpha: 0.2),
-              blurRadius: 8,
-              offset: Offset(0, 2),
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                _tabController.animateTo(0);
+              },
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                margin: EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: _tabController.index == 0
+                      ? Colors.white
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: _tabController.index == 0
+                      ? [
+                          BoxShadow(
+                            color: Color(0xFF3b82f6).withValues(alpha: 0.15),
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ]
+                      : null,
+                ),
+                child: Center(
+                  child: Text(
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? 'Giriş Yap'
+                        : languageService.currentLocale.languageCode == 'en'
+                        ? 'Login'
+                        : 'Anmelden',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: _tabController.index == 0
+                          ? Color(0xFF1e40af)
+                          : Color(0xFF64748b),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ],
-        ),
-        indicatorPadding: EdgeInsets.all(6),
-        labelColor: Color(0xFF1e40af),
-        unselectedLabelColor: Color(0xFF64748b),
-        labelStyle: TextStyle(fontWeight: FontWeight.w500),
-        tabs: [
-          Tab(text: languageService.currentLocale.languageCode == 'tr' 
-            ? 'Giriş Yap'
-            : languageService.currentLocale.languageCode == 'en'
-              ? 'Login'
-              : 'Anmelden'),
-          Tab(text: languageService.currentLocale.languageCode == 'tr' 
-            ? 'Kayıt Ol'
-            : languageService.currentLocale.languageCode == 'en'
-              ? 'Register'
-              : 'Registrieren'),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                _tabController.animateTo(1);
+              },
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                margin: EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: _tabController.index == 1
+                      ? Colors.white
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: _tabController.index == 1
+                      ? [
+                          BoxShadow(
+                            color: Color(0xFF3b82f6).withValues(alpha: 0.15),
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ]
+                      : null,
+                ),
+                child: Center(
+                  child: Text(
+                    languageService.currentLocale.languageCode == 'tr'
+                        ? 'Kayıt Ol'
+                        : languageService.currentLocale.languageCode == 'en'
+                        ? 'Register'
+                        : 'Registrieren',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: _tabController.index == 1
+                          ? Color(0xFF1e40af)
+                          : Color(0xFF64748b),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -397,42 +460,59 @@ class _AuthPageState extends State<AuthPage>
 
   Widget _buildTabView() {
     return Expanded(
-      child: TabBarView(
-        controller: _tabController,
-        children: [
-          SingleChildScrollView(child: _buildLoginForm()),
-          SingleChildScrollView(child: _buildRegisterForm()),
-        ],
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return SlideTransition(
+            position: Tween<Offset>(begin: Offset(0.1, 0), end: Offset.zero)
+                .animate(
+                  CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+                ),
+            child: FadeTransition(opacity: animation, child: child),
+          );
+        },
+        child: _tabController.index == 0
+            ? SingleChildScrollView(
+                key: ValueKey('login'),
+                child: _buildLoginForm(),
+              )
+            : SingleChildScrollView(
+                key: ValueKey('register'),
+                child: _buildRegisterForm(),
+              ),
       ),
     );
   }
 
   Widget _buildLoginForm() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     return Form(
       key: _loginFormKey,
       child: Column(
         children: [
           _buildTextField(
             controller: _loginEmailController,
-            label: languageService.currentLocale.languageCode == 'tr' 
-              ? 'E-posta Adresi'
-              : languageService.currentLocale.languageCode == 'en'
+            label: languageService.currentLocale.languageCode == 'tr'
+                ? 'E-posta Adresi'
+                : languageService.currentLocale.languageCode == 'en'
                 ? 'Email Address'
                 : 'E-Mail-Adresse',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return languageService.currentLocale.languageCode == 'tr' 
-                  ? 'E-posta adresi gerekli'
-                  : languageService.currentLocale.languageCode == 'en'
+                return languageService.currentLocale.languageCode == 'tr'
+                    ? 'E-posta adresi gerekli'
+                    : languageService.currentLocale.languageCode == 'en'
                     ? 'Email address is required'
                     : 'E-Mail-Adresse ist erforderlich';
               }
               if (!value!.contains('@')) {
-                return languageService.currentLocale.languageCode == 'tr' 
-                  ? 'Geçerli bir e-posta adresi girin'
-                  : languageService.currentLocale.languageCode == 'en'
+                return languageService.currentLocale.languageCode == 'tr'
+                    ? 'Geçerli bir e-posta adresi girin'
+                    : languageService.currentLocale.languageCode == 'en'
                     ? 'Please enter a valid email address'
                     : 'Bitte geben Sie eine gültige E-Mail-Adresse ein';
               }
@@ -442,9 +522,9 @@ class _AuthPageState extends State<AuthPage>
           SizedBox(height: 16),
           _buildTextField(
             controller: _loginPasswordController,
-            label: languageService.currentLocale.languageCode == 'tr' 
-              ? 'Şifre'
-              : languageService.currentLocale.languageCode == 'en'
+            label: languageService.currentLocale.languageCode == 'tr'
+                ? 'Şifre'
+                : languageService.currentLocale.languageCode == 'en'
                 ? 'Password'
                 : 'Passwort',
             isPassword: true,
@@ -456,9 +536,9 @@ class _AuthPageState extends State<AuthPage>
             },
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return languageService.currentLocale.languageCode == 'tr' 
-                  ? 'Şifre gerekli'
-                  : languageService.currentLocale.languageCode == 'en'
+                return languageService.currentLocale.languageCode == 'tr'
+                    ? 'Şifre gerekli'
+                    : languageService.currentLocale.languageCode == 'en'
                     ? 'Password is required'
                     : 'Passwort ist erforderlich';
               }
@@ -473,20 +553,20 @@ class _AuthPageState extends State<AuthPage>
                 _rememberMe = value ?? false;
               });
             },
-            text: languageService.currentLocale.languageCode == 'tr' 
-              ? 'Beni hatırla'
-              : languageService.currentLocale.languageCode == 'en'
+            text: languageService.currentLocale.languageCode == 'tr'
+                ? 'Beni hatırla'
+                : languageService.currentLocale.languageCode == 'en'
                 ? 'Remember me'
                 : 'Angemeldet bleiben',
           ),
           SizedBox(height: 20),
           _buildSubmitButton(
-            languageService.currentLocale.languageCode == 'tr' 
-              ? 'Giriş Yap'
-              : languageService.currentLocale.languageCode == 'en'
+            languageService.currentLocale.languageCode == 'tr'
+                ? 'Giriş Yap'
+                : languageService.currentLocale.languageCode == 'en'
                 ? 'Login'
-                : 'Anmelden', 
-            _handleLogin
+                : 'Anmelden',
+            _handleLogin,
           ),
           SizedBox(height: 20),
           _buildDivider(),
@@ -500,23 +580,26 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildRegisterForm() {
-    final languageService = Provider.of<LanguageService>(context, listen: false);
+    final languageService = Provider.of<LanguageService>(
+      context,
+      listen: false,
+    );
     return Form(
       key: _registerFormKey,
       child: Column(
         children: [
           _buildTextField(
             controller: _registerNameController,
-            label: languageService.currentLocale.languageCode == 'tr' 
-              ? 'Ad Soyad'
-              : languageService.currentLocale.languageCode == 'en'
+            label: languageService.currentLocale.languageCode == 'tr'
+                ? 'Ad Soyad'
+                : languageService.currentLocale.languageCode == 'en'
                 ? 'Full Name'
                 : 'Vor- und Nachname',
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return languageService.currentLocale.languageCode == 'tr' 
-                  ? 'Ad soyad gerekli'
-                  : languageService.currentLocale.languageCode == 'en'
+                return languageService.currentLocale.languageCode == 'tr'
+                    ? 'Ad soyad gerekli'
+                    : languageService.currentLocale.languageCode == 'en'
                     ? 'Full name is required'
                     : 'Vor- und Nachname ist erforderlich';
               }
@@ -607,43 +690,84 @@ class _AuthPageState extends State<AuthPage>
           label,
           style: TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: Color(0xFF374151),
+            letterSpacing: 0.5,
           ),
         ),
-        SizedBox(height: 6),
-        TextFormField(
-          controller: controller,
-          obscureText: isPassword && !isPasswordVisible,
-          keyboardType: keyboardType,
-          validator: validator,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Color(0xFFe2e8f0), width: 2),
+        SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFF3b82f6).withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: TextFormField(
+            controller: controller,
+            obscureText: isPassword && !isPasswordVisible,
+            keyboardType: keyboardType,
+            validator: validator,
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(0xFF1f2937),
+              fontWeight: FontWeight.w500,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Color(0xFFe2e8f0), width: 2),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintStyle: TextStyle(
+                color: Color(0xFF9ca3af),
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFe5e7eb), width: 1.5),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFF3b82f6), width: 2),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFef4444), width: 1.5),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFFef4444), width: 2),
+              ),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              suffixIcon: isPassword
+                  ? IconButton(
+                      icon: Icon(
+                        isPasswordVisible
+                            ? Icons.visibility_off_rounded
+                            : Icons.visibility_rounded,
+                        color: Color(0xFF6b7280),
+                        size: 22,
+                      ),
+                      onPressed: onPasswordToggle,
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.all(8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    )
+                  : null,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Color(0xFF3b82f6), width: 2),
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            suffixIcon: isPassword
-                ? IconButton(
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Color(0xFF6b7280),
-                    ),
-                    onPressed: onPasswordToggle,
-                  )
-                : null,
           ),
         ),
       ],
@@ -657,15 +781,37 @@ class _AuthPageState extends State<AuthPage>
   }) {
     return Row(
       children: [
-        Checkbox(
-          value: value,
-          onChanged: onChanged,
-          activeColor: Color(0xFF3b82f6),
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: value ? Color(0xFF3b82f6) : Color(0xFFd1d5db),
+              width: 1.5,
+            ),
+          ),
+          child: Checkbox(
+            value: value,
+            onChanged: onChanged,
+            activeColor: Color(0xFF3b82f6),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(3),
+            ),
+            side: BorderSide.none,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            visualDensity: VisualDensity.compact,
+          ),
         ),
+        SizedBox(width: 10),
         Expanded(
           child: Text(
             text,
-            style: TextStyle(fontSize: 14, color: Color(0xFF6b7280)),
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF6b7280),
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],
@@ -722,22 +868,42 @@ class _AuthPageState extends State<AuthPage>
   }
 
   Widget _buildSubmitButton(String text, VoidCallback onPressed) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
-      height: 50,
+      height: 56,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF3b82f6), Color(0xFF1d4ed8)],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFF3b82f6).withValues(alpha: 0.3),
+            blurRadius: 12,
+            offset: Offset(0, 6),
+          ),
+        ],
+      ),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF3b82f6),
+          backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(16),
           ),
-          elevation: 4,
+          elevation: 0,
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+          ),
         ),
       ),
     );
@@ -815,40 +981,79 @@ class _AuthPageState extends State<AuthPage>
     Color iconColor,
     VoidCallback onPressed,
   ) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        side: BorderSide(color: Color(0xFFe2e8f0), width: 2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        padding: EdgeInsets.symmetric(vertical: 12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: iconColor, size: 20),
-          SizedBox(width: 8),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF374151),
-            ),
+    return Container(
+      height: 48,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Color(0xFFe5e7eb), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFF000000).withValues(alpha: 0.05),
+            blurRadius: 8,
+            offset: Offset(0, 2),
           ),
         ],
+      ),
+      child: OutlinedButton(
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          side: BorderSide.none,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: iconColor.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Icon(icon, color: iconColor, size: 18),
+            ),
+            SizedBox(width: 10),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF374151),
+                letterSpacing: 0.3,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildForgotPassword() {
-    return TextButton(
-      onPressed: _showForgotPassword,
-      child: Text(
-        'Şifremi Unuttum',
-        style: TextStyle(
-          color: Color(0xFF3b82f6),
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Color(0xFF3b82f6).withValues(alpha: 0.05),
+      ),
+      child: TextButton(
+        onPressed: _showForgotPassword,
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: Text(
+          'Şifremi Unuttum',
+          style: TextStyle(
+            color: Color(0xFF3b82f6),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.3,
+          ),
         ),
       ),
     );

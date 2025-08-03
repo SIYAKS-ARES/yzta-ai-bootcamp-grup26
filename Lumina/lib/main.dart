@@ -73,12 +73,14 @@ void _validateApiKeys() {
       elevenLabsKey == 'YOUR_ELEVENLABS_API_KEY_HERE') {
     throw Exception('ElevenLabs API anahtarı yapılandırılmamış!');
   }
-  if (openAIKey.isEmpty || openAIKey == 'YOUR_OPENAI_API_KEY_HERE') {
-    throw Exception('OpenAI API anahtarı yapılandırılmamış!');
-  }
-  if (geminiKey.isEmpty || geminiKey == 'YOUR_GEMINI_API_KEY_HERE') {
-    throw Exception('Gemini API anahtarı yapılandırılmamış!');
-  }
+  // OpenAI API anahtarı kontrolü kaldırıldı - devre dışı
+  // if (openAIKey.isEmpty || openAIKey == 'YOUR_OPENAI_API_KEY_HERE') {
+  //   throw Exception('OpenAI API anahtarı yapılandırılmamış!');
+  // }
+  // Gemini API anahtarı kontrolü kaldırıldı - devre dışı
+  // if (geminiKey.isEmpty || geminiKey == 'YOUR_GEMINI_API_KEY_HERE') {
+  //   throw Exception('Gemini API anahtarı yapılandırılmamış!');
+  // }
 }
 
 class LuminaApp extends StatefulWidget {
