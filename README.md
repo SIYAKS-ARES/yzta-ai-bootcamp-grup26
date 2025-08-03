@@ -8,8 +8,54 @@
 <div align="center">
   <h2>🎯 <strong>BOOTCAMP FINAL DEMO</strong></h2>
   
-  <!-- Main Video Player -->
-  <div style="max-width: 800px; margin: 0 auto 30px auto;">
+  <!-- Main Video Player - Testing All Platforms -->
+  <div style="max-width: 1000px; margin: 0 auto 30px auto;">
+    
+    <!-- Vimeo Embed Test -->
+    <div style="margin-bottom: 30px;">
+      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Vimeo Embed Test</h3>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <iframe src="https://player.vimeo.com/video/1106932404?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;dnt=1" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                title="Lumina AI Platform Demo">
+        </iframe>
+      </div>
+      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
+        <em>Vimeo Embed - Direct Play Test</em>
+      </p>
+    </div>
+
+    <!-- Streamable Embed Test -->
+    <div style="margin-bottom: 30px;">
+      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Streamable Embed Test</h3>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <iframe src="https://streamable.com/e/0pihg0" 
+                frameborder="0" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
+        <em>Streamable Embed - Direct Play Test</em>
+      </p>
+    </div>
+
+    <!-- Catbox Direct Video Test -->
+    <div style="margin-bottom: 30px;">
+      <h3 style="text-align: center; margin-bottom: 20px; color: #333;">🎬 Catbox Direct Video Test</h3>
+      <video width="100%" controls style="border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <source src="https://files.catbox.moe/s9i8ia.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
+        <em>Catbox Direct Video - Native HTML5 Player Test</em>
+      </p>
+    </div>
+
+    <!-- Primary Demo Card -->
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); text-align: center;">
       <h3 style="color: white; margin: 0 0 20px 0; font-size: 24px;">🎬 Watch Full Demo</h3>
       <p style="color: white; margin: 0 0 25px 0; font-size: 16px; line-height: 1.5;">
@@ -31,20 +77,57 @@
   <!-- Alternative Links -->
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto;">
     
-    <!-- YouTube Shorts Alternative -->
-    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
-      <h3 style="color: white; margin: 0 0 15px 0;">📱 Mobile Showcase</h3>
-      <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-        <p style="color: white; margin: 0; font-size: 14px;">
-          <strong>YouTube Shorts</strong><br>
-          Mobile-first showcase
-        </p>
+    <!-- Alternative Links Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; max-width: 900px; margin: 0 auto;">
+      
+      <!-- YouTube Shorts -->
+      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h3 style="color: white; margin: 0 0 15px 0; font-size: 16px;">📱 YouTube Shorts</h3>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px;">
+            <strong>Mobile Showcase</strong><br>
+            Quick demo
+          </p>
+        </div>
+        <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
+           target="_blank" 
+           style="display: inline-block; background: #FF0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
       </div>
-      <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
-         target="_blank" 
-         style="display: inline-block; background: #FF0000; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
-        🎬 Watch on YouTube
-      </a>
+
+      <!-- Vimeo Link -->
+      <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h3 style="color: white; margin: 0 0 15px 0; font-size: 16px;">🎬 Vimeo</h3>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px;">
+            <strong>Professional</strong><br>
+            High quality
+          </p>
+        </div>
+        <a href="https://vimeo.com/1106932404?share=copy" 
+           target="_blank" 
+           style="display: inline-block; background: #1ab7ea; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
+      <!-- Streamable Link -->
+      <div style="background: linear-gradient(135deg, #00d4aa 0%, #0099cc 100%); padding: 20px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+        <h3 style="color: white; margin: 0 0 15px 0; font-size: 16px;">⚡ Streamable</h3>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+          <p style="color: white; margin: 0; font-size: 12px;">
+            <strong>Fast Loading</strong><br>
+            Direct play
+          </p>
+        </div>
+        <a href="https://streamable.com/0pihg0" 
+           target="_blank" 
+           style="display: inline-block; background: #00d4aa; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 12px; transition: all 0.3s ease;">
+          🎬 Watch
+        </a>
+      </div>
+
     </div>
     
     <!-- YouTube Shorts Alternative -->
@@ -81,8 +164,54 @@
 <div align="center">
   <h3>🚀 Lumina AI Platform - Bootcamp Final Demo</h3>
   
-  <!-- Main Video Player -->
-  <div style="max-width: 1000px; margin: 0 auto 40px auto;">
+  <!-- Main Video Player - Testing All Platforms -->
+  <div style="max-width: 1200px; margin: 0 auto 40px auto;">
+    
+    <!-- Vimeo Embed Test -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Vimeo Embed Test</h3>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
+        <iframe src="https://player.vimeo.com/video/1106932404?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;dnt=1" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                title="Lumina AI Platform Demo">
+        </iframe>
+      </div>
+      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
+        <em>Vimeo Embed - Direct Play Test</em>
+      </p>
+    </div>
+
+    <!-- Streamable Embed Test -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Streamable Embed Test</h3>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
+        <iframe src="https://streamable.com/e/0pihg0" 
+                frameborder="0" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
+        <em>Streamable Embed - Direct Play Test</em>
+      </p>
+    </div>
+
+    <!-- Catbox Direct Video Test -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="text-align: center; margin-bottom: 25px; color: #333; font-size: 24px;">🎬 Catbox Direct Video Test</h3>
+      <video width="100%" controls style="border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25);">
+        <source src="https://files.catbox.moe/s9i8ia.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #666;">
+        <em>Catbox Direct Video - Native HTML5 Player Test</em>
+      </p>
+    </div>
+
+    <!-- Primary Demo Card -->
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 20px; box-shadow: 0 16px 50px rgba(0,0,0,0.25); text-align: center;">
       <h3 style="color: white; margin: 0 0 25px 0; font-size: 28px;">🎬 Complete Platform Demo</h3>
       <p style="color: white; margin: 0 0 30px 0; font-size: 18px; line-height: 1.6;">
@@ -105,38 +234,60 @@
   <!-- Alternative Links -->
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 800px; margin: 0 auto;">
     
-    <!-- GitHub Releases Alternative -->
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">📺 Alternative Platform</h4>
-      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
-        <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
-          <strong>Google Drive</strong><br>
-          Watch on Google Drive<br>
-          Alternative viewing option
-        </p>
+    <!-- Alternative Links Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
+      
+      <!-- Google Drive -->
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <h4 style="color: white; margin: 0 0 20px 0; font-size: 18px;">📺 Google Drive</h4>
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+          <p style="color: white; margin: 0; font-size: 14px; line-height: 1.5;">
+            <strong>Primary Demo</strong><br>
+            Complete MVP<br>
+            Full features
+          </p>
+        </div>
+        <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
+           target="_blank" 
+           style="display: inline-block; background: #2563EB; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+          🎬 Watch
+        </a>
       </div>
-      <a href="https://drive.google.com/file/d/1Jph7-xEJXLvY_QbAwvOvNrVlfXpFeOON/view?usp=sharing" 
-         target="_blank" 
-         style="display: inline-block; background: #2563EB; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
-        🎬 Watch on Google Drive
-      </a>
-    </div>
-    
-    <!-- YouTube Shorts Alternative -->
-    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
-      <h4 style="color: white; margin: 0 0 20px 0; font-size: 20px;">📱 Mobile Showcase</h4>
-      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
-        <p style="color: white; margin: 0; font-size: 16px; line-height: 1.5;">
-          <strong>YouTube Shorts</strong><br>
-          Mobile-first showcase<br>
-          Quick feature overview
-        </p>
+
+      <!-- YouTube Shorts -->
+      <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <h4 style="color: white; margin: 0 0 20px 0; font-size: 18px;">📱 YouTube Shorts</h4>
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+          <p style="color: white; margin: 0; font-size: 14px; line-height: 1.5;">
+            <strong>Mobile Showcase</strong><br>
+            Quick demo<br>
+            Mobile-first
+          </p>
+        </div>
+        <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
+           target="_blank" 
+           style="display: inline-block; background: #FF0000; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);">
+          🎬 Watch
+        </a>
       </div>
-      <a href="https://youtube.com/shorts/dbhLAWYP5gw?feature=share" 
-         target="_blank" 
-         style="display: inline-block; background: #FF0000; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);">
-        🎬 Watch on YouTube Shorts
-      </a>
+
+      <!-- Vimeo -->
+      <div style="background: linear-gradient(135deg, #1ab7ea 0%, #1f2937 100%); padding: 30px; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);">
+        <h4 style="color: white; margin: 0 0 20px 0; font-size: 18px;">🎬 Vimeo</h4>
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+          <p style="color: white; margin: 0; font-size: 14px; line-height: 1.5;">
+            <strong>Professional</strong><br>
+            High quality<br>
+            Direct embed
+          </p>
+        </div>
+        <a href="https://vimeo.com/1106932404?share=copy" 
+           target="_blank" 
+           style="display: inline-block; background: #1ab7ea; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(26, 183, 234, 0.3);">
+          🎬 Watch
+        </a>
+      </div>
+
     </div>
     
   </div>
