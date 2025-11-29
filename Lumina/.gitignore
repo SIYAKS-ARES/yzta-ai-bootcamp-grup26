@@ -45,18 +45,18 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# 🔒 GÜVENLİK: API anahtarları ve konfigürasyon dosyaları
+#   GÜVENLİK: API anahtarları ve konfigürasyon dosyaları
 # lib/services/api_keys.dart - Silindi, artık kullanılmıyor
 lib/services/firebase_config_service.dart
 
-# 🔒 GÜVENLİK: Environment dosyaları
+#   GÜVENLİK: Environment dosyaları
 .env
 .env.example
 .env.local
 .env.production
 .env.development
 
-# 🔒 GÜVENLİK: Firebase konfigürasyon dosyaları
+# GÜVENLİK: Firebase konfigürasyon dosyaları
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
 

@@ -1,7 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class GeminiApiService {
-  // 🔒 GÜVENLİ: Gemini API anahtarını .env dosyasından al
+  //   GÜVENLİ: Gemini API anahtarını .env dosyasından al
   static String get _staticGeminiApiKey {
     final key = dotenv.env['GEMINI_API_KEY'] ?? '';
     if (key.isEmpty || key == 'YOUR_GEMINI_API_KEY_HERE') {

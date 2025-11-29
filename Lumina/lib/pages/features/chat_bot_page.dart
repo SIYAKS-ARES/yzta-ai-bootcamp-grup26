@@ -32,7 +32,7 @@ class _ChatBotPageState extends State<ChatBotPage>
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
 
-  // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
+  //   GÜVENLİ: API anahtarını doğrudan .env dosyasından al
   String? get _geminiApiKey {
     final key = dotenv.env['GEMINI_API_KEY'] ?? '';
     if (key.isEmpty || key == 'YOUR_GEMINI_API_KEY_HERE') {

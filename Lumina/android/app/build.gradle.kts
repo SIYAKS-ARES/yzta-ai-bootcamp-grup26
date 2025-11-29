@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.lumina"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = "27.0.12077973"
 
     compileOptions {
@@ -24,8 +24,8 @@ android {
         applicationId = "com.example.lumina"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 23
-        targetSdk = 35
+        minSdk = flutter.minSdkVersion
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
         
@@ -54,4 +54,5 @@ android {
 flutter {
     source = "../.."
 }
-apply(plugin = "com.google.gms.google-services")
+// Google Services plugin kaldırıldı - Firebase konfigürasyonu .env dosyasından okunuyor
+// apply(plugin = "com.google.gms.google-services")

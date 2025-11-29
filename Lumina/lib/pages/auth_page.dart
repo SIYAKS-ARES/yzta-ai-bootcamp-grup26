@@ -794,7 +794,7 @@ class _AuthPageState extends State<AuthPage>
           child: Checkbox(
             value: value,
             onChanged: onChanged,
-            activeColor: Color(0xFF3b82f6),
+            fillColor: WidgetStateProperty.all(Color(0xFF3b82f6)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(3),
             ),

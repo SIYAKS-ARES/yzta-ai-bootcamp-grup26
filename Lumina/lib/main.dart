@@ -14,7 +14,7 @@ import 'package:lumina/pages/file_explorer_page.dart';
 import 'package:lumina/services/language_service.dart';
 import 'package:lumina/services/theme_service.dart';
 import 'package:lumina/services/whisper_service.dart';
-import 'services/firebase_config_service.dart';
+import 'package:lumina/services/firebase_config_service.dart';
 // import 'frb_generated.dart';
 // import 'mock_api.dart';
 
@@ -24,7 +24,7 @@ Future<void> main() async {
   // .env dosyasını yükle
   await dotenv.load(fileName: ".env");
 
-  // 🔒 GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
+  // GÜVENLİK KONTROLÜ - API anahtarlarını doğrula
   try {
     _validateApiKeys();
     // API anahtarları güvenli şekilde yapılandırıldı
@@ -33,7 +33,7 @@ Future<void> main() async {
     // Uygulama çalışmaya devam edebilir ama API özellikleri çalışmayacak
   }
 
-  // 🔒 GÜVENLİK KONTROLÜ - Firebase konfigürasyonunu doğrula
+  // GÜVENLİK KONTROLÜ - Firebase konfigürasyonunu doğrula
   try {
     FirebaseConfigService.validateFirebaseConfig();
     // Firebase konfigürasyonu güvenli şekilde yapılandırıldı
@@ -74,7 +74,7 @@ Future<void> main() async {
   );
 }
 
-// 🔒 GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
+// GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
 void _validateApiKeys() {
   final elevenLabsKey = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
 

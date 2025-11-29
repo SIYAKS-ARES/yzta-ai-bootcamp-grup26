@@ -5,3 +5,6 @@
 # Ziplenmiş proje dosyaları
 Lumina-ziplenip-atilmis-hali/
 
+/Lumina/pubspec.lock
+
+/Lumina/.firebaserc

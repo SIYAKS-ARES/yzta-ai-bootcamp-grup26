@@ -1,43 +1,43 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    // 🔒 GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
+    //   GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
     function isAuthenticated() {
       return request.auth != null;
     }
     
-    // 🔒 GÜVENLİK: Kullanıcının kendi dosyalarına erişim kontrolü
+    //   GÜVENLİK: Kullanıcının kendi dosyalarına erişim kontrolü
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
     }
     
-    // 🔒 GÜVENLİK: Dosya boyutu kontrolü (10MB)
+    //   GÜVENLİK: Dosya boyutu kontrolü (10MB)
     function isValidFileSize() {
       return request.resource.size < 10 * 1024 * 1024;
     }
     
-    // 🔒 GÜVENLİK: Dosya türü kontrolü
+    //   GÜVENLİK: Dosya türü kontrolü
     function isValidFileType() {
       return request.resource.contentType.matches('application/pdf') ||
              request.resource.contentType.matches('application/vnd.openxmlformats-officedocument.wordprocessingml.document') ||
              request.resource.contentType.matches('audio/.*');
     }
     
-    // 🔒 GÜVENLİK: Uploads klasörü - sadece kullanıcı kendi dosyalarını yükleyebilir
+    //   GÜVENLİK: Uploads klasörü - sadece kullanıcı kendi dosyalarını yükleyebilir
     match /uploads/{userId}/{fileName} {
       allow read: if isOwner(userId);
       allow write: if isOwner(userId) && isValidFileSize() && isValidFileType();
       allow delete: if isOwner(userId);
     }
     
-    // 🔒 GÜVENLİK: Audio klasörü - sadece kullanıcı kendi ses dosyalarını okuyabilir
+    //   GÜVENLİK: Audio klasörü - sadece kullanıcı kendi ses dosyalarını okuyabilir
     match /audio/{userId}/{fileName} {
       allow read: if isOwner(userId);
       allow write: if false; // Sadece Cloud Functions yazabilir
       allow delete: if isOwner(userId);
     }
     
-    // 🔒 GÜVENLİK: Diğer tüm dosyalar için varsayılan red
+    //   GÜVENLİK: Diğer tüm dosyalar için varsayılan red
     match /{allPaths=**} {
       allow read, write: if false;
     }

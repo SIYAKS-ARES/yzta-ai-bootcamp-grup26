@@ -593,7 +593,7 @@ class _ExperimentalTTSPageState extends State<ExperimentalTTSPage> {
     return FirebaseAuth.instance.currentUser?.uid;
   }
 
-  // 🔒 GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
+  //  GÜVENLİ: API anahtarlarını doğrudan .env dosyasından kontrol et
   bool _isProviderConfigured(TTSProvider provider) {
     switch (provider) {
       case TTSProvider.elevenlabs:

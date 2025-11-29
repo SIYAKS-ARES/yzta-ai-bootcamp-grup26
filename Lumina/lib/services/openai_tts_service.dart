@@ -8,7 +8,7 @@ import 'dart:developer' as developer;
 class OpenAITTSService {
   static const String _baseUrl = 'https://api.openai.com/v1/audio/speech';
 
-  // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
+  //   GÜVENLİ: API anahtarını doğrudan .env dosyasından al
   static String get _apiKey {
     final key = dotenv.env['OPENAI_API_KEY'] ?? '';
     if (key.isEmpty || key == 'YOUR_OPENAI_API_KEY_HERE') {

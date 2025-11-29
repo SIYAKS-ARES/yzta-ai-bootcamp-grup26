@@ -1,4 +1,4 @@
-# 🔒 LUMINA GÜVENLİK REHBERİ
+#   LUMINA GÜVENLİK REHBERİ
 
 ## 🚨 KRİTİK GÜVENLİK UYARILARI
 
@@ -34,7 +34,7 @@
 - [x] Placeholder değerler kontrol ediliyor
 - [x] API anahtarları kod içinde yok
 
-### 🔒 Firebase Güvenliği
+###   Firebase Güvenliği
 - [x] Firebase konfigürasyonu güvenli
 - [x] Firebase API anahtarları `.env`'de
 - [x] Firebase konfigürasyon servisi var
@@ -55,12 +55,12 @@ touch .env
 
 ### 2. .env dosyası içeriği
 ```env
-# 🔒 API ANAHTARLARI - GERÇEK DEĞERLERİNİZİ EKLEYİN
+#   API ANAHTARLARI - GERÇEK DEĞERLERİNİZİ EKLEYİN
 ELEVENLABS_API_KEY=your_actual_key_here
 OPENAI_API_KEY=your_actual_key_here
 GEMINI_API_KEY=your_actual_key_here
 
-# 🔒 FIREBASE KONFİGÜRASYONU
+#   FIREBASE KONFİGÜRASYONU
 FIREBASE_WEB_API_KEY=your_firebase_web_api_key
 FIREBASE_ANDROID_API_KEY=your_firebase_android_api_key
 FIREBASE_IOS_API_KEY=your_firebase_ios_api_key
@@ -122,5 +122,5 @@ Güvenlik açıkları için: [güvenlik@lumina.com](mailto:güvenlik@lumina.com)
 ---
 
 **Son Güncelleme:** $(date)
-**Güvenlik Seviyesi:** 🔒 YÜKSEK
+**Güvenlik Seviyesi:**   YÜKSEK
 **Durum:** ✅ GÜVENLİ 

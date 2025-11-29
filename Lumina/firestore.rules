@@ -1,17 +1,17 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // 🔒 GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
+    //   GÜVENLİK: Kullanıcı kimlik doğrulaması kontrolü
     function isAuthenticated() {
       return request.auth != null;
     }
     
-    // 🔒 GÜVENLİK: Kullanıcının kendi verilerine erişim kontrolü
+    //   GÜVENLİK: Kullanıcının kendi verilerine erişim kontrolü
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
     }
     
-    // 🔒 GÜVENLİK: Task koleksiyonu kuralları
+    //   GÜVENLİK: Task koleksiyonu kuralları
     match /tasks/{taskId} {
       // Okuma: Sadece task sahibi okuyabilir
       allow read: if isOwner(resource.data.userId);
@@ -28,12 +28,12 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
     
-    // 🔒 GÜVENLİK: Kullanıcı profilleri
+    //   GÜVENLİK: Kullanıcı profilleri
     match /users/{userId} {
       allow read, write: if isOwner(userId);
     }
     
-    // 🔒 GÜVENLİK: Diğer tüm koleksiyonlar için varsayılan red
+    //   GÜVENLİK: Diğer tüm koleksiyonlar için varsayılan red
     match /{document=**} {
       allow read, write: if false;
     }

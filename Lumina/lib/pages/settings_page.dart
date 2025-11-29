@@ -441,7 +441,7 @@ class _SettingsPageState extends State<SettingsPage>
                           notificationsEnabled = val;
                         });
                       },
-                      activeColor: primaryBlue,
+                      activeThumbColor: primaryBlue,
                       activeTrackColor: primaryBlue.withValues(alpha: 0.3),
                     ),
                   ],
@@ -839,7 +839,7 @@ class _SettingsPageState extends State<SettingsPage>
                           );
                         }
                       },
-                      activeColor: primaryBlue,
+                      activeThumbColor: primaryBlue,
                       activeTrackColor: primaryBlue.withValues(alpha: 0.3),
                     ),
                   ],

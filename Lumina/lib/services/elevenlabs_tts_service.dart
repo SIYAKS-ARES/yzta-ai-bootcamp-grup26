@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class ElevenLabsTTSService {
   static const String _baseUrl = 'https://api.elevenlabs.io/v1';
 
-  // 🔒 GÜVENLİ: API anahtarını doğrudan .env dosyasından al
+  //  GÜVENLİ: API anahtarını doğrudan .env dosyasından al
   static String get _apiKey {
     final key = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
     if (key.isEmpty || key == 'YOUR_ELEVENLABS_API_KEY_HERE') {
